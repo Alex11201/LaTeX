@@ -1,0 +1,302 @@
+%Формат файла
+\documentclass[12pt]{article} 
+\usepackage[paperheight=297mm,
+   paperwidth=210mm,
+   top=20mm,
+   bottom=20mm,
+   left=15mm,
+   right=15mm]{geometry}
+
+
+%Текст
+\usepackage[fontsize=12pt]{fontsize}
+\usepackage[russian]{babel}
+\usepackage{color}
+\usepackage{transparent}
+\usepackage{amsthm}
+\parindent=0cm
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{definition}{Определение}
+\newtheorem{statement}[theorem]{Утверждение}
+\renewcommand\qedsymbol{$\blacksquare$}
+
+
+%Картинки
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+
+%Математика
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathabx}
+\usepackage{amssymb}
+
+%Всякое
+\usepackage{relsize}
+\usepackage{enumerate}
+\usepackage[inline]{enumitem}
+\usepackage{hyperref}
+
+%Мат команды
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\prob}{\mathbb{P}}
+\DeclareRobustCommand{\divby}{%
+  \mathrel{\vbox{\baselineskip.65ex\lineskiplimit0pt\hbox{.}\hbox{.}\hbox{.}}}%
+}
+
+%Оглавление
+\title{\textbf{ТВиМС}}\date{}\author{}
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\label{toc}
+\newpage
+
+\section{Случайная величина}
+
+\begin{definition}
+    Случайной величиной $\xi$ называется функция, заданная на множестве $\Omega$, принимающая значения в $\R$.
+\end{definition}
+
+    Задать случайную величину, значит указать все ее реализации и соответственные вероятности.
+
+\begin{definition}
+    Индикатором события $A$ называется случайная величина $\I(A)\sim \left({0 \atop 1-\prob(A)} {1 \atop \prob(A)} \right)$.
+\end{definition}
+
+\begin{definition}
+    Законом распределения случайной величины называется некоторое правило, позволяющее однозначно определить значение вероятности по значению случайной величины.
+\end{definition}
+
+    \subsection{Числовые характеристики случайных величин}
+
+\begin{definition}
+    Математическим ожиданием дискретной случайной величины, если оно существует, называется число: 
+    $$\E (\xi)=\sum_{i=1}^{n}\omega_i\cdot \prob(\xi=\omega_i)$$
+\end{definition}
+
+\begin{definition}
+    Дисперсией случайной величины называется $\D(\xi)=\E(\xi-\E(\xi))^2$.
+\end{definition}
+
+\begin{theorem}
+    $\E(a\xi+b\eta+c)=a\E(\xi)+b\E(\xi)+c;\;a,b,c\in \R$
+\end{theorem}
+
+\begin{proof}
+    \begin{align*}
+        &\E(a\xi+b\eta+c)=\\
+        =&\sum_{i=1}^n \hat{\omega}_i\cdot\prob(a\xi+b\eta+c=\hat{\omega}_i)=\\
+        =&c+\sum_{i=1}^n \hat{\omega}_i^c\cdot\prob(a\xi+b\eta=\hat{\omega}_i^c)=\\
+        =&c+\sum_{i=1}^n \omega_i^\xi\cdot \prob(a\xi=\omega_i^\xi)+\sum_{i=1}^n \omega_i^\eta\cdot\prob(b\eta=\omega_i^\eta)=\\            =&c+a\E(\xi)+b\E(\eta)
+    \end{align*}
+\end{proof}
+
+\begin{theorem}
+    Дисперсия случайной величины $\xi$ может быть вычислена, как $\D(\xi)=\E(\xi^2)-(\E(\xi))^2$
+\end{theorem}
+
+\begin{proof}
+    \begin{align*}
+        &\D(\xi)=\E(\xi-\E(\xi))^2=\\
+        =&\E(\xi^2-2\xi\E(\xi)+(\E(\xi))^2)=\\
+        =&\E(\xi^2)-2(\E(\xi))^2+(\E(\xi))^2=\\
+        =&\E(\xi^2)-(\E(\xi))^2
+    \end{align*}
+\end{proof}
+
+\begin{definition}
+    Стандартным отклонением случайной величины $\xi$ называется $\sigma(\xi)=\sqrt{\D(\xi)}$.
+\end{definition}
+
+    \subsubsection{Распределение Бернулли}
+
+\begin{definition}
+    Случайная величина $\xi$  распределена по Бернулли, если ее распределение суть индикатор.
+    $$Ber(p)\sim \left({0 \atop 1-p} \,\ \, {1 \atop p} \right)$$
+\end{definition}
+
+    \subsubsection{Биномиальное распределение}
+
+\begin{definition}
+    Случайная величина $\xi$ распределена биномиально, если она моделирует схему испытаний  Бернулли или является суммой бернулиевых случайных величин.
+    $$B(p,\,n)\sim \left( {0 \atop (1-p)^n} \,\,\, {... \atop ...} \,\,\, {k \atop C_n^kp^k(1-p)^{n-k}} \,\,\, {... \atop ...} \,\,\, {n \atop p^n} \right)$$
+\end{definition}
+
+\begin{theorem}
+    Математическое ожидание биномиально распределенной случайной величины $\xi$ может быть вычислено, как $\E(\xi)=np$.
+\end{theorem}
+
+\begin{proof}
+    \begin{align*}
+        &\E(\xi) = C_n^1pq^{n-1} + 2C_n^2p^2q^{n-2} + \ldots + kC_n^kp^kq^{n-k} + \ldots + nC_n^np^n = \\
+        =& np \cdot (C_{n-1}^0q^{n-1} + C_{n-1}^1pq^{n-2}+\ldots + C_{n-1}^{k-1}p^{k-1}q^{n-k} + \ldots + C_{n-1}^{n-1}p^{n-1})=\\
+        =& np \cdot (q+p)^{n-1}=\\
+        =& np
+    \end{align*}
+\end{proof}
+
+\begin{theorem}
+    Дисперсия независимых случайных величин линейна: $\D(\xi+\eta)=\D(\xi)+\D(\eta)$
+\end{theorem}
+
+\begin{lemma}
+    Дисперсия биномиально распределенной случайной величины $\xi$ может быть вычислена, как $\D(\xi)=npq$.
+\end{lemma}
+
+\begin{proof}
+    Пусть $\eta$ -- число успехов в одном испытании Бернули. Тогда:
+    $$\eta \sim B(p,\,1) \sim \left({0 \atop q} \,\,\, {1 \atop p}\right)$$
+    В таком случае $\D(\eta)=\E(\eta^2)-(\E(\eta))^2=p-p^2=pq$. Тогда по теореме 1.4:
+    $$\D(\xi)=\sum_{i=1}^{n}\D(\xi_i)=pq \cdot n = npq$$
+\end{proof}
+
+\subsubsection{Геометрическое распределение}
+
+\begin{definition}
+    Случайная величина $\xi$ распределена геометрически, если она моделирует схему испытаний до первого успеха с вероятностью $p$.
+    $$Geom(p) \sim \left( {1 \atop p} \,\,\, {2 \atop qp} \,\,\, {... \atop ...} \,\,\, \,\,\, {n \atop q^{n-1}p} \,\,\, {... \atop ...}\right)$$
+\end{definition}
+
+\begin{lemma}
+    Математическое ожидание геометрически распределенной случайной величины $\xi$ может быть вычислено, как $\E(\xi)=\dfrac{1}{p}$.
+\end{lemma}
+
+\begin{proof}
+    \begin{align*}
+        &\E(\xi)=p+2qp+2q^2p+\ldots+kq^{k-1}p+\ldots=\\
+        =&(p+qp+q^2p+\ldots+q^{k-1}p+\ldots)+(qp+2q^2p+\ldots+(k-1)q^{k-1}p+\ldots)=\\
+        =&\frac{p}{1-q}+q(p+2pq+\ldots+(k-1)q^{k-2}p+\ldots)\\\\
+        &\E(\xi)=1+q\E(\xi)\\
+        &\E(\xi)(1-q)=1\\
+        &\E(\xi)=\frac{1}{p}
+    \end{align*}
+\end{proof}
+
+\begin{lemma}
+    Дисперсия геометрически распределенной случайной величины $\xi$ может быть вычислена, как $\D(\xi)=\dfrac{q}{p^2}$.
+\end{lemma}
+
+\begin{proof}
+    \begin{align*}
+        &\D(\xi)=\E(\xi^2)-(\E(\xi))^2\\\\
+        &\E(\xi^2)=p+2qp+9q^2p+\ldots+k^2q^{k-1}p+\ldots=\\
+        =&p+qp+3qp+4q^2p+5q^2p+\ldots=\\
+        =&(qp+4q^2p+\ldots)+(p+3qp+5q^2p+\ldots)
+    \end{align*}
+    \begin{align*}
+        &\E(\xi^2)=q\E(\xi^2)+\E(2\xi-1)=\\
+        =&(1-p)\E(\xi^2)+\frac{2}{p}-1=\\
+        =&\frac{2-p}{p^2}\\\\
+        &\D(\xi)=\frac{2-p}{p^2}-\frac{1}{p^2}=\\
+        =&\frac{q}{p^2}
+    \end{align*}
+\end{proof}
+
+\subsubsection{Гипергеометрическое распределение}
+\begin{definition}
+    Случайная величина $\xi$ распределена гипергеометрически, если она моделирует выбор $n$ элементов из множества мощности $N$ с $K$ помеченными и является числом помеченных в выборке.
+\end{definition}
+$$\xi \sim HG(N,\,K,\,n)$$
+$$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
+
+\begin{statement}
+    Математическое ожидание гипергеометрически распределенной случайной величины $\xi$ может быть вычислено, как $\E(\xi)=\dfrac{n\cdot K}{N}$.
+\end{statement}
+
+\begin{proof}
+    \begin{align*}
+    &\xi = \I(A_1)+\I(A_2)+\ldots+\I(A_n),\, \text{где}\, A_i=\{i\text{-ый элемент выборки помечен}\}\\
+    &\I(A_i)\sim \left({0 \atop 1-\frac{K}{N}} \,\,\, {1 \atop \frac{K}{N}} \right)\\
+    &\E(\xi)=\sum_{i=1}^n \E(\I(A_i))=n\cdot \frac{K}{N}
+\end{align*}
+\end{proof}
+
+\subsubsection{Распределение Паскаля}
+
+\begin{definition}
+    Случайная величина $\xi$ распределена по Паскалю, если она моделирует испытания до первых $k$ успехов.
+\end{definition}
+
+\begin{definition}
+    $$\xi \sim NB(p,\,k)\text{, если }\xi=\sum_{i=1}^k\eta_i:\,\forall i \in \{1,\,2,\,\ldots,\,k\}:\,\eta_i\sim Geom(p)$$
+    $$\prob(\xi=n)=C_{n-1}^{k-1}p^kq^{n-k}$$
+\end{definition}
+
+\begin{statement}
+    Математическое ожидание случайной величины $\xi$, распределенной по Паскалю, может быть вычислено, как $\E(\xi)=\dfrac{k}{p}$.
+\end{statement}
+\begin{proof}
+    Поскольку математическое ожидание линейно: 
+    $$\E(\xi)=\sum_{i=1}^{k}\E(\xi_i)=\frac{1}{p}\cdot k =\frac{k}{p}$$
+\end{proof}
+
+\section{Ковариация}
+
+\begin{definition}
+    Пусть $\xi$ и $\eta$ -- случайные величины, тогда ковариацией называется:
+    $$cov(\xi;\,\eta)=\E((\xi-\E(\xi))(\eta-\E(\eta)))$$
+\end{definition}
+\begin{theorem}
+    Для $cov(\xi;\,\eta)$ выполняются свойства:
+    \begin{align*}
+        1.\,\,&cov(\xi;\,\xi)\geq0\\
+        2.\,\,&cov(\xi;\,\eta)=cov(\eta;\,\xi)\\
+        3.\,\,&cov(\lambda \xi;\,\eta)=\lambda\cdot cov(\xi;\,\eta)\\
+        4.\,\,&cov(\xi_1+\xi_2;\,\eta)=cov(\xi_1;\,\eta)+cov(\xi_2;\,\eta)\\
+        5.\,\,&cov(\xi;\,\eta)\leq \D(\xi)\cdot\D(\eta)
+    \end{align*}
+\end{theorem}
+\begin{theorem}
+    $$cov(\xi;\,\eta)=\E(\xi\cdot\eta)-\E(\xi)\cdot\E(\eta)$$
+\end{theorem}
+\begin{proof}
+    \begin{align*}
+        &\E((\xi-\E(\xi))(\eta-\E(\eta)))=\\
+        =&\E(\xi\cdot\eta-\xi\E(\eta)-\eta\E(\xi)+\E(\xi)\cdot\E(\eta))=\\
+        =&\E(\xi\cdot\eta)-\E(\xi\E(\eta))-\E(\eta\E(\xi))+\E(\xi)\cdot\E(\eta)=\\
+        =&\E(\xi\cdot\eta)-\E(\xi)\cdot\E(\eta)
+    \end{align*}
+\end{proof}
+\begin{theorem}
+    $$\D(\xi+\eta)=\D(\xi)+\D(\eta)+2\cdot cov(\xi;\,\eta)$$
+\end{theorem}
+\section{Корреляция}
+
+\begin{definition}
+    Пусть $\xi$ и $\eta$ -- случайные величины: $\D(\xi)\neq0,\,\D(\eta)\neq0,\,cov(\xi;\,\eta)$ определена корректно. Тогда коэффициентом корреляции $\xi$ и $\eta$ называется:
+    $$corr(\xi;\,\eta)=r_{\xi\eta}=\frac{cov(\xi;\,\eta)}{\sigma(\xi)\cdot\sigma(\eta)}$$
+    Свойства:
+    \begin{align*}
+        1.\,\,&|r_{\xi\eta}|\leq 1\\
+        2.\,\,&|r_{\xi\eta}|=1\Longleftrightarrow \exists\, k\neq 0,\,b:\,\eta=k\xi+b\text{ (почти наверное).}
+    \end{align*}
+\end{definition}
+\section{Мера Жордана}
+\begin{definition}
+    $A$ измеримо по Жордану, если $\mu^j(A)=\mu_j(A)$, где $\mu^j(A)=\inf\{\mu(\triangle):\,A\subset \triangle\}$, $\mu_j(A)=\sup\{\mu(\triangle):\,\triangle \subset A\}$
+\end{definition}
+\begin{definition}
+    Пусть $A\subset \Omega$, тогда $\prob(x\in A)=\dfrac{\mu(A)}{\mu(\Omega)}$.
+\end{definition}
+\end{document}

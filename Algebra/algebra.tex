@@ -1,0 +1,444 @@
+%Формат файла
+\documentclass[12pt]{article} 
+\usepackage[paperheight=297mm,
+   paperwidth=210mm,
+   top=20mm,
+   bottom=20mm,
+   left=15mm,
+   right=15mm]{geometry}
+
+
+%Текст
+\usepackage[fontsize=12pt]{fontsize}
+\usepackage[russian]{babel}
+\usepackage{color}
+\usepackage{transparent}
+\usepackage{amsthm}
+\parindent=0cm
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{definition}{Определение}
+\newtheorem{statement}[theorem]{Утверждение}
+\newtheorem{consequence}{Следствие}[subsection]
+\renewcommand\qedsymbol{$\blacksquare$}
+
+%Картинки
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usetikzlibrary {arrows.meta}
+\usetikzlibrary{calc}
+\usetikzlibrary{intersections}
+
+
+%Математика
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathabx}
+\usepackage{amssymb}
+
+%Всякое
+\usepackage{relsize}
+\usepackage{enumerate}
+\usepackage[inline]{enumitem}
+\usepackage{hyperref}
+
+%Мат команды
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\prob}{\mathbb{P}}
+\newcommand{\verteq}{\rotatebox{90}{$\,=$}}
+\newcommand{\equalto}[2]{\underset{\scriptstyle\overset{\mkern4mu\verteq}{#2}}{#1}}
+\newcommand{\vertneq}{\rotatebox{90}{$\,\neq$}}
+\newcommand{\notequalto}[2]{\underset{\scriptstyle\overset{\mkern4mu\vertneq}{#2}}{#1}}
+\DeclareRobustCommand{\divby}{%
+  \mathrel{\vbox{\baselineskip.65ex\lineskiplimit0pt\hbox{.}\hbox{.}\hbox{.}}}%
+}
+\makeatletter
+\newenvironment{sqcases}{%
+  \matrix@check\sqcases\env@sqcases
+}{%
+  \endarray\right.%
+}
+\def\env@sqcases{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrack
+  \def\arraystretch{1.2}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+
+%Оглавление
+\title{\textbf{Алгебра}}\date{}
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\label{toc}
+\newpage
+
+\section{Решение уравнений и неравенств.}
+
+\subsection{Иррациональные уравнения}
+
+\begin{align*}
+&\sqrt{f(x)}=g(x)\Longleftrightarrow 
+    \begin{cases}
+        f(x)=(g(x))^2\\
+        g(x)\geq0
+    \end{cases} & &\sqrt{f(x)}=\sqrt{g(x)}\Longleftrightarrow
+    \begin{cases}
+        f(x)= g(x)\\
+        f(x)\geq 0
+    \end{cases}
+\end{align*}
+
+\subsection{Иррациональные неравенства}
+
+$$\frac{f(x)}{g(x)}\leq 0\Longleftrightarrow \left[
+\begin{gathered}
+    \begin{cases}
+        f(x)\geq 0\\
+        g(x)<0
+    \end{cases}\\
+    \begin{cases}
+        f(x)\leq 0\\
+        g(x)>0
+    \end{cases}
+\end{gathered}
+\right.$$
+
+\begin{align*}
+    &\sqrt{f(x)}>g(x) \Longleftrightarrow
+    \begin{sqcases}
+        \begin{cases}
+            g(x)<0\\
+            f(x)\geq 0
+        \end{cases}\\
+        \begin{cases}
+            g(x)\geq 0\\
+            f(x)>(g(x))^2
+        \end{cases}
+    \end{sqcases}& &\sqrt{f(x)}<g(x) \Longleftrightarrow
+    \begin{cases}
+        g(x)\geq 0\\
+        f(x) \geq 0\\
+        f(x) < (g(x))^2
+    \end{cases}
+\end{align*}
+
+$$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow 
+    \begin{cases}
+        f(x)>g(x)\\
+        g(x)\geq 0
+    \end{cases}$$
+
+\subsection{Неравенства с модулем}
+
+\begin{align*}
+    &|f(x)|<a, \,\, a>0 \Longleftrightarrow 
+    \begin{cases}
+        f(x)>-a\\
+        f(x)<a
+    \end{cases}& 
+    &|f(x)|>a \Longleftrightarrow
+    \begin{sqcases}
+        f(x)>a\\
+        f(x)<-a
+    \end{sqcases}
+\end{align*}
+
+\begin{align*}
+    &|f(x)|\leq|g(x) \Longleftrightarrow (f(x)-g(x))\cdot(f(x)+g(x))\leq0\\
+    &|f(x)|+|g(x)|>|f(x)+g(x)| \Longleftrightarrow f(x)\cdot g(x) < 0\\
+    &|f(x)|+|g(x)|\leq|f(x)+g(x)| \Longleftrightarrow f(x)\cdot g(x) \geq 0
+\end{align*}
+
+\section{Многочлены}
+
+\begin{definition}
+    Многочленом от переменной $x$ над $K$ называется выражение вида: $f(x)=a_nx^n+a_{n-1}x^{n-1}+\ldots+a_1x+a_0,\, a_k\in K\text{ -- коэффициент многочлена},\, a_n\neq0$.
+\end{definition}
+
+\begin{definition}
+    Наибольшее $k$ такое, что $a_k\neq0$, называется степенью многочлена $f$:
+    \begin{align*}
+        &k = deg\,f\\
+        &a_0\text{ -- свободный член}\\
+        &a_nx^n\text{ -- старший член}\\
+        &a_n\text{ -- старший коэффициент}
+    \end{align*}
+\end{definition}
+
+\begin{definition}
+    Два многочлена называются равными, если их коэффициенты при соответственных степенях $x$ равны.
+\end{definition}
+
+\begin{definition}
+    \begin{align*}
+        &f(x)=a_nx^n+a_{n-1}x^{n-1}+\ldots+a_1x+a_0\\
+        &g(x)=b_nx^n+b_{n-1}x^{n-1}+\ldots+b_1x+b_0
+    \end{align*}
+    Суммой многочленов $f(x)$ и $g(x)$ называется: $$n(x)=(a_n+b_n)x^n+(a_{n-1}+b_{n-1})x^{n-1}+\ldots+(a_1+b_1)x+(a_0+b_0)$$ Произведением многочленов $f(x)$ и $g(x)$ называется: $$S(x)=d_{2n}x^{2n}+d_{2n-1}x^{2n-1}+\ldots+d_1x+d_0\text{, где} d_k=a_0b_k+a_1b_{k-1}+\ldots+a_{k-1}b_1+a_kb_0=\sum_{i=0}^ka_ib_{k-i}$$.
+\end{definition}
+
+\begin{statement}
+    Пусть $def\,f(x)\neq0,\,deg\,g(x)\neq0$, тогда:
+    \begin{align*}
+        &1.\,\,deg(f(x)+g(x))\leq \max {\{deg\,f,\,deg\,g\}}\\
+        &2.\,\,f(x)\cdot g(x) \neq0\\
+        &3.\,\,deg(f(x)\cdot g(x))=deg\,f(x)+deg\,g(x)
+    \end{align*}
+\end{statement}
+\begin{proof}
+    \begin{align*}
+    1.\,\,&\text{Пусть }deg\,f=def\,g=n\\
+    &f(x)+g(x)=(a_n+b_n)x^n+(a_{n-1}+b_{n-1})x^{n-1}+\ldots+(a_1+b_1)x+(a_0+b_0)\\
+    &\text{Если }k>n \text{, то} a_k=0,\,b_k=0\text{, то есть }(a_k+b_k)=0\\\\
+    &\text{Пусть }deg\,f=n,\,deg\,g=m,\,m<n\\
+    &\text{Если }k>n\text{, то }a_k+b_k=0\text{, так как }b_{m+1}=b_{m+2}=\ldots=b_{n-1}=b_n=0\\
+    &\text{Тогда }a_n+b_n=a_n\neq0\\\\
+    2.\,\,&f(x)\cdot g(x)=\notequalto{a_nb_mx^{n+m}}{0}+\underbrace{\ldots\ldots}_{\text{степень}<n}
+    \end{align*}
+\end{proof}
+
+\begin{definition}
+    Многочлен $f(x)$ делится на многочлен $g(x)$, если существует такой многочлен $h(x)$, что $h(x)\cdot g(x)=f(x)$.
+\end{definition}
+\begin{statement}
+    Свякий многочлен $f(x)\neq0$ делится на самого себя.
+\end{statement}
+\begin{statement}
+    Если $f(x)$ делится на $g(x)$, а $g(x)$ делится на $f(x)$, то $f(x)=c\cdot g(x),\,c\in K$.
+\end{statement}
+\begin{definition}
+    Число $x_0$ является корнем $f(x)$, если $f(x_0)=0$.
+\end{definition}
+\begin{theorem}[Теорема Безу]
+    Остаток от деления многочлена $P(x)$ на двучлен $(x-a)$ равен $P(a)$.
+\end{theorem}
+\begin{proof}
+    \begin{align*}
+    &P(x)=(x-a)\cdot q(x)+r\\
+    &P(a)=0\cdot p(x)+r=r
+\end{align*}
+\end{proof}
+\setcounter{subsection}{4}
+\begin{consequence}
+    Число $a$ является корнем многочлена $P(x)$ тогда и только тогда, когда $P(x)$ делится на $(x-a)$.
+\end{consequence}
+
+\section{Множества}
+\begin{definition}
+    Множества равномощны, если между ними существует биекция.
+\end{definition}
+\begin{definition}
+    Множества $A$ и $B$ называются равными, если $A\subseteq B,\,B\subseteq A.$
+\end{definition}
+\begin{definition}
+    Множества, равномощные $\N$, называются счетными.
+\end{definition}
+\begin{definition}
+    Декартовым произведением множеств $A$ и $B$ называется множество $A\times B=\{x\,|\,x=(a,b),\,a\in A,\,b\in B\}$.
+\end{definition}
+\begin{definition}
+    Число $a$ называется числом кратности $k$ многочлена $f(x)$, если $f(x)$ делится на $(x-a)^k$, но не делится на $(x-a)^{k+1}$.
+\end{definition}
+
+\section{Числовые последовательности}
+\begin{definition}
+    Бесконечной числовой последовательностью $(a_n)$ называется отображение $\N \rightarrow \R$.
+\end{definition}
+\begin{definition}
+    Конечной числовой последовательностью $(a_n)$ называется отображение\\ $a:\,\{1,\,2,\,\ldots,\,k\}\rightarrow \R$.
+\end{definition}
+
+\begin{definition}
+    Множество $M,\,M\subset\R$ называется ограниченным сверху, если $\exists\, c:\,\forall x\in M:\,x \leq c$.
+\end{definition}
+\begin{definition}
+    Множество $M,\,M\subset\R$ называется ограниченным снизу, если $\exists\, c:\,\forall x\in M:\,x \geq c$.
+\end{definition}
+\begin{definition}
+    Множество $M,\,M\subset\R$ называется ограниченным, если оно ограничено сверху и снизу.
+\end{definition}
+\begin{definition}
+    Последовательность $a_n$ называется ограниченной, если $a(\N)$ ограничено. 
+\end{definition}
+\begin{definition}
+    Последовательность $a_n$ называется называется монотонно возрастающей, если $\forall n \in \N:\, a_{n+1}>a_n$.
+\end{definition}
+\begin{theorem}
+    Пусть все элементы последовательности $a_n$ положительны. Последовательность $a_n$ возстает тогда и только тогда, когда $\dfrac{a_{n+1}}{a_n}>1$.
+\end{theorem}
+
+\subsection{Аксиоматика действительных чисел}
+
+\begin{definition}
+    Пусть $M \subset \R,\,M$ ограничено. Тогда наименьшая из верхних граней множества $M$ называется точной верхней гранью:
+    $$a=\sup M\Longleftrightarrow \forall x \in M:\, x \leq a,\, \forall \varepsilon>0\,\,\, \exists\, x \in M:\, x>a-\varepsilon$$
+\end{definition}
+\begin{definition}
+    Пусть $M \subset \R,\,M$ ограничено. Тогда наибольшая из нижних граней множества $M$ называется точной нижней гранью:
+    $$a=\inf M\Longleftrightarrow \forall x \in M:\, x \geq a,\, \forall \varepsilon>0\,\,\, \exists\, x \in M:\, x<a+\varepsilon$$
+\end{definition}
+
+\begin{theorem}
+    Пусть $a:\,\N \rightarrow \R,\, a(\N)$ ограничена. Тогда:
+    $$\exists\, x_0\in \R:\, \forall \varepsilon >0:\, a^{-1}\equalto{((x_0-\varepsilon;\,x_0+\varepsilon))}{U_\varepsilon(x_0)}\text{ бесконечно}$$
+\end{theorem}
+\begin{proof}
+    Если $\exists\, x_0:\,a^{-1}(x_0)$ бесконечно, то доказано. Если $\exists\, x_0:\,a^{-1}(x_0)$ конечно или пусто, то:
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[-{Stealth[scale = 1.5]}] (0,0) -- (10,0) node[right] {$x$};
+            \coordinate (a0) at (2,0);
+            \coordinate (b0) at (8,0);
+            \coordinate (c0) at (5,0);
+            \coordinate (c1) at (6.5,0);
+            \draw (a0) node[below] {$a_0$};
+            \draw (b0) node[below] {$b_0$};
+            \draw (c0) node[below] {$c_0$};
+            \draw (c1) node[below] {$c_1$};
+            \draw [
+                decoration={
+                brace,
+                mirror,
+                raise=1.2cm
+            },
+            decorate
+        ] (a0) -- (b0) 
+        node [pos=0.5,anchor=north,yshift=-1.25cm] {$I_0$};
+        \draw [
+                decoration={
+                brace,
+                mirror,
+                raise=0.5cm
+            },
+            decorate
+        ] (c0) -- (b0) 
+        node [pos=0.5,anchor=north,yshift=-0.55cm] {$I_1$}; 
+            \foreach \point in {(a0), (b0), (c0), (c1)}{
+    \fill \point circle (1.8pt);
+            }
+        \end{tikzpicture}
+    \end{center}
+    Отметим на числовой прямой $a_0=\inf a(\N)$ и $b_0=\sup a(\N)$, а также середину $a_0b_0$, то есть $c_0=\dfrac{a_0+b_0}{2}$. Разделим один из получившихся отрезков (отметим $c_0$ и $b_0$, как $a_1$ и $b_1$ соотвественно) пополам, получив $c_1=\dfrac{a_1+b_1}{2}$. Данный процесс можно продолжать, получая следующую конструкцию:
+    $$[a_0;\,b_0]\supset [a_1;\,b_1]\supset \ldots \supset [a_n;\,b_n]\supset \dots$$
+    Теперь необходимо доказать следующее:
+    $$\bigcap_{n=0}^{\infty}[a_n;\,b_n]\neq \emptyset$$
+    \begin{align*}
+        1.\,\,&a_0\leq a_1 \leq \ldots \leq a_n \leq \ldots\\
+        2.\,\,&a(\N)\text{ ограничена сверху } b_i\text{ элементом}\\
+        3.\,\,&a(\N)\text{ имеет точную верхнюю грань } M_1=\sup a(\N)\\
+        &\text{и точную нижнюю грань } M_2 = \inf a(\N)\\
+        4.\,\,&M_1\leq M_2\\
+        5.\,\,&[M_1;\,M_2]\subset \bigcap_{n=0}^{\infty}[a_n;\,b_n]\\
+        6.\,\,&\text{Пусть } M_1<M_2\text{, тогда } \exists\, n:\, b_n-a_n<M_2-M_1.\\
+        &\text{Получаем противоречие, значит } M_1=M_2=M.\\
+        7.\,\,&\text{Возьмем такое } n \text{, что } b_n-a_n<\varepsilon. \text{ Тогда } [a_n;\,b_n]\subset U_{\varepsilon}(M).\\
+        &\text{То есть }\forall \varepsilon>0:\, a^{-1}(U_{\varepsilon}(M))\text{ бесконечно.}
+    \end{align*}
+\end{proof}
+\begin{definition}
+    Число $x$ называется частичным пределом последовательности $a(\N)\rightarrow \R$, если $\forall \varepsilon>0:\, a^{-1}(U_{\varepsilon}(x))$ бесконечно.
+\end{definition}
+
+\subsection{Прогрессии}
+
+\begin{definition}
+    Арифметической прогрессией называется числовая последовательность, заданная формулой n-го члена:
+    $$a_n=a_1+(n-1)\cdot d$$
+\end{definition}
+
+\begin{definition}
+    Разностью арифметической прогрессии называется разность $a_{n+1}$ и $a_n$.
+\end{definition}
+
+\begin{statement}
+    Пусть $(a_n)$ -- арифметическая прогрессия, тогда:
+    $$a_{n+2}-a_{n+1}=a_{n+1}-a_n$$
+\end{statement}
+
+\begin{statement}
+    Пусть $(a_n)$ -- арифметическая прогрессия, тогда:
+    $$\forall n \in \N,\,n\geq 2 \,\,\,\forall k \in \N,\, k<n:\, a_n=\frac{a_{n+k}+a_{n-k}}{2}$$
+\end{statement}
+
+\begin{theorem}
+    Сумма первых $n$ членов арифметической прогрессии равна:
+    $$S_n=n\cdot \left(a_1+\frac{(n-1)\cdot d}{2} \right)$$
+\end{theorem}
+
+\begin{proof}
+    \begin{align*}
+        &S_n=a_1+a_2+a_3+\ldots+a_n=\\
+        =&a_1+(a_1+d)+(a_1+2d)+\ldots+(a_1+(n-1)\cdot d)=\\
+        =&n\cdot a_1+d\cdot \left( \frac{(n-1)\cdot n}{2} \right)=\\
+        =&n\cdot \left(a_1+\frac{(n-1)\cdot d}{2} \right)
+    \end{align*}
+\end{proof}
+
+\begin{definition}
+    Арифметической прогрессией называется числовая последовательность, заданная формулой n-го члена:
+    $$b_n=b_1 \cdot q^{n-1},\, b_1\neq0,\, q\neq0$$
+\end{definition}
+
+\begin{statement}
+    Пусть $(b_n)$ -- геометрическая прогрессия, тогда: 
+    $$\forall n\in \N,\, n\geq 2:\,b_n^2=b_{n-1}\cdot b_{n+1}$$
+\end{statement}
+\begin{proof}
+    $$b_{n-1}\cdot b_{n+1}=b_1\cdot q^{n-2}\cdot b_1 \cdot q^n=b_1^2\cdot q^{2n-2}=(b_1\cdot q^{n-1})^2$$
+\end{proof}
+\begin{theorem}
+    Сумма первых $n$ членов геометрической прогрессии равна:
+    $$S_n=b_1\cdot \frac{1-q^n}{1-q},\, q\neq 1$$
+\end{theorem}
+\begin{proof}
+    \begin{align*}
+        &S_n=b_1+b_2+b_3+\ldots+b_n=\\
+        =&b_1+b_1\cdot q+b_1\cdot q^2+\ldots+b_1\cdot q^{n-1}=\\
+        =&b_1\cdot(1+q+q^2+\ldots+q^n)=\\
+        =&b_1\cdot \frac{1-q^n}{1-q}
+    \end{align*}
+\end{proof}
+
+\section{Эквивалентность и группы}
+
+\begin{definition}
+    Бинарное отношение называется отношением эквивалентности, если оно удовлетворяет свойствам:
+    \begin{align*}
+        1.\,\,&\text{Рефлексивность } a\sim a\\
+        2.\,\,&\text{Симметричность } a\sim b \Longleftrightarrow b\sim a\\
+        3.\,\,&\text{Транзитивность } a\sim b,\, b\sim c \Longleftrightarrow a\sim c
+    \end{align*}
+\end{definition}
+\begin{theorem}[Малая теорема Ферма]
+    $\forall n\in \N,\, p\in \prob:\, n^{p-1}\equiv_p 1$
+\end{theorem}
+\begin{definition}
+    Пара $G(M;\,\times)$, $M$ -- множество, $\times$ -- бинарная операция, называется группой, если выполняются свойства:
+    \begin{align*}
+        1.\,\,&\forall a,\,b\in M:\,(a\times b)\in M\\
+        2.\,\,&\exists\, e\in M\,\,\,\forall a\in M:\, e\times a=a\\
+        3.\,\,&\forall a\in M\,\,\, \exists\, a^{-1}\in M:\, a\times a^{-1}=a^{-1}\times a=e\\
+        4.\,\,&\forall a,\,b,\,c \in M:\,(a\times b)\times c=a\times(b\times c)= (a\times c)\times b
+    \end{align*}
+\end{definition}
+\end{document}

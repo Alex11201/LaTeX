@@ -1,0 +1,1164 @@
+\documentclass[12pt]{article} 
+
+%Формат файла
+\usepackage[paperheight=297mm,
+   paperwidth=210mm,
+   top=20mm,
+   bottom=20mm,
+   left=15mm,
+   right=15mm]{geometry}
+
+
+%Текст
+\usepackage[fontsize=12pt]{fontsize}
+\usepackage[english, russian]{babel}
+\usepackage[T2A]{fontenc}
+\usepackage{color}
+\usepackage{transparent}
+\usepackage{amsthm}
+\parindent=0cm
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{definition}{Определение}
+\newtheorem{statement}[theorem]{Утверждение}
+\newtheorem{consequence}{Следствие}[subsection]
+\renewcommand\qedsymbol{$\blacksquare$}
+
+%Картинки
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usepackage{pgfplots}
+\usetikzlibrary {arrows.meta}
+\usetikzlibrary{calc}
+\usetikzlibrary{through}
+\usetikzlibrary{intersections}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{positioning}
+
+
+%Математика
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathabx}
+\usepackage{amssymb}
+
+%Всякое
+\usepackage{relsize}
+\usepackage{enumerate}
+\usepackage[inline]{enumitem}
+\usepackage{hyperref}
+
+%Мат команды
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+
+%Оглавление
+\title{\textbf{Геометрия}}\date{}\author{}
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\pgfplotsset{compat=1.18}
+\begin{document}
+
+\maketitle
+\tableofcontents
+\label{toc}
+\newpage
+
+\section{Бинарное отношение. Векторы.}
+
+\begin{definition}
+     Пусть множество $a,b \in M$. Множество $R \subset \{(a,b)|a,b\in M\}$ упорядоченных пар. Если $(\hat{a},\hat{b})\subset R$, пишут $\hat{a}\underset{R}{\sim}\hat{b}.$
+\end{definition}
+
+\begin{definition}
+    Отношение $\sim$ на $M$ называется:
+        \begin{enumerate}
+            \item Рефлексивным: $\forall a \in M: a\sim a$
+            \item Симметричным: $\forall a,b \in M: a\sim b \Longleftrightarrow b\sim a$
+            \item Транзитивным: $\forall a,b \in M: a\sim b, b\sim c \Longrightarrow a \sim c$
+        \end{enumerate}
+\end{definition}
+    
+    \begin{definition}
+        Отношение $\sim$ на $M$ называется отношением эквивалентности, если оно рефлексивно, симметрично и транзитивно.
+    \end{definition}
+
+    Как только на $M$ задано отношение эквивалентности, появляется $M/\sim$ классов эквивалентности.
+
+\begin{definition}
+    Вектор -- класс эквивалентности параллельных переносов.
+\end{definition}
+
+    Свойства сложения векторов:
+    \begin{itemize}
+        \item Коммутативно: $\Vec{a}+\Vec{b}=\Vec{b}+\Vec{a}$
+        \item Ассоциативно: $(\Vec{a}+\Vec{b})+\Vec{c}=\Vec{a}+(\Vec{b}+\Vec{c})$
+    \end{itemize}
+
+    \begin{definition}
+        $\Vec{a}$ коллинеарен $\Vec{b}$, если $\exists \lambda \in \R: \lambda\Vec{a}=\Vec{b}.$
+    \end{definition}
+
+\begin{definition}
+    Базисом на плоскости называется пара неколлинеарных векторов $(\Vec{a};\Vec{b}).$
+\end{definition}
+
+\begin{theorem}
+    $\forall \Vec{\textit{v}}\in V_{\R^2} \exists!(x;y);x,y\in \R: \Vec{\textit{v}}=x\Vec{a}+y\Vec{b}$, где $(\Vec{a};\Vec{b})$ -- базис $V_{\R^2}.$ То есть $(x;y)$ -- координаты $\Vec{\textit{v}}$ в базисе $(\Vec{a};\Vec{b}).$
+\end{theorem}
+
+\begin{definition}
+    Углом между векторами $\Vec{a}$ и $\Vec{b}$ называется: $\phi=\arccos \left( \dfrac{(\Vec{a};\Vec{b})}{|\Vec{a}||\Vec{b}|}\right)\Longleftrightarrow \cos \phi = \dfrac{(\Vec{a};\Vec{b})}{|\Vec{a}||\Vec{b}|}$, где $|\Vec{a}|=\sqrt{(a,a)}.$
+\end{definition}
+
+\begin{theorem}
+    $C\in AB \Longleftrightarrow \forall O: \exists \lambda \in \R: \lambda \overrightarrow{OA}+(1-\lambda) \overrightarrow{OB}=\overrightarrow{OC}$
+\end{theorem}
+    \begin{proof}
+    $ $\newline
+    \begin{center}
+        \begin{tikzpicture}
+        \draw (-5,3) -- (5,3);
+        \draw (-4.5,3) node[above] {$C$};
+        \draw (-1.5,3) node[above] {$A$};
+        \draw (4.5,3) node[above] {$B$};
+        \draw (1,-1) node[below] {$O$};
+        \draw[-{Stealth[scale = 1.5]}] (1,-1) -- node[below left]{$\Vec{c}$} ++(-5.5,4);
+        \draw[-{Stealth[scale = 1.5]}] (1,-1) -- node[above right]{$\Vec{a}$} ++(-2.5,4);
+        \draw[-{Stealth[scale = 1.5]}] (1,-1) -- node[below right]{$\Vec{b}$} ++(3.5,4);
+        \foreach \point in {(-4.5,3), (1,-1), (-1.5,3), (4.5,3)}{
+    \fill \point circle (1.8pt);
+}
+        \end{tikzpicture}
+    \end{center}
+        Обозначим $\overrightarrow{OA}=\Vec{a},\overrightarrow{OB}=\Vec{b},\overrightarrow{OC}=\Vec{c}$. Тогда $\Vec{c}-\Vec{b}=\overrightarrow {BC}$; $\Vec{a}-\Vec{b}=\overrightarrow{BA}$. Тогда обозначим $\dfrac{\mid \Vec{c}-\Vec{b}\mid }{\mid \Vec{a}-\Vec{b}\mid }=x$, откуда $\Vec{c}-\Vec{b}=x(\Vec{a}-\Vec{b})$, то есть $\Vec{c}=x\Vec{a}-(1-x)\Vec{b}$.
+    \end{proof}
+
+\begin{theorem}
+    Пусть $O$ и $H$ -- центр описанной окружности и ортоцентр $\triangle ABC$ соответственно. Тогда $\overrightarrow{OH}=\overrightarrow{OA}+\overrightarrow{OB}+\overrightarrow{OC}$.
+\end{theorem}
+    \begin{proof}
+    $ $\newline
+    \begin{center}
+        \begin{tikzpicture}
+        \draw (0,0) circle (4.5);
+        \draw (60:4.5) -- (-145:4.5) -- (-35:4.5) -- cycle;
+        \draw (60:4.5) node[above right] {$B$};
+        \draw (-145:4.5) node[below left] {$A$};
+        \draw (-35:4.5) node[below right] {$C$};
+        \draw (0,0) node[above left] {$O$};
+        \draw[-{Stealth[scale = 1.5]}] (0,0) -- (60:4.5);
+        \draw[-{Stealth[scale = 1.5]}] (0,0) -- (-145:4.5);
+        \draw[-{Stealth[scale = 1.5]}] (0,0) -- (-35:4.5);
+        \draw (0,-5.1621) node[below] {$K$};
+        \draw[-{Stealth[scale = 1.5]}, name path = line3] (0,0) -- (0,-5.1621);
+        \draw (-145:4.5) -- (0,-5.1621) -- (-35:4.5);
+        \draw[draw opacity = 0, name path =line1] ($(-145:4.5)!(-35:4.5)!(60:4.5)$) -- (-35:4.5);
+        \draw[name path = line2] ($(-145:4.5)!(60:4.5)!(-35:4.5)$) -- (60:4.5);
+        \draw[name intersections={of=line1 and line2}] (intersection-1) node[right] {$H$};
+        \coordinate (Hc) at ($(-145:4.5)!(60:4.5)!(-35:4.5)$) {};
+        \coordinate (C) at (60:4.5) {};
+        \coordinate (A) at (-145:4.5) {};
+        \foreach \point in {(60:4.5), (-145:4.5), (0,0), (-35:4.5), (0,-5.1621), (intersection-1)}{
+    \fill \point circle (1.8pt);
+}
+        \draw[-{Stealth[scale = 1.5]}] (0,0) -- (intersection-1);
+        \tkzMarkRightAngle(C,Hc,A);
+        \end{tikzpicture}
+    \end{center}
+        Рассмотрим сумму $\overrightarrow{OA}+\overrightarrow{OC}=\overrightarrow{OK}$, $|\overrightarrow{OA}|=|\overrightarrow{OC}|$, как радиусы описанной окружности, следовательно, $AOCK$ -- ромб, а значит $AC\perp OK$ как диагонали. Тогда $OK\|BH$, а значит точка $M$ вектора $\overrightarrow{OM}=\overrightarrow{OK}+\overrightarrow{OB}$ лежит на $BH$, но аналогично эта точка лежит на всех высотах $\triangle ABC$, а значит является ортоцентром.
+    \end{proof}
+
+\begin{theorem}
+    Пусть $\overrightarrow{OK}$ и $\overrightarrow{OL}$ -- базис в $\triangle ABC$, а $M$ -- его центроид. Тогда $\overrightarrow{OM}=\dfrac{1}{3}(\overrightarrow{OA}+\overrightarrow{OB}+\overrightarrow{OC})$.
+\end{theorem}
+    \begin{proof}
+    $ $\newline
+    \begin{center}
+        \begin{tikzpicture}
+            \coordinate (A) at (-4,-1) {};
+            \coordinate (B) at (-0.5,1.5) {};
+            \coordinate (C) at (0.5,-3) {};
+            \coordinate (O) at (3,-1.5) {};
+            \coordinate (Mb) at ($(A)!0.5!(C)$);
+            \coordinate (Mc) at ($(A)!0.5!(B)$);
+            \draw (A)--(B)--(C)--cycle;
+            \draw[-{Stealth[scale = 1.5]}] (O)--(A);
+            \draw[-{Stealth[scale = 1.5]}] (O)--(B);
+            \draw[-{Stealth[scale = 1.5]}] (O)--(C);
+            \draw[name path = B--Mb, draw opacity = 0] (B)--(Mb);
+            \draw[name path = C--Mc, draw opacity = 0] (C)--(Mc);
+            \draw[name intersections={of=B--Mb and C--Mc}] (intersection-1) node[above] {$M$};
+            \draw[-{Stealth[scale = 1.5]}] (O)--(intersection-1);
+            \draw (A) node[left] {$A$};
+            \draw (B) node[above] {$B$};
+            \draw (C) node[below] {$C$};
+            \draw (O) node[right] {$O$};
+            \foreach \point in {(A), (B), (C), (O), (intersection-1)}{
+    \fill \point circle (1.8pt);
+}
+            \tkzLabelSegment[above right](O,B){$\Vec{b}$};
+            \tkzLabelSegment[below left](O,A){$\Vec{a}$};
+            \tkzLabelSegment[below right](O,C){$\Vec{c}$};
+            \tkzLabelSegment[above](O,intersection-1){$\Vec{m}$};
+        \end{tikzpicture}
+    \end{center}
+        Обозначим $\overrightarrow{OA}$ как $\Vec{a}$, $\overrightarrow{OB}$ как $\Vec{b}$, $\overrightarrow{OC}$ как $\Vec{c}$, $\overrightarrow{OM}$ как $\Vec{m}$. Представим $\overrightarrow{OM}$ в виде суммы векторов: $\Vec{b}+\overrightarrow{BM}=\Vec{b}+\dfrac{2}{3}\left( \dfrac{\overrightarrow{BA}+\overrightarrow{BC}}{2}\right)=\Vec{b}+\dfrac{1}{3}\overrightarrow{BA}+\dfrac{1}{3}\overrightarrow{BC}=\Vec{b}+\dfrac{1}{3}(\Vec{a}-\Vec{b})+\dfrac{1}{3}(\Vec{c}-\Vec{b})=\dfrac{1}{3}(\Vec{a}+\Vec{b}+\Vec{c})$.
+    \end{proof}
+
+\begin{theorem}
+    Пусть $O$ -- центр описанной окружности, $H$ -- ортоцентр, а $M$ -- центроид $\triangle ABC$ соответственно. Тогда $O$, $H$ и $M$ -- коллинеарны.
+\end{theorem}
+
+    \begin{proof}
+        Из предыдущих двух теорем нам известно, что $\overrightarrow{OH}=\overrightarrow{OA}+\overrightarrow{OB}+\overrightarrow{OC}$, а также что $\overrightarrow{OM}=\dfrac{1}{3}(\overrightarrow{OA}+\overrightarrow{OB}+\overrightarrow{OC})$, из чего следует, что $\overrightarrow{OH}=3\overrightarrow{OM}$.
+    \end{proof}
+
+\begin{definition}
+    Скалярным произведением векторов $\Vec{a}$ и $\Vec{b}$ называется величина $|\Vec{a}|\cdot |\Vec{b}|\cdot \cos \phi$, где $\phi$ -- угол между векторами $\Vec{a}$ и $\Vec{b}$.
+\end{definition}
+
+\begin{theorem}
+    В прямоугольной системе Декарта скалярное произведение двух векторов $\Vec{a}(x_1;y_1)$ и $\Vec{b}(x_2;y_2)$ равно сумме произведений их соответствующих координат: 
+    $$\Vec{a}\cdot \Vec{b}=x_1\cdot x_2 + y_1\cdot y_2$$
+\end{theorem}
+    \begin{proof}
+    $ $\newline
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[-{Stealth[scale = 1.5]}] (-.5,0) -- (6.5,0) node[below] {$x$};
+            \draw[-{Stealth[scale = 1.5]}] (0,-.5) -- (0, 4.5) node[left] {$y$};
+            \draw node[below left] {$O$};
+            \coordinate (A) at (2,3.5) {};
+            \coordinate (B) at (4,2) {};
+            \coordinate (O) at (0,0) {};
+            \draw (A) node[above] {$A(x_1;y_1)$};
+            \draw (B) node[below right] {$B(x_2;y_2)$};
+            \draw[-{Stealth[scale = 1.5]}] (O) -- (A);
+            \draw[-{Stealth[scale = 1.5]}] (O) -- (B);
+            \draw[-{Stealth[scale = 1.5]}] (A) -- (B);
+            \tkzLabelSegment[above left](O,A){$\Vec{a}$};
+            \tkzLabelSegment[below right](O,B){$\Vec{b}$};
+            \tkzMarkAngle[size=.65cm](B,O,A);
+            \tkzLabelAngle(B,O,A){$\phi$};
+            \foreach \point in {(A), (B), (O)}{
+    \fill \point circle (1.8pt);
+}
+        \end{tikzpicture}
+    \end{center}
+        По теореме косинусов $AB^2=OA^2+OB^2-2\cdot OA\cdot OB \cdot \cos \phi$, но по теореме Пифагора $OA^2=(x_1)^2+(y_1)^2$, $OB^2=(x_2)^2+(y_2)^2$, $AB^2=(x_1-x_2)^2+(y_1-y_2)^2$. Тогда если подставить в первое выражение и упростить получим $x_1\cdot x_2 + y_1\cdot y_2=OA\cdot OB\cdot \cos \phi$.
+    \end{proof}
+
+    \section{Метод координат}
+
+    \begin{definition}
+        Общим уравнением прямой называется уравнение вида $ax+by+c=0$, в котором $a$ и $b$ не равны нулю:
+
+        \begin{align*}
+            &l_1:a_1x+b_1y+c_1=0\\
+            &l_2:a_2x+b_2y+c_2=0\\
+            &l_1\|l_2 \overset{b_1\cdot b_2\neq 0}{\Longleftrightarrow} \frac{-a_1}{b_1}=\frac{-a_2}{b_2}\Longleftrightarrow a_1b_2=a_2b_1\\
+            &l_1\perp l_2 \overset{b_1\cdot b_2\neq 0}{\Longleftrightarrow} \frac{-a_1}{b_1}\cdot \frac{-a_2}{b_2}=-1 \Longleftrightarrow a_1a_2+b_1b_2=0
+        \end{align*}
+    \end{definition}
+
+    \subsection{Нормаль и направляющий вектор}
+
+    \begin{definition}
+        Вектор $\Vec{\textit{v}}$ называется направляющим для прямой $l$, если его начало и конец лежат на $l$.
+    \end{definition}
+
+    \begin{definition}
+        Любой вектор $\Vec{n_l}:\, \Vec{n_l}\perp l$, называется ее нормалью.
+    \end{definition}
+
+    \begin{theorem}
+        Вектор $\Vec{n}(a;b)$ является вектором нормали к прямой $l$, заданной уравнением $ax+by+c=0$.
+    \end{theorem}
+    \begin{proof}
+    $ $\newline
+    \begin{center}
+        \begin{tikzpicture}
+        \draw[-{Stealth[scale = 1.5]}] (-2,0) -- (7,0) node[below]{$x$};
+        \draw[-{Stealth[scale = 1.5]}] (0,-1) -- (0,4.6) node[left]{$y$};
+        \draw (-2,4) -- (7,-1);
+        \draw ($(-2,4)!0.1!(7,-1)$) node[above right]{$l$};
+        \coordinate (A) at ($(-2,4)!0.65!(7,-1)$) {};
+        \coordinate (B) at ($(-2,4)!0.3!(7,-1)$) {};
+        \coordinate (C) at (5.37,3.5) {};
+        \draw (A) node[below left] {$A$};
+        \draw (B) node[below left] {$B$};
+        \draw (0,0) node[below left] {$O$};
+        \draw[-{Stealth[scale = 1.5]}] ($(A)!(C)!(B)$) -- (C) node[right]{$\Vec{n}$};
+        \draw[-{Stealth[scale = 1.5]}] (A) -- (B);
+        \foreach \point in {(A), (B), (O)}{
+    \fill \point circle (1.8pt);
+}
+        \end{tikzpicture}
+    \end{center}
+        Возьмем произвольные точки $A(x_1;y_1)$ и $B(x_2;y_2)$. Тогда $\overrightarrow{AB}(x_2-x_1;y_2-y_1)$. При этом $ax_1+by_1+c=ax_2+by_2+c=0$, следовательно, если вычесть одно из другого, получим $a(x_2-x_1)+b(y_2-y_1)=0$. Рассмотрим $\overrightarrow{AB}\cdot \Vec{n} = a\cdot(x_2-x_1)+b\cdot(y_2-y_1)=0\Longrightarrow \overrightarrow{AB}\perp \Vec{n}$.
+    \end{proof}
+
+    \subsection{Расстояние от точки до прямой}
+
+    \begin{theorem}
+        $\rho(A;l):\, A(x_0;y_0), \, l:\, ax+by+c=0: \, \rho(A;l)=
+        \dfrac{|ax_0+by_0+c|}{\sqrt{a^2+b^2}}$
+    \end{theorem}
+    \begin{proof}
+    $ $\newline
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[-{Stealth[scale = 1.5]}] (-0.5,0) -- (6,0) node[below]{$x$};
+            \draw[-{Stealth[scale = 1.5]}] (0,-0.5) -- (0,8) node[left]{$y$};
+            \draw (0,0) node[below left] {$O$};
+            \begin{scope}
+                \clip (-0.5,-0.5) rectangle (6,8);
+                \draw[domain=-0.5:6, variable=\x, samples=50] plot ({\x},{-(\x)+4.5});
+            \end{scope}
+            \coordinate (B) at (0,4.5) {};
+            \coordinate (C) at (4.5,0) {};
+            \coordinate (O) at (0,0) {};
+            \coordinate (A) at (4,3) {};
+            \draw (A) node[above right]{$A(x_0;y_0)$};
+            \tkzMarkAngle[size=.65cm](B,C,O);
+            \tkzLabelAngle(B,C,O){$\alpha$};
+            \begin{scope}
+                \clip (-0.5,-0.5) rectangle (6,8);
+                \draw[domain=-0.5:6, variable=\x, samples=50] plot ({\x},{-(\x)+7});
+            \end{scope}
+            \draw (0,7) node[scale=.8,below left]{$\dfrac{f-c}{b}$};
+            \draw (0,4.5) node[scale=.8,below left]{$-\dfrac{c}{b}$};
+            \draw (0,5.5) node[scale=.8,right]{$\dfrac{|f|}{b}$};
+            \coordinate (D) at ($(B)!(A)!(C)$) {};
+            \coordinate (E) at ($(D)+(0,2.5)$) {}; 
+            \draw (D) -- (A);
+            \draw (D) -- (E);
+            \draw (D) ++(0,1.75) node[scale=.8,left]{$\dfrac{|f|}{b}$};
+            \tkzMarkRightAngle(A,D,C);
+            \tkzMarkAngle[size=.65cm](A,D,E);
+            \tkzLabelAngle(A,D,E){$\alpha$};
+            \draw (4,1) node[above left]{$l$};
+            \foreach \point in {(A), (B), (C), (D), (E), (0,7), (O)}{
+    \fill \point circle (1.8pt);
+}
+        \end{tikzpicture}
+    \end{center}
+        Пусть $A(x_0;y_0)$, тогда $ax_0+by_0+c=f\Longrightarrow y_0=\dfrac{f-c}{b}-\dfrac{ax_0}{b}$. Проведем через точку $A$ перпендикуляр к $l$, а также прямую, параллельную $l$. Отметим найденные ранее координаты на $OY$, а также найдем расстояние между ними. Пусть угол наклона $l$ относительно $OX$ равен $\alpha$, тогда $\tg \alpha = -\dfrac{a}{b}$. Из основного тригонометрического тождества:
+    \begin{align*}
+        &\sin^2\alpha+\cos^2\alpha=1\, | \, :\cos^2 \alpha\\
+        &\tg^2\alpha+1=\frac{1}{\cos^2\alpha}\\
+        &\cos^2\alpha=\frac{1}{\dfrac{a^2}{b^2}+1}\\
+        &\cos \alpha = \frac{b}{\sqrt{a^2+b^2}}
+    \end{align*}
+    Тогда чтобы найти $\rho(A;l)$ умножим косинус на гипотенузу и получим: $\dfrac{b}{\sqrt{a^2+b^2}} \cdot \dfrac{|f|}{b}=\dfrac{|ax_0+by_0+c|}{\sqrt{a^2+b^2}}$. 
+    \end{proof}
+
+    \section{Кривые второго порядка}
+    \subsection{Свойства кривых второго порядка}
+
+    \begin{definition}
+        Углом между кривыми называется угол между их касательными в данной точке.
+    \end{definition}
+
+    \begin{definition}
+        Эллипсом называется ГМТ, сумма расстояний от которых до двух фиксированных точек, называющихся фокусами, постоянна.
+    \end{definition}
+
+    \begin{center}
+        \begin{tikzpicture}
+          \def\a{4}
+          \def\b{2}
+          \draw (0,0) ellipse ({\a} and {\b});
+          \draw (-\a,0) coordinate (A) -- (\a,0) coordinate (B);
+          \draw (0,-\b) coordinate (D) -- (0,\b) coordinate (C);
+          \coordinate (O) at (0,0);
+          \coordinate (F1) at ({-sqrt(\a*\a-\b*\b)},0);
+          \coordinate (F2) at ({+sqrt(\a*\a-\b*\b)},0);
+          \draw (F1) node[below right] {$F_1$};
+          \draw (F2) node[below left] {$F_2$};
+          \tkzLabelSegment[right](O,C){$b$};
+          \tkzLabelSegment[above](O,A){$a$};
+          \node[align=left] at ({\a*2},0) {
+              $F_1,\, F_2$ -- фокусы эллипса\\
+              $a$ -- большая ось
+              \\$b$ -- малая ось
+          };
+          \foreach \point in {(F1), (F2)}{
+    \fill \point circle (1.8pt);
+}
+        \end{tikzpicture}
+    \end{center}
+
+    \begin{definition}
+        Параболой называется ГМТ, равноудаленных от фиксированной точки $F$, называемой ее фокусом, и прямой $l$, называемой директрисой данной параболы.
+    \end{definition}
+
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{scope}
+                \clip (-3,-1) rectangle (3,4);
+                \draw[domain=-4:4, variable=\x, samples=50] plot ({(\x)},{(-1/4)});
+                \draw[domain=-4:4, variable=\x, samples=50] plot ({(\x)},{(\x)^2});
+            \end{scope}
+            \coordinate (F) at (0,0.25);
+            \draw (F) node[above left]{$F$};
+            \draw ($(0,-1)!0.9!(0,4)$) node[left]{$l\, '$};
+            \draw ($(-3,-.25)!0.1!(3,-.25)$) node[below]{$l$};
+            \draw (0,-1) -- (0,4);
+            \coordinate (A) at (1.5,{1.5^2});
+            \draw (A) node[below right]{$A$};
+            \coordinate (B) at (1.5,-0.25);
+            \coordinate (C) at (2,-0.25);
+            \draw (B) -- (A) -- (F);
+            \tkzMarkSegment[mark=||](F,A);
+            \tkzMarkSegment[mark=||](A,B);
+            \tkzMarkRightAngle(A,B,C);
+            \node[align=left] at (7,1.5) {
+              $l\, '$ -- ось параболы\\
+              $F$ -- фокус параболы\\
+              $l$ -- директриса параболы
+          };
+          \foreach \point in {(F), (A), (B)}{
+    \fill \point circle (1.8pt);
+}
+        \end{tikzpicture}
+    \end{center}
+
+    \begin{definition}
+        Гиперболой называется ГМТ, модуль разности расстояний от которых до двух фиксированных точек, называемых фокусами, постоянен.
+    \end{definition}
+
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{scope}
+             \clip (-2.5,-2.5) rectangle (2.5,2.5);
+                \draw plot[variable=\t,samples=100,domain=-3:3] ({-1*cosh(\t)},{1*sinh(\t)});
+                \draw plot[variable=\t,samples=100,domain=-3:3] ({1*cosh(\t)},{1*sinh(\t)});
+                \draw plot[variable=\t,samples=100,domain=-3:3] (\t, \t);
+                \draw plot[variable=\t,samples=100,domain=-3:3] (\t, {-\t});
+            \end{scope}
+            \draw ($(-2.5,-2.5)!0.1!(2.5,2.5)$) node[below right]{$l$};
+            \draw ($(-2.5,2.5)!0.1!(2.5,-2.5)$) node[above right]{$l\, '$};
+            \coordinate (F1) at ({-sqrt(2)},0);
+            \draw (F1) node[above] {$F_1$};
+            \coordinate (F2) at ({sqrt(2)},0);
+            \draw (F2) node[above] {$F_2$};
+            \node[align=left] at (6.5,0){
+                $F_1,\, F_2$ -- фокусы гиперболы\\
+                $l,\, l\, '$ -- асимптоты гиперболы
+            };
+            \foreach \point in {(F1), (F2)}{
+    \fill \point circle (1.8pt);
+}
+        \end{tikzpicture}
+    \end{center}
+    
+    \begin{theorem}[Оптическое свойство эллипса]
+        Пусть $l$ касается элипса с фокусами $F_1$ и $F_2$ в точке $P$, тогда $l$ -- биссектриса угла, смежного $\angle F_1PF_2$.
+    \end{theorem}
+    \begin{proof}
+    $ $\newline
+    \begin{center}
+        \begin{tikzpicture}
+        \def\a{3}
+        \def\b{1.5}
+        \def\q{-4}
+        \def\x{{\a^2/\q}}
+        \def\y{{\b*sqrt(1-(\a/\q)^2}}
+        \coordinate (O) at (0,0);
+        \coordinate (Y) at (\q,0);
+        \coordinate (P) at (\x,\y);
+        \coordinate (F1) at ({-sqrt(\a*\a-\b*\b)},0);
+        \coordinate (F2) at ({+sqrt(\a*\a-\b*\b)},0);
+        \coordinate (Z) at ($(F1)!1.5!(P)$);
+        \coordinate (X) at ($(Y)!2!(P)$);
+        \draw (O) ellipse ({\a} and {\b});
+        \draw ($(Y)!-0.5!(P)$) -- ($(Y)!2.5!(P)$);
+        \draw (Y) node[above left]{$Y$};
+        \draw (X) node[above left]{$X$};
+        \draw (P) node[above left]{$P$};
+        \draw (F1) node[below right]{$F_1$};
+        \draw (F2) node[below left]{$F_2$};
+        \draw (F1) -- ($(F1)!1.7!(P)$);
+        \draw (F2) -- ($(F2)!1.2!(P)$);
+        \tkzMarkAngle[size=.65cm, mark=|](Y,P,F1);
+        \tkzMarkAngle[size=.65cm, mark=|](F2,P,X);
+        \tkzMarkAngle[size=.65cm,mark=|](X,P,Z);
+        \foreach \point in {(F1), (F2), (Y), (P), (X)}{
+    \fill \point circle (1.8pt);
+}
+        \end{tikzpicture}
+    \end{center}
+        Пусть $X, \, Y \in l$, тогда по определению касательной $XF_1+XF_2\geq PF_1 + PF_2$. Следовательно, $P$ -- точка на $l$, сумма расстояний от которой до фокусов минимальна, откуда $\angle F_2PX=\angle F_1PY$.
+    \end{proof}
+
+    \begin{theorem}[Оптическое свойство параболы]
+        Пусть $l$ касается параболы в точке $P$, $P\,'$ -- проекция точки $P$ на директрису. Тогда $l$ -- биссектриса $\angle FPP\,'$.
+    \end{theorem}
+    \begin{proof}
+    $ $\newline
+    \begin{center}
+        \begin{tikzpicture}[scale = 3]
+            \begin{scope}
+                \clip (-1.5,-0.5) rectangle (1.5,2);
+                \draw[domain=-4:4, variable=\x, samples=50] plot ({(\x)},{(-1/4)});
+                \draw[domain=-4:4, variable=\x, samples=100] plot ({(\x)},{(\x)^2});
+                \draw[domain=-4:4, variable=\x, samples=50] plot (\x, {-2*\x-1});
+            \end{scope}
+            \coordinate (P) at (-1,1);
+            \coordinate (T) at (-0.7,0.49);
+            \coordinate (P') at (-1,-0.25);
+            \coordinate (T') at (-0.7,-0.25);
+            \coordinate (F) at (0,0.25);
+            \draw (P) node[below left] {$P$};
+            \draw (P') node[below] {$P\,'$};
+            \draw (T) node[above right] {$T$};
+            \draw (T') node[below] {$T\,'$};
+            \draw (F) node[above right] {$F$};
+            \draw (P') -- (P) -- (F);
+            \draw (T) -- (T') -- (F);
+            \draw (P') -- (T) -- (F);
+            \tkzMarkSegment[mark=|](P,P');
+            \tkzMarkSegment[mark=|](P,F);
+            \tkzMarkSegment[mark=||](P',T);
+            \tkzMarkSegment[mark=||](T,F);
+            \tkzMarkAngle[size=.3cm,mark=|](P',P,T);
+            \tkzMarkAngle[size=.3cm,mark=|](T,P,F);
+            \foreach \point in {(F), (P), (P'), (T), (T')}{
+    \fill \point circle (.6pt);
+}
+        \end{tikzpicture}
+    \end{center}
+        Пусть биссектриса не касается параболы, то есть пересекает ее в точке $T$. По определению параболы $PP\,'=PF\Longrightarrow \triangle P\,'PT=\triangle PFT$ по двум сторонам и углу между ними. Отсюда $P\,'T=TF$, но тогда если $T\,'$ -- проекция $T$ на директрису, то $TT\,'=TF$, то есть $TP\,'=TT\,'$, противоречие.
+    \end{proof}
+
+    \begin{theorem}[Оптическое свойство гиперболы]
+        Пусть $l$ касается гиперболы с фокусами $F_1$ и $F_2$ в точке $P$, тогда $l$ -- биссектриса $\angle F_1F_2P$.
+    \end{theorem}
+    \begin{proof}
+    $ $\newline
+    \begin{center}
+        \begin{tikzpicture}[scale = 1.5]
+        \begin{scope}
+            \clip (-2,-2) rectangle (2,2);
+            \begin{scope}[rotate=-45]
+                \clip (-5,-5) rectangle (5,5);
+                \draw plot[variable=\t,samples=100,domain=-5:-0.001] (\t,{1/(\t*2)});
+                \draw plot[variable=\t,samples=100,domain=0.001:5] (\t,{1/(\t*2)});
+                \draw plot[variable=\t,samples=100,domain=0.001:5] (\t,-12.5*\t+5);
+                \coordinate (P) at (0.2,2.5);
+                \coordinate (F1) at (-1,-1);
+                \coordinate (F2) at (1,1);
+                \coordinate (t) at (1,-7.5);
+                \coordinate (T) at ($(t)!(F2)!(P)$);
+                \coordinate (F2') at ($(F2)!2!(T)$);
+                \draw (P) node[above left] {$P$};
+                \draw (F1) node[below left] {$F_1$};
+                \draw (F2) node[below right] {$F_2$};
+                \draw (F2') node[above left] {$F_2\,'$};
+                \draw (T) node[above] {$T$};
+                \draw (F1) -- (P) -- (F2);
+                \draw (F1) -- (T);
+                \tkzMarkAngle[size=.65cm, mark=|](F1,P,t);
+                \tkzMarkAngle[size=.65cm, mark=|](t,P,F2);
+                \tkzMarkSegment[mark=||](F2,T);
+                \tkzMarkSegment[mark=||](T,F2');
+                \draw (F2) -- (F2');
+                \foreach \point in {(P), (F1), (F2), (F2'), (T)}{
+    \fill \point circle (1.2pt);
+}
+            \end{scope}
+        \end{scope}   
+        \end{tikzpicture}
+    \end{center}
+        Пусть биссектриса не касается гиперболы, то есть пересекает ее в точке $T$. Обозначим через $F_2\,'$ точку, симметричную $F_2$ относительно $l$. Тогда $F_2T=F_2\,'T$, а также $F_2P=F_2\,'P$. Кроме того, $F_1$, $F_2\,'$ и $P$ коллинеарны по определению биссектрисы. По определению гиперболы $F_1P-F_2P=F_1T-F_2T$. Тогда получаем, что $F_1F_2\,'=F_1P-F_2\,'P=F_1T-F_2\,'T$, но по неравенству треугольника $F_1F_2\,'>F_1T-F_2\,'T$, противоречие.
+    \end{proof}
+
+    \begin{theorem}[Изогональное свойство эллипса]
+        Пусть $PX$ и $PY$ -- касательные к эллипсу с фокусами $F_1$ и $F_2$. Тогда $\angle F_1PX=\angle F_2PY$.
+    \end{theorem}
+    \begin{proof}
+    $ $\newline
+    \begin{center}
+        \begin{tikzpicture}
+        \def\a{4}
+        \def\b{2}
+        \draw (0,0) ellipse ({\a} and {\b});
+        \coordinate (F1) at ({-sqrt(\a*\a-\b*\b)},0) {};
+        \coordinate (F2) at ({+sqrt(\a*\a-\b*\b)},0) {};
+        \coordinate (O) at (0,0);
+        \coordinate (X) at (135:{\a} and {\b}) {};
+        \coordinate (Y) at (35:{\a} and {\b}) {};
+        \tkzDefLine[bisector out](F1,X,F2) \tkzGetPoint{K}
+        \tkzDefLine[bisector out](F1,Y,F2) \tkzGetPoint{L}
+        \draw[draw opacity = 0, name path = line1] ($(K)!-3!(X)$)--($(X)!-1.5!(K)$);
+        \draw[draw opacity = 0, name path = line2] ($(L)!0.7!(Y)$)--($(Y)!-0.7!(L)$);
+        \draw[name intersections={of=line1 and line2}] (intersection-1) node[above] {$P$};
+        \coordinate (P) at (intersection-1);
+        \draw (P)--($(X)!-1.5!(K)$);
+        \draw ($(L)!0.7!(Y)$)--(P);
+        \draw (X) node[above] {$X$};
+        \draw (Y) node[above] {$Y$};
+        \draw (F1) node[below right] {$F_1$};
+        \draw (F2) node[below left] {$F_2$};
+        \coordinate (H) at ($(P)!(F1)!(X)$);
+        \coordinate (F1') at ($(F1)!2!(H)$);
+        \draw (F1') node[above left] {$F_1\,'$};
+        \coordinate (H') at ($(P)!(F2)!(Y)$);
+        \coordinate (F2') at ($(F2)!2!(H')$);
+        \draw (F2') node[above right] {$F_2\,'$};
+        \draw (F1') -- (P) -- (F2');
+        \draw (F1) -- (P) -- (F2);
+        \draw[dashed] (X) -- (F1) -- (F2');
+        \draw[dashed] (Y) -- (F2) -- (F1');
+        \tkzMarkAngle[size=.65cm](F1',P,X);
+        \tkzMarkAngle[size=.85cm](X,P,F1);
+        \tkzMarkAngle[size=.85cm](F2,P,Y);
+        \tkzMarkAngle[size=.65cm](Y,P,F2');
+        \tkzMarkSegment[mark=||](P,F1');
+        \tkzMarkSegment[mark=||](P,F1);
+        \tkzMarkSegment[mark=|](P,F2');
+        \tkzMarkSegment[mark=|](P,F2);
+        \foreach \point in {(F1), (P), (X), (Y), (F2), (F1'), (F2')}{
+    \fill \point circle (1.8pt);
+}
+        \end{tikzpicture}
+    \end{center}
+        Пусть $F_1\,'$ и $F_2\,'$ -- точки, симметричные $F_1$ и $F_2$ относительно $PX$ и $PY$ соотвественно. Тогда $PF_1=PF_1\,'$ и $PF_2=PF_2\,'$, при этом $F_1$, $Y$ и $F_2\,'$, а также $F_2$, $X$ и $F_1\,'$ коллинеарны по оптическому свойству эллипса. Получаем, что $F_2F_1\,'=F_2X+XF_1=F_2Y+YF_1=F_1F_2\,'$. То есть $\triangle F_1PF_2\,'=\triangle F_2PF_1\,'$ по трем сторонам. Тогда $\angle F_1PF_2+2\angle F_1PX=\angle F_2PF_1\,'=\angle F_1PF_2\,'=\angle F_1PF_2+2\angle F_2PY\Longrightarrow \angle F_1PX=\angle F_2PY$.
+    \end{proof}
+    \begin{theorem}
+        В обозначениях теоремы 3.4 прямая $F_1P$ суть биссектриса $\angle XF_1Y$.
+    \end{theorem}
+    \begin{proof}
+        В силу оптических свойств $\angle PF_1\,'X=\angle PF_1X$, при этом из теоремы 3.4 известно, что $\angle PF_1\,'F_2=\angle PF_1F_2\,'$, так как $\triangle F_1PF_2\,'=\triangle F_1\,'PF_2$. Тогда $\angle PF_1F_2\,'=\angle PF_1\,'X=\angle PF_1X$.
+    \end{proof}
+    \begin{theorem}
+        Геометрическим местом точек, из которых данный эллипс виден под прямым углом, является окружность с центром в центре эллипса.
+    \end{theorem}
+    \begin{proof}
+    $ $\newline
+    \begin{center}
+        \begin{tikzpicture}[scale = 0.8]
+        \def\a{2}
+          \def\b{4}
+          \def\ang{27}
+          \def\q{\a/sin(\ang)}
+        \begin{scope}
+            \clip (-{\q},-{\q}) rectangle ({\q},{\q});
+            \begin{scope}[rotate=90]
+              \coordinate (O) at (0,0);
+              \coordinate (P) at ({\q},0);
+              \coordinate (X) at (90-\ang:{\a} and {\b});
+              \coordinate (Y) at (270+\ang:{\a} and {\b});
+              \draw (O) circle({\q});
+              \draw (O) ellipse({\a} and {\b});
+              \draw ($(P)!-0.2!(X)$) -- ($(P)!1.2!(X)$);
+              \draw ($(P)!-0.2!(Y)$) -- ($(P)!1.2!(Y)$);
+            \end{scope}
+        \end{scope}
+        \coordinate (F1) at ({-sqrt(\b*\b-\a*\a)},0) {};
+        \coordinate (F2) at ({+sqrt(\b*\b-\a*\a)},0) {};
+        \draw (P) node[above] {$P$};
+        \draw (X) node[above] {$X$};
+        \draw (Y) node[above right] {$Y$};
+        \draw (F1) node[below right] {$F_1$};
+        \draw (F2) node[below left] {$F_2$};
+        \coordinate (H) at ($(P)!(F1)!(X)$);
+        \coordinate (F1') at ($(F1)!2!(H)$);
+        \draw (F1') node[above left] {$F_1\,'$};
+        \tkzMarkRightAngle(X,P,Y);
+        \draw (F2) -- (F1') -- (P) -- cycle;
+        \draw (F1) -- (X);
+        \tkzMarkSegment[mark=|](F1,X);
+        \tkzMarkSegment[mark=|](F1',X);
+        \foreach \point in {(F1), (P), (X), (Y), (F2), (F1')}{
+    \fill \point circle (2.25pt);
+}
+        \end{tikzpicture}
+    \end{center}
+        Пусть $F_1\,'$ -- образ $F_1$ относительно прямой $PX$. Из теоремы 3.4 следует, что $\angle F_1\,'PF_2=\angle XPY=90^{\circ}$. По теореме Пифагора $F_1\,'P^2+F_2P^2=F_1\,'F_2\,^2$, то есть получаем уравнение окружности с центром в середине $F_1F_2$.
+    \end{proof}
+\subsection{Свойства параболы}
+    \begin{lemma}
+        Если фокус параболы отразить относительно касательной, то его образ попадет на директрису. Получившаяся точка будет проекцией точки, в которой касательная касается параболы.
+    \end{lemma}
+    \begin{proof}
+    $ $\newline
+    \begin{center}
+        \begin{tikzpicture}[scale = 2.5]
+            \begin{scope}
+                \clip (-1.5,-0.5) rectangle (1.5,2);
+                \draw[domain=-4:4, variable=\x, samples=50] plot ({(\x)},{(-1/4)});
+                \draw[domain=-4:4, variable=\x, samples=100] plot ({(\x)},{(\x)^2});
+                \draw[domain=-4:4, variable=\x, samples=50] plot (\x, {2*\x-1});
+            \end{scope}
+            \coordinate (P) at (1,1);
+            \coordinate (P') at (1,-0.25);
+            \coordinate (F) at (0,0.25);
+            \coordinate (H) at ($(F)!0.5!(P')$);
+            \draw (F) -- (P) -- (P');
+            \draw[dashed] (F) -- (P');
+            \tkzMarkSegment[mark=|](F,P);
+            \tkzMarkSegment[mark=|](P',P);
+            \tkzMarkAngle[size=.35cm](F,P,H);
+            \tkzMarkAngle[size=.4cm](H,P,P');
+            \draw (1.3, 1.69) node[below right] {$l$};
+            \draw (F) node[above left] {$F$};
+            \draw (P) node[right] {$P$};
+            \draw (P') node[below] {$P\,'$};
+            \foreach \point in {(F), (P), (P'), (H)}{
+    \fill \point circle (0.72pt);
+}
+        \end{tikzpicture}
+    \end{center}
+        Пусть прямая $l$ касается параболы в точке $P$, $P\,'$ -- проекция $P$ на директрису параболы. $l$ -- биссектриса $\angle FPP\,'$, но $\triangle FPP\,'$ -- равнобедренный по определению параболы, а значит $l$ в нем медиана и высота, откуда $P\,'$ -- образ $F$.
+    \end{proof}
+    \setcounter{subsection}{7}
+    \begin{consequence}
+        Проекции фокуса параболы на его касательные лежат на прямой, касающейся параболы в ее вершине.
+    \end{consequence}
+    \begin{lemma}
+        Пусть $PX$ и $PY$ -- касательные к параболе. Тогда $P$ является центром описанной около $\triangle FX\,'Y\,'$ окружности, где $X\,'$ и $Y\,'$ -- проекции $X$ и $Y$ на директрису параболы соответственно.
+    \end{lemma}
+    \begin{proof}
+        $ $\newline
+        \begin{center}
+            \begin{tikzpicture}[scale = 4.5]
+            \begin{scope}
+                \clip (-1,-.6) rectangle (1,1);
+                \draw[domain=-4:4, variable=\x, samples=50] plot ({(\x)},{(-1/4)});
+                \draw[domain=-4:4, variable=\x, samples=100] plot ({(\x)},{(\x)^2});
+                \draw[domain=-4:4, variable=\x, samples=50] plot ({(\x)},{(-1.06*\x-.28)});
+                \draw[domain=-4:4, variable=\x, samples=50] plot ({(\x)},{(.707*\x-.125)});
+            \end{scope}
+            \coordinate (X) at (-.52,.27);
+            \coordinate (Y) at (.35,.1225);
+            \coordinate (X') at (-.52,-.25);
+            \coordinate (Y') at (.35,-.25);
+            \coordinate (F) at (0,0.25);
+            \draw (X) node[below left] {$X$};
+            \draw (Y) node[below right] {$Y$};
+            \draw (X') node[below left] {$X\,'$};
+            \draw (Y') node[below right] {$Y\,'$};
+            \draw (F) node[above right] {$F$};
+            \tkzDefCircle[circum](F,X',Y')
+            \tkzGetPoint{P} \tkzGetLength{rayon}
+            \draw (P) circle(\rayon);
+            \draw (P) node[above] {$P$};
+            \draw[dashed] (X) -- (X');
+            \draw[dashed] (Y) -- (Y');
+            \tkzMarkRightAngle[scale=.5](X,X',Y');
+            \tkzMarkRightAngle[scale=.5](Y,Y',X');
+            \foreach \point in {(F), (X), (Y), (X'), (Y'), (P)}{
+    \fill \point circle (0.4pt);
+}
+        \end{tikzpicture}
+        \end{center}
+        Из леммы 3.8 следует, что $PX$ и $PY$ являются серединными перпендикулярами к $FX\,'$ и $FY\,'$ соответственно. Тогда их точка пересечения будет являться центром окружности, описанной около $\triangle FX\,'Y\,'$.
+    \end{proof}
+    \setcounter{subsection}{8}
+    \setcounter{consequence}{0}
+    \begin{consequence}
+        Если $PX$ и $PY$ -- касательные к параболе, то $P\,'$ будет серединой $X\,'Y\,'$, где $P\,'$, $X\,'$ и $Y\,'$ -- проекции $P$, $X$ и $Y$ на директрису параболы соответственно.
+    \end{consequence}
+
+    \begin{theorem}
+        Множество таких точек $P$, из которых парабола видна под прямым углом, суть директриса этой параболы. Кроме того, если $PX$ и $PY$ – касательные к этой параболе, то $XY$ содержит $F$ и $PF$ – высота $\triangle PXY$.
+    \end{theorem}
+    \begin{proof}
+        $ $\newline
+        \begin{center}
+            \begin{tikzpicture}[scale = 4.5]
+            \begin{scope}
+                \clip (-1,-.6) rectangle (1,0.7);
+                \draw[domain=-4:4, variable=\x, samples=50] plot ({(\x)},{(-1/4)});
+                \draw[domain=-4:4, variable=\x, samples=100] plot ({(\x)},{(\x)^2});
+                \draw[domain=-4:4, variable=\x, samples=50] plot ({(\x)},{(-.8*\x-.16)});
+                \draw[domain=-4:4, variable=\x, samples=50] plot ({(\x)},{(1.27*\x-.4)});
+            \end{scope}
+            \coordinate (X) at (-.4,.16);
+            \coordinate (Y) at (.66,.44);
+            \coordinate (X') at (-.4,-.25);
+            \coordinate (Y') at (.66,-.25);
+            \coordinate (F) at (0,0.265);
+            \draw (X) node[below left] {$X$};
+            \draw (Y) node[below right] {$Y$};
+            \draw (X') node[below left] {$X\,'$};
+            \draw (Y') node[below right] {$Y\,'$};
+            \draw (F) node[above] {$F$};
+            \tkzDefCircle[circum](F,X',Y')
+            \tkzGetPoint{P} \tkzGetLength{rayon}
+            \draw (P) node[below] {$P$};
+            \draw[dashed] (X) -- (X');
+            \draw[dashed] (Y) -- (Y');
+            \draw (X) -- (Y);
+            \draw (F) -- (P);
+            \tkzMarkRightAngle[scale=.5](X,F,P);
+            \tkzMarkRightAngle[scale=.5](X,X',Y');
+            \tkzMarkRightAngle[scale=.5](Y,Y',X');
+            \tkzMarkAngle[size=.15cm](X,P,X');
+            \tkzMarkAngle[size=.18cm](F,P,X);
+            \tkzMarkAngle[size=.15cm, mark=|](Y,P,F);
+            \tkzMarkAngle[size=.18cm, mark=|](Y',P,Y);
+            \tkzMarkSegment[mark=|](X,X');
+            \tkzMarkSegment[mark=|](F,X);
+            \tkzMarkSegment[mark=||](F,Y);
+            \tkzMarkSegment[mark=||](Y,Y');
+            \foreach \point in {(F), (X), (Y), (X'), (Y'), (P)}{
+    \fill \point circle (0.4pt);
+}
+        \end{tikzpicture}
+        \end{center}
+        Пусть $P$ лежит на директрисе, тогда если $X\,'$ и $Y\,'$ -- проекции $X$ и $Y$ на директрису соответственно, то $\triangle PXX\,'= \triangle PXF$, а значит $\angle PFX=\angle PX\,'X=90^{\circ}$. Аналогично $\angle PFY=90^{\circ}$. То есть $X$, $F$ и $Y$ коллинеарны. При этом $\angle XPX\,'=\angle XPF,\,\angle YPF=\angle YPY\,'$, следовательно, $\angle XPY=\dfrac{1}{2}(\angle FPX\,'+\angle FPY\,')=90^{\circ}$.
+    \end{proof}
+    \begin{theorem}
+        Пусть $PX$ и $PY$ – касательные к параболе, а $l$ – прямая, проходящая через $P$ параллельно оси параболы. Тогда угол между прямыми $PY$ и $l$ равен $\angle XPF$, $\triangle XFP \sim \triangle PFY$ и $FP$ -- биссектриса $\angle XFY$.
+    \end{theorem}
+    \begin{proof}
+        $ $\newline
+        \begin{center}
+            \begin{tikzpicture}[scale = 4.5]
+            \begin{scope}
+                \clip (-1,-.6) rectangle (1,0.7);
+                \draw[domain=-4:4, variable=\x, samples=50] plot ({(\x)},{(-1/4)});
+                \draw[domain=-4:4, variable=\x, samples=100] plot ({(\x)},{(\x)^2});
+                \draw[domain=-4:4, variable=\x, samples=50] plot ({(\x)},{(-.63*\x-.1)});
+                \draw[domain=-4:4, variable=\x, samples=50] plot ({(\x)},{(1.1*\x-.3)});
+            \end{scope}
+            \coordinate (X) at (-.32,.1);
+            \coordinate (Y) at (.56,.31);
+            \coordinate (X') at (-.32,-.25);
+            \coordinate (Y') at (.56,-.25);
+            \coordinate (F) at (0,0.25);
+            \draw (X) node[below left] {$X$};
+            \draw (Y) node[below right] {$Y$};
+            \draw (X') node[below left] {$X\,'$};
+            \draw (Y') node[below right] {$Y\,'$};
+            \draw (F) node[above] {$F$};
+            \tkzDefCircle[circum](F,X',Y')
+            \tkzGetPoint{P} \tkzGetLength{rayon}
+            \draw[dotted] (P) circle(\rayon);
+            \draw (P) node[right] {$P$};
+            \begin{scope}
+                \clip (-1,-.6) rectangle (1,0.7);
+                \draw[dashed] (P) -- ++(0,-10);
+            \end{scope}
+            \draw[dashed, name path = line1] (P) -- ++(0,.9);
+            \draw[dashed] (X) -- (X');
+            \draw[dashed] (Y) -- (Y');
+            \draw[dashed] (X') -- (F) -- (Y');
+            \draw[name path = line2] (X) -- (F) -- (Y);
+            \draw (X') -- (P) -- (Y');
+            \draw (F) -- (P);
+            \coordinate (K) at (-1,-.25);
+            \coordinate (L) at (1,-.25);
+            \coordinate (M) at ($(P) + (0,-1)$);
+            \coordinate (H) at ($(X')!(P)!(Y')$);
+            \draw[name intersections={of=line1 and line2}] (intersection-1) node[above] {};
+            \coordinate (N) at (intersection-1);
+            \tkzMarkRightAngle[scale=.5](X,X',K);
+            \tkzMarkRightAngle[scale=.5](L,Y',Y);
+            \tkzMarkRightAngle[scale=.5](M,H,Y');
+            \tkzMarkAngle[size=.1](X,P,X');
+            \tkzMarkAngle[size=.12](F,P,X);
+            \tkzMarkAngle[size=.1](Y,P,N);
+            \tkzMarkAngle[size=.1](N,Y,P);
+            \tkzMarkAngle[size=.12](P,Y,Y');
+            \tkzMarkAngle[size=.1](X,F,P);
+            \tkzMarkAngle[size=.12](P,F,Y);
+            \tkzMarkAngle[size=.05](X,F,P);
+            \tkzMarkAngle[size=.06](P,F,Y);
+            \foreach \point in {(F), (X), (Y), (X'), (Y'), (P)}{
+    \fill \point circle (0.4pt);
+}
+        \end{tikzpicture}
+        \end{center}
+        Пусть $X\,'$ и $Y\,'$ -- проекции $X$ и $Y$ на директрису соответственно. Угол между $PY$ и $l$ равен $\angle X\,'Y\,'F$, так как $l\perp X\,'Y\,'$ и $PY\perp Y\,'F$. При этом по лемме 3.8 $F$, $X\,'$ и $Y\,'$ лежат на окружности с центром в $P$. Тогда $\angle X\,'Y\,'F=\dfrac{1}{2}\angle X\,'PF=\angle XPF$. Поскольку $l\,\|\, YY\,'$, угол между $PY$ и $l$ равен $\angle PYY\,'$, который в силу оптического свойства параболы равен $\angle PYF$. То есть $\angle PYF=\angle XPF$, аналогично $\angle FXP = \angle YPF$. Тогда $\triangle XFP \sim \triangle PFY$ по двум углам и $PF$ -- биссектриса $\angle XFY$.
+    \end{proof}
+
+\setcounter{subsection}{2}
+\subsection{Прямая Симсона}
+
+    \begin{theorem}[Прямая Симсона]
+        Проекции точки $P$ на стороны $\triangle ABC$ лежат на одной прямой тогда и только тогда, когда точка $P$ лежит на описанной окружности треугольника.
+    \end{theorem}
+    \begin{proof}
+    $ $\newline
+        \begin{center}
+            \begin{tikzpicture}
+            \def\r{3}
+                \coordinate (O) at (0,0);
+                \coordinate (A) at (-145:\r);
+                \coordinate (B) at (60:\r);
+                \coordinate (C) at (-35:\r);
+                \coordinate (P) at (-70:\r);
+                \coordinate (K) at ($(B)!1.3!(C)$);
+                \coordinate (Pc) at ($(A)!(P)!(B)$);
+                \coordinate (Pb) at ($(A)!(P)!(C)$);
+                \coordinate (Pa) at ($(B)!(P)!(C)$);
+                \draw (O) circle (\r);
+                \draw (A) -- (B) -- (C) -- cycle;
+                \draw (A) node[below left] {$A$};
+                \draw (B) node[above right] {$B$};
+                \draw (C) node[right] {$C$};
+                \draw (P) node[below] {$P$};
+                \draw (Pa) node[right] {$P_a$};
+                \draw (Pb) node[above] {$P_b$};
+                \draw (Pc) node[above] {$P_c$};
+                \draw (C) -- (K);
+                \draw ($(Pc)!1.2!(Pa)$) -- ($(Pa)!1.2!(Pc)$);
+                \draw[dashed] (P) -- (C);
+                \draw[dashed] (P) -- (A);
+                \draw[dashed] (P) -- (Pa);
+                \draw[dashed] (P) -- (Pc);
+                \draw[dashed] (P) -- (Pb);
+                \tkzMarkRightAngle(P,Pc,A);
+                \tkzMarkRightAngle(P,Pb,A);
+                \tkzMarkRightAngle(P,Pa,K);
+                \foreach \point in {(A), (B), (C), (P), (Pa), (Pb), (Pc)}{
+    \fill \point circle (1.8pt);
+}
+            \end{tikzpicture}
+        \end{center}
+        Пусть $P_a$, $P_b$ и $P_c$ -- проекции точки $P$ на $BC$, $AC$ и $AB$ соответственно. $AP_cP_bP$ вписанный, так как $\angle AP_cP=\angle AP_bP$. Тогда $\angle APP_c=\angle AP_bP_C$. Аналогично $\angle CP_bP_a=\angle CPP_a$. В силу вписанности $ABCP$ $\angle PCP_a=180^{\circ}-\angle BCP=\angle BAP$. При этом $\angle PCP_a=90^{\circ}-\angle CPP_a=90^{\circ}-\angle CP_bP_a$. То есть $\angle AP_cP=90^{\circ}-\angle APP_c=90^{\circ}-\angle AP_bP_c=90^{\circ}-\angle CP_bP_a$, а значит $\angle AP_bP_c=\angle CP_bP_a$. В таком случае они вертикальные, следовательно, $P_a$, $P_b$ и $P_c$ коллинеарны. Обратное утверждение доказывается аналогично.
+    \end{proof}
+
+    \begin{theorem}
+        Пусть $\triangle ABC$ описан около параболы, тогда фокус этой параболы лежит на описанной окружности этого треугольника.
+    \end{theorem}
+    \begin{proof}
+        $ $\newline
+        \begin{center}
+            \begin{tikzpicture}[scale = 2]
+            \begin{scope}
+                \clip (-2,-2.5) rectangle (2,2);
+                \draw[domain=-4:4, variable=\x, samples=100] plot ({(\x)},{(\x)^2});
+                \draw[domain=-4:4, variable=\x, samples=50] plot ({(\x)},{(-2.45*\x-1.5)});
+                \draw[domain=-4:4, variable=\x, samples=50] plot ({(\x)},{(3.46*\x-3)});
+            \end{scope}
+            \coordinate (A) at (-.43,-.47);
+            \coordinate (B) at (1.06,.66);
+            \coordinate (C) at (.25,-2.12);
+            \coordinate (F) at (0,.25);
+            \coordinate (K) at ($(C)!2!(A)$);
+            \draw (A) -- (B);
+            \draw (A) node[below left] {$A$};
+            \draw (B) node[below right] {$B$};
+            \draw (C) node[below left] {$C$};
+            \draw (F) node[above] {$F$};
+            \coordinate (Fc) at ($(A)!(F)!(B)$);
+            \coordinate (Fb) at ($(A)!(F)!(C)$);
+            \coordinate (Fa) at ($(B)!(F)!(C)$);
+            \draw (Fa) node[below right] {$F_a$};
+            \draw (Fb) node[below left] {$F_b$};
+            \draw (Fc) node[below right] {$F_c$};
+            \draw (F) -- (Fa);
+            \draw (F) -- (Fb);
+            \draw (F) -- (Fc);
+            \draw ($(Fb)!1.2!(Fa)$) -- ($(Fa)!1.2!(Fb)$);
+            \tkzDefCircle[circum](A,B,C)
+            \tkzGetPoint{O} \tkzGetLength{rayon}
+            \draw (O) circle(\rayon);
+            \tkzMarkRightAngle[scale=.8](F,Fc,A);
+            \tkzMarkRightAngle[scale=.8](F,Fb,K);
+            \tkzMarkRightAngle[scale=.8](F,Fa,B);
+            \foreach \point in {(F), (A), (B), (C), (Fa), (Fb), (Fc)}{
+    \fill \point circle (0.9pt);
+}
+        \end{tikzpicture}
+        \end{center}
+        Пусть $F_a$, $F_b$ и $F_c$ -- проекции фокуса параболы на стороны треугольника. По лемме 3.7 они коллинеарны. Тогда по теореме о прямой Симсона $F$ принадлежит окружности, описанной около $\triangle ABC$.
+    \end{proof}
+
+    \begin{theorem}
+        Пусть $P$ и $B\,'$ лежат на окружности, описанной около $\triangle ABC$, при чем $PB\,'\perp AC$. Тогда $BB\,'$ параллельная прямой Симсона точки $P$.
+    \end{theorem}
+    \begin{proof}
+    $ $\newline
+        \begin{center}
+            \begin{tikzpicture}
+            \def\r{3}
+                \coordinate (O) at (0,0);
+                \coordinate (A) at (-165:\r);
+                \coordinate (B) at (50:\r);
+                \coordinate (C) at (-15:\r);
+                \coordinate (P) at (-70:\r);
+                \coordinate (B') at (70:\r);
+                \coordinate (Pc) at ($(A)!(P)!(B)$);
+                \coordinate (Pb) at ($(A)!(P)!(C)$);
+                \draw (O) circle (\r);
+                \draw (A) -- (B) -- (C) -- cycle;
+                \draw (A) node[below left] {$A$};
+                \draw (B) node[above right] {$B$};
+                \draw (C) node[below right] {$C$};
+                \draw (P) node[below] {$P$};
+                \draw (Pb) node[above right] {$P_b$};
+                \draw (Pc) node[above left] {$P_c$};
+                \draw (B') node[above right] {$B\,'$};
+                \draw (Pc) -- (Pb);
+                \draw (P) -- (A);
+                \draw (P) -- (Pc);
+                \draw (P) -- (B');
+                \draw (B) -- (B');
+                \tkzMarkRightAngle(P,Pc,A);
+                \tkzMarkRightAngle(P,Pb,A);
+                \tkzMarkAngle[size=.4](B',B,A);
+                \tkzMarkAngle[size=.4](Pb,Pc,B);
+                \tkzMarkAngle[size=.4](B',P,A);
+                \foreach \point in {(A), (B), (C), (P), (Pb), (Pc), (B')}{
+    \fill \point circle (1.8pt);
+}
+            \end{tikzpicture}
+        \end{center}
+        Пусть $P_b$ и $P_c$ -- проекции $P$ на $AC$ и $AB$ соответственно. $\angle ABB\,'=\angle APB\,'$ как вписанные. $AP_cP_bP$ -- вписанный, так как $\angle AP_cP=\angle AP_bP$, следовательно, $\angle APP_b=\angle P_bP_cB$. То есть $\angle P_cBB\,'=\angle P_bP_cB$, а значит $BB\,'\,\|\,P_bP_c$.
+    \end{proof}
+
+    \setcounter{subsection}{13}
+    \setcounter{consequence}{0}
+    \begin{consequence}
+        При вращении точки $P$ по окружности прямая Симсона вращается в противоположную сторону, причем скорость ее вращения в два раза меньше, чем скорость изменения дуги $PA$.
+    \end{consequence}
+    \begin{consequence}
+        Прямая Симсона точки $P$ относительно $\triangle ABC$ делит отрезок $PH$ пополам, где $H$ -- ортоцентр $\triangle ABC$.
+    \end{consequence}
+    \begin{proof}
+    $ $\newline
+        \begin{center}
+            \begin{tikzpicture}
+            \def\r{3}
+                \coordinate (O) at (0,0);
+                \coordinate (A) at (-165:\r);
+                \coordinate (B) at (50:\r);
+                \coordinate (C) at (-15:\r);
+                \coordinate (P) at (-70:\r);
+                \coordinate (B') at (70:\r);
+                \coordinate (Pc) at ($(A)!(P)!(B)$);
+                \coordinate (Pb) at ($(A)!(P)!(C)$);
+                \coordinate (Hb) at ($(A)!(B)!(C)$);
+                \coordinate (Hc) at ($(A)!(C)!(B)$);
+                \coordinate (H') at (-50:\r);
+                \coordinate (P') at ($(P)!2!(Pb)$);
+                \draw (O) circle (\r);
+                \draw (A) -- (B) -- (C) -- cycle;
+                \draw (A) node[below left] {$A$};
+                \draw (B) node[above right] {$B$};
+                \draw (C) node[below right] {$C$};
+                \draw (P) node[below] {$P$};
+                \draw (Pb) node[below left] {$P_b$};
+                \draw (Pc) node[above] {$P_c$};
+                \draw (B') node[above right] {$B\,'$};
+                \draw (H') node[below right] {$H\,'$};
+                \draw (P') node[below left] {$P\,'$};
+                \draw ($(Pc)!1.68!(Pb)$) -- ($(Pb)!1.5!(Pc)$);
+                \draw (P) -- (A);
+                \draw (P) -- (Pc);
+                \draw (P) -- (B');
+                \draw (B) -- (B');
+                \draw (B) -- (H');
+                \draw (P) -- (H');
+                \draw[draw opacity = 0, name path =line1] (B) -- (Hb);
+                \draw[draw opacity = 0, name path = line2] (C) -- (Hc);
+                \draw[name intersections={of=line1 and line2}] (intersection-1) node[below left] {$H$};
+                \coordinate (H) at (intersection-1);
+                \draw (P') -- (H);
+                \tkzMarkRightAngle(P,Pc,A);
+                \tkzMarkRightAngle(C,Pb,B');
+                \tkzMarkRightAngle(C,Hb,B);
+                \tkzMarkAngle[size=.4](B',B,A);
+                \tkzMarkAngle[size=.4](Pb,Pc,B);
+                \tkzMarkAngle[size=.4](B',P,A);
+                \tkzMarkSegment[mark=|](H,Hb);
+                \tkzMarkSegment[mark=|](Hb,H');
+                \tkzMarkSegment[mark=||](P',Pb);
+                \tkzMarkSegment[mark=||](Pb,P);
+                \foreach \point in {(A), (B), (C), (P), (Pb), (Pc), (B'), (H'), (P'), (H)}{
+    \fill \point circle (1.8pt);
+}
+            \end{tikzpicture}
+        \end{center}
+        Пусть $H\,'$ и $P\,'$ -- образы $H$ и $P$ относительно $AC$ соответственно. Поскольку $PB\,'\,\|\,H\,'B$, $PB\,'BH\,'$ -- равнобокая трапеция. Тогда отрезок, симметричный $PH\,'$ относительно $AC$ должен быть параллелен $BB\,'$, то есть $P\,'H\,\|\,B\,'B\,\|\,P_cP_b$. Поскольку $P_b$ -- середина $PP\,'$ и $P_cP_b\,\|\,P\,'H$, прямая Симсона -- средняя линия $\triangle HPP\,'$, а значит делит $HP$ пополам.
+    \end{proof}
+    \begin{theorem}
+        Ортоцентр треугольника, описанного около параболы, лежит на ее директрисе.
+    \end{theorem}
+    \begin{proof}
+        $ $\newline
+        \begin{center}
+            \begin{tikzpicture}[scale = 1.5]
+            \begin{scope}
+                \clip (-4,-2.5) rectangle (2,3);
+                \draw[domain=-4:4, variable=\x, samples=100] plot ({(\x)},{(\x*0.6)^2+0.5});
+                \draw[domain=-4:4, variable=\x, samples=50] plot ({(\x)},{(-3.67*\x-8.78)});
+                \draw[domain=-4:4, variable=\x, samples=50] plot ({(\x)},{(.94*\x-0.12)});
+            \end{scope}
+            \coordinate (A) at (-2.84,1.64);
+            \coordinate (B) at (.34,.2);
+            \coordinate (C) at (-1.89,-1.9);
+            \coordinate (F) at (0,1.19);
+            \coordinate (K) at ($(C)!2!(B)$);
+            \coordinate (Hb) at ($(A)!(B)!(C)$);
+            \coordinate (Hc) at ($(A)!(C)!(B)$);
+            \draw (A) -- (B);
+            \draw (A) node[above left] {$A$};
+            \draw (B) node[below right] {$B$};
+            \draw (C) node[right] {$C$};
+            \draw (F) node[above right] {$F$};
+            \coordinate (Fb) at ($(A)!(F)!(C)$);
+            \coordinate (Fa) at ($(B)!(F)!(C)$);
+            \draw (Fa) node[below right] {$F_a$};
+            \draw (Fb) node[below left] {$F_b$};
+            \draw (F) -- (Fa);
+            \draw (F) -- (Fb);
+            \draw[name path = line3] ($(Fb)!1.2!(Fa)$) -- ($(Fa)!1.2!(Fb)$);
+            \draw[draw opacity = 0, name path =line1] (B) -- (Hb);
+            \draw[draw opacity = 0, name path = line2] (C) -- (Hc);
+            \draw[name intersections={of=line1 and line2}] (intersection-1) node[below left] {$H$};
+            \coordinate (H) at (intersection-1);
+            \draw[name path = line4] (F) -- (H);
+            \draw[name intersections={of=line3 and line4}] (intersection-1) node[below right] {$O$};
+            \coordinate (O) at (intersection-1);
+            \coordinate (Hf) at ($(Fa)!(H)!(Fb)$);
+            \coordinate (Ff) at ($(Fa)!(F)!(Fb)$);
+            \draw (H) -- (Hf);
+            \draw (F) -- (Ff);
+            \tkzMarkRightAngle[scale=.8](H,Hf,Fb);
+            \tkzMarkRightAngle[scale=.8](F,Ff,Fa);
+            \tkzMarkRightAngle[scale=.8](F,Fb,A);
+            \tkzMarkRightAngle[scale=.8](F,Fa,K);
+            \tkzMarkSegment[mark=|](H,O);
+            \tkzMarkSegment[mark=|](O,F);
+            \foreach \point in {(F), (A), (B), (C), (Fa), (Fb), (H), (O)}{
+    \fill \point circle (1.2pt);
+}
+        \end{tikzpicture}
+        \end{center}
+        Пусть $F_a$ и $F_b$ -- проекции $F$ на $BC$ и $AC$ соотвественно. Тогда по следствию 3.7.1 $F_bF_a$ -- прямая, касающаяся параболы в ее вершине и параллелльная директрисе этой параболы. Пусть $O$ -- точка пересечения $FH$ и $F_bF_a$, тогда по следствию 3.13.2 $FO=OH$, при этом $\angle HOF_b=\angle FOF_a$ как вертикальные, в таком случае равны по двум углам и стороне треугольники, образованные $F$, $O$, $H$ и проекциями $F$ и $H$ на $F_bF_a$. Следовательно, расстояние от $F$ до прямой, проходящей через вершину параболы и параллельной ее директрисе, равно расстоянию от этой прямой до $H$, а значит $H$ лежит на директрисе параболы.
+    \end{proof}
+
+    \section{Гомотетия}
+
+    \begin{definition}
+        Гомотетия с центром $O$ и коэффициентом $k$ суть преобразование плоскости, при котором $\forall A \in \R^2: H_O^k(A)=A\,':\,\overrightarrow{OA}\cdot k = \overrightarrow{OA\,'},\,\overrightarrow{OA} \upuparrows \overrightarrow{OA\,'}$.
+    \end{definition}
+
+    \setcounter{subsection}{0}
+    \subsection{Композиция гомотетий}
+    \begin{definition}
+        Композиция гомотетий $H_O^k$ и $H_P^l$ при $k,\,l\neq 1$ -- это параллельный перенос при $k\cdot l=1$ или $H_Q^{kl}:\,Q \in OP,\, \overrightarrow{OQ}\cdot (k-1)=\overrightarrow{QP}\cdot \left(1-\dfrac{1}{l}\right)$.
+    \end{definition}
+\end{document}
