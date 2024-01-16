@@ -1,0 +1,11 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{\numberline {1}Случайная величина}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Числовые характеристики случайных величин}{2}{subsection.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.1}Распределение Бернулли}{3}{subsubsection.1.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.2}Биномиальное распределение}{3}{subsubsection.1.1.2}%
+\contentsline {subsubsection}{\numberline {1.1.3}Геометрическое распределение}{3}{subsubsection.1.1.3}%
+\contentsline {subsubsection}{\numberline {1.1.4}Гипергеометрическое распределение}{4}{subsubsection.1.1.4}%
+\contentsline {subsubsection}{\numberline {1.1.5}Распределение Паскаля}{5}{subsubsection.1.1.5}%
+\contentsline {section}{\numberline {2}Ковариация}{5}{section.2}%
+\contentsline {section}{\numberline {3}Корреляция}{6}{section.3}%
+\contentsline {section}{\numberline {4}Мера Жордана}{6}{section.4}%

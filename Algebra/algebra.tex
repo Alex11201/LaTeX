@@ -382,7 +382,7 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
 
 \begin{theorem}
     Сумма первых $n$ членов арифметической прогрессии равна:
-    $$S_n=n\cdot \left(a_1+\frac{(n-1)\cdot d}{2} \right)$$
+    $$S_n=n\cdot \left(a_1+\frac{(n-1)\cdot d}{2} \right)=n \cdot \frac{a_1 + a_n}{2}$$
 \end{theorem}
 
 \begin{proof}
@@ -390,7 +390,9 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
         &S_n=a_1+a_2+a_3+\ldots+a_n=\\
         =&a_1+(a_1+d)+(a_1+2d)+\ldots+(a_1+(n-1)\cdot d)=\\
         =&n\cdot a_1+d\cdot \left( \frac{(n-1)\cdot n}{2} \right)=\\
-        =&n\cdot \left(a_1+\frac{(n-1)\cdot d}{2} \right)
+        =&n\cdot \left(a_1+\frac{(n-1)\cdot d}{2} \right)=\\
+        =&n \cdot \frac{a_1 + (a_1 + (n-1)\cdot d)}{2}=\\
+        =&n\cdot \frac{a_1 + a_n}{2}
     \end{align*}
 \end{proof}
 
@@ -422,6 +424,10 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
 \section{Эквивалентность и группы}
 
 \begin{definition}
+    Пусть $M$ -- множество, тогда множество $R \subset \{(a,\,b)\,|\,a,\,b\in M\}$ упорядоченных пар элементов $M$ называется бинарным отношением на $M$. 
+\end{definition}
+
+\begin{definition}
     Бинарное отношение называется отношением эквивалентности, если оно удовлетворяет свойствам:
     \begin{align*}
         1.\,\,&\text{Рефлексивность } a\sim a\\
@@ -432,6 +438,9 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
 \begin{theorem}[Малая теорема Ферма]
     $\forall n\in \N,\, p\in \prob:\, n^{p-1}\equiv_p 1$
 \end{theorem}
+\begin{definition}
+    Бинарной операцией $\times$ на множестве $M$ называется отображение из множества упорядоченных пар $M^2=\{(a,\,b)\,|\,a,\,b\in M\}$ в множество $M$.
+\end{definition}
 \begin{definition}
     Пара $G(M;\,\times)$, $M$ -- множество, $\times$ -- бинарная операция, называется группой, если выполняются свойства:
     \begin{align*}
