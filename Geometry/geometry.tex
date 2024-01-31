@@ -1161,4 +1161,118 @@
     \begin{definition}
         Композиция гомотетий $H_O^k$ и $H_P^l$ при $k,\,l\neq 1$ -- это параллельный перенос при $k\cdot l=1$ или $H_Q^{kl}:\,Q \in OP,\, \overrightarrow{OQ}\cdot (k-1)=\overrightarrow{QP}\cdot \left(1-\dfrac{1}{l}\right)$.
     \end{definition}
+
+    \section{Инверсия}
+    \begin{definition}
+        Точки $A$ и $B$ называются симметричными относительно окружности $\omega(O;\,R)$, если $OA\cdot OB=R^2$.\\\\
+        Для точек, симметричных относительно окружности $\omega(O;\,R)$, выполняются условия:
+        \begin{align*}
+            1.\,\,&\forall X\in \R^2:\,X\neq0\,\,\,\exists!\,Y:\,X,\,Y \text{ -- симметричны относительно } \omega\\
+            2.\,\,&\text{Если } X \text{ внутри } \omega\text{, то } Y \text{ снаружи и наоборот}\\
+            3.\,\,&\text{Нет точки, симметричной } O\\
+            4.\,\,&\forall C \in \omega:\,C \text{ симметрична сама себе}
+        \end{align*}
+    \end{definition}
+
+    \begin{definition}
+        Пусть на плоскости дана окружность $\omega(O;\,R)$. Отображение $\phi:\,\R^2/\{0\}\longrightarrow \R^2/\{0\}$, при котором точки переходят в симметричные им относительно $\omega$, называется инверсией.
+    \end{definition}
+    \begin{lemma}[Основная лемма]
+        Любые две пары точек, симметричных относительно одной окружности, лежат на одной окружности.
+    \end{lemma}
+    \begin{proof}
+        $ $\newline
+        \begin{center}
+            \begin{tikzpicture}
+                \coordinate (O) at (0,0);
+                \coordinate (B) at (30:2);
+                \coordinate (B') at (30:4.5);
+                \coordinate (A) at (-20:1.8);
+                \coordinate (A') at (-20:5);
+                \draw (O) node[above left]{$O$};
+                \draw (A) node[below left]{$A$};
+                \draw (A') node[below right]{$\hat{A}$};
+                \draw (B) node[above left]{$B$};
+                \draw (B') node[above right]{$\hat{B}$};
+                \draw (135:3) node[above left]{$\omega$};
+                \draw (O) -- (B');
+                \draw (O) -- (A');
+                \draw (A') -- (B');
+                \draw (A) -- (B);
+                \tkzMarkAngle[size=.4](O,B,A);
+                \tkzMarkAngle[size=.4](B',A',O);
+                \tkzMarkAngle[size=.4](O,B',A');
+                \tkzMarkAngle[size=.4](B,A,O);
+                \tkzMarkAngle[size=.3](B,A,O);
+                \tkzMarkAngle[size=.3](O,B',A');
+                \tkzDefCircle[circum](A,A',B)
+            \tkzGetPoint{M} \tkzGetLength{rayon}
+            \draw[dashed] (M) circle(\rayon);
+                \draw (O) circle(3);
+        \foreach \point in {(O), (B), (B'), (A), (A')}{
+    \fill \point circle (1.8pt);
+}
+        \end{tikzpicture}
+        \end{center}
+        Пусть $A$ и $\hat{A}$, $B$ и $\hat{B}$ -- пары точек, симметричных около окружности $\omega(O;\,R)$. Тогда:
+        $$OA\cdot O\hat{A}=R^2=OB\cdot O\hat{B}\Longleftrightarrow \frac{OA}{OB}=\frac{O\hat{B}}{O\hat{A}}$$
+        Следовательно, по двум сторонам, а также по общему углу $\triangle AOB \sim \triangle \hat{B}O\hat{A}$. Отсюда $\angle ABO=\angle O\hat{A}\hat{B}$ и $\angle OAB=\angle O\hat{B}\hat{A}$, а значит $\hat{A}AB\hat{B}$ -- вписанный, так как сумма его противоположных углов равна $180^{\circ}$.
+    \end{proof}
+
+    \begin{theorem}
+        Прямая, не проходящая через центр инверсии, переходит в окружность, проходящую через центр инверсии.
+    \end{theorem}
+    \begin{proof}
+        $ $\newline
+        \begin{center}
+            \begin{tikzpicture}
+                \coordinate (O) at (0,0);
+                \coordinate (A) at (15:3);
+                \coordinate (B) at (-80:3);
+                \coordinate (M) at ($(A)!0.5!(B)$);
+                \draw (O) circle(3);
+                \tkzCalcLength(O,M)\tkzGetLength{OM}
+                \coordinate (M') at (-32.5:{9/\OM});
+                \coordinate (D) at ($(B)!1.25!(A)$);
+                \tkzCalcLength(O,D)\tkzGetLength{OD}
+                \def\length{9/(\OD*\OD)}
+                \coordinate (D') at ($(O)!\length!(D)$);
+                \draw (O) -- (D);
+                \draw (O) -- ($(O)!1.3!(M')$);
+                \draw[name path =line1] (M') -- (D');
+                \draw[name path = line2] ($(A)!-0.5!(B)$) -- ($(A)!1.3!(B)$);
+                \draw[name intersections={of=line1 and line2}] (intersection-1) node[left] {$T$};
+                \coordinate (T) at (intersection-1);
+                \draw[dashed] (O) -- (A) -- (M');
+                \draw (D) -- (M');
+                \draw (M) -- (D');
+                \tkzMarkRightAngle(M',A,O);
+                \tkzMarkRightAngle(D,D',M');
+                \tkzMarkRightAngle(D,M,M');
+                \draw (O) node[above left]{$O$};
+                \draw (A) node[right]{$A$};
+                \draw (B) node[below]{$B$};
+                \draw (M) node[left]{$M$};
+                \draw (D) node[above left]{$D$};
+                \draw (M') node[below left]{$\hat{M}$};
+                \draw (D') node[above left]{$\hat{D}$};
+                \tkzDefCircle[circum](M,D',D)
+            \tkzGetPoint{K} \tkzGetLength{rayon}
+            \draw[dotted, line width = 0.2mm] (K) circle(\rayon);
+            \tkzDefCircle[circum](A,O,B)
+            \tkzGetPoint{L} \tkzGetLength{rayon}
+            \draw[dotted, line width = 0.2mm] (L) circle(\rayon);
+            \draw ($(B)!-0.2!(A)$) node[above left] {$l$};
+            \tkzMarkSegment[mark=|](B,M);
+            \tkzMarkSegment[mark=|](M,A);
+            \draw (135:3) node[above left]{$\omega$};
+
+        \foreach \point in {(O), (B), (M), (A), (M'), (D), (D'), (T)}{
+    \fill \point circle (1.8pt);
+}
+        \end{tikzpicture}
+        \end{center}
+        Пусть $M$ -- основание серединного перпенидкуляра, опущенного из $O$ на $l$, $D$ -- произвольная точка вне окружности, а $\hat{M}$ и $\hat{D}$ -- точки, симметричные $M$ и $D$ соответственно относительно $\omega$, $T$ -- точка пересечения $l$ и $\hat{D}\hat{M}$. Из построения инверсии, $AM$ -- касательная к $\omega$. Тогда $\angle OA\hat{M}=90^{\circ}$. По основной лемме $D\hat{D}M\hat{M}$ -- вписанный. Тогда $\angle D\hat{D}\hat{M}=\angle DM\hat{M}=90^{\circ}=\angle OA\hat{M}$. А значит $O\hat{D}A\hat{M}$ -- вписанный по признаку.
+    \end{proof}
+
 \end{document}
