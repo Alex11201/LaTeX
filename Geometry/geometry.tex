@@ -81,7 +81,7 @@
 \section{Бинарное отношение. Векторы.}
 
 \begin{definition}
-     Пусть множество $a,b \in M$. Множество $R \subset \{(a,b)|a,b\in M\}$ упорядоченных пар. Если $(\hat{a},\hat{b})\subset R$, пишут $\hat{a}\underset{R}{\sim}\hat{b}.$
+     Пусть множество $a,b \in M$. Множество $R \subset \{(a,b)|a,b\in M\}$ упорядоченных пар. Если $(\widehat{a},\widehat{b})\subset R$, пишут $\widehat{a}\underset{R}{\sim}\widehat{b}.$
 \end{definition}
 
 \begin{definition}
@@ -1164,7 +1164,7 @@
 
     \section{Инверсия}
     \begin{definition}
-        Точки $A$ и $B$ называются симметричными относительно окружности $\omega(O;\,R)$, если $OA\cdot OB=R^2$, а $A$, $B$ и $O$ -- коллинеарны..\\\\
+        Точки $A$ и $B$ называются симметричными относительно окружности $\omega(O;\,R)$, если $OA\cdot OB=R^2$, а $A$, $B$ и $O$ -- коллинеарны.\\\\
         Для точек, симметричных относительно окружности $\omega(O;\,R)$, выполняются условия:
         \begin{align*}
             1.\,\,&\forall X\in \R^2:\,X\neq0\,\,\,\exists!\,Y:\,X,\,Y \text{ -- симметричны относительно } \omega\\
@@ -1191,9 +1191,9 @@
                 \coordinate (A') at (-20:5);
                 \draw (O) node[above left]{$O$};
                 \draw (A) node[below left]{$A$};
-                \draw (A') node[below right]{$\hat{A}$};
+                \draw (A') node[below right]{$\widehat{A}$};
                 \draw (B) node[above left]{$B$};
-                \draw (B') node[above right]{$\hat{B}$};
+                \draw (B') node[above right]{$\widehat{B}$};
                 \draw (135:3) node[above left]{$\omega$};
                 \draw (O) -- (B');
                 \draw (O) -- (A');
@@ -1214,9 +1214,9 @@
 }
         \end{tikzpicture}
         \end{center}
-        Пусть $A$ и $\hat{A}$, $B$ и $\hat{B}$ -- пары точек, симметричных около окружности $\omega(O;\,R)$. Тогда:
-        $$OA\cdot O\hat{A}=R^2=OB\cdot O\hat{B}\Longleftrightarrow \frac{OA}{OB}=\frac{O\hat{B}}{O\hat{A}}$$
-        Следовательно, по двум сторонам, а также по общему углу $\triangle AOB \sim \triangle \hat{B}O\hat{A}$. Отсюда $\angle ABO=\angle O\hat{A}\hat{B}$ и $\angle OAB=\angle O\hat{B}\hat{A}$, а значит $\hat{A}AB\hat{B}$ -- вписанный, так как сумма его противоположных углов равна $180^{\circ}$.
+        Пусть $A$ и $\widehat{A}$, $B$ и $\widehat{B}$ -- пары точек, симметричных около окружности $\omega(O;\,R)$. Тогда:
+        $$OA\cdot O\widehat{A}=R^2=OB\cdot O\widehat{B}\Longleftrightarrow \frac{OA}{OB}=\frac{O\widehat{B}}{O\widehat{A}}$$
+        Следовательно, по двум сторонам, а также по общему углу $\triangle AOB \sim \triangle \widehat{B}O\widehat{A}$. Отсюда $\angle ABO=\angle O\widehat{A}\widehat{B}$ и $\angle OAB=\angle O\widehat{B}\widehat{A}$, а значит $\widehat{A}AB\widehat{B}$ -- вписанный, так как сумма его противоположных углов равна $180^{\circ}$.
     \end{proof}
 
     \begin{theorem}
@@ -1254,8 +1254,8 @@
                 \draw (B) node[below]{$B$};
                 \draw (M) node[left]{$M$};
                 \draw (D) node[above left]{$D$};
-                \draw (M') node[below left]{$\hat{M}$};
-                \draw (D') node[above left]{$\hat{D}$};
+                \draw (M') node[below left]{$\widehat{M}$};
+                \draw (D') node[above left]{$\widehat{D}$};
                 \tkzDefCircle[circum](M,D',D)
             \tkzGetPoint{K} \tkzGetLength{rayon}
             \draw[dotted, line width = 0.2mm] (K) circle(\rayon);
@@ -1272,7 +1272,7 @@
 }
         \end{tikzpicture}
         \end{center}
-        Пусть $M$ -- основание серединного перпенидкуляра, опущенного из $O$ на $l$, $D$ -- произвольная точка вне окружности, а $\hat{M}$ и $\hat{D}$ -- точки, симметричные $M$ и $D$ соответственно относительно $\omega$, $T$ -- точка пересечения $l$ и $\hat{D}\hat{M}$. Из построения инверсии, $AM$ -- касательная к $\omega$. Тогда $\angle OA\hat{M}=90^{\circ}$. По основной лемме $D\hat{D}M\hat{M}$ -- вписанный. Тогда $\angle D\hat{D}\hat{M}=\angle DM\hat{M}=90^{\circ}=\angle OA\hat{M}$. А значит $O\hat{D}A\hat{M}$ -- вписанный по признаку.
+        Пусть $M$ -- основание серединного перпенидкуляра, опущенного из $O$ на $l$, $D$ -- произвольная точка вне окружности, а $\widehat{M}$ и $\widehat{D}$ -- точки, симметричные $M$ и $D$ соответственно относительно $\omega$, $T$ -- точка пересечения $l$ и $\widehat{D}\widehat{M}$. Из построения инверсии, $AM$ -- касательная к $\omega$. Тогда $\angle OA\widehat{M}=90^{\circ}$. По основной лемме $D\widehat{D}M\widehat{M}$ -- вписанный. Тогда $\angle D\widehat{D}\widehat{M}=\angle DM\widehat{M}=90^{\circ}=\angle OA\widehat{M}$. А значит $O\widehat{D}A\widehat{M}$ -- вписанный по признаку.
     \end{proof}
 
 \end{document}

@@ -262,10 +262,10 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
 
 \section{Числовые последовательности}
 \begin{definition}
-    Бесконечной числовой последовательностью $(a_n)$ называется отображение $\N \rightarrow \R$.
+    Бесконечной числовой последовательностью $(a_n)$ называется отображение $\N \to \R$.
 \end{definition}
 \begin{definition}
-    Конечной числовой последовательностью $(a_n)$ называется отображение\\ $a:\,\{1,\,2,\,\ldots,\,k\}\rightarrow \R$.
+    Конечной числовой последовательностью $(a_n)$ называется отображение\\ $a:\,\{1,\,2,\,\ldots,\,k\}\to \R$.
 \end{definition}
 
 \begin{definition}
@@ -299,7 +299,7 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
 \end{definition}
 
 \begin{theorem}
-    Пусть $a:\,\N \rightarrow \R,\, a(\N)$ ограничена. Тогда:
+    Пусть $a:\,\N \to \R,\, a(\N)$ ограничена. Тогда:
     $$\exists\, x_0\in \R:\, \forall \varepsilon >0:\, a^{-1}\equalto{((x_0-\varepsilon;\,x_0+\varepsilon))}{U_\varepsilon(x_0)}\text{ бесконечно}$$
 \end{theorem}
 \begin{proof}
@@ -356,7 +356,7 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
     \end{align*}
 \end{proof}
 \begin{definition}
-    Число $x$ называется частичным пределом последовательности $a(\N)\rightarrow \R$, если $\forall \varepsilon>0:\, a^{-1}(U_{\varepsilon}(x))$ бесконечно.
+    Число $x$ называется частичным пределом последовательности $a(\N)\to \R$, если $\forall \varepsilon>0:\, a^{-1}(U_{\varepsilon}(x))$ бесконечно.
 \end{definition}
 
 \subsection{Прогрессии}
@@ -450,4 +450,25 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
         4.\,\,&\forall a,\,b,\,c \in M:\,(a\times b)\times c=a\times(b\times c)= (a\times c)\times b
     \end{align*}
 \end{definition}
+\section{Пределы}
+\begin{definition}
+    Число $A$ называется пределом $(x_n)$, если:
+    $$\forall \varepsilon >0\,\,\,\exists\,N\in\N:\,\forall n>N\,\,\,|x_n-A|<\varepsilon$$
+\end{definition}
+\begin{theorem}
+    $$\lim_{n\to\infty}(x_n+y_n)=\lim_{n\to\infty}(x_n)+\lim_{n\to\infty}(y_n)$$
+\end{theorem}
+\begin{proof}
+    Пусть $x_n\to a;\,y_n\to b$. По определению $N_a(\varepsilon):\,\forall n>N_a(\varepsilon)\,\,\,|x_n-a|<\varepsilon,\,N_b(\varepsilon):\,\forall n>N_b(\varepsilon)\,\,\,|y_n-b|<\varepsilon$. Рассмотрим $N_c(\varepsilon):\,\forall n>N_c(\varepsilon)\,\,\,|x_n+y_n-a-b|<\varepsilon:\,|x_n+y_n-a-b|\leq|x_n-a|+|y_n-b|\leq 2\varepsilon$ при $N_c=\max(N_a(\varepsilon);\,N_b(\varepsilon))$, то есть $2N_c(\varepsilon)$ -- это номер, с которого утверждение точно выполняется.
+\end{proof}
+\begin{theorem}[Теорема Вейерштрасса]
+    Пусть $(x_n)$ монотонна, тогда:
+    \begin{align*}
+        1.\,\,&\text{Она имеет предел в }\bar{\R}=\R\cup\{-\infty;\,+\infty\}\\
+        2.\,\,&\text{Если она ограничена, то она имеет вредел в }\R
+    \end{align*}
+\end{theorem}
+\begin{proof}
+    По определению монотонно возрастающей последовательности: $\forall n:\, x_{n+1}>x_n$, пусть $(x_n)$ не ограничена, то есть $\nexists\,m:\,\forall n\,\,\,x_n<m$, тогда $\sup(x_n)=+\infty$, а значит $(x_n)\to \infty$. Пусть $\exists\,m:\,\forall n \,\,\,x_n\leq m$ и $m=\sup(x_n)$. Тогда $m=\lim_{n\to\infty}(x_n)$.
+\end{proof}
 \end{document}
