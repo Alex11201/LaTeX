@@ -1274,5 +1274,42 @@
         \end{center}
         Пусть $M$ -- основание серединного перпенидкуляра, опущенного из $O$ на $l$, $D$ -- произвольная точка вне окружности, а $\widehat{M}$ и $\widehat{D}$ -- точки, симметричные $M$ и $D$ соответственно относительно $\omega$, $T$ -- точка пересечения $l$ и $\widehat{D}\widehat{M}$. Из построения инверсии, $AM$ -- касательная к $\omega$. Тогда $\angle OA\widehat{M}=90^{\circ}$. По основной лемме $D\widehat{D}M\widehat{M}$ -- вписанный. Тогда $\angle D\widehat{D}\widehat{M}=\angle DM\widehat{M}=90^{\circ}=\angle OA\widehat{M}$. А значит $O\widehat{D}A\widehat{M}$ -- вписанный по признаку.
     \end{proof}
-
+    \begin{theorem}
+        Если при инверсии $\varphi$ верно: $\varphi(\omega_1)=\omega_2$, где $\omega_i$ -- это  окружность, то центр данной инверсии суть центр гомотетии, переводящей $\omega_1$ в $\omega_2$.
+    \end{theorem}
+    \begin{proof}
+        $ $\newline
+        \begin{center}
+            \begin{tikzpicture}[scale=0.8]
+                \coordinate (O) at (0,0);
+                \coordinate (A) at (125:1.5);
+                \coordinate (B) at (150:1.5);
+                \coordinate (A') at (125:6);
+                \coordinate (B') at (150:6);
+                \coordinate (C) at (140:4);
+                \coordinate (C') at (140:2.25);
+                \draw (O) circle(3);
+                \draw (B') -- (O) -- (A');
+                \draw (B') node[left] {$\varphi(B)$};
+                \draw (A') node[above] {$\varphi(A)$};
+                \draw (A) node[right] {$A$};
+                \draw (B) node[below] {$B$};
+                \draw (O) node[above right] {$O$};
+                \draw (137.5:6.2) node[above left] {$\omega_2$};
+                \draw (137.5:4) node[above left] {$\omega_1$};
+                \draw (O) -- (0:3);
+                \tkzDefCircle[circum](A,B,C)
+            \tkzGetPoint{K} \tkzGetLength{rayon}
+            \draw (K) circle(\rayon);
+            \tkzDefCircle[circum](A',B',C')
+            \tkzGetPoint{L} \tkzGetLength{rayon}
+            \draw (L) circle(\rayon);
+            \draw (0:1.5) node[below] {$R$};
+        \foreach \point in {(A), (B), (A'), (B'), (O), (0:3)}{
+    \fill \point circle (2.25pt);
+}
+        \end{tikzpicture}
+        \end{center}
+        Возьмем две произвольные точки $A$ и $B$, лежащие на $\omega_1$ и построим их образы при инверсии $\varphi$: $\varphi(A)$ и $\varphi(B)$ соответственно. По определению инверсии $OA\cdot O\varphi(A)=R^2=OB\cdot O\varphi(B)\Longrightarrow \dfrac{OA}{OB}=\dfrac{O\varphi(A)}{O\varphi(B)}$, а значит $O$ -- центр гомотетии, переводящей $\omega_1$ в $\omega_2$.
+    \end{proof}
 \end{document}
