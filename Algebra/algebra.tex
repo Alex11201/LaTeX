@@ -473,6 +473,27 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
 \begin{proof}
     Пусть $(x_n)$ монотонно возрастает. По определению монотонно возрастающей последовательности: $\forall n:\, x_{n+1}>x_n$, пусть $(x_n)$ не ограничена, то есть $\nexists\,m:\,\forall n\,\,\,x_n<m$, тогда $\sup(x_n)=+\infty$, а значит $(x_n)\to \infty$. Пусть $\exists\,m:\,\forall n \,\,\,x_n\leq m$ и $m=\sup(x_n)$. Тогда $m=\lim_{n\to\infty}(x_n)$. Доказательство для монотонно убывающей последовательности аналогично.
 \end{proof}
+\begin{theorem}
+    Пусть $(x_n)$, $(y_n)$, $(z_n)$ -- последовательности, причем $x_n\leq y_n\leq z_n$, кроме того $\lim_{n\to\infty}(x_n)=a=\lim_{n\to\infty}(z_n)$, тогда $\lim_{n\to\infty}(y_n)=a$.
+\end{theorem}
+\begin{lemma}[Неравенство Бернулли]
+    $$(1+x)^n\geq 1+xn,\,n\in \N,\,x>0$$
+\end{lemma}
+\begin{proof}
+    Докажем по индукции: $(1+x)^1\geq 1+1\cdot x$ верно, пусть $(1+x)^n\geq 1+xn$ верно, тогда:
+    $$(1+x)^{n+1}=(1+x)(1+x)^n\geq (1+x)(1+xn)=1+x+nx+x^2n>1+(n+1)x$$
+\end{proof}
+\begin{definition}
+    $$e=\lim_{n\to \infty}\left(1+\dfrac{1}{n}\right)^n$$
+\end{definition}
+\begin{proof}
+    Рассмотрим $E_n=\left(1+\dfrac{1}{n}\right)^{n+1}=\left(\dfrac{n+1}{n}\right)\cdot e_n$:
+    $$\left(1+\dfrac{1}{n}\right)^{n+1}\geq 1+\dfrac{n+1}{n}>2\text{ -- последовательность ограничена снизу.}$$
+    $$\dfrac{E_{n+1}}{E_n}=\dfrac{\left(1+\dfrac{1}{n+1}\right)^{n+2}}{\left(1+\dfrac{1}{n}\right)^{n+1}}=\dfrac{\left(\dfrac{n+2}{n+1}\right)^{n+2}}{\left(\dfrac{n+1}{n}\right)^{n+1}}=\left(\dfrac{n+2}{n+1}\right)\cdot\left(\dfrac{n^2+2n}{n^2+2n+1}\right)^{n+1}$$
+    Рассмотрим $\left(\dfrac{n^2+2n+1}{n^2+2n}\right)^{n+1}$ и используем неравенство Бернулли:
+    $$\left(\dfrac{n^2+2n+1}{n^2+2n}\right)^{n+1}=\left(1+\dfrac{1}{n^2+2n}\right)^{n+1}\geq1+\dfrac{n+1}{n^2+2n}=\dfrac{n^3+3n+1}{n^2+2n}$$
+    То есть $\left(\dfrac{n^2+2n}{n^2+2n+1}\right)^{n+1}<\dfrac{n^2+2n}{n^3+3n+1}$, а значит $E_n$ монотонно возрастает. Тогда по теореме Вейерштрасса $\exists!$ предел $E_n$, а значит $\exists!$ предел $e_n$.
+\end{proof}
 \section{Тригонометрия}
 \begin{definition}
     Синусом угла в прямоугольном треугольнике называется отношение его противолежащего катета к гипотенузе.
@@ -549,4 +570,82 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
 \begin{proof}
     Если выражение из утверждения 7.1 разделить на $\sin^2 \alpha$, то получим данное выражение.
 \end{proof}
+\begin{statement}
+    $$\cos(\alpha - \beta)=\cos\alpha\cdot\cos\beta+\sin\alpha\cdot\sin\beta$$
+\end{statement}
+\begin{proof}
+    $ $\newline
+    \begin{center}
+        \begin{tikzpicture}
+            \coordinate (O) at (0,0);
+            \coordinate (M) at (150:3);
+            \coordinate (N) at (35:3);
+            \draw (O) -- (M) -- (N) -- cycle;
+            \draw (O) circle (3);
+            \draw (O) node[below left] {$O$};
+            \draw (M) node[above left] {$M$};
+            \draw (N) node[right] {$N$};
+            \coordinate (A) at (0:3);
+            \tkzLabelAngle(A,O,M){$\alpha$};
+            \tkzMarkAngle[size=.4cm](A,O,M);
+            \tkzLabelAngle(A,O,N){$\beta$};
+            \tkzMarkAngle[size=.55cm](A,O,N);
+            \tkzMarkAngle[size=.6cm](A,O,N);
+            \begin{scope}[rotate=35]
+                \draw[-{Stealth[scale = 1.5]}, dashed] (-4,0) -- (5, 0) node[below right] {$\cos \tilde{x}$};
+                \draw[-{Stealth[scale = 1.5]}, dashed] (0,-4) -- (0,5) node[left] {$\sin \tilde{x}$};
+            \end{scope}
+            \draw[-{Stealth[scale = 1.5]}] (-4,0) -- (5, 0) node[below] {$\cos x$};
+            \draw[-{Stealth[scale = 1.5]}] (0,-4) -- (0,5) node[left] {$\sin x$};
+            \foreach \point in {(O), (M), (N)}{
+    \fill \point circle (1.8pt);
+}
+        \end{tikzpicture}
+    \end{center}
+    По теореме Пифагора: 
+    $$MN=\sqrt{(\cos\alpha-\cos \beta)^2+(\sin\alpha - \sin \beta)^2}=\sqrt{2\cdot(1-\cos\alpha\cdot\cos\beta - \sin\alpha\cdot\sin\beta)^2}$$
+    Введем оси координат, повернутые относительно начальной на угол $\beta$, тогда:
+    $$MN=\sqrt{(\cos(\alpha-\beta)-1)^2+\sin^2(\alpha - \beta)}=\sqrt{2\cdot(1-\cos(\alpha - \beta))}$$
+    То есть $\sqrt{2\cdot(1-\cos\alpha\cdot\cos\beta - \sin\alpha\cdot\sin\beta)^2}=\sqrt{2\cdot(1-\cos(\alpha - \beta))}$, а значит $\cos(\alpha - \beta)=\cos\alpha\cdot\cos\beta+\sin\alpha\cdot\sin\beta$.
+    \end{proof}
+    \begin{statement}
+        $$\cos(\alpha+\beta)=\cos\alpha\cdot\cos\beta-\sin\alpha\cdot\sin\beta$$
+    \end{statement}
+    \begin{proof}
+        $$\cos(\alpha+\beta)=\cos(\alpha-(-\beta))=\cos\alpha\cdot\cos(-\beta)+\sin\alpha\cdot\sin(-\beta)=\cos\alpha\cdot\cos\beta-\sin\alpha\cdot\sin\beta$$
+    \end{proof}
+    \begin{statement}
+        $$\cos\left(\dfrac{\pi}{2}-\alpha\right)=\sin \alpha$$
+    \end{statement}
+    \begin{proof}
+        $$\cos\left(\dfrac{\pi}{2}-\alpha\right)=\cos\dfrac{\pi}{2}\cdot\cos\alpha+\sin\dfrac{\pi}{2}\cdot\sin\alpha=\sin\alpha$$
+    \end{proof}
+    \begin{statement}
+        $$\sin(\alpha+\beta)=\sin\alpha\cdot\cos\beta+\cos\alpha\cdot\sin\beta$$
+    \end{statement}
+    \begin{proof}
+        $$\sin(\alpha+\beta)=\cos\left(\left(\dfrac{\pi}{2}-\alpha\right)-\beta\right)=\cos\left(\dfrac{\pi}{2}-\alpha\right)\cdot \cos \beta+\sin\left(\dfrac{\pi}{2}-\alpha\right)\cdot \sin \beta=\sin\alpha\cdot\cos\beta+\cos\alpha\cdot\sin\beta$$
+    \end{proof}
+    \begin{statement}
+        $$\sin(\alpha-\beta)=\sin\alpha\cdot\cos\beta-\cos\alpha\cdot\sin\beta$$
+    \end{statement}
+    \begin{proof}
+        $$\sin(\alpha-\beta)=\sin(\alpha+(-\beta))=\sin\alpha\cdot\cos(-\beta)+\cos\alpha\cdot\sin(-\beta)=\sin\alpha\cdot\cos\beta-\cos\alpha\cdot\sin\beta$$
+    \end{proof}
+    \begin{statement}
+        $$\tg(\alpha+\beta)=\dfrac{\tg\alpha+\tg\beta}{1-\tg\alpha\cdot\tg\beta}$$
+    \end{statement}
+    \begin{proof}
+        $$\tg(\alpha+\beta)=\dfrac{\sin(\alpha+\beta)}{\cos(\alpha+\beta)}=\dfrac{\sin\alpha\cdot\cos\beta+\cos\alpha\cdot\sin\beta}{\cos\alpha\cdot\cos\beta-\sin\alpha\cdot\sin\beta}$$
+        Тогда если разделить все на $\cos\alpha\cdot\cos\beta$, получим:
+        $$\dfrac{\dfrac{\sin\alpha\cdot\cos\beta}{\cos\alpha\cdot\cos\beta}+\dfrac{\cos\alpha\cdot\sin\beta}{\cos\alpha\cdot\cos\beta}}{\dfrac{\cos\alpha\cdot\cos\beta}{\cos\alpha\cdot\cos\beta}-\dfrac{\sin\alpha\cdot\sin\beta}{\cos\alpha\cdot\cos\beta}}=\dfrac{\tg\alpha+\tg\beta}{1-\tg\alpha\cdot\tg\beta}$$
+    \end{proof}
+    \begin{statement}
+        $$\ctg(\alpha+\beta)=\dfrac{\ctg\alpha\cdot\ctg\beta-1}{\ctg\alpha+\ctg\beta}$$
+    \end{statement}
+    \begin{proof}
+        $$\tg(\alpha+\beta)=\dfrac{\cos(\alpha+\beta)}{\sin(\alpha+\beta)}=\dfrac{\cos\alpha\cdot\cos\beta-\sin\alpha\cdot\sin\beta}{\sin\alpha\cdot\cos\beta+\cos\alpha\cdot\sin\beta}$$
+        Тогда если разделить все на $\sin\alpha\cdot\sin\beta$, получим:
+        $$\dfrac{\dfrac{\cos\alpha\cdot\cos\beta}{\sin\alpha\cdot\sin\beta}-\dfrac{\sin\alpha\cdot\sin\beta}{\sin\alpha\cdot\sin\beta}}{\dfrac{\sin\alpha\cdot\cos\beta}{\sin\alpha\cdot\sin\beta}+\dfrac{\cos\alpha\cdot\sin\beta}{\sin\alpha\cdot\sin\beta}}=\dfrac{\ctg\alpha\cdot\ctg\beta-1}{\ctg\beta+\ctg\alpha}$$
+    \end{proof}
 \end{document}
