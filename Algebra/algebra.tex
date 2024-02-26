@@ -180,7 +180,7 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
 \begin{definition}
     Наибольшее $k$ такое, что $a_k\neq0$, называется степенью многочлена $f$:
     \begin{align*}
-        &k = deg\,f\\
+        &k = \deg\,f\\
         &a_0\text{ -- свободный член}\\
         &a_nx^n\text{ -- старший член}\\
         &a_n\text{ -- старший коэффициент}
@@ -200,19 +200,19 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
 \end{definition}
 
 \begin{statement}
-    Пусть $def\,f(x)\neq0,\,deg\,g(x)\neq0$, тогда:
+    Пусть $def\,f(x)\neq0,\,\deg\,g(x)\neq0$, тогда:
     \begin{align*}
-        &1.\,\,deg(f(x)+g(x))\leq \max {\{deg\,f,\,deg\,g\}}\\
+        &1.\,\,\deg(f(x)+g(x))\leq \max {\{\deg\,f,\,\deg\,g\}}\\
         &2.\,\,f(x)\cdot g(x) \neq0\\
-        &3.\,\,deg(f(x)\cdot g(x))=deg\,f(x)+deg\,g(x)
+        &3.\,\,\deg(f(x)\cdot g(x))=\deg\,f(x)+\deg\,g(x)
     \end{align*}
 \end{statement}
 \begin{proof}
     \begin{align*}
-    1.\,\,&\text{Пусть }deg\,f=def\,g=n\\
+    1.\,\,&\text{Пусть }\deg\,f=def\,g=n\\
     &f(x)+g(x)=(a_n+b_n)x^n+(a_{n-1}+b_{n-1})x^{n-1}+\ldots+(a_1+b_1)x+(a_0+b_0)\\
     &\text{Если }k>n \text{, то} a_k=0,\,b_k=0\text{, то есть }(a_k+b_k)=0\\\\
-    &\text{Пусть }deg\,f=n,\,deg\,g=m,\,m<n\\
+    &\text{Пусть }\deg\,f=n,\,\deg\,g=m,\,m<n\\
     &\text{Если }k>n\text{, то }a_k+b_k=0\text{, так как }b_{m+1}=b_{m+2}=\ldots=b_{n-1}=b_n=0\\
     &\text{Тогда }a_n+b_n=a_n\neq0\\\\
     2.\,\,&f(x)\cdot g(x)=\notequalto{a_nb_mx^{n+m}}{0}+\underbrace{\ldots\ldots}_{\text{степень}<n}
@@ -223,7 +223,7 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
     Многочлен $f(x)$ делится на многочлен $g(x)$, если существует такой многочлен $h(x)$, что $h(x)\cdot g(x)=f(x)$.
 \end{definition}
 \begin{statement}
-    Свякий многочлен $f(x)\neq0$ делится на самого себя.
+    Всякий многочлен $f(x)\neq0$ делится на самого себя.
 \end{statement}
 \begin{statement}
     Если $f(x)$ делится на $g(x)$, а $g(x)$ делится на $f(x)$, то $f(x)=c\cdot g(x),\,c\in K$.
@@ -508,7 +508,7 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
     Котангенсом угла в прямоугольном треугольнике называется отношение его прилежащего катета к противолежащему или косинуса этого угла к его синусу.
 \end{definition}
 \begin{definition}
-    Окружность единичного радиуса:
+    Окружность единичного радиуса (тригонометрическая окружность):
     \begin{center}
         \begin{tikzpicture}
             \coordinate (O) at (0,0);
@@ -644,7 +644,7 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
         $$\ctg(\alpha+\beta)=\dfrac{\ctg\alpha\cdot\ctg\beta-1}{\ctg\alpha+\ctg\beta}$$
     \end{statement}
     \begin{proof}
-        $$\tg(\alpha+\beta)=\dfrac{\cos(\alpha+\beta)}{\sin(\alpha+\beta)}=\dfrac{\cos\alpha\cdot\cos\beta-\sin\alpha\cdot\sin\beta}{\sin\alpha\cdot\cos\beta+\cos\alpha\cdot\sin\beta}$$
+        $$\ctg(\alpha+\beta)=\dfrac{\cos(\alpha+\beta)}{\sin(\alpha+\beta)}=\dfrac{\cos\alpha\cdot\cos\beta-\sin\alpha\cdot\sin\beta}{\sin\alpha\cdot\cos\beta+\cos\alpha\cdot\sin\beta}$$
         Тогда если разделить все на $\sin\alpha\cdot\sin\beta$, получим:
         $$\dfrac{\dfrac{\cos\alpha\cdot\cos\beta}{\sin\alpha\cdot\sin\beta}-\dfrac{\sin\alpha\cdot\sin\beta}{\sin\alpha\cdot\sin\beta}}{\dfrac{\sin\alpha\cdot\cos\beta}{\sin\alpha\cdot\sin\beta}+\dfrac{\cos\alpha\cdot\sin\beta}{\sin\alpha\cdot\sin\beta}}=\dfrac{\ctg\alpha\cdot\ctg\beta-1}{\ctg\beta+\ctg\alpha}$$
     \end{proof}
