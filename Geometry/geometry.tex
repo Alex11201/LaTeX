@@ -1312,4 +1312,47 @@
         \end{center}
         Возьмем две произвольные точки $A$ и $B$, лежащие на $\omega_1$ и построим их образы при инверсии $\varphi$: $\varphi(A)$ и $\varphi(B)$ соответственно. По определению инверсии $OA\cdot O\varphi(A)=R^2=OB\cdot O\varphi(B)\Longrightarrow \dfrac{OA}{OB}=\dfrac{O\varphi(A)}{O\varphi(B)}$, а значит $O$ -- центр гомотетии, переводящей $\omega_1$ в $\omega_2$.
     \end{proof}
+    \section{Полезные факты}
+    \begin{lemma}
+        Пусть $C_0$ и $A_0$ -- произвольные точки на сторонах $AB$ и $BC$ треугольника $ABC$, $B_1$ -- середина дуги $ABC$, описанной около $\triangle ABC$ окружности, тогда $BB_1C_0A_0$ является вписанным тогда и только тогда, когда $AC_0=CA_0$. 
+    \end{lemma}
+    \begin{proof}
+        $ $\newline
+        \begin{center}
+            \begin{tikzpicture}
+                \coordinate (A) at (-140:4);
+                \coordinate (B) at (55:4);
+                \coordinate (C) at (-40:4);
+                \coordinate (B1) at (90:4);
+                \coordinate (A0) at ($(B)!0.3!(C)$);
+                \tkzDefCircle[circum](A0,B1,B)
+            \tkzGetPoint{K} \tkzGetLength{rayon}
+            \draw[name path = line1] (K) circle(\rayon);
+                \draw (B) -- (C) -- (A) -- cycle;
+                \draw[name path = line2] (A) -- ($(A)!0.9!(B)$);
+                \draw[name intersections={of=line1 and line2}] (intersection-1) node[below] {$C_0$};
+                \coordinate (C0) at (intersection-1);
+                \draw (0,0) circle(4);
+                \draw[dotted, line width = 0.2mm] (B1) -- (C0) -- (A0) -- (B1) -- (B);
+                \draw[dashed] (A) -- (B1) -- (C);
+                \draw[dashed] (B1) -- (-90:4);
+                \coordinate (Mb) at ($(A)!0.5!(C)$);
+                \draw (A) node[below left] {$A$};
+                \draw (B) node[above right] {$B$};
+                \draw (C) node[below right] {$C$};
+                \draw (Mb) node[below right] {$M_b$};
+                \draw (A0) node[below right] {$A_0$};
+                \draw (B1) node[above] {$B_1$};
+                \tkzMarkRightAngle(B1,Mb,A);
+                \tkzMarkSegment[mark=|](A,C0);
+                \tkzMarkSegment[mark=|](C,A0);
+        \foreach \point in {(A), (B), (C), (B1), (A0), (C0), (Mb)}{
+    \fill \point circle (1.8pt);
+}
+        \end{tikzpicture}
+        \end{center}
+        Пусть $AC_0=CA_0$, докажем вписанность $BB_1C_0A_0$. Опустим перпендикуляр с основанием $M_b$ из $B_1$ на $AC$, тогда в силу того, что $B_1$ -- середина дуги $ABC$, $B_1M_b$ -- серединный перпендикуляр к $AC$. Тогда $AB_1=B_1C$. Рассмотрим $\triangle AB_1C_0$ и $\triangle CB_1A_0$: $\angle B_1AB=\angle B_1CB$, так как они опираются на одну дугу $B_1B$, при этом $AC_0=CA_0$ по условию и $AB_1=B_1C$. То есть $\triangle AB_1C_0=\triangle CB_1A_0$, а значит равны их внешние углы: $\angle B_1C_0B=\angle B_1A_0B$, тогда $BB_1C_0A_0$ -- вписанный по признаку.\bigskip
+
+        Докажем, что $AC_0=CA_0$ при условии вписанности $BB_1C_0A_0$. Аналогично первому доказательству, $\angle B_1AB=\angle B_1CB$ и в силу вписанности $\angle B_1C_0B=\angle B_1A_0B$, при этом $AB_1=B_1C$, а значит $\triangle AB_1C_0=\triangle CB_1A_0$ по двум углам и стороне, то есть $AC_0=CA_0$.
+    \end{proof}
 \end{document}
