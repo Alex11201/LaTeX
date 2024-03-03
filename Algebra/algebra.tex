@@ -48,6 +48,7 @@
 \usepackage{hyperref}
 \usepackage{multirow}
 \usepackage{booktabs}
+\usepackage{physics}
 
 %Мат команды
 \newcommand{\N}{\mathbb{N}}
@@ -59,9 +60,6 @@
 \newcommand{\equalto}[2]{\underset{\scriptstyle\overset{\mkern4mu\verteq}{#2}}{#1}}
 \newcommand{\vertneq}{\rotatebox{90}{$\,\neq$}}
 \newcommand{\notequalto}[2]{\underset{\scriptstyle\overset{\mkern4mu\vertneq}{#2}}{#1}}
-\DeclareRobustCommand{\divby}{%
-  \mathrel{\vbox{\baselineskip.65ex\lineskiplimit0pt\hbox{.}\hbox{.}\hbox{.}}}%
-}
 \makeatletter
 \newenvironment{sqcases}{%
   \matrix@check\sqcases\env@sqcases
@@ -507,50 +505,6 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
 \begin{definition}
     Котангенсом угла в прямоугольном треугольнике называется отношение его прилежащего катета к противолежащему или косинуса этого угла к его синусу.
 \end{definition}
-\begin{definition}
-    Окружность единичного радиуса (тригонометрическая окружность):
-    \begin{center}
-        \begin{tikzpicture}
-            \coordinate (O) at (0,0);
-            \coordinate (A) at (2,1.5);
-            \coordinate (B) at (2,0);
-            \draw (O) circle (2);
-            \draw (O) -- (A);
-            \draw (0,2) node[above left] {$1$};
-            \draw (0,-2) node[below left] {$-1$};
-            \draw (-2,0) node[below left] {$-1$};
-            \draw (2,0) node[below right] {$1$};
-            \tkzLabelAngle(B,O,A){$\alpha$};
-            \tkzMarkAngle[size=.55cm](B,O,A);
-            \draw (O) node[below left] {$O$};
-            \draw[-{Stealth[scale = 1.5]}] (-3,0) -- (5, 0) node[below] {$\cos \alpha$};
-            \draw[-{Stealth[scale = 1.5]}] (0,-3) -- (0,5) node[left] {$\sin \alpha$};
-            \draw[-{Stealth[scale = 1.5]}] (-3,2) -- (5, 2) node[below] {$\ctg \alpha$};
-            \draw[-{Stealth[scale = 1.5]}] (2,-3) -- (2,5) node[left] {$\tg \alpha$};
-            \foreach \point in {(O), (A), (0,2), (0,-2), (-2,0), (2,0)}{
-    \fill \point circle (1.8pt);
-}
-        \end{tikzpicture}
-    \end{center}
-\end{definition}
-\begin{definition}
-    $ $\newline
-    \begin{center}
-        Табличные углы\\
-        $ $\newline
-        \def\arraystretch{2.3}
-        \begin{tabular}{cccccc}
-            \toprule
-            $\alpha$&$0$&$\dfrac{\pi}{6}$&$\dfrac{\pi}{4}$&$\dfrac{\pi}{3}$&$\dfrac{\pi}{2}$\\
-            \midrule
-            $\sin \alpha$&0&$\dfrac{1}{2}$&$\dfrac{\sqrt{2}}{2}$&$\dfrac{\sqrt{3}}{2}$&$1$\\
-            $\cos \alpha$&1&$\dfrac{\sqrt{3}}{2}$&$\dfrac{\sqrt{2}}{2}$&$\dfrac{1}{2}$&0\\
-            $\tg \alpha$&0&$\dfrac{\sqrt{3}}{3}$&1&$\sqrt{3}$&--\\
-            $\ctg \alpha$&--&$\sqrt{3}$&1&$\dfrac{\sqrt{3}}{3}$&0\\
-            \bottomrule
-           \end{tabular}
-    \end{center}
-\end{definition}
 \begin{statement}
     $$\sin^2 \alpha + \cos^2 \alpha=1$$
 \end{statement}
@@ -641,6 +595,14 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
         $$\dfrac{\dfrac{\sin\alpha\cdot\cos\beta}{\cos\alpha\cdot\cos\beta}+\dfrac{\cos\alpha\cdot\sin\beta}{\cos\alpha\cdot\cos\beta}}{\dfrac{\cos\alpha\cdot\cos\beta}{\cos\alpha\cdot\cos\beta}-\dfrac{\sin\alpha\cdot\sin\beta}{\cos\alpha\cdot\cos\beta}}=\dfrac{\tg\alpha+\tg\beta}{1-\tg\alpha\cdot\tg\beta}$$
     \end{proof}
     \begin{statement}
+        $$\tg(\alpha-\beta)=\dfrac{\tg\alpha-\tg\beta}{1+\tg\alpha\cdot\tg\beta}$$
+    \end{statement}
+    \begin{proof}
+        $$\tg(\alpha-\beta)=\dfrac{\sin(\alpha-\beta)}{\cos(\alpha-\beta)}=\dfrac{\sin\alpha\cdot\cos\beta-\cos\alpha\cdot\sin\beta}{\cos\alpha\cdot\cos\beta+\sin\alpha\cdot\sin\beta}$$
+        Тогда если разделить все на $\cos\alpha\cdot\cos\beta$, получим:
+        $$\dfrac{\dfrac{\sin\alpha\cdot\cos\beta}{\cos\alpha\cdot\cos\beta}-\dfrac{\cos\alpha\cdot\sin\beta}{\cos\alpha\cdot\cos\beta}}{\dfrac{\cos\alpha\cdot\cos\beta}{\cos\alpha\cdot\cos\beta}+\dfrac{\sin\alpha\cdot\sin\beta}{\cos\alpha\cdot\cos\beta}}=\dfrac{\tg\alpha-\tg\beta}{1+\tg\alpha\cdot\tg\beta}$$
+    \end{proof}
+    \begin{statement}
         $$\ctg(\alpha+\beta)=\dfrac{\ctg\alpha\cdot\ctg\beta-1}{\ctg\alpha+\ctg\beta}$$
     \end{statement}
     \begin{proof}
@@ -648,4 +610,117 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
         Тогда если разделить все на $\sin\alpha\cdot\sin\beta$, получим:
         $$\dfrac{\dfrac{\cos\alpha\cdot\cos\beta}{\sin\alpha\cdot\sin\beta}-\dfrac{\sin\alpha\cdot\sin\beta}{\sin\alpha\cdot\sin\beta}}{\dfrac{\sin\alpha\cdot\cos\beta}{\sin\alpha\cdot\sin\beta}+\dfrac{\cos\alpha\cdot\sin\beta}{\sin\alpha\cdot\sin\beta}}=\dfrac{\ctg\alpha\cdot\ctg\beta-1}{\ctg\beta+\ctg\alpha}$$
     \end{proof}
+    \begin{statement}
+        $$\ctg(\alpha-\beta)=\dfrac{\ctg\alpha\cdot\ctg\beta+1}{\ctg\alpha-\ctg\beta}$$
+    \end{statement}
+    \begin{proof}
+        $$\ctg(\alpha-\beta)=\dfrac{\cos(\alpha-\beta)}{\sin(\alpha-\beta)}=\dfrac{\cos\alpha\cdot\cos\beta+\sin\alpha\cdot\sin\beta}{\sin\alpha\cdot\cos\beta-\cos\alpha\cdot\sin\beta}$$
+        Тогда если разделить все на $\sin\alpha\cdot\sin\beta$, получим:
+        $$\dfrac{\dfrac{\cos\alpha\cdot\cos\beta}{\sin\alpha\cdot\sin\beta}+\dfrac{\sin\alpha\cdot\sin\beta}{\sin\alpha\cdot\sin\beta}}{\dfrac{\sin\alpha\cdot\cos\beta}{\sin\alpha\cdot\sin\beta}-\dfrac{\cos\alpha\cdot\sin\beta}{\sin\alpha\cdot\sin\beta}}=\dfrac{\ctg\alpha\cdot\ctg\beta+1}{\ctg\beta-\ctg\alpha}$$
+    \end{proof}
+    \begin{statement}
+        $$\cos (2\alpha)=2\cos^2\alpha-1=1-2\sin^2\alpha$$
+    \end{statement}
+    \begin{proof}
+        $$\cos (2\alpha)=\cos(\alpha + \alpha)=\cos^2\alpha-\sin^2\alpha=2\cos^2\alpha-1=1-2\sin^2\alpha$$
+    \end{proof}
+    \begin{statement}
+        $$\sin(2\alpha)=2\cdot \sin \alpha \cdot \cos \alpha$$
+    \end{statement}
+    \begin{proof}
+        $$\sin(2\alpha)=\sin(\alpha+\alpha)=2\cdot \sin \alpha \cdot \cos \alpha$$
+    \end{proof}
+    \begin{statement}
+        $$\tg(2\alpha)=\dfrac{2\tg\alpha}{1-\tg^2\alpha}$$
+    \end{statement}
+    \begin{proof}
+        $$\tg(2\alpha)=\tg(\alpha+\alpha)=\dfrac{\tg\alpha+\tg\alpha}{1-\tg\alpha\cdot\tg\alpha}=\dfrac{2\tg\alpha}{1-\tg^2\alpha}$$
+    \end{proof}
+    \begin{statement}
+        $$\ctg(2\alpha)=\dfrac{\ctg^2\alpha-1}{2\ctg\alpha}$$
+    \end{statement}
+    \begin{proof}
+        $$\ctg(2\alpha)=\dfrac{\ctg\alpha\cdot\ctg\alpha-1}{\ctg\alpha+\ctg\alpha}=\dfrac{\ctg^2\alpha-1}{2\ctg\alpha}$$
+    \end{proof}
+    \begin{statement}
+        $$\cos(3\alpha)=4\cos^3\alpha-3\cos\alpha$$
+    \end{statement}
+    \begin{proof}
+        \begin{align*}
+            &\cos(3\alpha)=\\
+            =&\cos(2\alpha+\alpha)=\\
+            =&\cos(2\alpha)\cdot\cos\alpha-\sin(2\alpha)\cdot\sin\alpha=\\
+            =&(2\cos^2\alpha-1)\cdot\cos\alpha-2\cdot\sin\alpha\cdot\cos\alpha\cdot\sin\alpha=\\
+            =&2\cos^3\alpha-\cos\alpha\cdot(1+2\cdot\sin^2\alpha)=\\
+            =&2\cos^3\alpha-\cos\alpha\cdot(3-2\cos^2\alpha)=\\
+            =&4\cos^3\alpha-3\cos\alpha
+        \end{align*}
+    \end{proof}
+    \begin{statement}
+        $$\sin(3\alpha)=3\sin\alpha-4\sin^3\alpha$$
+    \end{statement}
+    \begin{proof}
+        \begin{align*}
+            &\sin(3\alpha)=\\
+            =&\sin(2\alpha+\alpha)=\\
+            =&\sin(2\alpha)\cdot\cos\alpha+\cos(2\alpha)\cdot\sin\alpha=\\
+            =&2\cdot\sin\alpha\cdot\cos\alpha\cdot\cos\alpha+(1-2\sin^2\alpha)\cdot\sin\alpha=\\
+            =&\sin\alpha\cdot(2\cos^2\alpha+1)-2\sin^3\alpha=\\
+            =&\sin\alpha\cdot(3-2\sin^2\alpha)-2\sin^3\alpha=\\
+            =&3\sin\alpha-4\sin^3\alpha
+        \end{align*}
+    \end{proof}
+    \begin{statement}
+        $$\cos^2\alpha=\dfrac{1+\cos(2\alpha)}{2}$$
+    \end{statement}
+    \begin{proof}
+        $$\cos (2\alpha)=2\cos^2\alpha-1\Longleftrightarrow \cos^2\alpha=\dfrac{1+\cos(2\alpha)}{2}$$
+    \end{proof}
+    \begin{statement}
+        $$\sin^2\alpha=\dfrac{1-\cos(2\alpha)}{2}$$
+    \end{statement}
+    \begin{proof}
+        $$\sin^2\alpha=1-\cos^2\alpha=1-\dfrac{1+\cos(2\alpha)}{2}=\dfrac{1-\cos(2\alpha)}{2}$$
+    \end{proof}
+    \section{Комплексные числа}
+    \begin{definition}
+        Мнимой единицей называется такое число $i$, что $i^2=-1$.
+    \end{definition}
+    \begin{definition}
+        Комплексным числом называется выражение вида $z=a-bi$.
+    \end{definition}
+    \begin{definition}
+        Модулем комплексного числа называется выражение вида $|z|=r=\sqrt{z\cdot\bar{z}},$ $\bar{z}=a+bi$, то есть $|z|=\sqrt{a^2+b^2}$.
+    \end{definition}
+    \begin{definition}
+        Комплексная плоскость:
+        \begin{center}
+            \begin{tikzpicture}[scale=1.2]
+                \coordinate (O) at (0,0);
+                \coordinate (a) at (3,0);
+                \coordinate (b) at (0,2);
+                \coordinate (z) at (3,2);
+                \draw[-{Stealth[scale = 1.5]}] (-1.5,0) -- (5, 0) node[right] {$\Re z$};
+                \draw[-{Stealth[scale = 1.5]}] (0,-1) -- (0, 4) node[above] {$\Im z$};
+                \draw (O) -- (z);
+                \draw[dashed] (a) -- (z) -- (b);
+                \draw (O) node[below left] {$O$};
+                \draw (a) node[below] {$a$};
+                \draw (b) node[left] {$b$};
+                \draw (z) node[above right] {$z$};
+                \draw ($(O)!0.5!(z)$) node[above left] {$r$};
+                \draw (3.5,3) node[above] {$z=r\cdot(\cos\varphi\cdot i\sin\varphi)$};
+                \tkzLabelAngle(a,O,z){$\varphi$};
+            \tkzMarkAngle[size=.55cm](a,O,z);
+        \foreach \point in {(O), (a), (b), (z)}{
+    \fill \point circle (1.5pt);
+}
+        \end{tikzpicture}
+        \end{center}
+    \end{definition}
+    \subsection{Матрицы поворота}
+    \begin{definition}
+        Матрицей поворота на угол $\alpha$ называется:
+        $$R_\alpha=\left({\cos \alpha \atop \sin \alpha}\,\,\, {-\sin \alpha \atop \cos \alpha}\right)=\cos \alpha \cdot \left({1 \atop 0}\,\,\, {0 \atop 1}\right)+\sin \alpha \cdot \left({0 \atop 1}\,\,\, {-1 \atop 0}\right)=\cos \alpha\cdot E+\sin\alpha\cdot I$$
+    \end{definition}
 \end{document}
