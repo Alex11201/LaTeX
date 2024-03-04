@@ -611,24 +611,24 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
         $$\dfrac{\dfrac{\cos\alpha\cdot\cos\beta}{\sin\alpha\cdot\sin\beta}-\dfrac{\sin\alpha\cdot\sin\beta}{\sin\alpha\cdot\sin\beta}}{\dfrac{\sin\alpha\cdot\cos\beta}{\sin\alpha\cdot\sin\beta}+\dfrac{\cos\alpha\cdot\sin\beta}{\sin\alpha\cdot\sin\beta}}=\dfrac{\ctg\alpha\cdot\ctg\beta-1}{\ctg\beta+\ctg\alpha}$$
     \end{proof}
     \begin{statement}
-        $$\ctg(\alpha-\beta)=\dfrac{\ctg\alpha\cdot\ctg\beta+1}{\ctg\alpha-\ctg\beta}$$
+        $$\ctg(\alpha-\beta)=-\dfrac{\ctg\alpha\cdot\ctg\beta+1}{\ctg\alpha-\ctg\beta}$$
     \end{statement}
     \begin{proof}
         $$\ctg(\alpha-\beta)=\dfrac{\cos(\alpha-\beta)}{\sin(\alpha-\beta)}=\dfrac{\cos\alpha\cdot\cos\beta+\sin\alpha\cdot\sin\beta}{\sin\alpha\cdot\cos\beta-\cos\alpha\cdot\sin\beta}$$
         Тогда если разделить все на $\sin\alpha\cdot\sin\beta$, получим:
-        $$\dfrac{\dfrac{\cos\alpha\cdot\cos\beta}{\sin\alpha\cdot\sin\beta}+\dfrac{\sin\alpha\cdot\sin\beta}{\sin\alpha\cdot\sin\beta}}{\dfrac{\sin\alpha\cdot\cos\beta}{\sin\alpha\cdot\sin\beta}-\dfrac{\cos\alpha\cdot\sin\beta}{\sin\alpha\cdot\sin\beta}}=\dfrac{\ctg\alpha\cdot\ctg\beta+1}{\ctg\beta-\ctg\alpha}$$
+        $$\dfrac{\dfrac{\cos\alpha\cdot\cos\beta}{\sin\alpha\cdot\sin\beta}+\dfrac{\sin\alpha\cdot\sin\beta}{\sin\alpha\cdot\sin\beta}}{\dfrac{\sin\alpha\cdot\cos\beta}{\sin\alpha\cdot\sin\beta}-\dfrac{\cos\alpha\cdot\sin\beta}{\sin\alpha\cdot\sin\beta}}=\dfrac{\ctg\alpha\cdot\ctg\beta+1}{\ctg\beta-\ctg\alpha}=-\dfrac{\ctg\alpha\cdot\ctg\beta+1}{\ctg\alpha-\ctg\beta}$$
     \end{proof}
     \begin{statement}
-        $$\cos (2\alpha)=2\cos^2\alpha-1=1-2\sin^2\alpha$$
+        $$\cos (2\alpha)=\cos^2\alpha-\sin^2\alpha=2\cos^2\alpha-1=1-2\sin^2\alpha$$
     \end{statement}
     \begin{proof}
         $$\cos (2\alpha)=\cos(\alpha + \alpha)=\cos^2\alpha-\sin^2\alpha=2\cos^2\alpha-1=1-2\sin^2\alpha$$
     \end{proof}
     \begin{statement}
-        $$\sin(2\alpha)=2\cdot \sin \alpha \cdot \cos \alpha$$
+        $$\sin(2\alpha)=2 \sin \alpha \cdot \cos \alpha$$
     \end{statement}
     \begin{proof}
-        $$\sin(2\alpha)=\sin(\alpha+\alpha)=2\cdot \sin \alpha \cdot \cos \alpha$$
+        $$\sin(2\alpha)=\sin(\alpha+\alpha)=2 \sin \alpha \cdot \cos \alpha$$
     \end{proof}
     \begin{statement}
         $$\tg(2\alpha)=\dfrac{2\tg\alpha}{1-\tg^2\alpha}$$
@@ -650,8 +650,8 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
             &\cos(3\alpha)=\\
             =&\cos(2\alpha+\alpha)=\\
             =&\cos(2\alpha)\cdot\cos\alpha-\sin(2\alpha)\cdot\sin\alpha=\\
-            =&(2\cos^2\alpha-1)\cdot\cos\alpha-2\cdot\sin\alpha\cdot\cos\alpha\cdot\sin\alpha=\\
-            =&2\cos^3\alpha-\cos\alpha\cdot(1+2\cdot\sin^2\alpha)=\\
+            =&(2\cos^2\alpha-1)\cdot\cos\alpha-2\sin\alpha\cdot\cos\alpha\cdot\sin\alpha=\\
+            =&2\cos^3\alpha-\cos\alpha\cdot(1+2\sin^2\alpha)=\\
             =&2\cos^3\alpha-\cos\alpha\cdot(3-2\cos^2\alpha)=\\
             =&4\cos^3\alpha-3\cos\alpha
         \end{align*}
@@ -664,7 +664,7 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
             &\sin(3\alpha)=\\
             =&\sin(2\alpha+\alpha)=\\
             =&\sin(2\alpha)\cdot\cos\alpha+\cos(2\alpha)\cdot\sin\alpha=\\
-            =&2\cdot\sin\alpha\cdot\cos\alpha\cdot\cos\alpha+(1-2\sin^2\alpha)\cdot\sin\alpha=\\
+            =&2\sin\alpha\cdot\cos\alpha\cdot\cos\alpha+(1-2\sin^2\alpha)\cdot\sin\alpha=\\
             =&\sin\alpha\cdot(2\cos^2\alpha+1)-2\sin^3\alpha=\\
             =&\sin\alpha\cdot(3-2\sin^2\alpha)-2\sin^3\alpha=\\
             =&3\sin\alpha-4\sin^3\alpha
@@ -682,6 +682,106 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
     \begin{proof}
         $$\sin^2\alpha=1-\cos^2\alpha=1-\dfrac{1+\cos(2\alpha)}{2}=\dfrac{1-\cos(2\alpha)}{2}$$
     \end{proof}
+    \begin{statement}
+        $$\cos\alpha+\cos\beta=2\cos\left(\dfrac{\alpha+\beta}{2}\right)\cdot\cos\left(\dfrac{\alpha-\beta}{2}\right)$$
+    \end{statement}
+    \begin{proof}
+        \begin{align*}
+            &\cos\alpha+\cos\beta=\\
+            =&\cos\left(\dfrac{\alpha+\beta}{2}+\dfrac{\alpha-\beta}{2}\right)+\cos\left(\dfrac{\alpha+\beta}{2}-\dfrac{\alpha-\beta}{2}\right)=\\
+            =&\cos\left(\dfrac{\alpha+\beta}{2}\right)\cdot\cos\left(\dfrac{\alpha-\beta}{2}\right)-\sin\left(\dfrac{\alpha+\beta}{2}\right)\cdot\sin\left(\dfrac{\alpha-\beta}{2}\right)+\\
+            +&\cos\left(\dfrac{\alpha+\beta}{2}\right)\cdot\cos\left(\dfrac{\alpha-\beta}{2}\right)+\sin\left(\dfrac{\alpha+\beta}{2}\right)\cdot\sin\left(\dfrac{\alpha-\beta}{2}\right)=\\
+            =&2\cos\left(\dfrac{\alpha+\beta}{2}\right)\cdot\cos\left(\dfrac{\alpha-\beta}{2}\right)
+        \end{align*}
+    \end{proof}
+    \begin{statement}
+        $$\cos\alpha-\cos\beta=-2\sin\left(\dfrac{\alpha+\beta}{2}\right)\cdot\sin\left(\dfrac{\alpha-\beta}{2}\right)$$
+    \end{statement}
+    \begin{proof}
+        \begin{align*}
+            &\cos\alpha+\cos\beta=\\
+            =&\cos\left(\dfrac{\alpha+\beta}{2}+\dfrac{\alpha-\beta}{2}\right)-\cos\left(\dfrac{\alpha+\beta}{2}-\dfrac{\alpha-\beta}{2}\right)=\\
+            =&\cos\left(\dfrac{\alpha+\beta}{2}\right)\cdot\cos\left(\dfrac{\alpha-\beta}{2}\right)-\sin\left(\dfrac{\alpha+\beta}{2}\right)\cdot\sin\left(\dfrac{\alpha-\beta}{2}\right)-\\
+            -&\cos\left(\dfrac{\alpha+\beta}{2}\right)\cdot\cos\left(\dfrac{\alpha-\beta}{2}\right)-\sin\left(\dfrac{\alpha+\beta}{2}\right)\cdot\sin\left(\dfrac{\alpha-\beta}{2}\right)=\\
+            =&-2\sin\left(\dfrac{\alpha+\beta}{2}\right)\cdot\sin\left(\dfrac{\alpha-\beta}{2}\right)
+        \end{align*}
+    \end{proof}
+    \begin{statement}
+        $$\sin\alpha+\sin\beta=2\sin\left(\dfrac{\alpha+\beta}{2}\right)\cdot\cos\left(\dfrac{\alpha-\beta}{2}\right)$$
+    \end{statement}
+    \begin{proof}
+        \begin{align*}
+            &\sin\alpha+\sin\beta=\\
+            =&\sin\left(\dfrac{\alpha+\beta}{2}+\dfrac{\alpha-\beta}{2}\right)+\sin\left(\dfrac{\alpha+\beta}{2}-\dfrac{\alpha-\beta}{2}\right)=\\
+            =&\sin\left(\dfrac{\alpha+\beta}{2}\right)\cdot\cos\left(\dfrac{\alpha-\beta}{2}\right)+\cos\left(\dfrac{\alpha+\beta}{2}\right)\cdot\sin\left(\dfrac{\alpha-\beta}{2}\right)+\\
+            +&\sin\left(\dfrac{\alpha+\beta}{2}\right)\cdot\cos\left(\dfrac{\alpha-\beta}{2}\right)-\cos\left(\dfrac{\alpha+\beta}{2}\right)\cdot\sin\left(\dfrac{\alpha-\beta}{2}\right)=\\
+            =&2\sin\left(\dfrac{\alpha+\beta}{2}\right)\cdot\cos\left(\dfrac{\alpha-\beta}{2}\right)
+        \end{align*}
+    \end{proof}
+    \begin{statement}
+        $$\sin\alpha-\sin\beta=2\cos\left(\dfrac{\alpha+\beta}{2}\right)\cdot\sin\left(\dfrac{\alpha-\beta}{2}\right)$$
+    \end{statement}
+    \begin{proof}
+        \begin{align*}
+            &\sin\alpha-\sin\beta=\\
+            =&\sin\left(\dfrac{\alpha+\beta}{2}+\dfrac{\alpha-\beta}{2}\right)-\sin\left(\dfrac{\alpha+\beta}{2}-\dfrac{\alpha-\beta}{2}\right)=\\
+            =&\sin\left(\dfrac{\alpha+\beta}{2}\right)\cdot\cos\left(\dfrac{\alpha-\beta}{2}\right)+\cos\left(\dfrac{\alpha+\beta}{2}\right)\cdot\sin\left(\dfrac{\alpha-\beta}{2}\right)+\\
+            -&\sin\left(\dfrac{\alpha+\beta}{2}\right)\cdot\cos\left(\dfrac{\alpha-\beta}{2}\right)+\cos\left(\dfrac{\alpha+\beta}{2}\right)\cdot\sin\left(\dfrac{\alpha-\beta}{2}\right)=\\
+            =&2\cos\left(\dfrac{\alpha+\beta}{2}\right)\cdot\sin\left(\dfrac{\alpha-\beta}{2}\right)
+        \end{align*}
+    \end{proof}
+    \begin{statement}
+        $$\tg\alpha+\tg\beta=\dfrac{\sin(\alpha+\beta)}{\cos\alpha\cdot\cos\beta}$$
+    \end{statement}
+    \begin{proof}
+        $$\tg\alpha+\tg\beta=\dfrac{\sin\alpha}{\cos\alpha}+\dfrac{\sin\beta}{\cos\beta}=\dfrac{\sin\alpha\cdot\cos\beta+\cos\alpha\cdot\sin\beta}{\cos\alpha\cdot\cos\beta}=\dfrac{\sin(\alpha+\beta)}{\cos\alpha\cdot\cos\beta}$$
+    \end{proof}
+    \begin{statement}
+        $$\tg\alpha-\tg\beta=\dfrac{\sin(\alpha-\beta)}{\cos\alpha\cdot\cos\beta}$$
+    \end{statement}
+    \begin{proof}
+        $$\tg\alpha-\tg\beta=\dfrac{\sin\alpha}{\cos\alpha}-\dfrac{\sin\beta}{\cos\beta}=\dfrac{\sin\alpha\cdot\cos\beta-\cos\alpha\cdot\sin\beta}{\cos\alpha\cdot\cos\beta}=\dfrac{\sin(\alpha-\beta)}{\cos\alpha\cdot\cos\beta}$$
+    \end{proof}
+    \begin{statement}
+        $$\ctg\alpha+\ctg\beta=\dfrac{\sin(\alpha+\beta)}{\sin\alpha\cdot\sin\beta}$$
+    \end{statement}
+    \begin{proof}
+        $$\ctg\alpha+\ctg\beta=\dfrac{\cos\alpha}{\sin\alpha}+\dfrac{\cos\beta}{\sin\beta}=\dfrac{\cos\alpha\cdot\sin\beta+\sin\alpha\cdot\cos\beta}{\sin\alpha\cdot\sin\beta}=\dfrac{\sin(\alpha+\beta)}{\sin\alpha\cdot\sin\beta}$$
+    \end{proof}
+    \begin{statement}
+        $$\ctg\alpha-\ctg\beta=-\dfrac{\sin(\alpha-\beta)}{\sin\alpha\cdot\sin\beta}$$
+    \end{statement}
+    \begin{proof}
+        $$\ctg\alpha-\ctg\beta=\dfrac{\cos\alpha}{\sin\alpha}-\dfrac{\cos\beta}{\sin\beta}=\dfrac{\cos\alpha\cdot\sin\beta-\sin\alpha\cdot\cos\beta}{\sin\alpha\cdot\sin\beta}=\dfrac{\sin(\beta-\alpha)}{\sin\alpha\cdot\sin\beta}$$
+    \end{proof}
+    \begin{statement}
+        $$\cos\alpha\cdot\cos\beta=\dfrac{\cos(\alpha+\beta)+\cos(\alpha-\beta)}{2}$$
+    \end{statement}
+    \begin{proof}
+        Пусть $\tilde{\alpha} = \dfrac{\alpha+\beta}{2}$, $\tilde{\beta} = \dfrac{\alpha-\beta}{2}$, тогда из утверждения 7.21:
+        $$2\cos\tilde{\alpha}\cdot\cos\tilde{\beta}=\cos(\tilde{\alpha}+\tilde{\beta})+\cos(\tilde{\alpha}-\tilde{\beta})\Longleftrightarrow \cos\tilde{\alpha}\cdot\cos\tilde{\beta}=\dfrac{\cos(\tilde{\alpha}+\tilde{\beta})+\cos(\tilde{\alpha}-\tilde{\beta})}{2}$$
+    \end{proof}
+    \begin{statement}
+        $$\sin\alpha\cdot\sin\beta=-\dfrac{\cos(\alpha+\beta)-\cos(\alpha-\beta)}{2}$$
+    \end{statement}
+    \begin{proof}
+        Пусть $\tilde{\alpha} = \dfrac{\alpha+\beta}{2}$, $\tilde{\beta} = \dfrac{\alpha-\beta}{2}$, тогда из утверждения 7.22:
+        $$-2\sin\tilde{\alpha}\cdot\sin\tilde{\beta}=\cos(\tilde{\alpha}+\tilde{\beta})-\cos(\tilde{\alpha}-\tilde{\beta})\Longleftrightarrow \sin\tilde{\alpha}\cdot\sin\tilde{\beta}=-\dfrac{\cos(\tilde{\alpha}+\tilde{\beta})-\cos(\tilde{\alpha}-\tilde{\beta})}{2}$$
+    \end{proof}
+    \begin{statement}
+        $$\sin\alpha\cdot\cos\beta=\dfrac{\sin(\alpha+\beta)+\cos(\alpha-\beta)}{2}$$
+    \end{statement}
+    \begin{proof}
+        Пусть $\tilde{\alpha} = \dfrac{\alpha+\beta}{2}$, $\tilde{\beta} = \dfrac{\alpha-\beta}{2}$, тогда из утверждения 7.23:
+        $$2\sin\tilde{\alpha}\cdot\sin\tilde{\beta}=\sin(\tilde{\alpha}+\tilde{\beta})+\sin(\tilde{\alpha}-\tilde{\beta})\Longleftrightarrow \sin\tilde{\alpha}\cdot\cos\tilde{\beta}=\dfrac{\sin(\tilde{\alpha}+\tilde{\beta})+\sin(\tilde{\alpha}-\tilde{\beta})}{2}$$
+    \end{proof}
+    \begin{statement}
+        $$\sin\alpha+\cos\alpha=\sqrt{2}\cdot\sin\left(\dfrac{\pi}{4}+\alpha\right)$$
+    \end{statement}
+    \begin{proof}
+        $$\sin\alpha+\cos\alpha=\sqrt{2}\cdot\left(\dfrac{\sqrt{2}}{2}\cdot\sin\alpha+\dfrac{\sqrt{2}}{2}\cdot\cos\alpha\right)=\sqrt{2}\cdot\sin\left(\dfrac{\pi}{4}+\alpha\right)$$
+    \end{proof}
+
     \section{Комплексные числа}
     \begin{definition}
         Мнимой единицей называется такое число $i$, что $i^2=-1$.
