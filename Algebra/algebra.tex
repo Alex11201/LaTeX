@@ -769,7 +769,7 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
         $$-2\sin\tilde{\alpha}\cdot\sin\tilde{\beta}=\cos(\tilde{\alpha}+\tilde{\beta})-\cos(\tilde{\alpha}-\tilde{\beta})\Longleftrightarrow \sin\tilde{\alpha}\cdot\sin\tilde{\beta}=-\dfrac{\cos(\tilde{\alpha}+\tilde{\beta})-\cos(\tilde{\alpha}-\tilde{\beta})}{2}$$
     \end{proof}
     \begin{statement}
-        $$\sin\alpha\cdot\cos\beta=\dfrac{\sin(\alpha+\beta)+\cos(\alpha-\beta)}{2}$$
+        $$\sin\alpha\cdot\cos\beta=\dfrac{\sin(\alpha+\beta)+\sin(\alpha-\beta)}{2}$$
     \end{statement}
     \begin{proof}
         Пусть $\tilde{\alpha} = \dfrac{\alpha+\beta}{2}$, $\tilde{\beta} = \dfrac{\alpha-\beta}{2}$, тогда из утверждения 7.23:
@@ -809,7 +809,7 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
                 \draw (b) node[left] {$b$};
                 \draw (z) node[above right] {$z$};
                 \draw ($(O)!0.5!(z)$) node[above left] {$r$};
-                \draw (3.5,3) node[above] {$z=r\cdot(\cos\varphi\cdot i\sin\varphi)$};
+                \draw (3.5,3) node[above] {$z=r\cdot(\cos\varphi+ i\sin\varphi)$};
                 \tkzLabelAngle(a,O,z){$\varphi$};
             \tkzMarkAngle[size=.55cm](a,O,z);
         \foreach \point in {(O), (a), (b), (z)}{
