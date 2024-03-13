@@ -1355,4 +1355,59 @@
 
         Докажем, что $AC_0=CA_0$ при условии вписанности $BB_1C_0A_0$. Аналогично первому доказательству, $\angle B_1AB=\angle B_1CB$ и в силу вписанности $\angle B_1C_0B=\angle B_1A_0B$, при этом $AB_1=B_1C$, а значит $\triangle AB_1C_0=\triangle CB_1A_0$ по двум углам и стороне, то есть $AC_0=CA_0$.
     \end{proof}
+    \begin{lemma}
+        Пусть $A_0$ и $C_0$ -- произвольные точки на $BC$ и $AB$ треугольника $ABC$ соотвественно. Инцентр $\triangle ABC$ лежит на окружности, описанной около $\triangle A_0BC_0$ тогда и только тогда, когда $AC_0+CA_0=AC$.
+    \end{lemma}
+    \begin{proof}
+        $ $\newline
+        \begin{center}
+            \begin{tikzpicture}
+                \coordinate (A) at (0,0);
+                \coordinate (B) at (5.5,6);
+                \coordinate (C) at (8,0);
+                \coordinate (A0) at ($(B)!0.35!(C)$);
+                \tkzDefLine[bisector](B,A,C)\tkzGetPoint{a}
+                \path[name path = line1] ($(A)!0.2!(a)$) -- ($(A)!1.2!(a)$);
+                \draw[name path = line2] (A) -- (B) -- (C) -- cycle;
+                \draw[name intersections={of=line1 and line2}] (intersection-1) node[right] {$L_A$};
+                \coordinate (La) at (intersection-1);
+                \tkzDefLine[bisector](A,C,B)\tkzGetPoint{c}
+                \path[name path = line3] ($(C)!0.2!(c)$) -- ($(C)!1.5!(c)$);
+                \draw[name intersections={of=line3 and line2}] (intersection-1) node[above left] {$L_C$};
+                \coordinate (Lc) at (intersection-1);
+                \draw[name path = line4, dashed] (A) -- (La);
+                \draw[name path = line5, dashed] (C) -- (Lc);
+                \draw[name intersections={of=line4 and line5}] (intersection-1) node[below] {$I$};
+                \coordinate (I) at (intersection-1);
+                \tkzDefCircle[circum](A0,I,B)
+                \tkzGetPoint{O} \tkzGetLength{rayon}
+                \draw[name path = line6] (O) circle(\rayon);
+                \path[name path = line7] (A) -- ($(A)!0.9!(B)$);
+                \draw[name intersections={of=line6 and line7}] (intersection-1) node[left] {$C_0$};
+                \coordinate (C0) at (intersection-1);
+                \draw (A) node[below left] {$A$};
+                \draw (B) node[above right] {$B$};
+                \draw (C) node[below right] {$C$};
+                \draw (A0) node[right] {$A_0$};
+                \tkzCalcLength(A,C0)\tkzGetLength{simm}
+                \coordinate (C0') at (\simm, 0);
+                \draw (C0') node[below] {$\widehat{C_0}$};
+                \draw (A0) -- (I) -- (C0) -- (C0') -- (I);
+                \tkzMarkAngle[size=.4](I,A0,C);
+                \tkzMarkAngle[size=.4](I,C0,B);
+                \tkzMarkAngle[size=.4](C,C0',I);
+                \tkzMarkAngle[size=.4](I,C,A);
+                \tkzMarkAngle[size=.55](La,C,I);
+                \tkzMarkAngle[size=.3](I,C,A);
+                \tkzMarkAngle[size=.45](La,C,I);
+        \foreach \point in {(A), (B), (C), (A0), (La), (Lc), (C0), (I), (C0')}{
+    \fill \point circle (1.8pt);
+}
+        \end{tikzpicture}
+        \end{center}
+        Пусть $L_A$ и $L_C$ -- основания биссектрисс из точек $A$ и $C$ соотвественно. Отметим точку $\widehat{C_0}$, симметричную $C_0$ относительно $AL_A$. Докажем равенство при условии вписанности. В силу вписанности $A_0IC_0B$: $\angle IA_0C=\angle IC_0B$. При этом в силу симметрии $\angle IC_0B=\angle I\widehat{C_0}C$. Также $\angle IC\widehat{C_0}=\angle ICL_A$, так как $CI$ -- биссектриса. Тогда $\triangle IC\widehat{C_0} = \triangle ICA_0$ по двум углам и общей стороне $IC$. То есть $\widehat{C_0}C=A_0C$, а значит $A\widehat{C_0} + \widehat{C_0}C=A\widehat{C_0}+A_0C=AC_0+A_0C=AC$.\bigskip
+
+        Докажем вписанность при условии равенства. В силу симметрии $\angle IC_0B=\angle I\widehat{C_0}C$. $AC=AC_0+A_0C=A\widehat{C_0}+A_0C\Longrightarrow A_0C=C\widehat{C_0}$. Тогда $\triangle IC\widehat{C_0} = \triangle ICA_0$ по двум сторонам и углу, а значит $\angle I\widehat{C_0}C=\angle IA_0C$, то есть $\angle IA_0C=\angle IC_0B$, следовательно, $A_0IC_0B$ -- вписанный.
+    \end{proof}
+
 \end{document}
