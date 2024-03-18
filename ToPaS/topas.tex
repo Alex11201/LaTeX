@@ -50,9 +50,6 @@
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\D}{\mathbb{D}}
 \newcommand{\prob}{\mathbb{P}}
-\DeclareRobustCommand{\divby}{%
-  \mathrel{\vbox{\baselineskip.65ex\lineskiplimit0pt\hbox{.}\hbox{.}\hbox{.}}}%
-}
 
 %Оглавление
 \title{\textbf{ТВиМС}}\date{}\author{}
@@ -299,4 +296,46 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
 \begin{definition}
     Пусть $A\subset \Omega$, тогда $\prob(x\in A)=\dfrac{\mu(A)}{\mu(\Omega)}$.
 \end{definition}
+
+\section{Распределение Пуассона}
+\begin{theorem}[Теорема Пуассона]
+    Пусть $n\to\infty$, $p\to 0$, $np\to \lambda$, $\lambda=\text{const}$, тогда если $\xi$ -- количество успехов в серии испытаний Бернулли, то она распределена по Пуассону:
+    $$\xi \sim P(\lambda):\,\,\prob(\xi=k)=\dfrac{\lambda^k}{k!}e^{-\lambda}$$
+\end{theorem}
+\begin{proof}
+    \begin{align*}
+        &P(\xi=k)=C_n^kp^kq^{n-k}\to\\
+        \to&\dfrac{n!}{(n-k)!\cdot k!}\cdot p^kq^{n-k}\to\\
+        \to&\dfrac{p^k}{k!\cdot q^k}\cdot \dfrac{n!}{(n-k)!}\cdot q^n\to\\
+        \to&\dfrac{p^kq^n}{k!\cdot q^k}\cdot n\cdot(n-1)\cdot(n-2)\cdot\ldots\cdot(n-k+1)\to\\
+        \to&\dfrac{p^kq^nn^k}{k!\cdot q^k}\cdot 1\cdot\left(1-\dfrac{1}{n}\right)\cdot\left(1-\dfrac{2}{n}\right)\cdot\ldots\cdot\left(1-\dfrac{k-1}{n}\right)\to
+    \end{align*}
+    \begin{align*}
+        \to&\dfrac{\lambda^k\cdot q^n}{k!\cdot q^k}\cdot\left(1-\dfrac{1}{n}\right)\cdot\left(1-\dfrac{2}{n}\right)\cdot\ldots\cdot\left(1-\dfrac{k-1}{n}\right)\to\\
+        \to&\dfrac{\lambda^k}{k!}q^n
+    \end{align*}
+    $$\ln q^n= n\cdot \ln(1-p)\to -np\to-\lambda \Longrightarrow \dfrac{\lambda^k}{k!}q^n = \dfrac{\lambda^k}{k!}e^{-\lambda}$$
+\end{proof}
+\begin{theorem}
+    $$\lim_{n\to\infty}\sum_{i=0}^n\dfrac{x^i}{i!}=e^x,\,\,x\in \R$$
+\end{theorem}
+\begin{theorem}
+    Пусть $\xi\sim P(\lambda)$. Тогда $\E(\xi)=\D(\xi)=\lambda$.
+\end{theorem}
+\begin{proof}
+    $$\E(\xi)=\sum_{k=0}^{\infty}k\dfrac{\lambda^k}{k!}e^{-\lambda}=e^{-\lambda}\sum_{k=0}^{\infty}\dfrac{\lambda^k}{(k-1)!}=e^{-\lambda}\cdot\lambda\sum_{k=0}^{\infty}\dfrac{\lambda^{k-1}}{(k-1)!}=e^{-\lambda}\cdot\lambda\cdot e^\lambda=\lambda$$
+\end{proof}
+\begin{lemma}
+    Пусть $\xi\sim P(\lambda_\xi)$, $\eta\sim P(\lambda_\eta)$, $\xi$ и $\eta$ независимы. Тогда $(\xi+\eta)\sim P(\lambda_\xi+\lambda_\eta)$.
+\end{lemma}
+\begin{proof}
+    \begin{align*}
+        &\prob(\xi+\eta=n)=\\
+        =&\sum_{i=0}^{n}\prob(\xi=i)\cdot\prob(\eta=n-i)=\\
+        =&\sum_{i=0}^{n}\dfrac{\lambda_\xi^i}{i!}\cdot e^{-\lambda_\xi}\cdot \dfrac{\lambda_\eta^{n-i}}{(n-i)!}\cdot e^{-\lambda_\eta}=\\
+        =&e^{-(\lambda_\xi+\lambda_\eta)}\sum_{i=0}^{n}\dfrac{\lambda_\xi^i\cdot\lambda_\eta^{n-i}}{i!\cdot(n-i)!}\cdot \dfrac{n!}{n!}=\\
+        =&\dfrac{e^{-(\lambda_\xi+\lambda_\eta)}}{n!}\sum_{i=0}^{n}C_n^i\lambda_\xi^i\lambda_\eta^{n-i}=\\
+        =&e^{-(\lambda_\xi+\lambda_\eta)}\cdot \dfrac{(\lambda_\xi+\lambda_\eta)^n}{n!}
+    \end{align*}
+\end{proof}
 \end{document}
