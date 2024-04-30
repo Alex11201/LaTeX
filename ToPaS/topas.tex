@@ -338,4 +338,66 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
         =&e^{-(\lambda_\xi+\lambda_\eta)}\cdot \dfrac{(\lambda_\xi+\lambda_\eta)^n}{n!}
     \end{align*}
 \end{proof}
+\section{Цепи Маркова}
+\begin{definition}
+    Последовательность случайных величин $\xi_0,\,\xi_1,\ldots,\,\xi_n$ называется Цепью Маркова, если 
+    $$\forall n,\,i_0,\,i_1,\ldots,\,i_n:\,\,\prob(\xi_{n-1}=x_{i_{n-1}},\ldots,\,\xi_0=x_{i_{0}})$$
+    верно, что:
+    $$\prob(\xi_{n}=x_{i_{n}}\,|\,\xi_{n-1}=x_{i_{n-1}},\ldots,\,\xi_0=x_{i_{0}})=\prob(\xi_{n}=x_{i_{n}}\,|\,\xi_{n-1}=x_{i_{n-1}})$$
+\end{definition}
+\begin{definition}
+    Цепь Маркова называется однородной, если:
+    $$\forall i,\,j:\,\,\prob(\xi_n=x_j\,|\,\xi_{n-1}=x_i)=p_{i,j}\text{ не зависит от }n.$$
+\end{definition}
+\begin{definition}
+    Матрица $A=(a_{i,j})$ называется стохастической, если:
+    $$\forall i,\,j:\,\,a_{i,j}\in [0;\,1],\,\,\sum_{i}(a_{i,j})=1$$
+\end{definition}
+\begin{definition}
+    Матрица $\pi=(p_{i,j})$ называется матрицей переходных вероятностей.
+\end{definition}
+\begin{theorem}
+    Пусть $p^{(0)}=(p^{(0)}_1,\,p^{(0)}_2,\ldots,\,p^{(0)}_n)$ и $p^{(k)}=(p^{(k)}_1,\,p^{(k)}_2,\ldots,\,p^{(k)}_n)$ -- начальное распределение и распределение на $k$-ом шаге соответственно вероятностей Марковской цепи, где $p^{(k)}_i=\prob(\xi_k=x_i)$. Тогда:
+    $$p^{(k)}=p^{(0)}\cdot\pi^k$$
+\end{theorem}
+\subsection{Классификация состояний Марковских цепей}
+\begin{definition}
+    Состояние $x_j$ достижимо из $x_i$, если:
+    $$\exists\,k:\,\,P^k_{ij}=\prob(\xi_{m+k}=x_j\,|\,\xi_m=x_i)>0$$
+\end{definition}
+\begin{definition}
+    Состояния называются сообщающимися, если они достижимы друг для друга.
+\end{definition}
+\begin{definition}
+    Состояние $x_i$ называется несущественным, если существует такое состояние $x_j$, что $x_j$ достижимо из $x_i$, но $x_i$ недостижимо из $x_j$.
+\end{definition}
+\begin{definition}
+    Состояние $x_i$ называется существенным, если существует такое состояние $x_j$, что $x_j$ достижимо из $x_i$ и $x_i$ достижимо из $x_j$.
+\end{definition}
+\begin{definition}
+    Марковская цепь, все состояния которой составляют один класс сообщающихся состояний, называется неразложимой.
+\end{definition}
+\begin{definition}
+    Состояние $x_i$ называется возвратным, если вероятность возвращения в это состояние равна 1.
+\end{definition}
+\begin{definition}
+    Состояние $x_i$ называется невозвратным, если вероятность возвращения в это состояние не равна 1.
+\end{definition}
+\begin{definition}
+    Возвратное состояние $x_i$ называется возвратным положительным, если среднее время возвращения в него конечно.
+\end{definition}
+\begin{definition}
+    Возвратное состояние $x_i$ называется возвратным нулевым, если среднее время возвращения в него бесконечно.
+\end{definition}
+\begin{definition}
+    Состояние $x_i$ называется периодическим, если $\NOD(k;\,P^{(k)}_{ij}>0)=d>1$, где $d$ -- период состояния.
+\end{definition}
+\subsection{Эргодичность}
+\begin{definition}
+    Марковская цепь называется эргодической, если:
+    $$\forall i,\,j:\,\,\exists\lim_{k\to\infty}P^{(k)}_{ij}=p_{ij}>0,\,\,\sum_{j}p_j=1$$
+\end{definition}
+\begin{theorem}
+    Если для однородной Марковской цепи существует такое $k$, что $\forall i,\,j:\,\,P^{(k)}_{ij}>0$, то она эргодична.
+\end{theorem}
 \end{document}
