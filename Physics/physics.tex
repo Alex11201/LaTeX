@@ -1,0 +1,540 @@
+%Формат файла
+\documentclass[12pt]{article} 
+\usepackage[paperheight=297mm,
+   paperwidth=210mm,
+   top=20mm,
+   bottom=20mm,
+   left=15mm,
+   right=15mm]{geometry}
+
+
+%Текст
+\usepackage[fontsize=12pt]{fontsize}
+\usepackage[russian]{babel}
+\usepackage{color}
+\usepackage{transparent}
+\usepackage{amsthm}
+\usepackage{setspace}
+\parindent=0cm
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{definition}{Определение}
+\newtheorem{law}[theorem]{Закон}
+\newtheorem{formula}[theorem]{Формула}
+\newtheorem{statement}[theorem]{Утверждение}
+\newtheorem{consequence}{Следствие}[subsection]
+\renewcommand\qedsymbol{$\blacksquare$}
+
+%Картинки
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usetikzlibrary {arrows.meta}
+\usetikzlibrary{calc}
+\usetikzlibrary{intersections}
+\usepackage[european,siunitx]{circuitikz}
+
+
+%Математика
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathabx}
+\usepackage{amssymb}
+
+%Всякое
+\usepackage{relsize}
+\usepackage{enumerate}
+\usepackage[inline]{enumitem}
+\usepackage{hyperref}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{physics}
+
+%Мат команды
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\prob}{\mathbb{P}}
+\newcommand{\verteq}{\rotatebox{90}{$\,=$}}
+\newcommand{\equalto}[2]{\underset{\scriptstyle\overset{\mkern4mu\verteq}{#2}}{#1}}
+\newcommand{\vertneq}{\rotatebox{90}{$\,\neq$}}
+\newcommand{\notequalto}[2]{\underset{\scriptstyle\overset{\mkern4mu\vertneq}{#2}}{#1}}
+\makeatletter
+\newenvironment{sqcases}{%
+  \matrix@check\sqcases\env@sqcases
+}{%
+  \endarray\right.%
+}
+\def\env@sqcases{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrack
+  \def\arraystretch{1.2}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+
+%Оглавление
+\title{\textbf{Физика}}\date{}
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\label{toc}
+\newpage
+
+\section{Теплопередача.}
+
+\begin{definition}
+    Теплота – кинетическая часть внутренней энергии вещества, определяемая интенсивным хаотическим движением молекул и атомов, из которых это вещество состоит.
+\end{definition}
+\begin{definition}
+    Количество теплоты – часть внутренней энергии, которую тело получает или теряет при теплопередаче.
+\end{definition}
+\begin{definition}
+    Теплопередача – физический процесс передачи тепловой энергии от более горячего тела к более холодному.
+\end{definition}
+
+\begin{center}
+    \begin{tikzpicture}
+        \draw[white] (-7,0) -- (7,0);
+        \draw (0,0) node[above] {\textbf{Теплопередача}};
+        \draw[-{Stealth[scale = 1.5]}] (-0.5,0) -- (-0.5,-0.5) -- (-5,-0.5) -- (-5,-1);
+        \draw[-{Stealth[scale = 1.5]}] (0.5,0) -- (0.5,-0.5) -- (5,-0.5) -- (5,-1);
+        \draw[-{Stealth[scale = 1.5]}] (0,0) -- (0,-1);
+        \draw (-5,-1) node[below] {Излучение};
+        \draw (0,-1) node[below] {Конвекция};
+        \draw (5,-1) node[below] {Теплопроводность};
+        \draw[-{Stealth[scale = 1.5]}] (-0.25,-1.7) -- (-0.25,-2.2) -- (-3,-2.2) -- (-3,-2.7);
+        \draw[-{Stealth[scale = 1.5]}] (0.25,-1.7) -- (0.25,-2.2) -- (3,-2.2) -- (3,-2.7);
+        \draw (-3,-2.7) node[below] {Естественная};
+        \draw (3,-2.7) node[below] {Вынужденная};
+    \end{tikzpicture}
+\end{center}
+
+\begin{definition}
+    Излучение — вид теплопередачи, при котором происходит передача внутренней энергии c помощью энергии электромагнитных волн.
+\end{definition}
+\begin{definition}
+    Конвекция — вид теплопередачи, обусловленный потоками жидкости или газа.
+\end{definition}
+\begin{definition}
+    Теплопроводность — передача внутренней энергии от одной части тела к другой или от одного тела к другому при контакте.
+\end{definition}
+
+\begin{formula}
+    $$Q=c\cdot m\cdot \Delta t\text{, где }Q\text{ [Дж] – количество теплоты,}$$
+$$c\,\left[\frac{\text{Дж}}{\text{кг}\cdot {^\circ C}}\right]\text{ – удельная теплоемкость, }m\text{ [кг] – масса вещества, }\Delta t\,[^\circ C]\text{ – разность температур.}$$
+\end{formula}
+
+\subsection{Агрегатное состояние}
+
+\begin{definition}
+    Агрегатное состояние вещества — физическое состояние вещества, зависящее от соответствующего сочетания температуры и давления.
+\end{definition}
+\begin{definition}
+    Переход вещества из жидкого состояния в твердое называется кристаллизацией.
+\end{definition}
+\begin{definition}
+    Переход вещества из жидкого состояния в газообразное называется парообразованием.
+\end{definition}
+\begin{definition}
+    Переход вещества из твердого состояния в жидкое называется плавлением.
+\end{definition}
+\begin{definition}
+    Переход вещества из твердого состояния в газообразное называется сублимацией.
+\end{definition}
+\begin{definition}
+    Переход вещества из газообразного состояния в жидкое называется конденсацией.
+\end{definition}
+\begin{definition}
+    Переход вещества из газообразного состояния в твердое называется десублимацией.
+\end{definition}
+\begin{definition}
+    Насыщенный пар — пар, находящийся в динамическом равновесии со своей жидкостью.
+\end{definition}
+\begin{center}
+    \begin{tikzpicture}
+        \draw[-{Stealth[scale = 1.5]}] (-0.5,0) -- (11,0) node[right] {Время [мин]};
+        \draw[-{Stealth[scale = 1.5]}] (0, -0.5) -- (0,7) node[above] {Температура [$^\circ C$]};
+        \coordinate (O) at (0,0);
+        \coordinate (t0) at (0,1);
+        \coordinate (t1) at (0,4);
+        \coordinate (t2) at (0,6);
+        \draw (O) node[below left] {$O$};
+        \draw (t0) node[left] {$t_0$};
+        \draw (t1) node[left] {$t_1$};
+        \draw (t2) node[left] {$t_2$};
+        \coordinate (A) at (2,4);
+        \coordinate (B) at (4,4);
+        \coordinate (C) at (5,6);
+        \coordinate (D) at (6,4);
+        \coordinate (E) at (8,4);
+        \coordinate (F) at (10,1);
+        \tkzLabelSegment[above left](t0,A){$a$};
+        \tkzLabelSegment[above](A,B){$b$};
+        \tkzLabelSegment[above left](B,C){$c$};
+        \tkzLabelSegment[above right](C,D){$d$};
+        \tkzLabelSegment[above](D,E){$e$};
+        \tkzLabelSegment[above right](E,F){$f$};
+        \node[right, align=left] at (10,4.5) {
+              $a$ -- нагрев\\
+              $b$ -- кипение\\
+              $c$ -- нагрев пара\\
+              $d$ -- охлаждение пара\\
+              $e$ -- конденсация\\
+              $f$ -- охлаждение жидкости
+          };
+        \draw (t0) -- (A) -- (B) -- (C) -- (D) -- (E) -- (F);
+        \foreach \point in {(O), (t0), (t1), (t2), (A), (B), (C), (D), (E), (F)}{
+    \fill \point circle (1.8pt);
+}
+    \end{tikzpicture}
+\end{center}
+
+\subsection{Удельная теплота}
+
+\begin{definition}
+    Удельная теплота -- физическая величина, показывающая, какое количество теплоты необходимо, чтобы преобразовать количество вещества с единичной массой, при данной температуре в ходе какого-либо процесса.
+\end{definition}
+\begin{formula}
+    $$Q=q\cdot m\text{, где }Q\text{ [Дж] – количество теплоты,}$$
+$$q\text{ [Дж/кг] -- удельная теплота сгорания, }m\text{ [кг] – масса вещества.}$$
+\end{formula}
+\begin{formula}
+    $$Q=L\cdot m\text{, где }Q\text{ [Дж] – количество теплоты,}$$
+$$L\text{ [Дж/кг] -- удельная теплота парообразования, }m\text{ [кг] – масса вещества.}$$
+\end{formula}
+\begin{formula}
+    $$Q=\lambda\cdot m\text{, где }Q\text{ [Дж] – количество теплоты,}$$
+$$\lambda\text{ [Дж/кг] -- удельная теплота плавления, }m\text{ [кг] – масса вещества.}$$
+\end{formula}
+
+\section{Электрический ток}
+
+\begin{definition}
+    Электрический ток -- упорядоченное движение заряженных частиц. Направление электрического тока определяется движением положительных зарядов.
+\end{definition}
+\begin{law}[Ома]
+    $$I=\frac{U}{R}\text{, где }I\text{ [А] – сила тока,}$$
+$$U\text{ [В] -- напряжение, }R\text{ [Ом] – сопротивление.}$$
+\end{law}
+
+\subsection{Электрическое поле}
+
+\begin{definition}
+    Поле -- материальная среда, передающая воздействие тел друг на друга.
+\end{definition}
+\begin{definition}
+    Электростатическое поле -- поле, передающее взаимодействие одного неподвижного электрического заряда на другой.
+\end{definition}
+\begin{definition}
+    Электрическая сила – сила, с которой электрическое поле одного заряда действует на внесенный в него другой электрический заряд. Сила воздействия электрического поля на заряд уменьшается по мере удаления.
+\end{definition}
+
+\subsection{Источник тока}
+
+\begin{definition}
+    Источник тока -- устройство, в котором происходит преобразование какого-либо вида энергии в электрическую энергию.
+\end{definition}
+
+\begin{center}
+    \begin{tikzpicture}
+        \draw[white] (-8,0) -- (8,0);
+        \draw (0,0) node[above] {\textbf{Источник тока}};
+        \draw[-{Stealth[scale = 1.5]}] (-0.75,0) -- (-0.75,-0.5) -- (-6,-0.5) -- (-6,-1) node[below] {Механический};
+        \draw[-{Stealth[scale = 1.5]}] (-0.25,0) -- (-0.25,-1) -- (-3,-1) -- (-3,-1.5) node[below] {Тепловой};
+        \draw[-{Stealth[scale = 1.5]}] (0.25,0) -- (0.25,-1) -- (3,-1) -- (3,-1.5) node[below] {Световой};
+        \draw[-{Stealth[scale = 1.5]}] (0.75,0) -- (0.75,-0.5) -- (6,-0.5) -- (6,-1) node[below] {Химический};
+    \end{tikzpicture}
+\end{center}
+
+\subsection{Проводники}
+
+\begin{definition}
+    Проводник — вещество, среда, материал, хорошо проводящие электрический ток вследствие наличия свободных носителей заряда.
+\end{definition}
+
+\begin{formula}
+    $$A=U\cdot I\cdot t\text{, где }A\text{ [Дж] – работа тока,}$$
+$$U\text{ [В] -- напряжение, }I\text{ [А] – сила тока, }t\text{ [с] -- время.}$$
+\end{formula}
+\begin{formula}
+    $$P=U\cdot I \text{, где }P\text{ [Вт] – мощность тока,}$$
+$$U\text{ [В] -- напряжение, }I\text{ [А] – сила тока.}$$
+\end{formula}
+\begin{law}[Джоуля Ленца]
+    $$Q=I^2\cdot R\cdot t\text{, где }Q\text{ [Дж] – количество теплоты,}$$
+$$I\text{ [А] -- сила тока, }R\text{ [Ом] – сопротивление, }t\text{ [с] -- время.}$$
+\end{law}
+\newsavebox{\circuita}
+\sbox{\circuita}{
+    \begin{circuitikz}
+        \draw[white] (-8,0) -- (8,0);
+        \draw (-7.5,0) to[R=$R_1$, o-*] (-5,0)
+        to[R=$R_2$, *-o] (-2.5,0);
+        \draw (2.5,0) to[short, o-*] (3.75,0) -- (3.75,0.5)
+        to[R=$R_1$] (6.25,0.5) -- (6.25,0)
+        to[short, *-o] (7.5, 0);
+        \draw (3.75,0) -- (3.75,-0.5)
+        to[R=$R_2$] (6.25,-0.5) -- (6.25,0);
+    \end{circuitikz}
+}
+\spacing{1.7}
+\begin{center}
+    \begin{tikzpicture}
+        \draw[white] (-8,0) -- (8,0);
+        \draw (0,0) node[above] {\textbf{Соединение проводников}};
+        \draw[-{Stealth[scale = 1.5]}] (-0.25,0) -- (-0.25,-0.5) -- (-5,-0.5) -- (-5,-1);
+        \draw[-{Stealth[scale = 1.5]}] (0.25,0) -- (0.25,-0.5) -- (5,-0.5) -- (5,-1);
+        \draw (-5,-1) node[below] {Последовательное};
+        \draw (5,-1) node[below] {Параллельное};
+        \node at (0,-2.75){\usebox{\circuita}};
+        \node[align=center] at (-5,-5.5) {
+            $I=I_1=I_2$\\
+            $U=U_1+U_2$\\
+            $R=R_1+R_2$
+        };
+        \node[align=center] at (5,-5.5) {
+            $I=I_1+I_2$\\
+            $U=U_1=U_2$\\
+            $\dfrac{1}{R}=\dfrac{1}{R_1}+\dfrac{1}{R_2}$
+        };
+    \end{tikzpicture}
+\end{center}
+\singlespacing
+
+\begin{formula}
+    $$R=\frac{\rho\cdot l}{S}\text{, где }R\text{ [Ом] – сопротивление, }\rho\text{ [Ом}\cdot \text{м] -- удельное сопротивление,}$$
+$$l\text{ [м] – длина проводника, }S\text{ [м}^2\text{] -- площадь поперечного сечения проводника.}$$
+\end{formula}
+
+\subsection{Напряженность электрического поля}
+
+\begin{definition}
+    Напряженность -- отношение силы, с которой поле воздействует на точечный заряд к величине этого заряда.
+\end{definition}
+\begin{formula}
+    $$\vec{E}=\frac{\vec{F}}{q}\text{, где }\vec{E}\text{ [Н/Кл] – напряженность поля,}$$
+$$\vec{F}\text{ [Н] -- сила воздействия поля, }q\text{ [Кл] – точечный заряд.}$$
+\end{formula}
+\begin{law}[Принцип суперпозиции]
+    Если в данной точке пространства электрическое поле создано несколькими зарядами и напряженность поля каждого заряда равна $\vec{E_1},\,\vec{E_2},\ldots$, то результирующая напряженность этого поля равна векторной сумме напряженностей составляющих его полей.
+\end{law}
+\begin{law}[Кулона]
+    $$\vec{F}=k\cdot \frac{|q_1|\cdot|q_2|}{\varepsilon\cdot r^2}\text{, где }\vec{F}\text{ [Н] -- сила взаимодействия зарядов, }k=9\cdot 10^9\,\frac{\text{Н}\cdot\text{м}^2}{\text{Кл}^2},$$
+    $$q_1\text{ и }q_2\text{ [Кл] -- точечные заряды тел, }r\text{ [м] -- расстояние между зарядами,}$$
+    $$\varepsilon\text{ -- относительная диэлектрическая проницаемость среды (равна 1 для воздуха).}$$
+\end{law}
+
+\subsection{Конденсаторы}
+
+\begin{definition}
+    Электроемкость -- физическая величина, характеризующая способность проводников накапливать заряд.
+\end{definition}
+\begin{formula}
+    $$C=\frac{q}{U}\text{, где }C\text{ [Ф] – электроемкость,}$$
+$$q\text{ [Кл] -- заряд пластины конденсатора, }U\text{ [В] – напряжение.}$$
+\end{formula}
+\begin{formula}
+    $$C=\frac{\varepsilon\cdot\varepsilon_0\cdot S}{d}\text{, где }C\text{ [Ф] -- электроемкость, }\varepsilon\text{ -- диэлектрическая проницаемость,}$$
+    $$\varepsilon_0\text{ -- электрическая постоянная, }d\text{ [м] -- расстояние между пластинами конденсатора.}$$
+\end{formula}
+\begin{formula}
+    $$W=\dfrac{q\cdot U}{2}=\dfrac{C\cdot U^2}{2}=\dfrac{q^2}{2C}\text{, где }W\text{ [Дж] -- энергия заряженного конденсатора,}$$
+    $$q\text{ [Кл] -- заряд пластины конденсатора, }U\text{ [В] -- разность потенциалов, }C\text{ [Ф] -- электроемкость.}$$
+\end{formula}
+
+\begin{center}
+    \begin{circuitikz}
+        \draw (-7.5,0) to[capacitor, o-*] (-5,0)
+        to[capacitor, *-o] (-2.5,0);
+        \draw (2.5,0) to[short, o-*] (3.75,0) -- (3.75,0.75)
+        to[capacitor] (6.25,0.75) -- (6.25,0)
+        to[short, *-o] (7.5, 0);
+        \draw (3.75,0) -- (3.75,-0.75)
+        to[capacitor] (6.25,-0.75) -- (6.25,0);
+        \node[align=center] at (-5,-2.25) {
+            $\dfrac{1}{C}=\dfrac{1}{C_1}+\dfrac{1}{C_2}$
+        };
+        \node[align=center] at (5,-2.25) {
+            $C=C_1+C_2$
+        };
+    \end{circuitikz}
+\end{center}
+
+\subsection{Магнитное поле}
+
+\begin{definition}
+    Магнитное поле -- особый вид материи, существующий вокруг любого проводника с током. Неподвижные электрические заряды создают электрическое поле, а подвижные -- электрическое и магнитное поля.
+\end{definition}
+\begin{definition}
+    Магнитные линии магнитного поля -- замкнутые прямые, охватывающие проводник.
+\end{definition}
+\begin{definition}
+    Магнитная индукция -- силовая характеристика магнитного поля.
+\end{definition}
+\begin{center}
+    \begin{tikzpicture}
+        \draw[white] (-8,0) -- (8,0);
+        \draw (0,0) node[above] {\textbf{Электромагнитная сила}};
+        \draw[-{Stealth[scale = 1.5]}] (-0.25,0) -- (-0.25,-0.5) -- (-5,-0.5) -- (-5,-1);
+        \draw[-{Stealth[scale = 1.5]}] (0.25,0) -- (0.25,-0.5) -- (5,-0.5) -- (5,-1);
+        \draw (-5,-1) node[below] {Сила Лоренца};
+        \draw (5,-1) node[below] {Сила Ампера};
+    \end{tikzpicture}
+\end{center}
+\begin{definition}
+    Сила Лоренца -- сила, с которой магнитное поле действует на движущуюся заряженную частицу.
+\end{definition}
+
+\begin{formula}
+    $$\vec{F}_\text{Л}=|q|\cdot \vec{B}\cdot \vec{v}\cdot \sin \alpha\text{, где }\vec{F}_\text{Л}\text{ [Н] -- сила Лоренца, }q\text{ [Кл] -- заряд частицы,}$$
+    $$\vec{B}\text{ [Тл] -- вектор магнитной индукции, }\vec{v}\text{ [м/с] -- скорость частицы, }\alpha\text{ -- угол между }\vec{v}\text{ и }\vec{B}.$$
+\end{formula}
+\begin{definition}
+    Сила Ампера -- сила, с которой магнитное поле воздействует на проводник с током.
+\end{definition}
+\begin{formula}
+    $$\vec{F}_\text{А}=I\cdot \vec{B}\cdot l\cdot \sin \alpha\text{, где }\vec{F}_\text{А}\text{ [Н] -- сила Ампера, }I\text{ [А] -- сила тока,}$$
+    $$\vec{B}\text{ [Тл] -- вектор магнитной индукции, }l\text{ [м] -- длина проводника,}$$
+    $$\alpha\text{ -- угол между проводником и линиями магнитной индукции.}$$
+\end{formula}
+\begin{law}[Правило правой руки]
+    Если обхватить проводник правой рукой так, чтобы оттопыренный большой палец указывал направление тока, то остальные пальцы покажут направление огибающих проводник линий магнитной индукции поля, создаваемого этим током, а значит и направление вектора магнитной индукции, направленного везде по касательной к этим линиям.\bigskip
+
+    \textit{Иными словами, если ток направлен от наблюдателя, линии магнитной индукции направлены по часовой стрелке.}
+\end{law}
+\begin{law}[Правило левой руки]
+    Если расположить ладонь левой руки так, чтобы линии индукции магнитного поля входили во внутреннюю сторону ладони, перпендикулярно к ней, а четыре пальца направлены по току, то отставленный на 90° большой палец укажет направление силы, действующей со стороны магнитного поля на проводник с током.
+\end{law}
+
+\section{Оптика}
+
+\begin{definition}
+    Свет — электромагнитное излучение, воспринимаемое человеческим глазом.
+\end{definition}
+\begin{center}
+    \begin{tikzpicture}
+        \draw[white] (-8,0) -- (8,0);
+        \draw (0,0) node[above] {\textbf{Источники света}};
+        \draw[-{Stealth[scale = 1.5]}] (-0.25,0) -- (-0.25,-0.5) -- (-5,-0.5) -- (-5,-1);
+        \draw[-{Stealth[scale = 1.5]}] (0.25,0) -- (0.25,-0.5) -- (5,-0.5) -- (5,-1);
+        \draw (-5,-1) node[below] {Естественные};
+        \draw (5,-1) node[below] {Исскуственные};
+    \end{tikzpicture}
+\end{center}
+\begin{definition}
+    Точечный источник света -- источник света, размерами которого можно пренебречь.
+\end{definition}
+\begin{definition}
+    Световой луч -- линия, вдоль которой рассматривается свет.
+\end{definition}
+\begin{definition}
+    Тень -- область пространства, куда не попадает свет.
+\end{definition}
+\begin{definition}
+    Полутень -- слабоосвещенное пространство.
+\end{definition}
+\begin{definition}
+    Плоское зеркало -- плоская поверхность, отражающая свет.
+\end{definition}
+\begin{definition}
+    Абсолютный показатель преломления -- отношение скорости света в веществе к скорости света в вакууме.
+\end{definition}
+\begin{definition}
+    Относительный показатель преломления -- отношение абсолютных показателей преломления двух сред.
+\end{definition}
+\begin{center}
+    \begin{tikzpicture}
+        \coordinate (O) at (0,0);
+        \coordinate (A) at (-2.5,2);
+        \coordinate (B) at (0,3);
+        \coordinate (C) at (0,-3);
+        \coordinate (D) at (1.5,-3);
+        \coordinate (F) at (4,0);
+        \draw (-4,0) -- (4,0);
+        \draw (0,-3) -- (0,3);
+        \draw (A) -- (O);
+        \draw (D) -- (O);
+        \fill (O) circle (1.8pt);
+        \tkzMarkAngle[size=.65cm](B,O,A);
+        \tkzLabelAngle(B,O,A){$\alpha$};
+        \tkzMarkAngle[size=.65cm](C,O,D);
+        \tkzMarkAngle[size=.55cm](C,O,D);
+        \tkzLabelAngle(C,O,D){$\beta$};
+        \tkzMarkRightAngle(F,O,B);
+        \draw (-4,0) node[above right] {$n_1$};
+        \draw (-4,0) node[below right] {$n_2$};
+        \node[right, align=left] at (5,.75) {
+              $\alpha$ -- угол падения\\
+              $\beta$ -- угол преломления\\
+              $n$ -- коэффициент преломления
+        };
+        \draw (6.25,-1) node[right] {$\dfrac{\sin \alpha}{\sin \beta}=n_{21}=\dfrac{n_2}{n_1}$};
+    \end{tikzpicture}
+\end{center}
+\begin{definition}
+    Действительное изображение -- изображение, находящееся на пересечении лучей, выходящих из источника света.
+\end{definition}
+\begin{definition}
+    Мнимое изображение -- изображение, находящееся на пересечении продолжений лучей.
+\end{definition}
+\begin{formula}
+    $$n=\left[\frac{360^\circ-\alpha}{\alpha}\right]\text{, где }n\text{ -- количество отражений, }\alpha\text{ -- угол падения.}$$
+\end{formula}
+
+\subsection{Линзы}
+
+\begin{center}
+    \begin{tikzpicture}
+        \draw[white] (-8.7,0) -- (8.7,0);
+        \def\uplen{4.25}
+        \def\downlen{2}
+        \def\step{0.5}
+        \def\texth{0.7}
+        \draw (0,0) node[above] {\textbf{Линзы}};
+
+        \draw[-{Stealth[scale = 1.5]}] (-\step / 2,0) -- (-\step / 2,-\step) -- (-\step - \uplen,-\step) -- (-\step-\uplen,-\step * 2);
+
+        \draw[-{Stealth[scale = 1.5]}] (\step / 2,0) -- (\step / 2,-\step) -- (\step + \uplen,-\step) -- (\step+\uplen,-\step * 2);
+
+        \draw (-\step-\uplen,-\step * 2) node[below] {Собирающие};
+        \draw (\step+\uplen,-\step * 2) node[below] {Рассеивающие};
+
+        \draw[-{Stealth[scale = 1.5]}] (-\step-\uplen-\step,-\step*2 - \texth) -- (-\step-\uplen-\step,-\step*3 - \texth) -- (-2*\step-\uplen-\downlen,-\step*3 - \texth) -- (-2*\step-\uplen-\downlen,-\step*4 - \texth);
+
+        \draw[-{Stealth[scale = 1.5]}] (\step-\uplen-\step,-\step*2 - \texth) -- (\step-\uplen-\step,-\step*3 - \texth) -- (-\uplen+\downlen,-\step*3 - \texth) -- (-\uplen+\downlen,-\step*4 - \texth);
+
+        \draw[-{Stealth[scale = 1.5]}] (-\uplen-\step,-\step*2 - \texth) -- (-\uplen-\step,-\step*4 - \texth * 2);
+
+        \draw[-{Stealth[scale = 1.5]}] (-\step+\uplen+\step,-\step*2 - \texth) -- (-\step+\uplen+\step,-\step*3 - \texth) -- (\uplen-\downlen,-\step*3 - \texth) -- (\uplen-\downlen,-\step*4 - \texth);
+
+        \draw[-{Stealth[scale = 1.5]}] (\step+\uplen+\step,-\step*2 - \texth) -- (\step+\uplen+\step,-\step*3 - \texth) -- (\uplen+\downlen+2*\step,-\step*3 - \texth) -- (\uplen+\downlen+2*\step,-\step*4 - \texth);
+
+        \draw[-{Stealth[scale = 1.5]}] (\uplen+\step,-\step*2 - \texth) -- (\uplen+\step,-\step*4 - \texth * 2);
+
+        \draw (-2*\step-\uplen-\downlen,-\step*4 - \texth) node[below] {Двояковыпуклые};
+        \draw (-\uplen-\step,-\step*4 - \texth * 2) node[below] {Выпуклые};
+        \draw (-\uplen+\downlen,-\step*4 - \texth) node[below] {Выпукло-вогнутые};
+
+        \draw (\uplen-\downlen,-\step*4 - \texth) node[below] {Вогнуто-выпуклые};
+        \draw (\uplen+\downlen+2*\step,-\step*4 - \texth) node[below] {Двояковогнутые};
+        \draw (\uplen+\step,-\step*4 - \texth * 2) node[below] {Вогнутые};
+    \end{tikzpicture}
+\end{center}
+
+\end{document}
