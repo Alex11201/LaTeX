@@ -164,7 +164,7 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
 \end{align*}
 
 \begin{align*}
-    &|f(x)|\leq|g(x) \Longleftrightarrow (f(x)-g(x))\cdot(f(x)+g(x))\leq0\\
+    &|f(x)|\leq|g(x)| \Longleftrightarrow (f(x)-g(x))\cdot(f(x)+g(x))\leq0\\
     &|f(x)|+|g(x)|>|f(x)+g(x)| \Longleftrightarrow f(x)\cdot g(x) < 0\\
     &|f(x)|+|g(x)|\leq|f(x)+g(x)| \Longleftrightarrow f(x)\cdot g(x) \geq 0
 \end{align*}
@@ -194,11 +194,11 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
         &f(x)=a_nx^n+a_{n-1}x^{n-1}+\ldots+a_1x+a_0\\
         &g(x)=b_nx^n+b_{n-1}x^{n-1}+\ldots+b_1x+b_0
     \end{align*}
-    Суммой многочленов $f(x)$ и $g(x)$ называется: $$n(x)=(a_n+b_n)x^n+(a_{n-1}+b_{n-1})x^{n-1}+\ldots+(a_1+b_1)x+(a_0+b_0)$$ Произведением многочленов $f(x)$ и $g(x)$ называется: $$S(x)=d_{2n}x^{2n}+d_{2n-1}x^{2n-1}+\ldots+d_1x+d_0\text{, где} d_k=a_0b_k+a_1b_{k-1}+\ldots+a_{k-1}b_1+a_kb_0=\sum_{i=0}^ka_ib_{k-i}$$.
+    Суммой многочленов $f(x)$ и $g(x)$ называется: $$n(x)=(a_n+b_n)x^n+(a_{n-1}+b_{n-1})x^{n-1}+\ldots+(a_1+b_1)x+(a_0+b_0)$$ Произведением многочленов $f(x)$ и $g(x)$ называется: $$S(x)=d_{2n}x^{2n}+d_{2n-1}x^{2n-1}+\ldots+d_1x+d_0\text{, где } d_k=a_0b_k+a_1b_{k-1}+\ldots+a_{k-1}b_1+a_kb_0=\sum_{i=0}^ka_ib_{k-i}$$
 \end{definition}
 
 \begin{statement}
-    Пусть $def\,f(x)\neq0,\,\deg\,g(x)\neq0$, тогда:
+    Пусть $\deg\,f(x)\neq0,\,\deg\,g(x)\neq0$, тогда:
     \begin{align*}
         &1.\,\,\deg(f(x)+g(x))\leq \max {\{\deg\,f,\,\deg\,g\}}\\
         &2.\,\,f(x)\cdot g(x) \neq0\\
@@ -207,9 +207,9 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
 \end{statement}
 \begin{proof}
     \begin{align*}
-    1.\,\,&\text{Пусть }\deg\,f=def\,g=n\\
+    1.\,\,&\text{Пусть }\deg\,f=\deg\,g=n\\
     &f(x)+g(x)=(a_n+b_n)x^n+(a_{n-1}+b_{n-1})x^{n-1}+\ldots+(a_1+b_1)x+(a_0+b_0)\\
-    &\text{Если }k>n \text{, то} a_k=0,\,b_k=0\text{, то есть }(a_k+b_k)=0\\\\
+    &\text{Если }k>n \text{, то } a_k=0,\,b_k=0\text{, то есть }(a_k+b_k)=0\\\\
     &\text{Пусть }\deg\,f=n,\,\deg\,g=m,\,m<n\\
     &\text{Если }k>n\text{, то }a_k+b_k=0\text{, так как }b_{m+1}=b_{m+2}=\ldots=b_{n-1}=b_n=0\\
     &\text{Тогда }a_n+b_n=a_n\neq0\\\\
@@ -281,10 +281,10 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
     Последовательность $a_n$ называется ограниченной, если $a(\N)$ ограничено. 
 \end{definition}
 \begin{definition}
-    Последовательность $a_n$ называется называется монотонно возрастающей, если $\forall n \in \N:\, a_{n+1}>a_n$.
+    Последовательность $a_n$ называется монотонно возрастающей, если $\forall n \in \N:\, a_{n+1}>a_n$.
 \end{definition}
 \begin{theorem}
-    Пусть все элементы последовательности $a_n$ положительны. Последовательность $a_n$ возстает тогда и только тогда, когда $\dfrac{a_{n+1}}{a_n}>1$.
+    Пусть все элементы последовательности $a_n$ положительны. Последовательность $a_n$ возрастает тогда и только тогда, когда $\dfrac{a_{n+1}}{a_n}>1$.
 \end{theorem}
 
 \subsection{Аксиоматика действительных чисел}
@@ -338,7 +338,7 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
             }
         \end{tikzpicture}
     \end{center}
-    Отметим на числовой прямой $a_0=\inf a(\N)$ и $b_0=\sup a(\N)$, а также середину $a_0b_0$, то есть $c_0=\dfrac{a_0+b_0}{2}$. Разделим один из получившихся отрезков (отметим $c_0$ и $b_0$, как $a_1$ и $b_1$ соотвественно) пополам, получив $c_1=\dfrac{a_1+b_1}{2}$. Данный процесс можно продолжать, получая следующую конструкцию:
+    Отметим на числовой прямой $a_0=\inf a(\N)$ и $b_0=\sup a(\N)$, а также середину $a_0b_0$, то есть $c_0=\dfrac{a_0+b_0}{2}$. Разделим один из получившихся отрезков (отметим $c_0$ и $b_0$, как $a_1$ и $b_1$ соответственно) пополам, получив $c_1=\dfrac{a_1+b_1}{2}$. Данный процесс можно продолжать, получая следующую конструкцию:
     $$[a_0;\,b_0]\supset [a_1;\,b_1]\supset \ldots \supset [a_n;\,b_n]\supset \dots$$
     Теперь необходимо доказать следующее:
     $$\bigcap_{n=0}^{\infty}[a_n;\,b_n]\neq \emptyset$$
@@ -465,7 +465,7 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
     Пусть $(x_n)$ монотонна, тогда:
     \begin{align*}
         1.\,\,&\text{Она имеет предел в }\bar{\R}=\R\cup\{-\infty;\,+\infty\}\\
-        2.\,\,&\text{Если она ограничена, то она имеет вредел в }\R
+        2.\,\,&\text{Если она ограничена, то она имеет предел в }\R
     \end{align*}
 \end{theorem}
 \begin{proof}
@@ -509,7 +509,7 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
     $$\sin^2 \alpha + \cos^2 \alpha=1$$
 \end{statement}
 \begin{proof}
-    По теореме Пифагора в прямоугольном треугольнике с катетами $a$ и $b$ и гипотинузой $c$:
+    По теореме Пифагора в прямоугольном треугольнике с катетами $a$ и $b$ и гипотенузой $c$:
     $$\sin^2 \alpha + \cos^2 \alpha=\left(\dfrac{a}{c}\right)^2+\left(\dfrac{b}{c}\right)^2=\dfrac{a^2 + b^2}{c^2}=1$$
 \end{proof}
 \begin{statement}
@@ -527,7 +527,7 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
 \begin{statement}
     $$\cos(\alpha - \beta)=\cos\alpha\cdot\cos\beta+\sin\alpha\cdot\sin\beta$$
 \end{statement}
-\begin{proof}
+    \begin{proof}
     $ $\newline
     \begin{center}
         \begin{tikzpicture}
