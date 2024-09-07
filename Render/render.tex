@@ -1,0 +1,477 @@
+\documentclass[12pt]{article} 
+
+%Формат файла
+\usepackage[paperheight=297mm,
+   paperwidth=210mm,
+   top=20mm,
+   bottom=20mm,
+   left=15mm,
+   right=15mm]{geometry}
+
+
+%Текст
+\usepackage[fontsize=12pt]{fontsize}
+\usepackage[english, russian]{babel}
+\usepackage[T2A]{fontenc}
+\usepackage{color}
+\usepackage{transparent}
+\usepackage{amsthm}
+\parindent=0cm
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{definition}{Определение}
+\newtheorem{axiom}{Аксиома}
+\newtheorem{statement}[theorem]{Утверждение}
+\newtheorem{consequence}{Следствие}[subsection]
+\renewcommand\qedsymbol{$\blacksquare$}
+
+%Картинки
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usepackage{pgfplots}
+\usetikzlibrary {arrows.meta}
+\usetikzlibrary{calc}
+\usetikzlibrary{through}
+\usetikzlibrary{intersections}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{positioning}
+\usetikzlibrary {3d}
+
+
+%Математика
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+
+%Всякое
+\usepackage{relsize}
+\usepackage{enumerate}
+\usepackage[inline]{enumitem}
+\usepackage{hyperref}
+
+%Мат команды
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+
+%Оглавление
+\title{\textbf{Тестовый файл}}\date{}\author{}
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\providecommand{\dotdiv}{% Don't redefine it if available
+  \mathbin{% We want a binary operation
+    \vphantom{+}% The same height as a plus or minus
+    \text{% Change size in sub/superscripts
+      \mathsurround=0pt % To be on the safe side
+      \ooalign{% Superimpose the two symbols
+        \noalign{\kern-.25ex}% but the dot is raised a bit
+        \hidewidth$\smash{\cdot}$\hidewidth\cr % Dot
+        \noalign{\kern.5ex}% Backup for vertical alignment
+        $-$\cr % Minus
+      }%
+    }%
+  }%
+}
+
+\pgfplotsset{compat=1.18}
+\begin{document}
+
+\maketitle
+\tableofcontents
+\label{toc}
+\newpage
+
+
+
+
+
+\section{Стереометрия}
+
+\subsection{Введение}
+
+\begin{axiom}
+    В $\R^3$ существуют плоскости, причем для любой из них выполняются аксиомы планиметрии.
+\end{axiom}
+\begin{axiom}[Аксиома плоскости]
+    Через любые три неколлинеарные точки пространства проходит плоскость, при чем только одна.
+\end{axiom}
+\begin{axiom}
+    Прямая, проходящая через две точки плоскости полностью лежит в данной плоскости.
+\end{axiom}
+\begin{axiom}[Аксиома пересечения плоскостей]
+    Если две плоскости имеют общую точку, то они пересекаются по прямой:
+    $$M \in \alpha;\,M \in \beta \Longrightarrow \exists\,\,l:\,\,l\subset \alpha;\,l\subset \beta$$
+\end{axiom}
+\begin{axiom}[Аксиома расстояния]
+    В любой из плоскостей, проходящих через две различные точки расстояние между этими точками одно и то же:
+    $$A \neq B;\,\,\forall\,\alpha:\,\,A,\,B\in\alpha\,\,\rho_\alpha(A;\,\,B)=\text{const}$$
+\end{axiom}
+\begin{definition}
+    Прямая и плоскость называются пересекающимися, если они имеют одну общую точку.
+\end{definition}
+\begin{definition}
+    Две плоскости называются пересекающимися, если они имеют одну общую прямую.
+\end{definition}
+\begin{definition}
+    Прямые, лежащие в одной плоскости и не имеющие общих точек называются параллельными.
+\end{definition}
+
+\subsection{Следствия из аксиом}
+
+\begin{lemma}
+    Через прямую и точку, не лежащую на ней, проходит плоскость, при том только одна:
+    $$\forall\,A;\,\,\forall\,l:\,\,A\notin l\,\,\exists!\,\,\alpha:\,\,l\subset\alpha;\,\,A\in\alpha$$
+\end{lemma}
+
+\begin{proof}
+    $ $\newline
+    \begin{center}
+        \begin{tikzpicture}[z={(0:10mm)},x={(50:5mm)}]
+            \begin{scope}[canvas is zy plane at x=0,fill=blue]
+            \end{scope}
+            \begin{scope}[canvas is zx plane at y=0,fill=red]
+                \coordinate (A) at (7,-1);
+                \coordinate (D) at (0,-2);
+                \coordinate (E) at (6,3);
+                \coordinate (B) at ($(D)!0.25!(E)$);
+                \coordinate (C) at ($(D)!0.75!(E)$);
+                \draw ($(D)!0.5!(E)$) node[above] {$l$};
+                \draw (A) node[above] {$A$};
+                \draw (B) node[above] {$B$};
+                \draw (C) node[above] {$C$};
+              \draw[opacity=0.3] (0,-3) grid (8,3);
+              \draw (D) -- (E);
+            \end{scope}
+            \foreach \point in {(A), (B), (C)}{
+    \fill \point circle (1.8pt);
+}
+          \end{tikzpicture}
+    \end{center}
+    Рассмотрим $B,\,C\in l:\,\,l\subset\alpha\Longrightarrow B,\,C\in\alpha.$ По аксиоме плоскости $\exists!\,\,\alpha:\,\,A,\,B,\,C\in\alpha;\,\,l\subset\alpha.$
+\end{proof}
+
+\begin{lemma}
+    Через две пересекающиеся прямые проходит плоскость, при том только одна:
+    $$a\cap b = C\Longrightarrow\exists!\,\,\alpha:\,\,a,\,b\subset\alpha$$
+\end{lemma}
+\begin{lemma}
+    Через две параллельные прямые проходит плоскость, при том только одна:
+    $$a\parallel b\Longrightarrow\exists!\,\,\alpha:\,\,a,\,b\subset\alpha$$
+\end{lemma}
+
+\subsection{Скрещивающиеся прямые}
+
+\begin{definition}
+    Две прямые называются скрещивающимися, если у них нет общих точек и они не параллельны.
+\end{definition}
+
+\begin{theorem}[Признак скрещивающихся]
+    Если одна прямая лежит в плоскости, а другая пересекают данную плоскость в точке, не лежащей на первой прямой, данные прямые скрещиваются:
+    $$a\subset\alpha,\,b\cap\alpha=M:\,\,M\notin a\Longrightarrow a\dotdiv b$$
+\end{theorem}
+\begin{proof}
+    $ $\newline
+    \begin{center}
+        \begin{tikzpicture}[z={(0:10mm)},x={(40:5mm)}]
+            \begin{scope}[canvas is zy plane at x=0,fill=blue]
+                \coordinate (M) at (3,0);
+                \draw (M) node[above right] {$M$};
+                \draw ($(0,1.5)!0.5!(3,0)$) node[above] {$b$};
+                \draw (0,1.5) -- (3,0);
+                \draw[dashed] (0,1.5) -- ($(0,1.5)!1.65!(3,0)$);
+                \draw ($(0,1.5)!1.65!(3,0)$) -- ($(0,1.5)!2!(3,0)$);
+            \end{scope}
+            \begin{scope}[canvas is zx plane at y=0,fill=red]
+                \draw ($(5,-3)!0.5!(6,3)$) node[above left] {$a$};
+                \draw (5,-3) -- (6,3);
+                \draw[opacity=0.2] (0,-3) grid (8,3);
+            \end{scope}
+            \foreach \point in {(M)}{
+    \fill \point circle (1.8pt);
+}
+          \end{tikzpicture}
+    \end{center}
+    Пусть $a$ и $b$ не скрещиваются. Тогда $a\parallel b$ или $a\cap b\neq\varnothing:
+    $
+    \begin{align*}
+        1.\,\,&a\parallel b\Longrightarrow\exists!\,\,\beta:\,\,a,\,b\subset\beta\Longrightarrow M\in\beta,\text{ при этом }a\subset\alpha\text{ (по условию); }\\
+        &a\subset\beta\text{ (по предложению)}\Longrightarrow \alpha\cap\beta=a,\,M\in\alpha,\,M\in\beta\Longrightarrow M\in a,\text{ противоречие.}\\
+        2.\,\,&a\cap\beta\neq\varnothing\Longrightarrow\exists\,k:\,\,k\in a,\,k\in b\Longrightarrow\exists\,\beta:\,\,a,\,b\subset\beta\Longrightarrow M\in\beta,\text{ при этом }a\subset\alpha\text{ (по условию); }\\
+        &a\subset\beta\text{ (по предложению)}\Longrightarrow \alpha\cap\beta=a,\,M\in\alpha,\,M\in\beta\Longrightarrow M\in a,\text{ противоречие.}
+    \end{align*}
+\end{proof}
+\begin{theorem}
+    Пусть $a\parallel b;\,\,a\cap\alpha\neq\varnothing,$ тогда $b\cap\alpha\neq\varnothing$.
+\end{theorem}
+\begin{proof}
+    $ $\newline
+    \begin{center}
+        \begin{tikzpicture}[z={(0:10mm)},x={(40:5mm)}]
+            \begin{scope}[canvas is zy plane at x=0,fill=blue]
+                \coordinate (A) at (2,0);
+                \draw (A) node[above right] {$A$};
+                \draw (-1,1.5) -- (A);
+                \draw ($(-1,1.5)!0.35!(A)$) node[above right] {$a$};
+                \draw[dashed] (-1,1.5) -- ($(-1,1.5)!1.65!(A)$);
+                \draw ($(-1,1.5)!1.65!(A)$) -- ($(-1,1.5)!2!(A)$);
+            \end{scope}
+            \begin{scope}[canvas is zy plane at x=1,fill=blue]
+                \coordinate (B) at (6,0);
+                \draw (B) node[above right] {$B$};
+                \draw (3,1.5) -- (B);
+                \draw ($(3,1.5)!0.35!(B)$) node[above right] {$b$};
+                \draw[dashed] (3,1.5) -- ($(3,1.5)!1.65!(B)$);
+                \draw ($(3,1.5)!1.4!(B)$) -- ($(3,1.5)!2!(B)$);
+            \end{scope}
+            \begin{scope}[canvas is zx plane at y=0,fill=red]
+                \draw ($(2,0)!-.5!(6,1)$) -- ($(2,0)!1.5!(6,1)$);
+                \draw ($(2,0)!0.5!(6,1)$) node[above] {$l$};
+                \draw[opacity=0.2] (0,-3) grid (8,3);
+            \end{scope}
+            \foreach \point in {(A), (B)}{
+    \fill \point circle (1.8pt);
+}
+          \end{tikzpicture}
+    \end{center}
+    $$a\parallel b\Longrightarrow\exists!\,\,\beta:\,\,a,\,b\subset\beta,\,a\cap\alpha=A\Longrightarrow A\in\beta\Longrightarrow\exists\,l:\,\,l=\alpha\cap\beta$$
+    $$l\cap a=A,\,a\parallel\beta\Longrightarrow l\cap\beta=B:\,\,B\in b,\,B\in l\Longrightarrow b\cap\alpha=B.$$
+\end{proof}
+
+\subsection{Параллельность прямой и плоскости}
+
+\begin{definition}
+    Прямая и плоскость называются параллельными, если они не имеют общих точек.
+\end{definition}
+
+\begin{theorem}[Признак параллельности прямой и плоскости]
+    Если прямая, не лежащая в плоскости, параллельна какой-либо прямой, лежащей в этой плоскости, то эти прямая и плоскость параллельны:
+    $$a\subset\alpha,\,b \not\subset \alpha,\,a\parallel b\Longrightarrow \alpha\parallel b$$
+\end{theorem}
+
+\begin{proof}
+    $ $\newline
+    \begin{center}
+        \begin{tikzpicture}[z={(0:10mm)},x={(25:5mm)},y={(60:7mm)}]
+            \begin{scope}[canvas is zx plane at y=0]
+                \draw[opacity=0.2] (0,-3) grid (8,3);
+                \draw (-0.5,-1.5) node[left] {$\alpha$};
+            \end{scope}
+            \begin{scope}[canvas is zy plane at x=0]
+                \fill[color=white] (0,0) rectangle (8,4);
+                \draw[opacity=0.2] (0,-2) grid (8,4);
+                \coordinate (A1) at (0,0);
+                \coordinate (A2) at (8,0);
+                \coordinate (B1) at (0,3);
+                \coordinate (B2) at (8,3);
+                \draw (A1) -- (A2);
+                \draw (B1) -- (B2);
+                \draw ($(A1)!0.5!(A2)$) node[above] {$a$};
+                \draw ($(B1)!0.5!(B2)$) node[above] {$b$};
+                \draw (-0.25,2) node[left] {$\beta$};
+            \end{scope}
+            \begin{scope}[canvas is zx plane at y=0]
+                \fill[color=white] (0,-3) rectangle (8,0);
+                \draw[opacity=0.2] (0,-3) grid (8,0);
+            \end{scope}
+            \foreach \point in {}{
+    \fill \point circle (1.8pt);
+}
+          \end{tikzpicture}
+    \end{center}
+    \begin{center}
+        $a\parallel b\Longrightarrow\exists!\,\,\beta:\,\,a,\,b\subset\beta$. Пусть $b\cap\alpha\neq\varnothing$. Но $\alpha\cap\beta=a$. Противоречие.
+    \end{center}
+\end{proof}
+\begin{theorem}[О линии пересечения плоскостей]
+    Если плоскость проходит через прямую, параллельную другой плоскости, и пересекает эту плоскость, то линия пересечения плоскостей параллельна данной прямой:
+    $$a\parallel \alpha,\,a\subset\beta,\,\alpha\cap\beta=b\Longrightarrow a\parallel b$$
+\end{theorem}
+\begin{proof}
+    $ $\newline
+    \begin{center}
+        \begin{tikzpicture}[z={(0:10mm)},x={(25:5mm)},y={(60:7mm)}]
+            \begin{scope}[canvas is zx plane at y=0]
+                \draw[opacity=0.2] (0,-3) grid (8,3);
+                \draw (-0.5,-1.5) node[left] {$\alpha$};
+            \end{scope}
+            \begin{scope}[canvas is zy plane at x=0]
+                \fill[color=white] (0,0) rectangle (8,4);
+                \draw[opacity=0.2] (0,-2) grid (8,4);
+                \coordinate (A1) at (0,0);
+                \coordinate (A2) at (8,0);
+                \coordinate (B1) at (0,3);
+                \coordinate (B2) at (8,3);
+                \draw (A1) -- (A2);
+                \draw (B1) -- (B2);
+                \draw ($(A1)!0.5!(A2)$) node[above] {$b$};
+                \draw ($(B1)!0.5!(B2)$) node[above] {$a$};
+                \draw (-0.25,2) node[left] {$\beta$};
+            \end{scope}
+            \begin{scope}[canvas is zx plane at y=0]
+                \fill[color=white] (0,-3) rectangle (8,0);
+                \draw[opacity=0.2] (0,-3) grid (8,0);
+            \end{scope}
+            \foreach \point in {}{
+    \fill \point circle (1.8pt);
+}
+          \end{tikzpicture}
+    \end{center}
+    \begin{center}
+        $a\parallel\alpha\Longrightarrow a\cap b=\varnothing.$ Пусть $a\dotdiv b$, тогда $a\cap\alpha\neq\varnothing$, но $a\parallel \alpha$. Противоречие.
+    \end{center}
+\end{proof}
+
+\begin{theorem}[О крыше]
+    Если через каждую из двух параллельных прямых проведена плоскость, причём эти плоскости пересекаются, то линия их пересечения параллельна каждой из данных прямых:
+    $$a\parallel b,\,a\subset \alpha,\,b\subset \beta,\,\alpha\cap\beta=c\Longrightarrow a\parallel c,\, b\parallel c$$
+\end{theorem}
+\begin{proof}
+    $ $\newline
+    \begin{center}
+        \begin{tikzpicture}[z={(0:10mm)},x={(120:5mm)},y={(45:7mm)}]
+            \begin{scope}[canvas is zx plane at y=0]
+                \draw[opacity=0.2] (0,-3) grid (8,4);
+                \coordinate (B1) at (0,-2);
+                \coordinate (B2) at (8,-2);
+                \draw (B1) -- (B2);
+                \draw ($(B1)!0.77!(B2)$) node[above] {$b$};
+                \draw (8.3,0) node[right] {$\beta$};
+            \end{scope}
+            \begin{scope}[canvas is zy plane at x=3]
+                \fill[color=white] (0,0) rectangle (8,-6);
+                \draw[opacity=0.2] (0,1) grid (8,-6);
+                \coordinate (A1) at (0,-5);
+                \coordinate (A2) at (8,-5);
+                \draw (A1) -- (A2);
+                \draw ($(A1)!0.5!(A2)$) node[above] {$a$};
+                \draw (-0.3,-2) node[left] {$\alpha$};
+            \end{scope}
+            \begin{scope}[canvas is zx plane at y=0]
+                \fill[color=white] (0,3) rectangle (8,4);
+                \draw[opacity=0.2] (0,3) grid (8,4);
+                \coordinate (C1) at (0,3);
+                \coordinate (C2) at (8,3);
+                \draw (C1) -- (C2);
+                \draw ($(C1)!0.5!(C2)$) node[above] {$c$};
+            \end{scope}
+            \foreach \point in {}{
+    \fill \point circle (1.8pt);
+}
+          \end{tikzpicture}
+    \end{center}
+    \begin{center}
+        $a\parallel b,\,b\not\subset \alpha\Longrightarrow b\parallel \alpha\Longrightarrow b\parallel c\text{ (по теореме о линии пересечения плоскостей). Аналогично }c\parallel a.$
+    \end{center}
+\end{proof}
+\setcounter{subsection}{8}
+
+\begin{consequence}
+    Параллельность прямых в пространстве транзитивна.
+\end{consequence}
+\begin{consequence}
+    Если прямая параллельна каждой из двух пересекающихся плоскостей,
+то она параллельна их линии пересечения.
+\end{consequence}
+
+\subsection{Параллельность плоскостей}
+
+\begin{definition}
+    Две плоскости называются параллельными, если они не имеют общих точек.
+\end{definition}
+
+\begin{theorem}[Признак параллельности плоскостей]
+    Если две пересекающиеся прямые одной плоскости параллельны соответственно двум прямым другой плоскости, то эти плоскости параллельны:
+    $$a,\,b\subset\alpha,\,a\cap b\neq\varnothing;\,\,c,\,d\subset\beta;\,\,a\parallel c,\,b\parallel d\Longrightarrow \alpha\parallel\beta$$
+\end{theorem}
+\begin{proof}
+    $ $\newline
+    \begin{center}
+        \begin{tikzpicture}[z={(0:10mm)},x={(30:5mm)}]
+            \begin{scope}[canvas is zx plane at y=2]
+                \draw[opacity=0.2] (0,-3) grid (8,3);
+                \draw (1,-3) -- (6,3);
+                \draw (0,2) -- (8,-3);
+                \draw (2,-0.8) node[left] {$a$};
+                \draw (1.3,2) node {$b$};
+                \draw (9,-0.5) node {$\alpha$};
+            \end{scope}
+            \begin{scope}[canvas is zx plane at y=0]
+                \draw[opacity=0.2] (0,-3) grid (8,3);
+                \draw (1,-3) -- (6,3);
+                \draw (0,2) -- (8,-3);
+                \draw (2,-0.8) node[left] {$c$};
+                \draw (1.3,2) node {$d$};
+                \draw (9,-0.5) node {$\beta$};
+            \end{scope}
+            \foreach \point in {}{
+    \fill \point circle (1.8pt);
+}
+          \end{tikzpicture}
+    \end{center}
+    Пусть $\alpha\cap\beta\neq\varnothing$. Тогда по теореме о линии пересечения плоскостей $\alpha\cap\beta=k,\,k\parallel a\,\,(c\subset\beta);\,\,\alpha\cap\beta=l,\,l\parallel b\,\,(d\subset\beta).$ Противоречие. 
+\end{proof}
+
+\begin{theorem}
+    Линии пересечения двух параллельных плоскостей третьей плоскостью параллельны:
+    $$\alpha\parallel\beta,\,\gamma\cap\alpha=a,\,\gamma\cap\beta=b\Longrightarrow a\parallel b$$
+\end{theorem}
+\begin{proof}
+    $ $\newline
+    \begin{center}
+        \begin{tikzpicture}[z={(0:10mm)},x={(30:5mm)}]
+            \begin{scope}[canvas is zx plane at y=2]
+                \draw[opacity=0.2] (0,-3) grid (7,3);
+            \end{scope}
+            \begin{scope}[canvas is zx plane at y=0]
+                \draw[opacity=0.2] (0,-3) grid (7,3);
+            \end{scope}
+            \begin{scope}[plane origin={(0,0,3)}, plane x={(1,0,3)},
+                plane y={(0,1,3.5)},
+                canvas is plane]
+                \fill[color=white] (-3,-1) rectangle (3,3);
+                \draw[opacity=0.2] (-3,-1) grid (3,3);
+            \end{scope}
+            \begin{scope}[canvas is zx plane at y=2]
+                \fill[color=white] (4,-3) rectangle (7,3);
+                \draw[opacity=0.2] (4,-3) grid (7,3);
+                \draw (4,-3) -- (4,3);
+                \draw (4,0) node[above] {$a$};
+                \draw (1,-3) -- (1,3);
+                \draw (1,0) node[above] {$c$};
+                \draw (8,-0.5) node {$\alpha$};
+                \draw (4.5,3.3) node[above] {$\gamma$};
+            \end{scope}
+            \begin{scope}[canvas is zx plane at y=0]
+                \fill[color=white] (3,-3) rectangle (7,3);
+                \draw[opacity=0.2] (3,-3) grid (7,3);
+                \draw (3,-3) -- (3,3);
+                \draw (3,0) node[above] {$b$};
+                \draw (8,-0.5) node {$\beta$};
+            \end{scope}
+            \foreach \point in {}{
+    \fill \point circle (1.8pt);
+}
+          \end{tikzpicture}
+    \end{center}
+    \begin{center}
+        $\alpha\parallel\beta\Longrightarrow\exists\,c\subset\alpha:\,\,c\parallel b.$ По теореме о крыше $a\parallel c,\,b\parallel c.$
+    \end{center}
+\end{proof}
+
+
+
+\end{document}

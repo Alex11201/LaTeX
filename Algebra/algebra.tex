@@ -1,5 +1,5 @@
-%Формат файла
 \documentclass[12pt]{article} 
+
 \usepackage[paperheight=297mm,
    paperwidth=210mm,
    top=20mm,
@@ -38,7 +38,6 @@
 %Математика
 \usepackage{amsmath}
 \usepackage{amsfonts}
-\usepackage{mathabx}
 \usepackage{amssymb}
 
 %Всякое
@@ -75,7 +74,7 @@
 \makeatother
 
 %Оглавление
-\title{\textbf{Алгебра}}\date{}
+\title{\textbf{Алгебра}}\date{}\author{}
 
 \hypersetup{
     colorlinks,
@@ -341,7 +340,7 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
     Отметим на числовой прямой $a_0=\inf a(\N)$ и $b_0=\sup a(\N)$, а также середину $a_0b_0$, то есть $c_0=\dfrac{a_0+b_0}{2}$. Разделим один из получившихся отрезков (отметим $c_0$ и $b_0$, как $a_1$ и $b_1$ соответственно) пополам, получив $c_1=\dfrac{a_1+b_1}{2}$. Данный процесс можно продолжать, получая следующую конструкцию:
     $$[a_0;\,b_0]\supset [a_1;\,b_1]\supset \ldots \supset [a_n;\,b_n]\supset \dots$$
     Теперь необходимо доказать следующее:
-    $$\bigcap_{n=0}^{\infty}[a_n;\,b_n]\neq \emptyset$$
+    $$\bigcap_{n=0}^{\infty}[a_n;\,b_n]\neq \varnothing$$
     \begin{align*}
         1.\,\,&a_0\leq a_1 \leq \ldots \leq a_n \leq \ldots\\
         2.\,\,&a(\N)\text{ ограничена сверху } b_i\text{ элементом}\\
