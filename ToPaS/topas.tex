@@ -32,7 +32,6 @@
 %Математика
 \usepackage{amsmath}
 \usepackage{amsfonts}
-\usepackage{mathabx}
 \usepackage{amssymb}
 
 %Всякое
@@ -78,7 +77,7 @@
     Задать случайную величину, значит указать все ее реализации и соответственные вероятности.
 
 \begin{definition}
-    Индикатором события $A$ называется случайная величина $\I(A)\sim \left({0 \atop 1-\prob(A)} {1 \atop \prob(A)} \right)$.
+    Индикатором события $A$ называется случайная величина: $$\I(A)\sim \left(\genfrac{}{}{0pt}{0}{0}{1-\prob(A)}\,\,\, \genfrac{}{}{0pt}{0}{1}{\prob(A)} \right)$$
 \end{definition}
 
 \begin{definition}
@@ -130,14 +129,14 @@
 
 \begin{definition}
     Случайная величина $\xi$  распределена по Бернулли, если ее распределение суть индикатор.
-    $$Ber(p)\sim \left({0 \atop 1-p} \,\ \, {1 \atop p} \right)$$
+    $$Ber(p)\sim \left(\genfrac{}{}{0pt}{0}{0}{1-p} \,\,\, \genfrac{}{}{0pt}{0}{1}{p} \right)$$
 \end{definition}
 
     \subsubsection{Биномиальное распределение}
 
 \begin{definition}
     Случайная величина $\xi$ распределена биномиально, если она моделирует схему испытаний  Бернулли или является суммой бернулиевых случайных величин.
-    $$B(p,\,n)\sim \left( {0 \atop (1-p)^n} \,\,\, {... \atop ...} \,\,\, {k \atop C_n^kp^k(1-p)^{n-k}} \,\,\, {... \atop ...} \,\,\, {n \atop p^n} \right)$$
+    $$B(p,\,n)\sim \left( \genfrac{}{}{0pt}{0}{0}{(1-p)^n} \,\,\, \genfrac{}{}{0pt}{0}{\cdots}{\cdots} \,\,\, \genfrac{}{}{0pt}{0}{k}{C_n^kp^k(1-p)^{n-k}} \,\,\, \genfrac{}{}{0pt}{0}{\cdots}{\cdots} \,\,\, \genfrac{}{}{0pt}{0}{n}{p^n} \right)$$
 \end{definition}
 
 \begin{theorem}
@@ -163,7 +162,7 @@
 
 \begin{proof}
     Пусть $\eta$ -- число успехов в одном испытании Бернули. Тогда:
-    $$\eta \sim B(p,\,1) \sim \left({0 \atop q} \,\,\, {1 \atop p}\right)$$
+    $$\eta \sim B(p,\,1) \sim \left(\genfrac{}{}{0pt}{0}{0}{q} \,\,\, \genfrac{}{}{0pt}{0}{1}{p}\right)$$
     В таком случае $\D(\eta)=\E(\eta^2)-(\E(\eta))^2=p-p^2=pq$. Тогда по теореме 1.4:
     $$\D(\xi)=\sum_{i=1}^{n}\D(\xi_i)=pq \cdot n = npq$$
 \end{proof}
@@ -172,7 +171,7 @@
 
 \begin{definition}
     Случайная величина $\xi$ распределена геометрически, если она моделирует схему испытаний до первого успеха с вероятностью $p$.
-    $$Geom(p) \sim \left( {1 \atop p} \,\,\, {2 \atop qp} \,\,\, {... \atop ...} \,\,\, \,\,\, {n \atop q^{n-1}p} \,\,\, {... \atop ...}\right)$$
+    $$Geom(p) \sim \left( \genfrac{}{}{0pt}{0}{1}{p} \,\,\, \genfrac{}{}{0pt}{0}{2}{qp} \,\,\, \genfrac{}{}{0pt}{0}{\cdots}{\cdots} \,\,\, \,\,\, \genfrac{}{}{0pt}{0}{n}{q^{n-1}p} \,\,\, \genfrac{}{}{0pt}{0}{\cdots}{\cdots}\right)$$
 \end{definition}
 
 \begin{lemma}
@@ -224,7 +223,7 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
 \begin{proof}
     \begin{align*}
     &\xi = \I(A_1)+\I(A_2)+\ldots+\I(A_n),\, \text{где}\, A_i=\{i\text{-ый элемент выборки помечен}\}\\
-    &\I(A_i)\sim \left({0 \atop 1-\frac{K}{N}} \,\,\, {1 \atop \frac{K}{N}} \right)\\
+    &\I(A_i)\sim \left(\genfrac{}{}{0pt}{0}{0}{1-\frac{K}{N}} \,\,\, \genfrac{}{}{0pt}{0}{1}{\frac{K}{N}} \right)\\
     &\E(\xi)=\sum_{i=1}^n \E(\I(A_i))=n\cdot \frac{K}{N}
 \end{align*}
 \end{proof}
@@ -236,7 +235,7 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
 \end{definition}
 
 \begin{definition}
-    $$\xi \sim NB(p,\,k)\text{, если }\xi=\sum_{i=1}^k\eta_i:\,\forall i \in \{1,\,2,\,\ldots,\,k\}:\,\eta_i\sim Geom(p)$$
+    $$\xi \sim NB(p,\,k)\text{, если }\xi=\sum_{i=1}^k\eta_i:\,\forall i \in \{1,\,2,\,\ldots\,,\,k\}:\,\eta_i\sim Geom(p)$$
     $$\prob(\xi=n)=C_{n-1}^{k-1}p^kq^{n-k}$$
 \end{definition}
 
@@ -338,12 +337,16 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
         =&e^{-(\lambda_\xi+\lambda_\eta)}\cdot \dfrac{(\lambda_\xi+\lambda_\eta)^n}{n!}
     \end{align*}
 \end{proof}
-\section{Цепи Маркова}
+
+\section{Ветвящиеся процессы}
+
+\subsection{Цепи Маркова}
+
 \begin{definition}
-    Последовательность случайных величин $\xi_0,\,\xi_1,\ldots,\,\xi_n$ называется Цепью Маркова, если 
-    $$\forall n,\,i_0,\,i_1,\ldots,\,i_n:\,\,\prob(\xi_{n-1}=x_{i_{n-1}},\ldots,\,\xi_0=x_{i_{0}})$$
+    Последовательность случайных величин $\xi_0,\,\xi_1,\,\ldots\,,\,\xi_n$ называется Цепью Маркова, если 
+    $$\forall n,\,i_0,\,i_1,\,\ldots\,,\,i_n:\,\,\prob(\xi_{n-1}=x_{i_{n-1}},\,\ldots\,,\,\xi_0=x_{i_{0}})$$
     верно, что:
-    $$\prob(\xi_{n}=x_{i_{n}}\,|\,\xi_{n-1}=x_{i_{n-1}},\ldots,\,\xi_0=x_{i_{0}})=\prob(\xi_{n}=x_{i_{n}}\,|\,\xi_{n-1}=x_{i_{n-1}})$$
+    $$\prob(\xi_{n}=x_{i_{n}}\,|\,\xi_{n-1}=x_{i_{n-1}},\,\ldots\,,\,\xi_0=x_{i_{0}})=\prob(\xi_{n}=x_{i_{n}}\,|\,\xi_{n-1}=x_{i_{n-1}})$$
 \end{definition}
 \begin{definition}
     Цепь Маркова называется однородной, если:
@@ -357,10 +360,10 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
     Матрица $\pi=(p_{i,j})$ называется матрицей переходных вероятностей.
 \end{definition}
 \begin{theorem}
-    Пусть $p^{(0)}=(p^{(0)}_1,\,p^{(0)}_2,\ldots,\,p^{(0)}_n)$ и $p^{(k)}=(p^{(k)}_1,\,p^{(k)}_2,\ldots,\,p^{(k)}_n)$ -- начальное распределение и распределение на $k$-ом шаге соответственно вероятностей Марковской цепи, где $p^{(k)}_i=\prob(\xi_k=x_i)$. Тогда:
+    Пусть $p^{(0)}=(p^{(0)}_1,\,p^{(0)}_2,\,\ldots\,,\,p^{(0)}_n)$ и $p^{(k)}=(p^{(k)}_1,\,p^{(k)}_2,\,\ldots\,,\,p^{(k)}_n)$ -- начальное распределение и распределение на $k$-ом шаге соответственно вероятностей Марковской цепи, где $p^{(k)}_i=\prob(\xi_k=x_i)$. Тогда:
     $$p^{(k)}=p^{(0)}\cdot\pi^k$$
 \end{theorem}
-\subsection{Классификация состояний Марковских цепей}
+\subsubsection{Классификация состояний Марковских цепей}
 \begin{definition}
     Состояние $x_j$ достижимо из $x_i$, если:
     $$\exists\,k:\,\,P^k_{ij}=\prob(\xi_{m+k}=x_j\,|\,\xi_m=x_i)>0$$
@@ -392,7 +395,7 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
 \begin{definition}
     Состояние $x_i$ называется периодическим, если $\NOD\{k:\,\,P^{(k)}_{ii}>0\}=d>1$, где $d$ -- период состояния.
 \end{definition}
-\subsection{Эргодичность}
+\subsubsection{Эргодичность}
 \begin{definition}
     Марковская цепь называется эргодической, если:
     $$\forall i,\,j:\,\,\exists\lim_{k\to\infty}P^{(k)}_{ij}=p_{ij}>0,\,\,\sum_{j}p_j=1$$
@@ -401,4 +404,65 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
     Марковская цепь эргодична, если:
     $$\exists\,k:\,\,\forall i,\,j:\,\,P^{(k)}_{ij}>0$$
 \end{theorem}
+
+\subsubsection{Процесс Гальтона-Ватсона}
+
+\begin{definition}
+    Пусть $p_0,\,p_1,\,\ldots\,,\,p_m:\,p_m\geq 0;\,p_0+p_1+\ldots+p_m=1$ – начальное распределение. Пусть для $i\geq 2$ определено: $$p_i^{*k}=\sum_{i_1+i_2+\ldots+i_k=i}p_{i_1}\cdot p_{i_2}\cdot\ldots\cdot p_{i_k}$$
+    Процесс Гальтона-Ватсона есть марковская цепь $Z(n),\, n\in \N_0$ с начальным распределением $\prob_0(k)=\prob(Z(0)=k)$ и переходными вероятностями:
+    $$\prob_{ij}=\prob(Z(n+1)=j\,|\,Z(n)=i)=\begin{cases}
+        p_j^{*i},\text{ если }i\geq 1,\,j\geq 0\\
+        \delta_{0j},\text{ если }i\geq 0,\,j\geq 0
+    \end{cases}$$
+    Если не оговорено иного, $\prob(1)=\prob(Z(0)=1)=1$.
+\end{definition}
+
+\subsection{Тождество Вальда}
+
+\begin{theorem}
+    Пусть $\xi_0,\,\xi_1,\,\ldots$ – независимые одинаково распределенные случайные величины. Пусть $\tau$ – случайный момент времени, не зависящий от $(\xi_i)$. Пусть $S_n=\xi_0+\xi_1+\ldots+\xi_n$. Тогда:
+    $$\E(S_\tau)=\E(\xi)\cdot\E(\tau)$$ 
+\end{theorem}
+\begin{proof}
+    $$\sum_{k=1}^{\infty}\prob(\tau\geq k)=\sum_{k=1}^{\infty}\sum_{n=1}^{k}\prob(\tau=n)=\sum_{n=1}^{\infty}\sum_{k=1}^{n}\prob(\tau=n)=\sum_{n=1}^{\infty}n\cdot\prob(\tau=n)=\E(\tau)$$
+    $$\E(S_\tau)=\sum_{n=1}^{\infty}\E(S_\tau;\,\tau=n)=\sum_{n=1}^{\infty}\E(\xi_1+\xi_2\ldots+\xi_n;\,\tau=n)=\sum_{n=1}^{\infty}\sum_{k=1}^{n}\E(\xi_k;\,\tau=n)=$$
+    $$=\sum_{k=1}^{\infty}\sum_{n=k}^{\infty}\E(\xi_k;\,\tau=n)=\sum_{k=1}^{\infty}\E(\xi_k;\,\tau\geq k)=\sum_{k=i}^{\infty}\E(\xi_k)\cdot\E(\tau\geq k)=\E(\xi)\cdot\E(\tau)$$
+\end{proof}
+
+\section{Производящие функции}
+
+\begin{definition}
+    Производящей функцией произвольной последовательности $(a_n)$ называется выражение вида:
+    $$a_0+a_1z+a_2z^2+\ldots=\sum_{i=0}^{\infty}a_iz^i$$
+\end{definition}
+
+\subsection{Операции с производящими функциями}
+
+\begin{definition}
+    Суммой производящих функций $A(z)=a_0+a_1z+a_2z^2+\ldots$ и $B(z)=b_0+b_1z+b_2z^2+\ldots$ называется производящая функция:
+    $$A(z)+B(z)=(a_0+b_0)+(a_1+b_1)z+(a_2+b_2)z^2+\ldots$$
+\end{definition}
+\begin{definition}
+    Произведением производящих функций $A(z)=a_0+a_1z+a_2z^2+\ldots$ и $B(z)=b_0+b_1z+b_2z^2+\ldots$ называется производящая функция:
+    $$A(z)\cdot B(z)=a_0b_0+(a_0b_1+a_1b_0)z+(a_0b_2+a_1b_1+a_2b_0)z^2+\ldots$$
+\end{definition}
+\begin{definition}
+    Пусть $A(z)=a_0+a_1z+a_2z^2+\ldots$; $B(t)=b_0+b_1t+b_2t^2+\ldots;\,b_0=0$ – производящие функции. Подстановкой производящей функции $B$ в производящую функцию $A$ будет называться производящая функция:
+    $$A(B(t))=a_0+a_1b_1t+(a_1b_2+a_2b_1^2)t^2+(a_1b_3+2a_2b_1b_2+a_3b_1^3)t^3+\ldots$$
+\end{definition}
+\begin{theorem}
+    Пусть $B(t)=b_0+b_1t+b_2t^2+\ldots;\,b_0=0;\,b_1\neq 0$ – производящая функция. Тогда существуют единственные такие функции $A(z)=a_0+a_1z+a_2z^2+\ldots;\,a_0=0$ и $C(u)=c_0+c_1u+c_2u^2=\ldots;\,c_0=0$, что $A(B(t))=t$ и $B(C(u))=u.$ Функция $A$ называется левой обратной, а функция $C$ – правой обратной к функции $B$.
+\end{theorem}
+\begin{proof}
+    Рассмотрим левую обратную функцию:
+    $$A(B(t))=a_1b_1t+(a_1b_2+a_2b_1^2)t^2+(a_1b_3+2a_2b_1b_2+a_3b_1^3)t^3+\ldots=t$$
+    Чтобы равенство выполнялось, коэффициент при $t$ должен равняться 1, а коэффициенты при $t^n,\,n\geq 2$ должны равняться 0. Отсюда $a_1b_1=1\Longrightarrow a_1=\dfrac{1}{b_1}$. Пусть аналогично определены коэффициенты $a_1,\,a_2,\,\ldots\,,\,a_n$. Тогда коэффициент $a_{n+1}$ будет определяться из условия, что многочлен $a_{n+1}b^{n+1}_1+\ldots$ от $a_1,\,a_2,\,\ldots\,,\,a_n,\,a_{n+1}$ и $b_1,\,b_2,\,\ldots\,,\,b_n,\,b_{n+1}$, являющийся коэффициентом при $t^{n+1}$, будет равен нулю. Поскольку $b_1\neq 0$ по условию, получаем уравнение от $a_{n+1}$ с единственным корнем. То есть мы однозначно можем задать такие коэффициенты $a_1,\,a_2,\,\ldots$, чтобы $A(B(t))=t$.\bigskip
+    
+    Доказательство для правой обратной функции аналогично.
+\end{proof}
+\begin{definition}
+    Производящая функция называется рациональной, если ее можно представить в виде $\dfrac{P(x)}{Q(x)}$, где $P(x)$ и $Q(x)$ – многочлены.
+\end{definition}
+
+
 \end{document}
