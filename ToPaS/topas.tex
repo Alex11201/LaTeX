@@ -14,10 +14,12 @@
 \usepackage{color}
 \usepackage{transparent}
 \usepackage{amsthm}
+\usepackage{multicol}
 \parindent=0cm
 
 \theoremstyle{definition}
 \newtheorem{theorem}{Теорема}[section]
+\newtheorem*{example}{Пример}
 \newtheorem{lemma}[theorem]{Лемма}
 \newtheorem{definition}{Определение}
 \newtheorem{statement}[theorem]{Утверждение}
@@ -33,6 +35,7 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{mathtools}
 
 %Всякое
 \usepackage{relsize}
@@ -60,6 +63,8 @@
     linkcolor=black,
     urlcolor=black
 }
+
+\newcommand\defeq{\stackrel{\mathclap{\scalebox{0.6}{def}}}{=}}
 
 \begin{document}
 
@@ -198,14 +203,10 @@
         &\D(\xi)=\E(\xi^2)-(\E(\xi))^2\\\\
         &\E(\xi^2)=p+2qp+9q^2p+\ldots+k^2q^{k-1}p+\ldots=\\
         =&p+qp+3qp+4q^2p+5q^2p+\ldots=\\
-        =&(qp+4q^2p+\ldots)+(p+3qp+5q^2p+\ldots)
-    \end{align*}
-    \begin{align*}
+        =&(qp+4q^2p+\ldots)+(p+3qp+5q^2p+\ldots)\\\\
         &\E(\xi^2)=q\E(\xi^2)+\E(2\xi-1)=\\
-        =&(1-p)\E(\xi^2)+\frac{2}{p}-1=\\
-        =&\frac{2-p}{p^2}\\\\
-        &\D(\xi)=\frac{2-p}{p^2}-\frac{1}{p^2}=\\
-        =&\frac{q}{p^2}
+        =&(1-p)\E(\xi^2)+\frac{2}{p}-1=\frac{2-p}{p^2}\\\\
+        &\D(\xi)=\frac{2-p}{p^2}-\frac{1}{p^2}=\frac{q}{p^2}
     \end{align*}
 \end{proof}
 
@@ -409,13 +410,22 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
 
 \begin{definition}
     Пусть $p_0,\,p_1,\,\ldots\,,\,p_m:\,p_m\geq 0;\,p_0+p_1+\ldots+p_m=1$ – начальное распределение. Пусть для $i\geq 2$ определено: $$p_i^{*k}=\sum_{i_1+i_2+\ldots+i_k=i}p_{i_1}\cdot p_{i_2}\cdot\ldots\cdot p_{i_k}$$
-    Процесс Гальтона-Ватсона есть марковская цепь $Z(n),\, n\in \N_0$ с начальным распределением $\prob_0(k)=\prob(Z(0)=k)$ и переходными вероятностями:
-    $$\prob_{ij}=\prob(Z(n+1)=j\,|\,Z(n)=i)=\begin{cases}
+    Процесс Гальтона-Ватсона есть марковская цепь $Z(n),\, n\in \N_0$ с начальным распределением $P_0(k)=\prob(Z(0)=k)$ и переходными вероятностями:
+    $$P_{ij}=\prob(Z(n+1)=j\,|\,Z(n)=i)=\begin{cases}
         p_j^{*i},\text{ если }i\geq 1,\,j\geq 0\\
         \delta_{0j},\text{ если }i\geq 0,\,j\geq 0
     \end{cases}$$
-    Если не оговорено иного, $\prob(1)=\prob(Z(0)=1)=1$.
+    Если не оговорено иного, $P_0(1)=\prob(Z(0)=1)=1;\,\,P_0(k)=0,\,\,k\neq1$.
 \end{definition}
+\begin{example}[Деление клетки 1]\label{Деление клетки 1}
+    Рассмотрим популяцию частиц. Пусть после каждой единицы времени частица либо умирает, либо делится на двое. При этом пусть в начале мы имели только одну частицу, то есть $Z(0)=1$. Рассмотрим случайную величину $\xi_i^{(n)}$ – число потомков $i$-й частицы $n$-го поколения:
+    $$Z(n+1)=\xi_1^{(n)}+\xi_2^{(n)}+\ldots+\xi_{Z(n)}^{(n)},\,\,n\geq0$$
+    Заметим, что можно также фиксировать не число частиц в момент времени $n$, а число частиц первого поколения:
+    $$Z(n+1)=Z_1(n)+Z_2(n)+\ldots+Z_{Z(1)}(n)$$
+    Таким образом для независимых $\xi_i^{(n)}$ верно:
+    $$\xi_1^{(n)}+\xi_2^{(n)}+\ldots+\xi_{Z(n)}^{(n)}\defeq Z(n+1)=Z_1(n)+Z_2(n)+\ldots+Z_{Z(1)}(n)$$
+    Далее смотреть в примере \ref{Деление клетки 2}.
+\end{example}
 
 \subsection{Тождество Вальда}
 
@@ -464,5 +474,33 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
     Производящая функция называется рациональной, если ее можно представить в виде $\dfrac{P(x)}{Q(x)}$, где $P(x)$ и $Q(x)$ – многочлены.
 \end{definition}
 
+\subsection{Производящие функции вероятности}
+
+\begin{definition}
+    Производящей функцией $\varphi_\xi$ случайной величины $\xi$ называется производящая функция последовательности $\left(\prob(\xi=n)\right)^\infty_{n=0}$:
+    $$\varphi_\xi(z)=\sum_{n=0}^{\infty}z^n\prob(\xi=n)=\E(z^\xi)$$
+    Причем $\varphi_\xi(1)=1$ как сумма вероятностей. Рассмотрим производную данной функции:
+    \begin{multicols}{2}
+        \centering
+        \[\varphi'_\xi(z)=\sum_{n=0}^\infty n\cdot z^{n-1}\prob(\xi=n)\]\\
+        \[\varphi'_\xi(1)=\sum_{n=0}^\infty n\cdot \prob(\xi=n)=\E(\xi)\]
+    \end{multicols}
+\end{definition}
+\begin{definition}
+    Итерацией производящей функции случайной величины порядка $n$ называется композиция, строящаяся рекуррентно:
+    \begin{multicols}{3}
+        \centering
+        $\varphi_0(z)=z$\\
+        $\varphi_1(z)=\varphi(z)$\\
+        $\varphi_{n+1}(z)=\varphi_n(\varphi(z))$
+    \end{multicols}
+\end{definition}
+\begin{definition}
+    Пусть $\xi_i,\,\,i\in\{1,\,\,2,\ldots,\,\,n\}$ – независимые случайные величины, тогда:
+    $$\varphi_{\xi_1+\xi_2+\ldots+\xi_n}(z)=\varphi_{\xi_1}\cdot\varphi_{\xi_2}\cdot\ldots\cdot\varphi_{\xi_n}$$
+\end{definition}
+\begin{example}[Деление клетки 2]\label{Деление клетки 2}
+    Продолжим рассмотрение примера \ref{Деление клетки 1}.
+\end{example}
 
 \end{document}
