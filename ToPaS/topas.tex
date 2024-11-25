@@ -36,6 +36,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{mathtools}
+\usepackage[output-decimal-marker={,}]{siunitx}
 
 %Всякое
 \usepackage{relsize}
@@ -406,7 +407,7 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
     $$\exists\,k:\,\,\forall i,\,j:\,\,P^{(k)}_{ij}>0$$
 \end{theorem}
 
-\subsubsection{Процесс Гальтона-Ватсона}
+\subsection{Процесс Гальтона-Ватсона}
 
 \begin{definition}
     Пусть $p_0,\,p_1,\,\ldots\,,\,p_m:\,p_m\geq 0;\,p_0+p_1+\ldots+p_m=1$ – начальное распределение. Пусть для $i\geq 2$ определено: $$p_i^{*k}=\sum_{i_1+i_2+\ldots+i_k=i}p_{i_1}\cdot p_{i_2}\cdot\ldots\cdot p_{i_k}$$
@@ -497,10 +498,66 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
 \end{definition}
 \begin{definition}
     Пусть $\xi_i,\,\,i\in\{1,\,\,2,\ldots,\,\,n\}$ – независимые случайные величины, тогда:
-    $$\varphi_{\xi_1+\xi_2+\ldots+\xi_n}(z)=\varphi_{\xi_1}\cdot\varphi_{\xi_2}\cdot\ldots\cdot\varphi_{\xi_n}$$
+    $$\varphi_{\xi_1+\xi_2+\ldots+\xi_n}(z)=\varphi_{\xi_1}\cdot\varphi_{\xi_2}\cdot\ldots\cdot\varphi_{\xi_n}=\varphi_n(\varphi_{\xi_1}(z))$$
+    При этом $\xi_1$ может быть заменена на любую из $\xi_i$, так как они одинаково распределены.
 \end{definition}
 \begin{example}[Деление клетки 2]\label{Деление клетки 2}
     Продолжим рассмотрение примера \ref{Деление клетки 1}.
+    $$F(n;z)\defeq\E(z^{Z_{(n)}})=\sum_{k=0}^{\infty}z^k\prob(Z(n)=k)$$
+    Рассмотрим $F(n+1;z)$ при учёте, что $Z(0)=1$ и используя свойства итераций:
+    \begin{multline*}
+        F(n+1;z)=\E\left(z^{Z_{(n+1)}}\right)=\E\left(\E\left(z^{Z_{(n+1)}}|Z(n)\right)\right)=\\
+        =\E\left(\E\left(z^{\xi_1^{(n)}+\xi_2^{(n)}+\ldots+\xi_{Z(n)}^{(n)}}|Z(n)\right)\right)=\E\left(\prod_{k=1}^{Z_{(n)}}\E\left(z^{\xi_k^{(n)}}\right)\right)=\E\left(\E\left(z^\xi\right)^{Z(n)}\right)=\\
+        =F(n;\varphi(z))=F(n-1;\varphi_2(z))=F(0;\varphi_{n+1}(z))=\varphi_{n+1}(z)
+    \end{multline*}
+    Тогда вероятность вырождения к моменту $n$ может быть вычислена как итерация:
+    $$\varphi_n(0)=F(n;0)=\sum_{k=0}^{\infty}0^k\prob(Z(n)=k)=\prob(Z(n)=0)$$
+\end{example}
+
+\subsection{Классификация процессов Гальтона-Ватсона}
+
+\begin{definition}
+    Пусть $A\defeq \E(\xi)=\E(Z(1)|Z(0)=1)<\infty$. Тогда процесс Гальтона-Ватсона называется:
+    \begin{center}
+        \begin{multicols}{3}
+            Докритическим, если $A<1$\\
+            Критическим, если $A=1$\\
+            Надкритическим, если $A>1$
+        \end{multicols}
+    \end{center}
+\end{definition}
+
+\begin{lemma}
+    $\E(Z(n))=A^n$. При этом если $\D(\xi)<\infty$, то:
+    $$\D(Z(n))=\left\{\begin{alignedat}{2}
+        & \D\left(\frac{A^{n-1}(A^n-1)}{A-1}\right), && \text{ если }A\neq1 \\
+        & \sigma(n^2),  && \text{ если }A=1
+      \end{alignedat}\right.$$
+\end{lemma}
+\begin{proof}
+    \begin{multline*}
+        \E(Z(n))=\E\left(\xi_1^{(n-1)}+\xi_2^{(n-1)}+\ldots+\xi_{Z(n-1)}^{(n-1)}\right)=\E(\xi)\cdot\E(Z(n-1))=\\
+        =A\cdot\E(Z(n-1))=A^2\cdot\E(Z(n-2))=\ldots=A^n\cdot\E(Z(0))=A^n
+    \end{multline*}
+\end{proof}
+
+\begin{theorem}
+    Вероятность вырождения ветвящегося процесса равна наименьшему неотрицательному корню $p$ уравнения $z=\varphi(z)$.
+\end{theorem}
+\begin{proof}
+    $$\varphi_n(z)=\prob(Z(n)=0)\leq \prob(Z(n+1)=0)=\varphi_{n+1}(z)$$
+    В силу монотонности и возрастания последовательности
+    $$P(n)=\prob(Z(n)=0)=\varphi_n(0)$$
+    выполняется теорема Вейерштрасса, по которой она имеет предел $r$ при $n\to\infty$. Заметим, что 
+    $$P(1)=\varphi_1(0)=\varphi_1(\varphi_0(0))\leq p=\varphi(p)$$
+    Пусть $\varphi_{n-1}(0)=P(n-1)<p$, тогда по индукции получаем:
+    $$P(n)=\varphi_n(0)=\varphi(\varphi_{n-1}(0))=\varphi(P(n-1))\leq \varphi(p)=p$$
+    Отсюда в силу непрерывности $\varphi$ имеем:
+    $$r=\lim_{n\to\infty}P(n)=\lim_{n\to\infty}\varphi(P(n-1))=\varphi\left(\lim_{n\to\infty}P(n-1)\right)=\varphi(r)$$
+    Таким образом, мы также получаем, что докритические процессы вырождаются с вероятностью $p=1$, а надкритические процессы вырождаются с вероятностью $p<1$, которая является минимальным неотрицательным корнем уравнения $z=\varphi(z)$.
+\end{proof}
+\begin{example}
+    Рассмотрим бинарное деление клетки с производящей функцией $\varphi(z)=1-p+pz^2$. Решим уравнение $z=1-p+pz^2$, получив корни $z=1$ и $z=\dfrac{1-p}{p}$. То есть при $p>\num{0.5}$ вероятность вырождения равна $\prob=\dfrac{1-p}{p}$, а при $p\leq\num{0.5}$ имеем $\prob=1$.
 \end{example}
 
 \end{document}
