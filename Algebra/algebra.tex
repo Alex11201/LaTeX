@@ -14,6 +14,7 @@
 \usepackage{color}
 \usepackage{transparent}
 \usepackage{amsthm}
+\usepackage{multicol}
 \parindent=0cm
 
 \theoremstyle{definition}
@@ -54,6 +55,7 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\clx}{\mathbb{C}}
 \newcommand{\prob}{\mathbb{P}}
 \newcommand{\verteq}{\rotatebox{90}{$\,=$}}
 \newcommand{\equalto}[2]{\underset{\scriptstyle\overset{\mkern4mu\verteq}{#2}}{#1}}
@@ -289,11 +291,11 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
 \subsection{Аксиоматика действительных чисел}
 
 \begin{definition}
-    Пусть $M \subset \R,\,M$ ограничено. Тогда наименьшая из верхних граней множества $M$ называется точной верхней гранью:
+    Пусть $M \subset \R,\,M$ ограничено. Тогда наименьшая из верхних граней множества $M$ называется точной верхней гранью (супремумом):
     $$a=\sup M\Longleftrightarrow \forall x \in M:\, x \leq a,\, \forall \varepsilon>0\,\,\, \exists\, x \in M:\, x>a-\varepsilon$$
 \end{definition}
 \begin{definition}
-    Пусть $M \subset \R,\,M$ ограничено. Тогда наибольшая из нижних граней множества $M$ называется точной нижней гранью:
+    Пусть $M \subset \R,\,M$ ограничено. Тогда наибольшая из нижних граней множества $M$ называется точной нижней гранью (инфинумом):
     $$a=\inf M\Longleftrightarrow \forall x \in M:\, x \geq a,\, \forall \varepsilon>0\,\,\, \exists\, x \in M:\, x<a+\varepsilon$$
 \end{definition}
 
@@ -798,10 +800,13 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
         Мнимой единицей называется такое число $i$, что $i^2=-1$.
     \end{definition}
     \begin{definition}
-        Комплексным числом называется выражение вида $z=a-bi$.
+        Комплексным числом называется выражение вида $z=a-bi$, где $a=\Re z$ – действительная часть, а $b=\Im z$ – мнимая.
     \end{definition}
     \begin{definition}
-        Модулем комплексного числа называется выражение вида $|z|=r=\sqrt{z\cdot\bar{z}},$ $\bar{z}=a+bi$, то есть $|z|=\sqrt{a^2+b^2}$.
+        Число $z_1$ называется сопряженным к числу $z$, если $\Re z_1=\Re z;\,\Im z_1=-\Im z$. Обозначение: $z_1=\bar{z}$.
+    \end{definition}
+    \begin{definition}
+        Модулем $z\in \clx$ называется $|z|=\sqrt{(\Re z)^2+(\Im z)^2}$.
     \end{definition}
     \begin{definition}
         Комплексная плоскость:
@@ -838,6 +843,10 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
         $$=r^{n+1}\cdot((\cos(n\varphi)\cdot\cos\varphi-\sin(n\varphi)\cdot\sin\varphi)+i(\cos(n\varphi)\cdot\sin\varphi+\sin(n\varphi)\cdot\cos\varphi))=$$
         $$=r^{n+1}\cdot(\cos((n+1)\varphi)+i\sin((n+1)\varphi))$$
     \end{proof}
+    \begin{definition}
+        Корнем из комплексного числа называется:
+        $$\sqrt[n]{z}=\sqrt[n]{r}\left(\cos\left(\frac{\varphi}{n}+\frac{2\pi k}{n}\right)+i\sin\left(\frac{\varphi}{n}+\frac{2\pi k}{n}\right)\right),\,\,k\in\{1,\,\,2,\ldots,\,\,n-1\}$$
+    \end{definition}
     \subsection{Матрицы поворота}
     \begin{definition}
         Матрицей поворота на угол $\alpha$ называется:
@@ -852,4 +861,69 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
         $$\sin x = \lim_{n\to\infty}\sum_{i=0}^n\dfrac{x^{2i+1}}{(2i+1)!}\cdot(-1)^i$$
         $$e^{ix}=\lim_{n\to\infty}\sum_{k=0}^n\dfrac{x^k}{k!}\cdot i^k=\cos x+ i\sin x$$
     \end{proof}
+
+    \section{Логарифмы}
+    \begin{definition}
+        Пусть $a>0;\,\, a\neq 1,\,\,b>0$. Логарифмом $\log_ab$ числа $b$ по основания $a$ называется такое число $c$, что $a^c=b$. Из этого, а также свойств степеней следует:
+        \begin{center}
+            \begin{multicols}{3}
+                \[\log_a 1=0\]\\
+                \[\log_a a=1\]\\
+                \[a^{\log_a b}=b\]
+            \end{multicols}
+        \end{center}
+    \end{definition}
+    \begin{statement}
+        $$\log_a b+\log_a c=\log_a(bc)$$
+    \end{statement}
+    \begin{proof}
+        $$a^{\log_a b+\log_a c}=a^{\log_a b}\cdot a^{\log_a c}=bc=a^{\log_a(bc)}$$
+    \end{proof}
+    \begin{statement}
+        $$\log_a b-\log_a c=\log_a \left(\frac{b}{c}\right)$$
+    \end{statement}
+    \begin{proof}
+        $$a^{\log_a b-\log_a c}=\frac{a^{\log_a b}}{a^{\log_a c}}=\frac{b}{c}=a^{\log_a \left(\frac{b}{c}\right)}$$
+    \end{proof}
+    \begin{statement}
+        $$\log_a \left(b^k\right)=k\cdot\log_a b$$
+    \end{statement}
+    \begin{proof}
+        $$a^{\log_a \left(b^k\right)}=b^k=\left(a^{\log_a b}\right)^k=a^{k\cdot\log_a b}$$
+    \end{proof}
+    \begin{statement}
+        $$\log_{a^k}b=\frac{1}{k}\cdot\log_a b$$
+    \end{statement}
+    \begin{proof}
+        $$\left(a^k\right)^{\log_{a^k}b}=a^{k\cdot\log_{a^k} b}=b=a^{\log_a b}$$
+    \end{proof}
+    \setcounter{subsection}{4}
+    \begin{consequence}
+        $$\log_{a^k}\left(b^k\right)=\log_a b$$
+    \end{consequence}
+    \begin{statement}
+        $$\log_ab=\frac{\log_cb}{\log_ca},\,\,\log_ca\neq0$$
+    \end{statement}
+    \begin{proof}
+        $$\log_ab=\frac{\log_cb}{\log_ca}\Longleftrightarrow\log_ab\cdot\log_ca=\log_cb$$
+        $$c^{\log_cb}=b=a^{\log_ab}=\left(c^{\log_ca}\right)^{\log_ab}=c^{\log_ab\cdot\log_ca}$$
+    \end{proof}
+    \begin{statement}
+        $$\log_ab=\frac{1}{\log_ba}$$
+    \end{statement}
+    \begin{proof}
+        $$a^{\frac{1}{\log_ba}}=\left(b^{\log_ba}\right)^{\frac{1}{\log_ba}}=b=a^{\log_ab}$$
+    \end{proof}
+    \begin{statement}
+        $$a^{\log_bc}=c^{\log_ba}$$
+    \end{statement}
+    \begin{proof}
+        $$a^{\log_bc}=a^{\frac{\log_ac}{\log_ab}}=\left(a^{\log_ac}\right)^{\frac{1}{\log_ab}}=c^\frac{1}{\log_ab}=c^{\log_ba}$$
+    \end{proof}
+    \begin{definition}
+        Натуральным логарифмом $\ln x$ называется логарифм с основанием $e$.
+    \end{definition}
+    \begin{definition}
+        Десятичным логарифмом $\lg x$ называется логарифм с основанием 10.
+    \end{definition}
 \end{document}
