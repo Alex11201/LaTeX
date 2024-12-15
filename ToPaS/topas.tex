@@ -23,6 +23,7 @@
 \newtheorem{lemma}[theorem]{Лемма}
 \newtheorem{definition}{Определение}
 \newtheorem{statement}[theorem]{Утверждение}
+\newtheorem{consequence}{Следствие}[subsection]
 \renewcommand\qedsymbol{$\blacksquare$}
 
 
@@ -30,6 +31,9 @@
 \usepackage{graphicx}
 \usepackage{wrapfig}
 \usepackage{subcaption}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary {arrows.meta}
 
 %Математика
 \usepackage{amsmath}
@@ -53,6 +57,7 @@
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\D}{\mathbb{D}}
 \newcommand{\prob}{\mathbb{P}}
+\newcommand{\nd}{\mathcal{N}}
 
 %Оглавление
 \title{\textbf{ТВиМС}}\date{}\author{}
@@ -560,4 +565,128 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
     Рассмотрим бинарное деление клетки с производящей функцией $\varphi(z)=1-p+pz^2$. Решим уравнение $z=1-p+pz^2$, получив корни $z=1$ и $z=\dfrac{1-p}{p}$. То есть при $p>\num{0.5}$ вероятность вырождения равна $\prob=\dfrac{1-p}{p}$, а при $p\leq\num{0.5}$ имеем $\prob=1$.
 \end{example}
 
+\section{Основы математической статистики}
+
+\begin{definition}
+    Функция распределения случайной величины $\xi$ суть $F_\xi(x)=\prob(\xi\leq x)$.
+\end{definition}
+\begin{definition}
+    Квантилем уровня $\alpha$ называется такой $x_\alpha$, что он является решением уравнения $F_\xi(x)=\alpha$.
+\end{definition}
+\begin{definition}\label{выборка}
+    Выборкой объема $n;\,\,n>1$ называется случайный вектор $Z_n=(\xi_1,\ldots,\xi_n)$, где $\xi_i,\,\,i\in\{1,\ldots,n\}$ называются элементами выборки и являются независимыми случайными величинами с одной функцией распределения $F_\xi(x)$. Тогда выборка $Z_n$ соответствует функции распределения $F_\xi(x)$.
+\end{definition}
+\begin{definition}\label{реализация выборки}
+    Реализацией выборки называется неслучайный вектор $z_n=(x_1,\ldots,x_n)$, компонентами которого являются реализации соответствующих элементов выборки $\xi_i$, $i\in\{1,\ldots,n\}$.
+\end{definition}
+\begin{consequence}
+    Из определений \ref{выборка} и \ref{реализация выборки} следует, что реализацию выборки $z_n$ можно также рассматривать как последовательность $x_1,\ldots,x_n$ из $n$ реализаций одной и той же случайной величины $\xi$, полученных в серии из $n$ независимых одинаковых опытов, проводимых в одинаковых условиях. Поэтому можно говорить, что выборка $Z_n$ порождена наблюдаемой случайной величиной $\xi$, имеющей распределение $F_\xi(x)=F(x)$.
+\end{consequence}
+\begin{definition}
+    Параметром распределения $\theta$ случайной величины $\xi$ называется любая числовая характеристика этой случайной величины или любая константа, явно входящая в выражение для функции распределения.
+\end{definition}
+\begin{definition}
+    Случайная величина $T=\varphi(Z_n)$, где $\varphi(z_n)$ – произвольная функция определенная на выборочном пространстве, называется статистикой.
+\end{definition}
+\begin{definition}
+    Статистической гипотезой $H$ называется любое предположение относительно вида распределения, параметров распределения или свойств закона распределения наблюдаемой в эксперименте случайной величины $X$.
+\end{definition}
+\begin{definition}
+    Любое предположение относительно параметров распределения случайной величины $X$ называют параметрической гипотезой.
+\end{definition}
+\begin{definition}
+    Проверяемая гипотеза называется основной (или нулевой) и обозначается $H_0$. Гипотеза, конкурирующая с $H_0$, называется альтернативной и обозначается $H_1$.
+\end{definition}
+\begin{definition}
+    Статистическим критерием проверки гипотезы $H_0$ называется правило, в соответствии с которым по реализации $t=\varphi(z_n)$ статистики $T$ гипотеза $H_0$ принимается или отвергается.
+\end{definition}
+\begin{definition}
+    Критической областью $\overline{G}$ статистического критерия называется область реализаций $t$ статистики $T$, при которых гипотеза $H_0$ отвергается.
+\end{definition}
+\begin{definition}
+    Доверительной областью $\overline{G}$ статистического критерия называется область реализаций $t$ статистики $T$, при которых гипотеза $H_0$ принимается.
+\end{definition}
+\begin{definition}
+    Ошибкой 1-го рода называется событие, состоящее в том, что гипотеза $H_0$ отвергается, когда она верна.
+\end{definition}
+\begin{definition}
+    Ошибкой 2-го рода называется событие, состоящее в том, что принимается гипотеза $H_0$, когда верна гипотеза $H_1$.
+\end{definition}
+\begin{definition}
+    Уровнем значимости статистического критерия называется вероятность ошибки 1-го рода:
+    $$\alpha=\prob(T\in G|H_0\text{ – верна})$$
+\end{definition}
+
+\subsection{Нормальное распределение}
+
+\begin{definition}
+    Случайная величина $\xi$ распределена нормально с параметрами $\mu$ и $\sigma$, если её функция плотности вероятности имеет вид:
+    $$F_\xi(x)=\frac{1}{\sigma\sqrt{2\pi}}\cdot e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}$$
+\end{definition}
+\begin{theorem}
+    Пусть $\xi\sim\mathcal{N}(\mu;\,\,\sigma)$. Тогда $\E(\xi)=\mu$ и $\D(\xi)=\sigma^2$.
+\end{theorem}
+\begin{definition}
+    Случайна величина $\xi$ распределена стандартно нормально, если $\xi\sim\nd(0;\,1)$.
+\end{definition}
+\begin{definition}
+    Функция плотности стандартно нормально распределенной случайной величины $\xi$ обозначается:
+    $$\varphi_\xi(x)=\frac{1}{2\sqrt{\pi}}\cdot e^{-\frac{x^2}{2}}$$
+\end{definition}
+\begin{theorem}
+    Функцией распределения стандартно нормально распределенной случайной величины $\xi$ является функция Лапласа:
+    $$\Phi_\xi(x)=\int_{-\infty}^{x}\varphi_\xi(y)\, dy $$
+\end{theorem}
+\begin{theorem}[Правило трёх сигм]
+    Для случайной величины $\xi$, имеющей стандартное нормальное распределение:
+    $$\prob(|\xi-\mu|<3\sigma)\approx\num{0.9973}$$
+\end{theorem}
+\begin{theorem}[Центральная предельная теорема]
+    Пусть $\xi_1,\ldots,\xi_n$ – последовательность независимых случайных величин, а $\overline{\xi}$ – их среднее арифметическое, тогда:
+    $$\frac{\left(\overline{\xi}-\E(\xi)\right)\cdot \sqrt{n}}{\sigma(\xi)}\xrightarrow{n\to\infty}\nd(0;\,1)$$
+    Пусть $\hat{\xi}$ – центрированная и нормированная случайная величина, тогда: 
+    $$\prob(a<\hat{\xi}<b)=\prob\left(a<\frac{\left(\overline{\xi}-\E(\xi)\right)\cdot \sqrt{n}}{\sigma(\xi)}<b\right)\approx\Phi(b)-\Phi(a)$$
+\end{theorem}
+\begin{theorem}[Муавр-Лаплас]
+    Пусть $\xi\sim B(p;\,n),\,\,n\geq30$, тогда можно сказать, что $\xi\sim\nd(np;\,npq)$, а значит:
+    $$\prob(a<\xi<b)=\prob\left(\frac{a-np}{npq}<\frac{\xi-np}{npq}<\frac{b-np}{npq}\right)=\Phi\left(\frac{b-np}{npq}\right)-\Phi\left(\frac{a-np}{npq}\right)$$
+\end{theorem}
+
+\section{Оценка выборки}
+
+\begin{definition}
+    Точечной (выборочной) оценкой неизвестного параметра распределения $\theta$ называется произвольная статистика $\hat{\theta}(Z_n)$, построенная по выборке $Z_n$.
+\end{definition}
+\begin{definition}
+    Оценка $\hat{\theta}$ называется несмещённой оценкой параметра $\theta$, если математическое ожидание оценки равно оцениваемому параметру, то есть $\E(\hat{\theta})=\theta$.
+\end{definition}
+\begin{definition}
+    Оценка $\hat{\theta}$ называется состоятельной оценкой параметра $\theta$, если она сходится по вероятности к оцениваемому параметру, то есть:
+    $$\prob(|\hat{\theta}-\theta|<\varepsilon)=1$$
+\end{definition}
+\begin{theorem}
+    Размер выборки, необходимой для оценки, с точностью $\delta$ и уровнем доверия $1-\alpha$ можно выразить как:
+    $$n=\left(\frac{z_{1-\frac{\alpha}{2}}}{\delta}\right)^2pq$$
+\end{theorem}
+\begin{proof}
+    Пусть $\hat{p}$ – вероятность наличия у объекта выборки какого-то признака, тогда должно выполняться условие:
+    $$\prob(|\hat{p}-p|<\delta)=1-\alpha$$
+    Поскольку частота является несмещённой и состоятельной оценкой вероятности, при проведении $n$ опытов, в $X$ из которых произойдёт нужное нам событие, вероятность можно будет представить, как $\hat{p}=\frac{X}{n}$. При этом в случае выбора с возвращением, $X$ будет иметь биномиальное распределение с параметрами $n$ и $p$, где $n$ – количество проведенных экспериментов, а $p$ – вероятность появления признака. Тогда по центральной предельной теореме:
+    $$\frac{X-\E(X)}{\sqrt{\D(x)}}=\frac{X-np}{\sqrt{npq}}\xrightarrow{n\to\infty}\nd(0;\,1)$$
+    В таком случае можно считать, что $\hat{p}\sim\nd(0;\,1)$, а значит:
+    \begin{center}
+        \begin{multicols}{2}
+            \[\E(\hat{p})=\E\left(\frac{X}{n}\right)=\frac{np}{n}=p\]\\
+            \[\D(\hat{p})=\D\left(\frac{X}{n}\right)=\frac{npq}{n^2}=\frac{pq}{n}\]
+        \end{multicols}
+    \end{center}
+    Зная распределение $\hat{p}$, мы можем установить, когда выполняется равенство:
+    \begin{multline*}
+        \prob(|\hat{p}-p|<\delta)=\prob(p-\delta<\hat{p}<p+\delta)=\Phi\left(\frac{p+\delta-p}{\sqrt{\frac{pq}{n}}}\right) - \Phi\left(\frac{p-\delta-p}{\sqrt{\frac{pq}{n}}}\right)=\\
+        =\Phi\left(\frac{\delta}{\sqrt{\frac{pq}{n}}}\right) - \left(1 - \Phi\left(\frac{\delta}{\sqrt{\frac{pq}{n}}}\right)\right)=2\Phi\left(\frac{\delta}{\sqrt{\frac{pq}{n}}}\right)-1=1-\alpha\Longrightarrow \Phi\left(\frac{\delta}{\sqrt{\frac{pq}{n}}}\right) = 1-\frac{\alpha}{2}
+    \end{multline*}
+    Получили, что аргумент функции Лапласа является квантилем уровня $1-\dfrac{\alpha}{2}$ стандартного нормального распределения, тогда остается выразить $n$:
+    $$n=\left(\frac{z_{1-\frac{\alpha}{2}}}{\delta}\right)^2pq$$
+    Здесь $p$ определяется либо из предварительного опроса, либо подбирается такое её значение, при котором $\D(\hat{p})$ максимальное, то есть $p=\num{0.5}$.
+\end{proof}
 \end{document}
