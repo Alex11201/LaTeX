@@ -122,24 +122,24 @@
 
     Свойства сложения векторов:
     \begin{itemize}
-        \item Коммутативно: $\Vec{a}+\Vec{b}=\Vec{b}+\Vec{a}$
-        \item Ассоциативно: $(\Vec{a}+\Vec{b})+\Vec{c}=\Vec{a}+(\Vec{b}+\Vec{c})$
+        \item Коммутативно: $\vec{a}+\vec{b}=\vec{b}+\vec{a}$
+        \item Ассоциативно: $(\vec{a}+\vec{b})+\vec{c}=\vec{a}+(\vec{b}+\vec{c})$
     \end{itemize}
 
     \begin{definition}
-        $\Vec{a}$ коллинеарен $\Vec{b}$, если $\exists \lambda \in \R: \lambda\Vec{a}=\Vec{b}.$
+        $\vec{a}$ коллинеарен $\vec{b}$, если $\exists \lambda \in \R: \lambda\vec{a}=\vec{b}.$
     \end{definition}
 
 \begin{definition}
-    Базисом на плоскости называется пара неколлинеарных векторов $(\Vec{a};\Vec{b}).$
+    Базисом на плоскости называется пара неколлинеарных векторов $(\vec{a};\vec{b}).$
 \end{definition}
 
 \begin{theorem}
-    $\forall \Vec{\textit{v}}\in V_{\R^2} \exists!(x;y);x,y\in \R: \Vec{\textit{v}}=x\Vec{a}+y\Vec{b}$, где $(\Vec{a};\Vec{b})$ -- базис $V_{\R^2}.$ То есть $(x;y)$ -- координаты $\Vec{\textit{v}}$ в базисе $(\Vec{a};\Vec{b}).$
+    $\forall \vec{\textit{v}}\in V_{\R^2} \exists!(x;y);x,y\in \R: \vec{\textit{v}}=x\vec{a}+y\vec{b}$, где $(\vec{a};\vec{b})$ -- базис $V_{\R^2}.$ То есть $(x;y)$ -- координаты $\vec{\textit{v}}$ в базисе $(\vec{a};\vec{b}).$
 \end{theorem}
 
 \begin{definition}
-    Углом между векторами $\Vec{a}$ и $\Vec{b}$ называется: $\phi=\arccos \left( \dfrac{(\Vec{a};\Vec{b})}{|\Vec{a}\parallel\Vec{b}|}\right)\Longleftrightarrow \cos \phi = \dfrac{(\Vec{a};\Vec{b})}{|\Vec{a}\parallel\Vec{b}|}$, где $|\Vec{a}|=\sqrt{(a,a)}.$
+    Углом между векторами $\vec{a}$ и $\vec{b}$ называется: $\varphi=\arccos \left( \dfrac{(\vec{a};\vec{b})}{|\vec{a}\parallel\vec{b}|}\right)\Longleftrightarrow \cos \varphi = \dfrac{(\vec{a};\vec{b})}{|\vec{a}\parallel\vec{b}|}$, где $|\vec{a}|=\sqrt{(a,a)}.$
 \end{definition}
 
 \begin{theorem}
@@ -154,15 +154,15 @@
         \draw (-1.5,3) node[above] {$A$};
         \draw (4.5,3) node[above] {$B$};
         \draw (1,-1) node[below] {$O$};
-        \draw[-{Stealth[scale = 1.5]}] (1,-1) -- node[below left]{$\Vec{c}$} ++(-5.5,4);
-        \draw[-{Stealth[scale = 1.5]}] (1,-1) -- node[above right]{$\Vec{a}$} ++(-2.5,4);
-        \draw[-{Stealth[scale = 1.5]}] (1,-1) -- node[below right]{$\Vec{b}$} ++(3.5,4);
+        \draw[-{Stealth[scale = 1.5]}] (1,-1) -- node[below left]{$\vec{c}$} ++(-5.5,4);
+        \draw[-{Stealth[scale = 1.5]}] (1,-1) -- node[above right]{$\vec{a}$} ++(-2.5,4);
+        \draw[-{Stealth[scale = 1.5]}] (1,-1) -- node[below right]{$\vec{b}$} ++(3.5,4);
         \foreach \point in {(-4.5,3), (1,-1), (-1.5,3), (4.5,3)}{
     \fill \point circle (1.8pt);
 }
         \end{tikzpicture}
     \end{center}
-        Обозначим $\overrightarrow{OA}=\Vec{a},\overrightarrow{OB}=\Vec{b},\overrightarrow{OC}=\Vec{c}$. Тогда $\Vec{c}-\Vec{b}=\overrightarrow {BC}$; $\Vec{a}-\Vec{b}=\overrightarrow{BA}$. Тогда обозначим $\dfrac{\mid \Vec{c}-\Vec{b}\mid }{\mid \Vec{a}-\Vec{b}\mid }=x$, откуда $\Vec{c}-\Vec{b}=x(\Vec{a}-\Vec{b})$, то есть $\Vec{c}=x\Vec{a}-(1-x)\Vec{b}$.
+        Обозначим $\overrightarrow{OA}=\vec{a},\overrightarrow{OB}=\vec{b},\overrightarrow{OC}=\vec{c}$. Тогда $\vec{c}-\vec{b}=\overrightarrow {BC}$; $\vec{a}-\vec{b}=\overrightarrow{BA}$. Тогда обозначим $\dfrac{\mid \vec{c}-\vec{b}\mid }{\mid \vec{a}-\vec{b}\mid }=x$, откуда $\vec{c}-\vec{b}=x(\vec{a}-\vec{b})$, то есть $\vec{c}=x\vec{a}-(1-x)\vec{b}$.
     \end{proof}
 
 \begin{theorem}
@@ -228,13 +228,13 @@
             \foreach \point in {(A), (B), (C), (O), (intersection-1)}{
     \fill \point circle (1.8pt);
 }
-            \tkzLabelSegment[above right](O,B){$\Vec{b}$};
-            \tkzLabelSegment[below left](O,A){$\Vec{a}$};
-            \tkzLabelSegment[below right](O,C){$\Vec{c}$};
-            \tkzLabelSegment[above](O,intersection-1){$\Vec{m}$};
+            \tkzLabelSegment[above right](O,B){$\vec{b}$};
+            \tkzLabelSegment[below left](O,A){$\vec{a}$};
+            \tkzLabelSegment[below right](O,C){$\vec{c}$};
+            \tkzLabelSegment[above](O,intersection-1){$\vec{m}$};
         \end{tikzpicture}
     \end{center}
-        Обозначим $\overrightarrow{OA}$ как $\Vec{a}$, $\overrightarrow{OB}$ как $\Vec{b}$, $\overrightarrow{OC}$ как $\Vec{c}$, $\overrightarrow{OM}$ как $\Vec{m}$. Представим $\overrightarrow{OM}$ в виде суммы векторов: $\Vec{b}+\overrightarrow{BM}=\Vec{b}+\dfrac{2}{3}\left( \dfrac{\overrightarrow{BA}+\overrightarrow{BC}}{2}\right)=\Vec{b}+\dfrac{1}{3}\overrightarrow{BA}+\dfrac{1}{3}\overrightarrow{BC}=\Vec{b}+\dfrac{1}{3}(\Vec{a}-\Vec{b})+\dfrac{1}{3}(\Vec{c}-\Vec{b})=\dfrac{1}{3}(\Vec{a}+\Vec{b}+\Vec{c})$.
+        Обозначим $\overrightarrow{OA}$ как $\vec{a}$, $\overrightarrow{OB}$ как $\vec{b}$, $\overrightarrow{OC}$ как $\vec{c}$, $\overrightarrow{OM}$ как $\vec{m}$. Представим $\overrightarrow{OM}$ в виде суммы векторов: $\vec{b}+\overrightarrow{BM}=\vec{b}+\dfrac{2}{3}\left( \dfrac{\overrightarrow{BA}+\overrightarrow{BC}}{2}\right)=\vec{b}+\dfrac{1}{3}\overrightarrow{BA}+\dfrac{1}{3}\overrightarrow{BC}=\vec{b}+\dfrac{1}{3}(\vec{a}-\vec{b})+\dfrac{1}{3}(\vec{c}-\vec{b})=\dfrac{1}{3}(\vec{a}+\vec{b}+\vec{c})$.
     \end{proof}
 
 \begin{theorem}
@@ -246,12 +246,12 @@
     \end{proof}
 
 \begin{definition}
-    Скалярным произведением векторов $\Vec{a}$ и $\Vec{b}$ называется величина $|\Vec{a}|\cdot |\Vec{b}|\cdot \cos \phi$, где $\phi$ -- угол между векторами $\Vec{a}$ и $\Vec{b}$.
+    Скалярным произведением векторов $\vec{a}$ и $\vec{b}$ называется величина $|\vec{a}|\cdot |\vec{b}|\cdot \cos \varphi$, где $\varphi$ -- угол между векторами $\vec{a}$ и $\vec{b}$.
 \end{definition}
 
 \begin{theorem}
-    В прямоугольной системе Декарта скалярное произведение двух векторов $\Vec{a}(x_1;y_1)$ и $\Vec{b}(x_2;y_2)$ равно сумме произведений их соответствующих координат: 
-    $$\Vec{a}\cdot \Vec{b}=x_1\cdot x_2 + y_1\cdot y_2$$
+    В прямоугольной системе Декарта скалярное произведение двух векторов $\vec{a}(x_1;y_1)$ и $\vec{b}(x_2;y_2)$ равно сумме произведений их соответствующих координат: 
+    $$\vec{a}\cdot \vec{b}=x_1\cdot x_2 + y_1\cdot y_2$$
 \end{theorem}
     \begin{proof}
     $ $\newline
@@ -268,16 +268,16 @@
             \draw[-{Stealth[scale = 1.5]}] (O) -- (A);
             \draw[-{Stealth[scale = 1.5]}] (O) -- (B);
             \draw[-{Stealth[scale = 1.5]}] (A) -- (B);
-            \tkzLabelSegment[above left](O,A){$\Vec{a}$};
-            \tkzLabelSegment[below right](O,B){$\Vec{b}$};
+            \tkzLabelSegment[above left](O,A){$\vec{a}$};
+            \tkzLabelSegment[below right](O,B){$\vec{b}$};
             \tkzMarkAngle[size=.65cm](B,O,A);
-            \tkzLabelAngle(B,O,A){$\phi$};
+            \tkzLabelAngle(B,O,A){$\varphi$};
             \foreach \point in {(A), (B), (O)}{
     \fill \point circle (1.8pt);
 }
         \end{tikzpicture}
     \end{center}
-        По теореме косинусов $AB^2=OA^2+OB^2-2\cdot OA\cdot OB \cdot \cos \phi$, но по теореме Пифагора $OA^2=(x_1)^2+(y_1)^2$, $OB^2=(x_2)^2+(y_2)^2$, $AB^2=(x_1-x_2)^2+(y_1-y_2)^2$. Тогда если подставить в первое выражение и упростить получим $x_1\cdot x_2 + y_1\cdot y_2=OA\cdot OB\cdot \cos \phi$.
+        По теореме косинусов $AB^2=OA^2+OB^2-2\cdot OA\cdot OB \cdot \cos \varphi$, но по теореме Пифагора $OA^2=(x_1)^2+(y_1)^2$, $OB^2=(x_2)^2+(y_2)^2$, $AB^2=(x_1-x_2)^2+(y_1-y_2)^2$. Тогда если подставить в первое выражение и упростить получим $x_1\cdot x_2 + y_1\cdot y_2=OA\cdot OB\cdot \cos \varphi$.
     \end{proof}
 
     \section{Метод координат}
@@ -296,15 +296,15 @@
     \subsection{Нормаль и направляющий вектор}
 
     \begin{definition}
-        Вектор $\Vec{\textit{v}}$ называется направляющим для прямой $l$, если его начало и конец лежат на $l$.
+        Вектор $\vec{\textit{v}}$ называется направляющим для прямой $l$, если его начало и конец лежат на $l$.
     \end{definition}
 
     \begin{definition}
-        Любой вектор $\Vec{n_l}:\, \Vec{n_l}\perp l$, называется ее нормалью.
+        Любой вектор $\vec{n_l}:\, \vec{n_l}\perp l$, называется ее нормалью.
     \end{definition}
 
     \begin{theorem}
-        Вектор $\Vec{n}(a;b)$ является вектором нормали к прямой $l$, заданной уравнением $ax+by+c=0$.
+        Вектор $\vec{n}(a;b)$ является вектором нормали к прямой $l$, заданной уравнением $ax+by+c=0$.
     \end{theorem}
     \begin{proof}
     $ $\newline
@@ -320,14 +320,14 @@
         \draw (A) node[below left] {$A$};
         \draw (B) node[below left] {$B$};
         \draw (0,0) node[below left] {$O$};
-        \draw[-{Stealth[scale = 1.5]}] ($(A)!(C)!(B)$) -- (C) node[right]{$\Vec{n}$};
+        \draw[-{Stealth[scale = 1.5]}] ($(A)!(C)!(B)$) -- (C) node[right]{$\vec{n}$};
         \draw[-{Stealth[scale = 1.5]}] (A) -- (B);
         \foreach \point in {(A), (B), (O)}{
     \fill \point circle (1.8pt);
 }
         \end{tikzpicture}
     \end{center}
-        Возьмем произвольные точки $A(x_1;y_1)$ и $B(x_2;y_2)$. Тогда $\overrightarrow{AB}(x_2-x_1;y_2-y_1)$. При этом $ax_1+by_1+c=ax_2+by_2+c=0$, следовательно, если вычесть одно из другого, получим $a(x_2-x_1)+b(y_2-y_1)=0$. Рассмотрим $\overrightarrow{AB}\cdot \Vec{n} = a\cdot(x_2-x_1)+b\cdot(y_2-y_1)=0\Longrightarrow \overrightarrow{AB}\perp \Vec{n}$.
+        Возьмем произвольные точки $A(x_1;y_1)$ и $B(x_2;y_2)$. Тогда $\overrightarrow{AB}(x_2-x_1;y_2-y_1)$. При этом $ax_1+by_1+c=ax_2+by_2+c=0$, следовательно, если вычесть одно из другого, получим $a(x_2-x_1)+b(y_2-y_1)=0$. Рассмотрим $\overrightarrow{AB}\cdot \vec{n} = a\cdot(x_2-x_1)+b\cdot(y_2-y_1)=0\Longrightarrow \overrightarrow{AB}\perp \vec{n}$.
     \end{proof}
 
     \subsection{Расстояние от точки до прямой}
@@ -1192,7 +1192,7 @@
     \end{definition}
 
     \begin{definition}
-        Пусть на плоскости дана окружность $\omega(O;\,R)$. Отображение $\phi:\,\R^2/\{0\}\longrightarrow \R^2/\{0\}$, при котором точки переходят в симметричные им относительно $\omega$, называется инверсией.
+        Пусть на плоскости дана окружность $\omega(O;\,R)$. Отображение $\varphi:\,\R^2/\{0\}\longrightarrow \R^2/\{0\}$, при котором точки переходят в симметричные им относительно $\omega$, называется инверсией.
     \end{definition}
     \begin{lemma}[Основная лемма]
         Любые две пары точек, симметричных относительно одной окружности, лежат на одной окружности.
@@ -1492,7 +1492,7 @@
         Рассмотрим $B,\,C\in l:\,\,l\subset\alpha\Longrightarrow B,\,C\in\alpha.$ По аксиоме плоскости $\exists!\,\,\alpha:\,\,A,\,B,\,C\in\alpha;\,\,l\subset\alpha.$
     \end{proof}
     
-    \begin{lemma}
+    \begin{lemma}\label{Пересекающиеся прямые и плоскость}
         Через две пересекающиеся прямые проходит плоскость, при том только одна:
         $$a\cap b = C\Longrightarrow\exists!\,\,\alpha:\,\,a,\,b\subset\alpha$$
     \end{lemma}
@@ -1714,6 +1714,9 @@
         Если прямая параллельна каждой из двух пересекающихся плоскостей,
     то она параллельна их линии пересечения.
     \end{consequence}
+    \begin{definition}
+        Углом между скрещивающимися прямыми называется угол между пересекающимися прямыми, параллельными данным и лежащим в одной плоскости.
+    \end{definition}
     
     \subsection{Параллельность плоскостей}
     
@@ -1799,4 +1802,212 @@
             $\alpha\parallel\beta\Longrightarrow\exists\,c\subset\alpha:\,\,c\parallel b.$ По теореме о крыше $a\parallel c,\,b\parallel c.$
         \end{center}
     \end{proof}
+
+    \subsection{Сечения}
+
+    \begin{definition}
+        Если пересечение плоскости и многогранника есть многоугольник, то он называется сечением этого многогранника этой плоскостью.
+    \end{definition}
+    \begin{definition}
+        Следом называется прямая, по которой плоскость сечения пересекает плоскость любой из граней многогранника.
+    \end{definition}
+    \begin{definition}
+        Пирамида – это многогранник, одна из граней которого – произвольный многоугольник, а остальные грани – треугольники с общей вершиной.
+    \end{definition}
+    \begin{definition}
+        Пирамида называется правильной, если в её основании лежит правильный многоугольник, а все боковые грани – равнобедренные треугольники с общей вершиной.
+    \end{definition}
+    \begin{definition}
+        Высота боковой грани правильной пирамиды, проведённая из её вершины, называется апофемой этой пирамиды.
+    \end{definition}
+    \begin{definition}
+        Треугольная пирамида называется тетраэдром.
+    \end{definition}
+    \begin{definition}
+        Тетраэдр называется правильным, если все его рёбра равны.
+    \end{definition}
+    \begin{definition}
+        Усечённой пирамидой называется часть пирамиды, заключённая между плоскостью основания и плоскостью, параллельной плоскости основания и пересекающей все боковые рёбра пирамиды.
+    \end{definition}
+    \begin{definition}
+        Призма – это многогранник, две грани которого – равные многоугольники, лежащие в параллельных плоскостях, а все рёбра, не лежащие в этих плоскостях, параллельны между собой. Два равных многоугольника, лежащие в параллельных плоскостях, называются основаниями призмы. Остальные грани призмы называются её боковыми гранями, а их объединение - боковой поверхностью призмы. Рёбра, не лежащие в основании призмы, называются её боковыми рёбрами. Если в основаниях призмы лежат $n$-угольники, то призма называется $n$-угольной.
+    \end{definition}
+    \begin{definition}
+        Призма, основания которой являются параллелограммами, называется параллелепипедом.
+    \end{definition}
+    \begin{definition}
+        Если все грани параллелепипеда являются прямоугольниками, то параллелепипед называется прямоугольным.
+    \end{definition}
+    \begin{definition}
+        Если все грани параллелепипеда – квадраты, то он называется кубом.
+    \end{definition}
+    
+    
+    \subsection{Векторы в пространстве}
+    
+    \begin{definition}
+        Векторы $\vec{v}$ и $\vec{u}$ называются коллинеарными, если $\exists\,\lambda:\,\vec{v}=\lambda\cdot\vec{u}$.
+    \end{definition}
+    \begin{theorem}[Признак копланарности векторов]
+        Векторы $\vec{a}$, $\vec{b}$ и $\vec{c}$ называются копланарными, если $\exists\,\alpha,\,\beta:\,\vec{c}=\alpha\cdot\vec{a}+\beta\cdot\vec{b}$.
+    \end{theorem}
+    \begin{definition}
+        Набор $\vec{a_1},\,\vec{a_2},\ldots,\,\vec{a_n}$ векторов линейно независим, если уравнение $\lambda_1\vec{a_1}+\lambda_2\vec{a_2}+\ldots+\lambda_n\vec{a_n}=0$ имеет только тривиальное решение, то есть $\lambda_1=\lambda_2=\ldots=\lambda_n=0$.
+    \end{definition}
+    \begin{definition}
+        Базисом в $\R^n$ называется набор из $n$ линейно независимых векторов.
+    \end{definition}
+    \begin{definition}
+        Коэффициенты $\alpha$, $\beta$ и $\gamma$ в разложении $\vec{v}=\alpha\cdot\vec{a}+\beta\cdot\vec{b}+\gamma\cdot\vec{c}$ называют координатами вектора $\vec{v}$ в базисе $\{\vec{a};\,\vec{b},\,\vec{c}\}$.
+    \end{definition}
+    \begin{theorem}
+        Точка $M$ принадлежит плоскости $(ABC)$ тогда и только тогда, когда:
+        $$\forall\,O\notin(ABC):\,\overrightarrow{OM}=x\cdot\overrightarrow{OA}+y\cdot\overrightarrow{OB}+z\cdot\overrightarrow{OC}\Longleftrightarrow x+y+z=1$$
+    \end{theorem}
+    
+    \subsection{Перпендикулярность в пространстве}
+    
+    \begin{definition}
+        Прямая перпендикулярна плоскости, если она перпендикулярна любой прямой, лежащей в этой плоскости.
+    \end{definition}
+    \begin{theorem}[Признак перпендикулярности прямой и плоскости]
+        Прямая перпендикулярна плоскости, если она перпендикулярна двум пересекающимся прямым, лежащим в этой плоскости.
+    \end{theorem}
+    \begin{proof}
+        $ $\newline
+            \begin{center}
+                \begin{tikzpicture}[z={(0:10mm)},x={(40:5mm)}]
+                    \begin{scope}[canvas is zy plane at x=0,fill=blue]
+                        \coordinate (A) at (6,0);
+                        \draw (6, 2) -- (A);
+                        \draw[dashed] (A) -- (6, -0.97);
+                        \draw (6, -0.97) -- (6, -1.5);
+                        \draw (6,0.7) node[right] {$c$};
+                    \end{scope}
+                    \begin{scope}[canvas is zx plane at y=0,fill=red]
+                        \coordinate (B) at (2, 0);
+                        \draw[-{Stealth[scale = 1.5]}] (2,0) -- (4, 2);
+                        \draw[-{Stealth[scale = 1.5]}] (2,0) -- (5, -2);
+                        \draw[dashed] ($(2,0)!-1!(4,2)$) -- ($(2,0)!1.5!(4,2)$);
+                        \draw[dashed] ($(2,0)!-0.67!(5,-2)$) -- ($(2,0)!1.5!(5,-2)$);
+                        \draw ($(2,0)!0.25!(4,2)$) node[above] {$a$};
+                        \draw ($(2,0)!0.415!(5,-2)$) node[below left] {$b$};
+                        \draw[opacity=0.2] (0,-3) grid (8,3);
+                    \end{scope}
+                    \foreach \point in {(A), (B)}{
+            \fill \point circle (1.8pt);
+        }
+                  \end{tikzpicture}
+            \end{center}
+            Пусть $\vec{v_a}$, $\vec{v_b}$ и $\vec{v_c}$ – направляющие векторы прямых $a$, $b$ и $c$ соответственно, тогда $\forall\,l\in\alpha:\,\vec{v_l}$ – направляющий $\vec{v_l}=x\vec{v_a}+y\vec{v_b}$, так как $a\cap b\neq\varnothing$. Тогда $\vec{v_c}\cdot\vec{v_l}=\vec{v_c}\cdot(x\vec{v_a}+y\vec{v_b})=0\Longrightarrow l\perp c$.
+    \end{proof}
+    \begin{theorem}
+        Если одна из двух параллельных прямых перпендикулярна некоторой плоскости, то и вторая перпендикулярна этой плоскости.
+    \end{theorem}
+    \begin{theorem}
+        Если две плоскости перпендикулярны одной и той же прямой, то они параллельны.
+    \end{theorem}
+    \begin{definition}
+        Параллельное проектирование, при котором направление проектирования перпендикулярно плоскости проектирования, называют ортогональным проектированием.
+    \end{definition}
+    \begin{theorem}[О трёх перпендикулярах]
+        Прямая, лежащая в плоскости, перпендикулярна наклонной тогда и только тогда, когда перпендикулярна проекции этой наклонной на эту плоскость.
+    \end{theorem}
+    \begin{proof}
+        $ $\newline
+            \begin{center}
+                \begin{tikzpicture}[z={(0:10mm)},x={(40:5mm)}]
+                    \begin{scope}[canvas is zy plane at x=0,fill=blue]
+                        \coordinate (A) at (4,0);
+                        \coordinate (B) at (1,2);
+                        \draw (B) -- (A);
+                        \draw[dashed] (B) -- ($(B)!1.48!(A)$);
+                        \draw ($(B)!1.48!(A)$) -- ($(B)!1.9!(A)$);
+                        \draw ($(B)!0.5!(A)$) node[above right] {$a$};
+                    \end{scope}
+                    \begin{scope}[canvas is zx plane at y=0,fill=red]
+                        \draw (0,0) -- (8,0);
+                        \draw (4,3) -- (4,-3);
+                        \draw (2,0) node[above] {$b$};
+                        \draw (4.3,2) node[right] {$l$};
+                        \draw (4,0) node[above] {$A$};
+                        \draw (4.5,0) -- (4.5,-.7) -- (4,-.7);
+                        \draw[opacity=0.2] (0,-3) grid (8,3);
+                        \draw (8.5,-0.5) node {$\alpha$};
+                    \end{scope}
+                    \draw (0,0,4) -- (0,0.33,3.505) -- (-.7,0.33,3.505) -- (-.7,0,4);
+                    \foreach \point in {(A)}{
+            \fill \point circle (1.8pt);
+        }
+                  \end{tikzpicture}
+            \end{center}
+            Пусть $a$, $b$ и $l$ – это наклонная, её проекция и прямая, лежащая в плоскости $\alpha$ соответственно, также пусть $a\cap\alpha=A$. По лемме \ref{Пересекающиеся прямые и плоскость} существует плоскость $\beta$, содержащая $a$ и $b$. Тогда $\alpha\cap\beta=b$, причем должна существовать такая $d\subset\beta$, что она проходит через $a$ и $b$ и перпендикулярна $b$, а значит перпендикулярна $\alpha$. Отсюда она также перпендикулярна $l$ по признаку перпендикулярности, откуда $l\perp b$ по определению.
+    \end{proof}
+    \begin{definition}
+        Углом между наклонной и плоскостью называется угол между наклонной и её проекцией на данную плоскость. 
+    \end{definition}
+    \begin{theorem}
+        Угол между наклонной к плоскости и её проекцией на эту плоскость есть наименьший из углов между наклонной и каждой прямой, лежащей в этой плоскости.
+    \end{theorem}
+    \begin{theorem}
+        Пусть прямая $a$ образует с плоскостью $\pi$ угол $\alpha$. Прямая $b\subset\pi$ образует с прямой $a$ угол $\varphi$, а с её проекцией на плоскость $\pi$ – угол $\beta$. Тогда $\cos\varphi=\cos\alpha\cdot\cos\beta$.
+    \end{theorem}
+    \begin{proof}
+        $ $\newline
+            \begin{center}
+                \begin{tikzpicture}[z={(0:10mm)},x={(40:5mm)}]
+                    \begin{scope}[canvas is zx plane at y=0,fill=red]
+                        \draw[opacity=0.2] (0,-3) grid (8,3);
+                        \draw (8.5,-0.5) node {$\pi$};
+                    \end{scope}
+                    \coordinate (O) at (-1,0,2);
+                    \coordinate (A) at (2,2,5);
+                    \coordinate (L) at (2,0,5);
+                    \coordinate (B) at (-1,0,5);
+                    \draw ($(A)!-0.1!(O)$) -- (O);
+                    \draw[dashed] (O) -- ($(A)!1.215!(O)$);
+                    \draw ($(A)!1.215!(O)$) -- ($(A)!1.5!(O)$);
+                    \draw ($(O)!-0.66!(L)$) -- ($(O)!1.33!(L)$);
+                    \tkzMarkAngle[size=1.35cm](L,O,A);
+                    \tkzMarkAngle[size=1.25cm](L,O,A);
+                    \tkzMarkAngle[size=1.15cm](L,O,A);
+                    \tkzMarkAngle[size=1.65cm](B,O,L);
+                    \tkzMarkAngle[size=1.55cm](B,O,L);
+                    \tkzMarkAngle[size=0.45cm](B,O,A);
+                    \draw (0,0.4,3.2) node {$\alpha$};
+                    \draw (-0.9,0.2,3.9) node {$\beta$};
+                    \draw (-1,0.2,2.8) node {$\varphi$};
+                    \draw (-1,0,0) -- (-1,0,8);
+                    \draw (A) -- (L) -- (B);
+                    \draw (B) ++(0.5,0,0) -- ++(0,0,0.5) -- ++(-0.5,0,0);
+                    \draw (L) ++(0,0.3,0) -- ++(-0.21,0,-0.21) -- ++(0,-0.3,0);
+                    \draw (A) node[above left] {$A$};
+                    \draw (O) node[above] {$O$};
+                    \draw (B) node[below] {$B$};
+                    \draw (L) node[below right] {$L$};
+                    \draw ($(A)!.5!(O)$) node[above left] {$a$};
+                    \draw ($(O)!.65!(L)$) node[above] {$l$};
+                    \draw ($(B)!-0.5!(O)$) node[below] {$b$};
+                    \foreach \point in {(A),(B),(O),(L)}{
+            \fill \point circle (1.8pt);
+        }
+                  \end{tikzpicture}
+            \end{center}
+            Пусть $A$ – произвольная точка на прямой $a$, $O$ – точка пересечения прямой $a$ с $\pi$, $L$ – основание перпендикуляра из $A$ на $\pi$, а $B$ – основание перпендикуляра из $L$ на $b$. Без ограничения общности положим $OA=1$, тогда $OL=\cos\alpha$, а $OB=\cos\alpha\cdot\cos\beta$. Пусть $\delta=(ABL)$, тогда $BL\perp b$ по построению, $AL\perp b$, так как $b\subset\pi$, $AL\perp\pi\Longrightarrow b\perp\delta\Longrightarrow b\perp AB$. Отсюда $OB=\cos\varphi=\cos\alpha\cdot\cos\beta$.
+    \end{proof}
+    \begin{definition}
+        Если среди всех расстояний между точками, одна из которых принадлежит фигуре $\Phi_1$, а другая – фигуре $\Phi_2$, существует наименьшее, то его называют между фигурами $\Phi_1$ и $\Phi_2$.
+    \end{definition}
+    \begin{theorem}
+        Расстоянием от точки до плоскости является расстояние от данной точки до её проекции на данную плоскость.
+    \end{theorem}
+    \begin{definition}
+        Общим перпендикуляром двух скрещивающихся прямых называется отрезок, концы которого лежат на данных прямых, перпендикулярный к ним.
+    \end{definition}
+    \begin{theorem}
+        Общий перпендикуляр двух скрещивающихся прямых существует и единственен.
+    \end{theorem}
+    \begin{theorem}
+        Расстояние между двумя скрещивающимися прямыми равно расстоянию от точки пересечения одной из этих прямых с перпендикулярной ей плоскостью до проекции другой прямой на эту плоскость.
+    \end{theorem}
 \end{document}

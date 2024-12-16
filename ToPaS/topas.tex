@@ -642,10 +642,10 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
     $$\prob(|\xi-\mu|<3\sigma)\approx\num{0.9973}$$
 \end{theorem}
 \begin{theorem}[Центральная предельная теорема]
-    Пусть $\xi_1,\ldots,\xi_n$ – последовательность независимых случайных величин, а $\overline{\xi}$ – их среднее арифметическое, тогда:
-    $$\frac{\left(\overline{\xi}-\E(\xi)\right)\cdot \sqrt{n}}{\sigma(\xi)}\xrightarrow{n\to\infty}\nd(0;\,1)$$
+    Пусть $\xi_1,\ldots,\xi_n$ – последовательность независимых случайных величин, а $S_n$ – их сумма, тогда:
+    $$\frac{S_n-n\cdot \E(\xi)}{\sigma(\xi)\cdot\sqrt{n}}\xrightarrow{n\to\infty}\nd(0;\,1)$$
     Пусть $\hat{\xi}$ – центрированная и нормированная случайная величина, тогда: 
-    $$\prob(a<\hat{\xi}<b)=\prob\left(a<\frac{\left(\overline{\xi}-\E(\xi)\right)\cdot \sqrt{n}}{\sigma(\xi)}<b\right)\approx\Phi(b)-\Phi(a)$$
+    $$\prob(a<\hat{\xi}<b)=\prob\left(a<\frac{S_n-n\cdot \E(\xi)}{\sigma(\xi)\cdot\sqrt{n}}<b\right)\approx\Phi(b)-\Phi(a)$$
 \end{theorem}
 \begin{theorem}[Муавр-Лаплас]
     Пусть $\xi\sim B(p;\,n),\,\,n\geq30$, тогда можно сказать, что $\xi\sim\nd(np;\,npq)$, а значит:
@@ -672,7 +672,7 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
     Пусть $\hat{p}$ – вероятность наличия у объекта выборки какого-то признака, тогда должно выполняться условие:
     $$\prob(|\hat{p}-p|<\delta)=1-\alpha$$
     Поскольку частота является несмещённой и состоятельной оценкой вероятности, при проведении $n$ опытов, в $X$ из которых произойдёт нужное нам событие, вероятность можно будет представить, как $\hat{p}=\frac{X}{n}$. При этом в случае выбора с возвращением, $X$ будет иметь биномиальное распределение с параметрами $n$ и $p$, где $n$ – количество проведенных экспериментов, а $p$ – вероятность появления признака. Тогда по центральной предельной теореме:
-    $$\frac{X-\E(X)}{\sqrt{\D(x)}}=\frac{X-np}{\sqrt{npq}}\xrightarrow{n\to\infty}\nd(0;\,1)$$
+    $$\frac{X-\E(X)}{\sqrt{\D(X)}}=\frac{X-np}{\sqrt{npq}}\xrightarrow{n\to\infty}\nd(0;\,1)$$
     В таком случае можно считать, что $\hat{p}\sim\nd(0;\,1)$, а значит:
     \begin{center}
         \begin{multicols}{2}

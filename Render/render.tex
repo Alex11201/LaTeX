@@ -95,335 +95,7 @@
 \label{toc}
 \newpage
 
-
-
-
-
 \section{Стереометрия}
-
-\subsection{Введение}
-
-\begin{axiom}
-    В $\R^3$ существуют плоскости, причем для любой из них выполняются аксиомы планиметрии.
-\end{axiom}
-\begin{axiom}[Аксиома плоскости]
-    Через любые три неколлинеарные точки пространства проходит плоскость, при чем только одна.
-\end{axiom}
-\begin{axiom}
-    Прямая, проходящая через две точки плоскости полностью лежит в данной плоскости.
-\end{axiom}
-\begin{axiom}[Аксиома пересечения плоскостей]
-    Если две плоскости имеют общую точку, то они пересекаются по прямой:
-    $$M \in \alpha;\,M \in \beta \Longrightarrow \exists\,\,l:\,\,l\subset \alpha;\,l\subset \beta$$
-\end{axiom}
-\begin{axiom}[Аксиома расстояния]
-    В любой из плоскостей, проходящих через две различные точки расстояние между этими точками одно и то же:
-    $$A \neq B;\,\,\forall\,\alpha:\,\,A,\,B\in\alpha\,\,\rho_\alpha(A;\,\,B)=\text{const}$$
-\end{axiom}
-\begin{definition}
-    Прямая и плоскость называются пересекающимися, если они имеют одну общую точку.
-\end{definition}
-\begin{definition}
-    Две плоскости называются пересекающимися, если они имеют одну общую прямую.
-\end{definition}
-\begin{definition}
-    Прямые, лежащие в одной плоскости и не имеющие общих точек называются параллельными.
-\end{definition}
-
-\subsection{Следствия из аксиом}
-
-\begin{lemma}
-    Через прямую и точку, не лежащую на ней, проходит плоскость, при том только одна:
-    $$\forall\,A;\,\,\forall\,l:\,\,A\notin l\,\,\exists!\,\,\alpha:\,\,l\subset\alpha;\,\,A\in\alpha$$
-\end{lemma}
-
-\begin{proof}
-    $ $\newline
-    \begin{center}
-        \begin{tikzpicture}[z={(0:10mm)},x={(50:5mm)}]
-            \begin{scope}[canvas is zy plane at x=0,fill=blue]
-            \end{scope}
-            \begin{scope}[canvas is zx plane at y=0,fill=red]
-                \coordinate (A) at (7,-1);
-                \coordinate (D) at (0,-2);
-                \coordinate (E) at (6,3);
-                \coordinate (B) at ($(D)!0.25!(E)$);
-                \coordinate (C) at ($(D)!0.75!(E)$);
-                \draw ($(D)!0.5!(E)$) node[above] {$l$};
-                \draw (A) node[above] {$A$};
-                \draw (B) node[above] {$B$};
-                \draw (C) node[above] {$C$};
-              \draw[opacity=0.3] (0,-3) grid (8,3);
-              \draw (D) -- (E);
-            \end{scope}
-            \foreach \point in {(A), (B), (C)}{
-    \fill \point circle (1.8pt);
-}
-          \end{tikzpicture}
-    \end{center}
-    Рассмотрим $B,\,C\in l:\,\,l\subset\alpha\Longrightarrow B,\,C\in\alpha.$ По аксиоме плоскости $\exists!\,\,\alpha:\,\,A,\,B,\,C\in\alpha;\,\,l\subset\alpha.$
-\end{proof}
-
-\begin{lemma}
-    Через две пересекающиеся прямые проходит плоскость, при том только одна:
-    $$a\cap b = C\Longrightarrow\exists!\,\,\alpha:\,\,a,\,b\subset\alpha$$
-\end{lemma}
-\begin{lemma}
-    Через две параллельные прямые проходит плоскость, при том только одна:
-    $$a\parallel b\Longrightarrow\exists!\,\,\alpha:\,\,a,\,b\subset\alpha$$
-\end{lemma}
-
-\subsection{Скрещивающиеся прямые}
-
-\begin{definition}
-    Две прямые называются скрещивающимися, если у них нет общих точек и они не параллельны.
-\end{definition}
-
-\begin{theorem}[Признак скрещивающихся]
-    Если одна прямая лежит в плоскости, а другая пересекают данную плоскость в точке, не лежащей на первой прямой, данные прямые скрещиваются:
-    $$a\subset\alpha,\,b\cap\alpha=M:\,\,M\notin a\Longrightarrow a\dotdiv b$$
-\end{theorem}
-\begin{proof}
-    $ $\newline
-    \begin{center}
-        \begin{tikzpicture}[z={(0:10mm)},x={(40:5mm)}]
-            \begin{scope}[canvas is zy plane at x=0,fill=blue]
-                \coordinate (M) at (3,0);
-                \draw (M) node[above right] {$M$};
-                \draw ($(0,1.5)!0.5!(3,0)$) node[above] {$b$};
-                \draw (0,1.5) -- (3,0);
-                \draw[dashed] (0,1.5) -- ($(0,1.5)!1.65!(3,0)$);
-                \draw ($(0,1.5)!1.65!(3,0)$) -- ($(0,1.5)!2!(3,0)$);
-            \end{scope}
-            \begin{scope}[canvas is zx plane at y=0,fill=red]
-                \draw ($(5,-3)!0.5!(6,3)$) node[above left] {$a$};
-                \draw (5,-3) -- (6,3);
-                \draw[opacity=0.2] (0,-3) grid (8,3);
-            \end{scope}
-            \foreach \point in {(M)}{
-    \fill \point circle (1.8pt);
-}
-          \end{tikzpicture}
-    \end{center}
-    Пусть $a$ и $b$ не скрещиваются. Тогда $a\parallel b$ или $a\cap b\neq\varnothing:
-    $
-    \begin{align*}
-        1.\,\,&a\parallel b\Longrightarrow\exists!\,\,\beta:\,\,a,\,b\subset\beta\Longrightarrow M\in\beta,\text{ при этом }a\subset\alpha\text{ (по условию); }\\
-        &a\subset\beta\text{ (по предложению)}\Longrightarrow \alpha\cap\beta=a,\,M\in\alpha,\,M\in\beta\Longrightarrow M\in a,\text{ противоречие.}\\
-        2.\,\,&a\cap\beta\neq\varnothing\Longrightarrow\exists\,k:\,\,k\in a,\,k\in b\Longrightarrow\exists\,\beta:\,\,a,\,b\subset\beta\Longrightarrow M\in\beta,\text{ при этом }a\subset\alpha\text{ (по условию); }\\
-        &a\subset\beta\text{ (по предложению)}\Longrightarrow \alpha\cap\beta=a,\,M\in\alpha,\,M\in\beta\Longrightarrow M\in a,\text{ противоречие.}
-    \end{align*}
-\end{proof}
-\begin{theorem}
-    Пусть $a\parallel b;\,\,a\cap\alpha\neq\varnothing,$ тогда $b\cap\alpha\neq\varnothing$.
-\end{theorem}
-\begin{proof}
-    $ $\newline
-    \begin{center}
-        \begin{tikzpicture}[z={(0:10mm)},x={(40:5mm)}]
-            \begin{scope}[canvas is zy plane at x=0,fill=blue]
-                \coordinate (A) at (2,0);
-                \draw (A) node[above right] {$A$};
-                \draw (-1,1.5) -- (A);
-                \draw ($(-1,1.5)!0.35!(A)$) node[above right] {$a$};
-                \draw[dashed] (-1,1.5) -- ($(-1,1.5)!1.65!(A)$);
-                \draw ($(-1,1.5)!1.65!(A)$) -- ($(-1,1.5)!2!(A)$);
-            \end{scope}
-            \begin{scope}[canvas is zy plane at x=1,fill=blue]
-                \coordinate (B) at (6,0);
-                \draw (B) node[above right] {$B$};
-                \draw (3,1.5) -- (B);
-                \draw ($(3,1.5)!0.35!(B)$) node[above right] {$b$};
-                \draw[dashed] (3,1.5) -- ($(3,1.5)!1.65!(B)$);
-                \draw ($(3,1.5)!1.4!(B)$) -- ($(3,1.5)!2!(B)$);
-            \end{scope}
-            \begin{scope}[canvas is zx plane at y=0,fill=red]
-                \draw ($(2,0)!-.5!(6,1)$) -- ($(2,0)!1.5!(6,1)$);
-                \draw ($(2,0)!0.5!(6,1)$) node[above] {$l$};
-                \draw[opacity=0.2] (0,-3) grid (8,3);
-            \end{scope}
-            \foreach \point in {(A), (B)}{
-    \fill \point circle (1.8pt);
-}
-          \end{tikzpicture}
-    \end{center}
-    $$a\parallel b\Longrightarrow\exists!\,\,\beta:\,\,a,\,b\subset\beta,\,a\cap\alpha=A\Longrightarrow A\in\beta\Longrightarrow\exists\,l:\,\,l=\alpha\cap\beta$$
-    $$l\cap a=A,\,a\parallel\beta\Longrightarrow l\cap\beta=B:\,\,B\in b,\,B\in l\Longrightarrow b\cap\alpha=B.$$
-\end{proof}
-
-\subsection{Параллельность прямой и плоскости}
-
-\begin{definition}
-    Прямая и плоскость называются параллельными, если они не имеют общих точек.
-\end{definition}
-
-\begin{theorem}[Признак параллельности прямой и плоскости]
-    Если прямая, не лежащая в плоскости, параллельна какой-либо прямой, лежащей в этой плоскости, то эти прямая и плоскость параллельны:
-    $$a\subset\alpha,\,b \not\subset \alpha,\,a\parallel b\Longrightarrow \alpha\parallel b$$
-\end{theorem}
-
-\begin{proof}
-    $ $\newline
-    \begin{center}
-        \begin{tikzpicture}[z={(0:10mm)},x={(25:5mm)},y={(60:7mm)}]
-            \begin{scope}[canvas is zx plane at y=0]
-                \draw[opacity=0.2] (0,-3) grid (8,3);
-                \draw (-0.5,-1.5) node[left] {$\alpha$};
-            \end{scope}
-            \begin{scope}[canvas is zy plane at x=0]
-                \fill[color=white] (0,0) rectangle (8,4);
-                \draw[opacity=0.2] (0,-2) grid (8,4);
-                \coordinate (A1) at (0,0);
-                \coordinate (A2) at (8,0);
-                \coordinate (B1) at (0,3);
-                \coordinate (B2) at (8,3);
-                \draw (A1) -- (A2);
-                \draw (B1) -- (B2);
-                \draw ($(A1)!0.5!(A2)$) node[above] {$a$};
-                \draw ($(B1)!0.5!(B2)$) node[above] {$b$};
-                \draw (-0.25,2) node[left] {$\beta$};
-            \end{scope}
-            \begin{scope}[canvas is zx plane at y=0]
-                \fill[color=white] (0,-3) rectangle (8,0);
-                \draw[opacity=0.2] (0,-3) grid (8,0);
-            \end{scope}
-            \foreach \point in {}{
-    \fill \point circle (1.8pt);
-}
-          \end{tikzpicture}
-    \end{center}
-    \begin{center}
-        $a\parallel b\Longrightarrow\exists!\,\,\beta:\,\,a,\,b\subset\beta$. Пусть $b\cap\alpha\neq\varnothing$. Но $\alpha\cap\beta=a$. Противоречие.
-    \end{center}
-\end{proof}
-\begin{theorem}[О линии пересечения плоскостей]
-    Если плоскость проходит через прямую, параллельную другой плоскости, и пересекает эту плоскость, то линия пересечения плоскостей параллельна данной прямой:
-    $$a\parallel \alpha,\,a\subset\beta,\,\alpha\cap\beta=b\Longrightarrow a\parallel b$$
-\end{theorem}
-\begin{proof}
-    $ $\newline
-    \begin{center}
-        \begin{tikzpicture}[z={(0:10mm)},x={(25:5mm)},y={(60:7mm)}]
-            \begin{scope}[canvas is zx plane at y=0]
-                \draw[opacity=0.2] (0,-3) grid (8,3);
-                \draw (-0.5,-1.5) node[left] {$\alpha$};
-            \end{scope}
-            \begin{scope}[canvas is zy plane at x=0]
-                \fill[color=white] (0,0) rectangle (8,4);
-                \draw[opacity=0.2] (0,-2) grid (8,4);
-                \coordinate (A1) at (0,0);
-                \coordinate (A2) at (8,0);
-                \coordinate (B1) at (0,3);
-                \coordinate (B2) at (8,3);
-                \draw (A1) -- (A2);
-                \draw (B1) -- (B2);
-                \draw ($(A1)!0.5!(A2)$) node[above] {$b$};
-                \draw ($(B1)!0.5!(B2)$) node[above] {$a$};
-                \draw (-0.25,2) node[left] {$\beta$};
-            \end{scope}
-            \begin{scope}[canvas is zx plane at y=0]
-                \fill[color=white] (0,-3) rectangle (8,0);
-                \draw[opacity=0.2] (0,-3) grid (8,0);
-            \end{scope}
-            \foreach \point in {}{
-    \fill \point circle (1.8pt);
-}
-          \end{tikzpicture}
-    \end{center}
-    \begin{center}
-        $a\parallel\alpha\Longrightarrow a\cap b=\varnothing.$ Пусть $a\dotdiv b$, тогда $a\cap\alpha\neq\varnothing$, но $a\parallel \alpha$. Противоречие.
-    \end{center}
-\end{proof}
-
-\begin{theorem}[О крыше]
-    Если через каждую из двух параллельных прямых проведена плоскость, причём эти плоскости пересекаются, то линия их пересечения параллельна каждой из данных прямых:
-    $$a\parallel b,\,a\subset \alpha,\,b\subset \beta,\,\alpha\cap\beta=c\Longrightarrow a\parallel c,\, b\parallel c$$
-\end{theorem}
-\begin{proof}
-    $ $\newline
-    \begin{center}
-        \begin{tikzpicture}[z={(0:10mm)},x={(120:5mm)},y={(45:7mm)}]
-            \begin{scope}[canvas is zx plane at y=0]
-                \draw[opacity=0.2] (0,-3) grid (8,4);
-                \coordinate (B1) at (0,-2);
-                \coordinate (B2) at (8,-2);
-                \draw (B1) -- (B2);
-                \draw ($(B1)!0.77!(B2)$) node[above] {$b$};
-                \draw (8.3,0) node[right] {$\beta$};
-            \end{scope}
-            \begin{scope}[canvas is zy plane at x=3]
-                \fill[color=white] (0,0) rectangle (8,-6);
-                \draw[opacity=0.2] (0,1) grid (8,-6);
-                \coordinate (A1) at (0,-5);
-                \coordinate (A2) at (8,-5);
-                \draw (A1) -- (A2);
-                \draw ($(A1)!0.5!(A2)$) node[above] {$a$};
-                \draw (-0.3,-2) node[left] {$\alpha$};
-            \end{scope}
-            \begin{scope}[canvas is zx plane at y=0]
-                \fill[color=white] (0,3) rectangle (8,4);
-                \draw[opacity=0.2] (0,3) grid (8,4);
-                \coordinate (C1) at (0,3);
-                \coordinate (C2) at (8,3);
-                \draw (C1) -- (C2);
-                \draw ($(C1)!0.5!(C2)$) node[above] {$c$};
-            \end{scope}
-            \foreach \point in {}{
-    \fill \point circle (1.8pt);
-}
-          \end{tikzpicture}
-    \end{center}
-    \begin{center}
-        $a\parallel b,\,b\not\subset \alpha\Longrightarrow b\parallel \alpha\Longrightarrow b\parallel c\text{ (по теореме о линии пересечения плоскостей). Аналогично }c\parallel a.$
-    \end{center}
-\end{proof}
-\setcounter{subsection}{8}
-
-\begin{consequence}
-    Параллельность прямых в пространстве транзитивна.
-\end{consequence}
-\begin{consequence}
-    Если прямая параллельна каждой из двух пересекающихся плоскостей,
-то она параллельна их линии пересечения.
-\end{consequence}
-
-\subsection{Параллельность плоскостей}
-
-\begin{definition}
-    Две плоскости называются параллельными, если они не имеют общих точек.
-\end{definition}
-
-\begin{theorem}[Признак параллельности плоскостей]
-    Если две пересекающиеся прямые одной плоскости параллельны соответственно двум прямым другой плоскости, то эти плоскости параллельны:
-    $$a,\,b\subset\alpha,\,a\cap b\neq\varnothing;\,\,c,\,d\subset\beta;\,\,a\parallel c,\,b\parallel d\Longrightarrow \alpha\parallel\beta$$
-\end{theorem}
-\begin{proof}
-    $ $\newline
-    \begin{center}
-        \begin{tikzpicture}[z={(0:10mm)},x={(30:5mm)}]
-            \begin{scope}[canvas is zx plane at y=2]
-                \draw[opacity=0.2] (0,-3) grid (8,3);
-                \draw (1,-3) -- (6,3);
-                \draw (0,2) -- (8,-3);
-                \draw (2,-0.8) node[left] {$a$};
-                \draw (1.3,2) node {$b$};
-                \draw (9,-0.5) node {$\alpha$};
-            \end{scope}
-            \begin{scope}[canvas is zx plane at y=0]
-                \draw[opacity=0.2] (0,-3) grid (8,3);
-                \draw (1,-3) -- (6,3);
-                \draw (0,2) -- (8,-3);
-                \draw (2,-0.8) node[left] {$c$};
-                \draw (1.3,2) node {$d$};
-                \draw (9,-0.5) node {$\beta$};
-            \end{scope}
-            \foreach \point in {}{
-    \fill \point circle (1.8pt);
-}
-          \end{tikzpicture}
-    \end{center}
-    Пусть $\alpha\cap\beta\neq\varnothing$. Тогда по теореме о линии пересечения плоскостей $\alpha\cap\beta=k,\,k\parallel a\,\,(c\subset\beta);\,\,\alpha\cap\beta=l,\,l\parallel b\,\,(d\subset\beta).$ Противоречие. 
-\end{proof}
 
 \begin{theorem}
     Линии пересечения двух параллельных плоскостей третьей плоскостью параллельны:
@@ -472,6 +144,74 @@
     \end{center}
 \end{proof}
 
+\subsection{Сечения}
 
 
+\begin{definition}
+    Углом между наклонной и плоскостью называется угол между наклонной и её проекцией на данную плоскость. 
+\end{definition}
+\begin{theorem}
+    Угол между наклонной к плоскости и её проекцией на эту плоскость есть наименьший из углов между наклонной и каждой прямой, лежащей в этой плоскости.
+\end{theorem}
+\begin{theorem}
+    Пусть прямая $a$ образует с плоскостью $\pi$ угол $\alpha$. Прямая $b\subset\pi$ образует с прямой $a$ угол $\varphi$, а с её проекцией на плоскость $\pi$ – угол $\beta$. Тогда $\cos\varphi=\cos\alpha\cdot\cos\beta$.
+\end{theorem}
+\begin{proof}
+    $ $\newline
+        \begin{center}
+            \begin{tikzpicture}[z={(0:10mm)},x={(40:5mm)}]
+                \begin{scope}[canvas is zx plane at y=0,fill=red]
+                    \draw[opacity=0.2] (0,-3) grid (8,3);
+                    \draw (8.5,-0.5) node {$\pi$};
+                \end{scope}
+                \coordinate (O) at (-1,0,2);
+                \coordinate (A) at (2,2,5);
+                \coordinate (L) at (2,0,5);
+                \coordinate (B) at (-1,0,5);
+                \draw ($(A)!-0.1!(O)$) -- (O);
+                \draw[dashed] (O) -- ($(A)!1.215!(O)$);
+                \draw ($(A)!1.215!(O)$) -- ($(A)!1.5!(O)$);
+                \draw ($(O)!-0.66!(L)$) -- ($(O)!1.33!(L)$);
+                \tkzMarkAngle[size=1.35cm](L,O,A);
+                \tkzMarkAngle[size=1.25cm](L,O,A);
+                \tkzMarkAngle[size=1.15cm](L,O,A);
+                \tkzMarkAngle[size=1.65cm](B,O,L);
+                \tkzMarkAngle[size=1.55cm](B,O,L);
+                \tkzMarkAngle[size=0.45cm](B,O,A);
+                \draw (0,0.4,3.2) node {$\alpha$};
+                \draw (-0.9,0.2,3.9) node {$\beta$};
+                \draw (-1,0.2,2.8) node {$\varphi$};
+                \draw (-1,0,0) -- (-1,0,8);
+                \draw (A) -- (L) -- (B);
+                \draw (B) ++(0.5,0,0) -- ++(0,0,0.5) -- ++(-0.5,0,0);
+                \draw (L) ++(0,0.3,0) -- ++(-0.21,0,-0.21) -- ++(0,-0.3,0);
+                \draw (A) node[above left] {$A$};
+                \draw (O) node[above] {$O$};
+                \draw (B) node[below] {$B$};
+                \draw (L) node[below right] {$L$};
+                \draw ($(A)!.5!(O)$) node[above left] {$a$};
+                \draw ($(O)!.65!(L)$) node[above] {$l$};
+                \draw ($(B)!-0.5!(O)$) node[below] {$b$};
+                \foreach \point in {(A),(B),(O),(L)}{
+        \fill \point circle (1.8pt);
+    }
+              \end{tikzpicture}
+        \end{center}
+        Пусть $A$ – произвольная точка на прямой $a$, $O$ – точка пересечения прямой $a$ с $\pi$, $L$ – основание перпендикуляра из $A$ на $\pi$, а $B$ – основание перпендикуляра из $L$ на $b$. Без ограничения общности положим $OA=1$, тогда $OL=\cos\alpha$, а $OB=\cos\alpha\cdot\cos\beta$. Пусть $\delta=(ABL)$, тогда $BL\perp b$ по построению, $AL\perp b$, так как $b\subset\pi$, $AL\perp\pi\Longrightarrow b\perp\delta\Longrightarrow b\perp AB$. Отсюда $OB=\cos\varphi=\cos\alpha\cdot\cos\beta$.
+\end{proof}
+\begin{definition}
+    Если среди всех расстояний между точками, одна из которых принадлежит фигуре $\Phi_1$, а другая – фигуре $\Phi_2$, существует наименьшее, то его называют между фигурами $\Phi_1$ и $\Phi_2$.
+\end{definition}
+\begin{theorem}
+    Расстоянием от точки до плоскости является расстояние от данной точки до её проекции на данную плоскость.
+\end{theorem}
+\begin{definition}
+    Общим перпендикуляром двух скрещивающихся прямых называется отрезок, концы которого лежат на данных прямых, перпендикулярный к ним.
+\end{definition}
+\begin{theorem}
+    Общий перпендикуляр двух скрещивающихся прямых существует и единственен.
+\end{theorem}
+\begin{theorem}
+    Расстояние между двумя скрещивающимися прямыми равно расстоянию от точки пересечения одной из этих прямых с перпендикулярной ей плоскостью до проекции другой прямой на эту плоскость.
+\end{theorem}
 \end{document}
