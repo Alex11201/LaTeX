@@ -111,7 +111,8 @@
 
 \subsection{Иррациональные неравенства}
 
-$$\frac{f(x)}{g(x)}\leq 0\Longleftrightarrow \left[
+\begin{multicols}{2}
+    \[\frac{f(x)}{g(x)}\leq 0\Longleftrightarrow \left[
 \begin{gathered}
     \begin{cases}
         f(x)\geq 0\\
@@ -122,32 +123,30 @@ $$\frac{f(x)}{g(x)}\leq 0\Longleftrightarrow \left[
         g(x)>0
     \end{cases}
 \end{gathered}
-\right.$$
-
-\begin{align*}
-    &\sqrt{f(x)}>g(x) \Longleftrightarrow
-    \begin{sqcases}
-        \begin{cases}
-            g(x)<0\\
-            f(x)\geq 0
-        \end{cases}\\
-        \begin{cases}
-            g(x)\geq 0\\
-            f(x)>(g(x))^2
-        \end{cases}
-    \end{sqcases}& &\sqrt{f(x)}<g(x) \Longleftrightarrow
+\right.\]\\
+\[\sqrt{f(x)}<g(x) \Longleftrightarrow
     \begin{cases}
         g(x)\geq 0\\
         f(x) \geq 0\\
         f(x) < (g(x))^2
+    \end{cases}\]\\
+\[\sqrt{f(x)}>g(x) \Longleftrightarrow
+\begin{sqcases}
+    \begin{cases}
+        g(x)<0\\
+        f(x)\geq 0
+    \end{cases}\\
+    \begin{cases}
+        g(x)\geq 0\\
+        f(x)>(g(x))^2
     \end{cases}
-\end{align*}
-
-$$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow 
+\end{sqcases}\]\\
+\[\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow 
     \begin{cases}
         f(x)>g(x)\\
         g(x)\geq 0
-    \end{cases}$$
+    \end{cases}\]
+\end{multicols}
 
 \subsection{Неравенства с модулем}
 
@@ -506,7 +505,7 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
 \begin{definition}
     Котангенсом угла в прямоугольном треугольнике называется отношение его прилежащего катета к противолежащему или косинуса этого угла к его синусу.
 \end{definition}
-\begin{statement}
+\begin{statement}\label{Основное тригонометрическое тождество}
     $$\sin^2 \alpha + \cos^2 \alpha=1$$
 \end{statement}
 \begin{proof}
@@ -517,13 +516,13 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
     $$\tg^2\alpha + 1=\dfrac{1}{\cos^2 \alpha}$$
 \end{statement}
 \begin{proof}
-    Если выражение из утверждения 7.1 разделить на $\cos^2 \alpha$, то получим данное выражение.
+    Если выражение из утверждения \ref{Основное тригонометрическое тождество} разделить на $\cos^2 \alpha$, то получим данное выражение.
 \end{proof}
 \begin{statement}
     $$\ctg^2\alpha + 1=\dfrac{1}{\sin^2 \alpha}$$
 \end{statement}
 \begin{proof}
-    Если выражение из утверждения 7.1 разделить на $\sin^2 \alpha$, то получим данное выражение.
+    Если выражение из утверждения \ref{Основное тригонометрическое тождество} разделить на $\sin^2 \alpha$, то получим данное выражение.
 \end{proof}
 \begin{statement}
     $$\cos(\alpha - \beta)=\cos\alpha\cdot\cos\beta+\sin\alpha\cdot\sin\beta$$
@@ -800,7 +799,7 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
         Мнимой единицей называется такое число $i$, что $i^2=-1$.
     \end{definition}
     \begin{definition}
-        Комплексным числом называется выражение вида $z=a-bi$, где $a=\Re z$ – действительная часть, а $b=\Im z$ – мнимая.
+        Комплексным числом называется выражение вида $z=a+bi$, где $a=\Re z$ – действительная часть, а $b=\Im z$ – мнимая.
     \end{definition}
     \begin{definition}
         Число $z_1$ называется сопряженным к числу $z$, если $\Re z_1=\Re z;\,\Im z_1=-\Im z$. Обозначение: $z_1=\bar{z}$.
@@ -864,7 +863,7 @@ $$\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow
 
     \section{Логарифмы}
     \begin{definition}
-        Пусть $a>0;\,\, a\neq 1,\,\,b>0$. Логарифмом $\log_ab$ числа $b$ по основания $a$ называется такое число $c$, что $a^c=b$. Из этого, а также свойств степеней следует:
+        Пусть $a>0;\,\, a\neq 1,\,\,b>0$. Логарифмом $\log_ab$ числа $b$ по основанию $a$ называется такое число $c$, что $a^c=b$. Из этого, а также свойств степеней следует:
         \begin{center}
             \begin{multicols}{3}
                 \[\log_a 1=0\]\\
