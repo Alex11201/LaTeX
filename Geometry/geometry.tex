@@ -16,6 +16,7 @@
 \usepackage{color}
 \usepackage{transparent}
 \usepackage{amsthm}
+\usepackage{multicol}
 \parindent=0cm
 
 \theoremstyle{definition}
@@ -146,7 +147,7 @@
     $C\in AB \Longleftrightarrow \forall O: \exists \lambda \in \R: \lambda \overrightarrow{OA}+(1-\lambda) \overrightarrow{OB}=\overrightarrow{OC}$
 \end{theorem}
     \begin{proof}
-    $ $\newline
+    $ $\par\nobreak\ignorespaces
     \begin{center}
         \begin{tikzpicture}
         \draw (-5,3) -- (5,3);
@@ -169,7 +170,7 @@
     Пусть $O$ и $H$ -- центр описанной окружности и ортоцентр $\triangle ABC$ соответственно. Тогда $\overrightarrow{OH}=\overrightarrow{OA}+\overrightarrow{OB}+\overrightarrow{OC}$.
 \end{theorem}
     \begin{proof}
-    $ $\newline
+    $ $\par\nobreak\ignorespaces
     \begin{center}
         \begin{tikzpicture}
         \draw (0,0) circle (4.5);
@@ -204,7 +205,7 @@
     Пусть $\overrightarrow{OK}$ и $\overrightarrow{OL}$ -- базис в $\triangle ABC$, а $M$ -- его центроид. Тогда $\overrightarrow{OM}=\dfrac{1}{3}(\overrightarrow{OA}+\overrightarrow{OB}+\overrightarrow{OC})$.
 \end{theorem}
     \begin{proof}
-    $ $\newline
+    $ $\par\nobreak\ignorespaces
     \begin{center}
         \begin{tikzpicture}
             \coordinate (A) at (-4,-1) {};
@@ -250,11 +251,11 @@
 \end{definition}
 
 \begin{theorem}
-    В прямоугольной системе Декарта скалярное произведение двух векторов $\vec{a}(x_1;y_1)$ и $\vec{b}(x_2;y_2)$ равно сумме произведений их соответствующих координат: 
+    В прямоугольной системе Декарта скалярное произведение двух векторов\\ $\vec{a}(x_1;y_1)$ и $\vec{b}(x_2;y_2)$ равно сумме произведений их соответствующих координат: 
     $$\vec{a}\cdot \vec{b}=x_1\cdot x_2 + y_1\cdot y_2$$
 \end{theorem}
     \begin{proof}
-    $ $\newline
+    $ $\par\nobreak\ignorespaces
     \begin{center}
         \begin{tikzpicture}
             \draw[-{Stealth[scale = 1.5]}] (-.5,0) -- (6.5,0) node[below] {$x$};
@@ -307,7 +308,7 @@
         Вектор $\vec{n}(a;b)$ является вектором нормали к прямой $l$, заданной уравнением $ax+by+c=0$.
     \end{theorem}
     \begin{proof}
-    $ $\newline
+    $ $\par\nobreak\ignorespaces
     \begin{center}
         \begin{tikzpicture}
         \draw[-{Stealth[scale = 1.5]}] (-2,0) -- (7,0) node[below]{$x$};
@@ -337,7 +338,7 @@
         \dfrac{|ax_0+by_0+c|}{\sqrt{a^2+b^2}}$
     \end{theorem}
     \begin{proof}
-    $ $\newline
+    $ $\par\nobreak\ignorespaces
     \begin{center}
         \begin{tikzpicture}
             \draw[-{Stealth[scale = 1.5]}] (-0.5,0) -- (6,0) node[below]{$x$};
@@ -376,13 +377,16 @@
         \end{tikzpicture}
     \end{center}
         Пусть $A(x_0;y_0)$, тогда $ax_0+by_0+c=f\Longrightarrow y_0=\dfrac{f-c}{b}-\dfrac{ax_0}{b}$. Проведем через точку $A$ перпендикуляр к $l$, а также прямую, параллельную $l$. Отметим найденные ранее координаты на $OY$, а также найдем расстояние между ними. Пусть угол наклона $l$ относительно $OX$ равен $\alpha$, тогда $\tg \alpha = -\dfrac{a}{b}$. Из основного тригонометрического тождества:
-    \begin{align*}
-        &\sin^2\alpha+\cos^2\alpha=1\, | \, :\cos^2 \alpha\\
-        &\tg^2\alpha+1=\frac{1}{\cos^2\alpha}\\
-        &\cos^2\alpha=\frac{1}{\dfrac{a^2}{b^2}+1}\\
-        &\cos \alpha = \frac{b}{\sqrt{a^2+b^2}}
-    \end{align*}
-    Тогда, чтобы найти $\rho(A;l)$, умножим косинус на гипотенузу и получим: $\dfrac{b}{\sqrt{a^2+b^2}} \cdot \dfrac{|f|}{b}=\dfrac{|ax_0+by_0+c|}{\sqrt{a^2+b^2}}$. 
+        \setlength{\tabcolsep}{1em}
+        \def\arraystretch{1.5}
+        \begin{center}
+            \begin{tabular}{cc}
+                $\sin^2\alpha+\cos^2\alpha=1$ & $\cos^2\alpha=\dfrac{1}{\frac{a^2}{b^2}+1}$\\
+                $\tg^2\alpha+1=\dfrac{1}{\cos^2\alpha}$ & $\cos \alpha = \dfrac{b}{\sqrt{a^2+b^2}}$
+            \end{tabular}
+        \end{center}
+    Тогда, чтобы найти $\rho(A;l)$, умножим косинус на гипотенузу и получим: 
+    $$\dfrac{b}{\sqrt{a^2+b^2}} \cdot \dfrac{|f|}{b}=\dfrac{|ax_0+by_0+c|}{\sqrt{a^2+b^2}}$$ 
     \end{proof}
 
     \section{Кривые второго порядка}
@@ -489,7 +493,7 @@
         Пусть $l$ касается эллипса с фокусами $F_1$ и $F_2$ в точке $P$, тогда $l$ -- биссектриса угла, смежного $\angle F_1PF_2$.
     \end{theorem}
     \begin{proof}
-    $ $\newline
+    $ $\par\nobreak\ignorespaces
     \begin{center}
         \begin{tikzpicture}
         \def\a{3}
@@ -528,7 +532,7 @@
         Пусть $l$ касается параболы в точке $P$, $P\,'$ -- проекция точки $P$ на директрису. Тогда $l$ -- биссектриса $\angle FPP\,'$.
     \end{theorem}
     \begin{proof}
-    $ $\newline
+    $ $\par\nobreak\ignorespaces
     \begin{center}
         \begin{tikzpicture}[scale = 3]
             \begin{scope}
@@ -568,7 +572,7 @@
         Пусть $l$ касается гиперболы с фокусами $F_1$ и $F_2$ в точке $P$, тогда $l$ -- биссектриса $\angle F_1F_2P$.
     \end{theorem}
     \begin{proof}
-    $ $\newline
+    $ $\par\nobreak\ignorespaces
     \begin{center}
         \begin{tikzpicture}[scale = 1.5]
         \begin{scope}
@@ -610,7 +614,7 @@
         Пусть $PX$ и $PY$ -- касательные к эллипсу с фокусами $F_1$ и $F_2$. Тогда $\angle F_1PX=\angle F_2PY$.
     \end{theorem}
     \begin{proof}
-    $ $\newline
+    $ $\par\nobreak\ignorespaces
     \begin{center}
         \begin{tikzpicture}
         \def\a{4}
@@ -668,7 +672,7 @@
         Геометрическим местом точек, из которых данный эллипс виден под прямым углом, является окружность с центром в центре эллипса.
     \end{theorem}
     \begin{proof}
-    $ $\newline
+    $ $\par\nobreak\ignorespaces
     \begin{center}
         \begin{tikzpicture}[scale = 0.8]
         \def\a{2}
@@ -715,7 +719,7 @@
         Если фокус параболы отразить относительно касательной, то его образ попадет на директрису. Получившаяся точка будет проекцией точки, в которой касательная касается параболы.
     \end{lemma}
     \begin{proof}
-    $ $\newline
+    $ $\par\nobreak\ignorespaces
     \begin{center}
         \begin{tikzpicture}[scale = 2.5]
             \begin{scope}
@@ -753,7 +757,7 @@
         Пусть $PX$ и $PY$ -- касательные к параболе. Тогда $P$ является центром описанной около $\triangle FX\,'Y\,'$ окружности, где $X\,'$ и $Y\,'$ -- проекции $X$ и $Y$ на директрису параболы соответственно.
     \end{lemma}
     \begin{proof}
-        $ $\newline
+        $ $\par\nobreak\ignorespaces
         \begin{center}
             \begin{tikzpicture}[scale = 4.5]
             \begin{scope}
@@ -798,7 +802,7 @@
         Множество таких точек $P$, из которых парабола видна под прямым углом, суть директриса этой параболы. Кроме того, если $PX$ и $PY$ – касательные к этой параболе, то $XY$ содержит $F$ и $PF$ – высота $\triangle PXY$.
     \end{theorem}
     \begin{proof}
-        $ $\newline
+        $ $\par\nobreak\ignorespaces
         \begin{center}
             \begin{tikzpicture}[scale = 4.5]
             \begin{scope}
@@ -847,7 +851,7 @@
         Пусть $PX$ и $PY$ – касательные к параболе, а $l$ – прямая, проходящая через $P$ параллельно оси параболы. Тогда угол между прямыми $PY$ и $l$ равен $\angle XPF$, $\triangle XFP \sim \triangle PFY$ и $FP$ -- биссектриса $\angle XFY$.
     \end{theorem}
     \begin{proof}
-        $ $\newline
+        $ $\par\nobreak\ignorespaces
         \begin{center}
             \begin{tikzpicture}[scale = 4.5]
             \begin{scope}
@@ -915,7 +919,7 @@
         Проекции точки $P$ на стороны $\triangle ABC$ лежат на одной прямой тогда и только тогда, когда точка $P$ лежит на описанной окружности треугольника.
     \end{theorem}
     \begin{proof}
-    $ $\newline
+    $ $\par\nobreak\ignorespaces
         \begin{center}
             \begin{tikzpicture}
             \def\r{3}
@@ -959,7 +963,7 @@
         Пусть $\triangle ABC$ описан около параболы, тогда фокус этой параболы лежит на описанной окружности этого треугольника.
     \end{theorem}
     \begin{proof}
-        $ $\newline
+        $ $\par\nobreak\ignorespaces
         \begin{center}
             \begin{tikzpicture}[scale = 2]
             \begin{scope}
@@ -1006,7 +1010,7 @@
         Пусть $P$ и $B\,'$ лежат на окружности, описанной около $\triangle ABC$, при чем $PB\,'\perp AC$. Тогда $BB\,'$ параллельная прямой Симсона точки $P$.
     \end{theorem}
     \begin{proof}
-    $ $\newline
+    $ $\par\nobreak\ignorespaces
         \begin{center}
             \begin{tikzpicture}
             \def\r{3}
@@ -1054,7 +1058,7 @@
         Прямая Симсона точки $P$ относительно $\triangle ABC$ делит отрезок $PH$ пополам, где $H$ -- ортоцентр $\triangle ABC$.
     \end{consequence}
     \begin{proof}
-    $ $\newline
+    $ $\par\nobreak\ignorespaces
         \begin{center}
             \begin{tikzpicture}
             \def\r{3}
@@ -1114,7 +1118,7 @@
         Ортоцентр треугольника, описанного около параболы, лежит на ее директрисе.
     \end{theorem}
     \begin{proof}
-        $ $\newline
+        $ $\par\nobreak\ignorespaces
         \begin{center}
             \begin{tikzpicture}[scale = 1.5]
             \begin{scope}
@@ -1181,7 +1185,8 @@
 
     \section{Инверсия}
     \begin{definition}
-        Точки $A$ и $B$ называются симметричными относительно окружности $\omega(O;\,R)$, если $OA\cdot OB=R^2$ и $A$ лежит на луче $OB$.\\\\
+        Точки $A$ и $B$ называются симметричными относительно окружности\\ $\omega(O;\,R)$, если $OA\cdot OB=R^2$ и $A$ лежит на луче $OB$.\bigskip
+
         Для точек, симметричных относительно окружности $\omega(O;\,R)$, выполняются условия:
         \begin{align*}
             1.\,\,&\forall X\in \R^2:\,X\neq0\,\,\,\exists!\,Y:\,X,\,Y \text{ -- симметричны относительно } \omega\\
@@ -1198,7 +1203,7 @@
         Любые две пары точек, симметричных относительно одной окружности, лежат на одной окружности.
     \end{lemma}
     \begin{proof}
-        $ $\newline
+        $ $\par\nobreak\ignorespaces
         \begin{center}
             \begin{tikzpicture}
                 \coordinate (O) at (0,0);
@@ -1240,7 +1245,7 @@
         Прямая, не проходящая через центр инверсии, переходит в окружность, проходящую через центр инверсии.
     \end{theorem}
     \begin{proof}
-        $ $\newline
+        $ $\par\nobreak\ignorespaces
         \begin{center}
             \begin{tikzpicture}
                 \coordinate (O) at (0,0);
@@ -1295,7 +1300,7 @@
         Если при инверсии $\varphi$ верно: $\varphi(\omega_1)=\omega_2$, где $\omega_i$ -- это  окружность, то центр данной инверсии суть центр гомотетии, переводящей $\omega_1$ в $\omega_2$.
     \end{theorem}
     \begin{proof}
-        $ $\newline
+        $ $\par\nobreak\ignorespaces
         \begin{center}
             \begin{tikzpicture}[scale=0.8]
                 \coordinate (O) at (0,0);
@@ -1334,7 +1339,7 @@
         Пусть $C_0$ и $A_0$ -- произвольные точки на сторонах $AB$ и $BC$ треугольника $ABC$, $B_1$ -- середина дуги $ABC$, описанной около $\triangle ABC$ окружности, тогда $BB_1C_0A_0$ является вписанным тогда и только тогда, когда $AC_0=CA_0$. 
     \end{lemma}
     \begin{proof}
-        $ $\newline
+        $ $\par\nobreak\ignorespaces
         \begin{center}
             \begin{tikzpicture}
                 \coordinate (A) at (-140:4);
@@ -1376,7 +1381,7 @@
         Пусть $A_0$ и $C_0$ -- произвольные точки на $BC$ и $AB$ треугольника $ABC$ соответственно. Инцентр $\triangle ABC$ лежит на окружности, описанной около $\triangle A_0BC_0$ тогда и только тогда, когда $AC_0+CA_0=AC$.
     \end{lemma}
     \begin{proof}
-        $ $\newline
+        $ $\par\nobreak\ignorespaces
         \begin{center}
             \begin{tikzpicture}
                 \coordinate (A) at (0,0);
@@ -1422,7 +1427,7 @@
 }
         \end{tikzpicture}
         \end{center}
-        Пусть $L_A$ и $L_C$ -- основания биссектрисс из точек $A$ и $C$ соответственно. Отметим точку $\widehat{C_0}$, симметричную $C_0$ относительно $AL_A$. Докажем равенство при условии вписанности. В силу вписанности $A_0IC_0B$: $\angle IA_0C=\angle IC_0B$. При этом в силу симметрии $\angle IC_0B=\angle I\widehat{C_0}C$. Также $\angle IC\widehat{C_0}=\angle ICL_A$, так как $CI$ -- биссектриса. Тогда $\triangle IC\widehat{C_0} = \triangle ICA_0$ по двум углам и общей стороне $IC$. То есть $\widehat{C_0}C=A_0C$, а значит $A\widehat{C_0} + \widehat{C_0}C=A\widehat{C_0}+A_0C=AC_0+A_0C=AC$.\bigskip
+        Пусть $L_A$ и $L_C$ -- основания биссектрис из точек $A$ и $C$ соответственно. Отметим точку $\widehat{C_0}$, симметричную $C_0$ относительно $AL_A$. Докажем равенство при условии вписанности. В силу вписанности $A_0IC_0B$: $\angle IA_0C=\angle IC_0B$. При этом в силу симметрии $\angle IC_0B=\angle I\widehat{C_0}C$. Также $\angle IC\widehat{C_0}=\angle ICL_A$, так как $CI$ -- биссектриса. Тогда $\triangle IC\widehat{C_0} = \triangle ICA_0$ по двум углам и общей стороне $IC$. То есть $\widehat{C_0}C=A_0C$, а значит $A\widehat{C_0} + \widehat{C_0}C=A\widehat{C_0}+A_0C=AC_0+A_0C=AC$.\bigskip
 
         Докажем вписанность при условии равенства. В силу симметрии $\angle IC_0B=\angle I\widehat{C_0}C$. $AC=AC_0+A_0C=A\widehat{C_0}+A_0C\Longrightarrow A_0C=C\widehat{C_0}$. Тогда $\triangle IC\widehat{C_0} = \triangle ICA_0$ по двум сторонам и углу, а значит $\angle I\widehat{C_0}C=\angle IA_0C$, то есть $\angle IA_0C=\angle IC_0B$, следовательно, $A_0IC_0B$ -- вписанный.
     \end{proof}
@@ -1466,7 +1471,7 @@
     \end{lemma}
     
     \begin{proof}
-        $ $\newline
+        $ $\par\nobreak\ignorespaces
         \begin{center}
             \begin{tikzpicture}[z={(0:10mm)},x={(50:5mm)}]
                 \begin{scope}[canvas is zy plane at x=0,fill=blue]
@@ -1512,7 +1517,7 @@
         $$a\subset\alpha,\,b\cap\alpha=M:\,\,M\notin a\Longrightarrow a\dotdiv b$$
     \end{theorem}
     \begin{proof}
-        $ $\newline
+        $ $\par\nobreak\ignorespaces
         \begin{center}
             \begin{tikzpicture}[z={(0:10mm)},x={(40:5mm)}]
                 \begin{scope}[canvas is zy plane at x=0,fill=blue]
@@ -1546,7 +1551,7 @@
         Пусть $a\parallel b;\,\,a\cap\alpha\neq\varnothing,$ тогда $b\cap\alpha\neq\varnothing$.
     \end{theorem}
     \begin{proof}
-        $ $\newline
+        $ $\par\nobreak\ignorespaces
         \begin{center}
             \begin{tikzpicture}[z={(0:10mm)},x={(40:5mm)}]
                 \begin{scope}[canvas is zy plane at x=0,fill=blue]
@@ -1591,7 +1596,7 @@
     \end{theorem}
     
     \begin{proof}
-        $ $\newline
+        $ $\par\nobreak\ignorespaces
         \begin{center}
             \begin{tikzpicture}[z={(0:10mm)},x={(25:5mm)},y={(60:7mm)}]
                 \begin{scope}[canvas is zx plane at y=0]
@@ -1629,7 +1634,7 @@
         $$a\parallel \alpha,\,a\subset\beta,\,\alpha\cap\beta=b\Longrightarrow a\parallel b$$
     \end{theorem}
     \begin{proof}
-        $ $\newline
+        $ $\par\nobreak\ignorespaces
         \begin{center}
             \begin{tikzpicture}[z={(0:10mm)},x={(25:5mm)},y={(60:7mm)}]
                 \begin{scope}[canvas is zx plane at y=0]
@@ -1668,7 +1673,7 @@
         $$a\parallel b,\,a\subset \alpha,\,b\subset \beta,\,\alpha\cap\beta=c\Longrightarrow a\parallel c,\, b\parallel c$$
     \end{theorem}
     \begin{proof}
-        $ $\newline
+        $ $\par\nobreak\ignorespaces
         \begin{center}
             \begin{tikzpicture}[z={(0:10mm)},x={(120:5mm)},y={(45:7mm)}]
                 \begin{scope}[canvas is zx plane at y=0]
@@ -1729,7 +1734,7 @@
         $$a,\,b\subset\alpha,\,a\cap b\neq\varnothing;\,\,c,\,d\subset\beta;\,\,a\parallel c,\,b\parallel d\Longrightarrow \alpha\parallel\beta$$
     \end{theorem}
     \begin{proof}
-        $ $\newline
+        $ $\par\nobreak\ignorespaces
         \begin{center}
             \begin{tikzpicture}[z={(0:10mm)},x={(30:5mm)}]
                 \begin{scope}[canvas is zx plane at y=2]
@@ -1761,7 +1766,7 @@
         $$\alpha\parallel\beta,\,\gamma\cap\alpha=a,\,\gamma\cap\beta=b\Longrightarrow a\parallel b$$
     \end{theorem}
     \begin{proof}
-        $ $\newline
+        $ $\par\nobreak\ignorespaces
         \begin{center}
             \begin{tikzpicture}[z={(0:10mm)},x={(30:5mm)}]
                 \begin{scope}[canvas is zx plane at y=2]
@@ -1874,7 +1879,7 @@
         Прямая перпендикулярна плоскости, если она перпендикулярна двум пересекающимся прямым, лежащим в этой плоскости.
     \end{theorem}
     \begin{proof}
-        $ $\newline
+        $ $\par\nobreak\ignorespaces
             \begin{center}
                 \begin{tikzpicture}[z={(0:10mm)},x={(40:5mm)}]
                     \begin{scope}[canvas is zy plane at x=0,fill=blue]
@@ -1914,7 +1919,7 @@
         Прямая, лежащая в плоскости, перпендикулярна наклонной тогда и только тогда, когда перпендикулярна проекции этой наклонной на эту плоскость.
     \end{theorem}
     \begin{proof}
-        $ $\newline
+        $ $\par\nobreak\ignorespaces
             \begin{center}
                 \begin{tikzpicture}[z={(0:10mm)},x={(40:5mm)}]
                     \begin{scope}[canvas is zy plane at x=0,fill=blue]
@@ -1953,7 +1958,7 @@
         Пусть прямая $a$ образует с плоскостью $\pi$ угол $\alpha$. Прямая $b\subset\pi$ образует с прямой $a$ угол $\varphi$, а с её проекцией на плоскость $\pi$ – угол $\beta$. Тогда $\cos\varphi=\cos\alpha\cdot\cos\beta$.
     \end{theorem}
     \begin{proof}
-        $ $\newline
+        $ $\par\nobreak\ignorespaces
             \begin{center}
                 \begin{tikzpicture}[z={(0:10mm)},x={(40:5mm)}]
                     \begin{scope}[canvas is zx plane at y=0,fill=red]
@@ -2010,4 +2015,131 @@
     \begin{theorem}
         Расстояние между двумя скрещивающимися прямыми равно расстоянию от точки пересечения одной из этих прямых с перпендикулярной ей плоскостью до проекции другой прямой на эту плоскость.
     \end{theorem}
+    \subsection{Двугранные углы}
+
+\begin{definition}
+    Две полуплоскости с общей ограничивающей их прямой разбивают пространство на два двугранных угла. Полуплоскости называются гранями этого угла, а их общая прямая – его ребром.
+\end{definition}
+\begin{definition}
+    Линейным углом двугранного угла называется пересечение данного двугранного угла с плоскостью, перпендикулярной его ребру.
+\end{definition}
+\begin{definition}
+    Величиной двугранного угла называется величина его линейного угла.
+\end{definition}
+\begin{theorem}
+    Величина двугранного угла не зависит от выбора его линейного угла.
+\end{theorem}
+\begin{definition}
+    Полуплоскость, границей которой является ребро двугранного угла, делящая его на два равных по величине двугранных угла называется биссектором данного угла.
+\end{definition}
+\begin{definition}
+    Углом между плоскостями называется наименьший из образованных их пересечением двугранных углов. Угол между параллельными плоскостями полагается равным нулю.
+\end{definition}
+\begin{definition}
+    Плоскости называются перпендикулярными, если угол между ними равен $90^\circ$.
+\end{definition}
+\begin{theorem}[Признак перпендикулярности плоскостей] Если плоскость содержит прямую, перпендикулярную другой плоскости, то данные плоскости перпендикулярны.
+\end{theorem}
+\begin{proof}
+    $ $\par\nobreak\ignorespaces
+        \begin{center}
+            \begin{tikzpicture}[z={(0:10mm)},x={(40:5mm)}]
+                \begin{scope}[canvas is zx plane at y=3,fill=red]
+                    \draw[opacity=0.2] (0,0) grid (4,6);
+                    \draw (0,3) -- (4,3);
+                    \draw (2,-1) node {$\alpha$};
+                \end{scope}
+                \begin{scope}[canvas is yx plane at z=4,fill=blue]
+                    \coordinate (O) at (3,3);
+                    \fill[white] (0,0) rectangle (6,6);
+                    \draw[opacity=0.2] (0,0) grid (6,6);
+                    \draw (0,3) -- (6,3);
+                    \draw (4.5,3) node[right] {$l$};
+                    \draw (4.5,6) node[right] {$\beta$};
+                \end{scope}
+                \begin{scope}[canvas is zx plane at y=3,fill=red]
+                    \fill[white] (4,0) rectangle (8,6);
+                    \draw[opacity=0.2] (4,0) grid (8,6);
+                    \draw (4,3) -- (8,3);
+                    \draw (6,3) node[below] {$m$};
+                    \draw[dashed] (3,3) -- (4,3);
+                    \draw (4.5,1) node {$k$};
+                    \draw (4,3) -- ++(0.5,0) -- ++(0,-0.5) -- ++(-0.5,0);
+                \end{scope}
+                \begin{scope}[canvas is yx plane at z=4,fill=blue]
+                    \draw (3,3) node[above left] {$O$};
+                    \draw (3,3) -- ++(0.5,0) -- ++(0,0.5) -- ++(-0.5,0);
+                    \draw[dashed] (2,3) -- (3,3);
+                    \draw (3,0) -- (3,6);
+                \end{scope}
+                \foreach \point in {(O)}{
+        \fill \point circle (1.8pt);
+    }
+              \end{tikzpicture}
+        \end{center}
+        Пусть $l\perp\alpha$, тогда $\forall m\subset\alpha:\,\,l\perp m$. Пусть $\alpha\cap\beta=k$. Пусть также $m\perp k;\,\,m\cap k=O.$ Тогда $\angle(m;\,l)$ – линейный угол одного из двугранных углов между $\alpha$ и $\beta$. $m\perp k;\,l\perp k;\,m\cap l=O\in k$, значит $\angle(m;\,l)=90^\circ$.
+\end{proof}
+
+\begin{theorem}[Площадь ортогональной проекции многоугольника]
+    Площадь ортогональной проекции многоугольника равна произведению площади данного многоугольника и косинуса угла между плоскостью проецирования и плоскостью многоугольника.
+\end{theorem}
+
+\begin{proof}
+    $ $\par\nobreak\ignorespaces
+    \begin{center}
+        \begin{tikzpicture}[z={(0:10mm)},x={(25:5mm)},y={(110:7mm)}]
+            \begin{scope}[canvas is zx plane at y=0]
+                \coordinate (A1) at (1,1);
+                \coordinate (B1) at (7,1);
+                \coordinate (C1) at (5,-2);
+                \coordinate (H1) at (5,1);
+                \draw[opacity=0.2] (0,-3) grid (8,3);
+                \draw (1,3) -- ++(0,-0.5) -- ++(0.5,0) -- ++(0,0.5);
+                \draw (H1) -- ++(0,-0.5) -- ++(-0.5,0) -- ++(0,0.5);
+                \draw (7,3) -- ++(0,-0.5) -- ++(0.5,0) -- ++(0,0.5);
+                \draw (A1) -- (B1) -- (C1) -- cycle;
+                \draw (0,3) -- (8,3);
+                \draw (A1) node[above left] {$A'$};
+                \draw (B1) node[above left] {$B'$};
+                \draw (C1) node[above left] {$C'$};
+                \draw (H1) node[above left] {$H'$};
+                \draw (1.5,-1.5) node {$\alpha$};
+            \end{scope}
+            \begin{scope}[canvas is zy plane at x=3]
+                \coordinate (A) at (1,2);
+                \coordinate (B) at (7,2);
+                \coordinate (C) at (5,5);
+                \coordinate (M) at (1,0);
+                \coordinate (N) at (7,0);
+                \coordinate (H) at (5,2);
+                \coordinate (K) at (5,0);
+                \draw (M) -- ++(0,0.5) -- ++(-0.5,0) -- ++(0,-0.5);
+                \draw (H) -- ++(0,0.5) -- ++(-0.5,0) -- ++(0,-0.5);
+                \draw (N) -- ++(0,0.5) -- ++(-0.5,0) -- ++(0,-0.5);
+                \draw[opacity=0.2] (0,0) grid (8,6);
+                \draw (A) -- (B) -- (C) -- cycle;
+                \draw (A) node[above left] {$A$};
+                \draw (B) node[above right] {$B$};
+                \draw (C) node[above left] {$C$};
+                \draw (H) node[above right] {$H$};
+                \draw (M) node[above right] {$M$};
+                \draw (N) node[above right] {$N$};
+                \draw (K) node[above left] {$K$};
+                \draw (1.5,4.5) node {$\beta$};
+                \draw (3,0) node[above left] {$l$};
+            \end{scope}
+            \draw[dashed] (1,0,1) -- (3,2,1) -- (3,0,1) -- cycle;
+            \draw[dashed] (1,0,7) -- (3,2,7) -- (3,0,7) -- cycle;
+            \draw[dashed] (1,0,5) -- (3,2,5);
+            \draw (-2,0,5) -- (3,0,5) -- (3,5,5);
+            \draw[dashed] (-2,0,5) -- (3,5,5);
+            \foreach \point in {(A), (B), (C), (A1), (B1), (C1), (H), (H1), (K), (N), (M)}{
+    \fill \point circle (1.8pt);
+}
+          \end{tikzpicture}
+    \end{center}
+    Пусть $\triangle ABC\subset\beta;\,l=\alpha\cap\beta;\,AB\,\|\,l$. Обозначим $H$ основание высоты $CH$ треугольника $ABC$, $M$ – проекция $A$ на $l$, $N$ – проекция $B$ на $l$, а $A',\,B',\,C',\,H'$ – проекции $A,\,B,\,C,\,H$ на $\alpha$ соответственно. Тогда $AB=MN$, следовательно, $MABN$ – прямоугольник, значит по теореме о трёх перпендикулярах $MA'\perp l;\,NB'\perp l$, то есть $MA'B'N$ – прямоугольник, а значит $AB=MN=A'B'$. $S_{\triangle ABC}=\frac{1}{2}AB\cdot CH;\,S_{\triangle A'B'C'}=\frac{1}{2}A'B'\cdot C'H'=\frac{1}{2}AB\cdot C'H'$. Пусть $K$ – проекция $C$ на $l$, тогда $H'\in C'K$. Пусть $\angle CKC'=\theta$, значит $KC'=KC\cdot\cos\theta;\,KH'=KH\cdot\cos\theta\Longrightarrow C'H'=CH\cdot\cos\theta$. То есть $S_{\triangle A'B'C'}=\frac{1}{2}AB\cdot C'H'=S_{\triangle ABC}\cdot\cos\theta$.\bigskip
+
+    Теорема доказана для треугольника, одна из сторон которого параллельна ребру двугранного угла. Чтобы обобщить доказательство до произвольного треугольника, достаточно заметить, что мы можем провести прямую, параллельную ребру двугранного угла, через одну из вершин этого треугольника, разбив его на два треугольника, удовлетворяющих нашему условию. Для произвольного многоугольника достаточно сказать, что его можно разбить на треугольники, а значит теорема доказана.
+\end{proof}
 \end{document}

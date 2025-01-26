@@ -662,7 +662,7 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
 \end{definition}
 \begin{definition}
     Оценка $\hat{\theta}$ называется состоятельной оценкой параметра $\theta$, если она сходится по вероятности к оцениваемому параметру, то есть:
-    $$\prob(|\hat{\theta}-\theta|<\varepsilon)=1$$
+    $$\prob(|\hat{\theta}_n-\theta|<\varepsilon)\xrightarrow{n\to\infty}1$$
 \end{definition}
 \begin{theorem}
     Размер выборки, необходимой для оценки, с точностью $\delta$ и уровнем доверия $1-\alpha$ можно выразить как:
@@ -689,4 +689,45 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
     $$n=\left(\frac{z_{1-\frac{\alpha}{2}}}{\delta}\right)^2pq$$
     Здесь $p$ определяется либо из предварительного опроса, либо подбирается такое её значение, при котором $\D(\hat{p})$ максимальное, то есть $p=\num{0.5}$.
 \end{proof}
+
+\subsection{Метод моментов}
+
+\begin{definition}
+    $k$–м моментом случайной величины $\xi$ называется $\E(\xi^k)$.
+\end{definition}
+\begin{theorem}
+    Точечно оценить параметр $\theta$ можно, решив систему уравнений вида $\E(\xi^k)=\overline{X^k}$. В силу несмещённости оценок, если $\E(\xi^k)=\theta$, то $\hat\theta=\overline{X^k}$.
+\end{theorem}
+\begin{example}
+    Пусть $X\sim\bigcup_{[a;\,b]},\,X=\{2;3;7;9;4;13;-1\}$. Чтобы найти точечные оценки $a$ и $b$ нужно решить систему:
+    $$\begin{cases}
+        \overline{X}=\E(X)=\dfrac{37}{7}=\dfrac{a+b}{2}\\[2\jot]
+        \overline{X^2}=\E(X^2)=47=\dfrac{a^2+ab+b^2}{3}
+    \end{cases}\Longleftrightarrow\begin{cases}
+        a=\dfrac{37-\sqrt{2802}}{7}\\
+        b=\dfrac{37+\sqrt{2802}}{7}
+    \end{cases}$$
+\end{example}
+
+\subsection{Метод максимального правдоподобия}
+
+\begin{definition}
+    Функция правдоподобия выборки $X$ суть:
+    $$L(X)=\prob(x_1\cap x_2\cap\ldots\cap x_n)=\prob(x_1)\cdot\prob(x_2)\cdot\ldots\cdot\prob(x_n)$$
+\end{definition}
+\begin{example}
+    Пусть $X\sim B(n;\,p);\,n=8;\,X=\{5;4;7;6\}$, тогда:
+    $$L(X)=C_8^5p^5q^3\cdot C_8^4p^4q^4\cdot C_8^7p^7q\cdot C_8^6p^6q^2$$
+\end{example}
+\begin{definition}
+    Логарифмическая функция правдоподобия выборки $X$ суть $\ln(L(X))$.
+\end{definition}
+\begin{example}
+    \begin{multline*}
+        \ln(L(X))=\ln(C_8^5)+\ldots+\ln(C_8^6)+\ln p^5+\ldots+\ln p^6+\ln q^3+\ldots+\ln q^2=\\
+        =\ln(C_8^5)+\ldots+\ln(C_8^6)+(5+4+7+6)\cdot\ln p+(3+4+1+2)\cdot\ln q=\\
+        =\ln(C_8^5)+\ldots+\ln(C_8^6)+22\ln p+10\ln(1-p)
+    \end{multline*}
+    $$\left(\ln(L(X))\right)'=22\cdot\dfrac{1}{p}-10\cdot\dfrac{1}{1-p}=0$$
+\end{example}
 \end{document}

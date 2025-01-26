@@ -15,6 +15,7 @@
 \usepackage{transparent}
 \usepackage{amsthm}
 \usepackage{multicol}
+\usepackage{tasks}
 \parindent=0cm
 
 \theoremstyle{definition}
@@ -925,4 +926,37 @@
     \begin{definition}
         Десятичным логарифмом $\lg x$ называется логарифм с основанием 10.
     \end{definition}
+
+    \subsection{Показательные уравнения и неравенства}
+
+    \begin{tasks}(2)
+    \task[] $a^x=a^{x_0}\Longleftrightarrow x=x_0$\\
+    \task[] $a^x=b\Longleftrightarrow x=\log_ab$\\
+    \task[] $a^x>a^{x_0}\Longleftrightarrow x>x_0$\\
+    \task[] $a^x>b\Longleftrightarrow\begin{array}{l}
+        x>\log_ab\text{, если }a>1\\
+        x>\log_ab\text{, если }0<a<1
+    \end{array}$
+    \end{tasks}
+
+    \subsection{Логарифмические уравнения и неравенства}
+
+    \begin{tasks}(2)
+        \task[] $\log_ax=b\Longleftrightarrow x=a^b$\\
+        \task[] $\log_ax>b\Longleftrightarrow \begin{array}{l}
+            x>a^b\text{, если }a>1\\
+            x<a^b\text{, если }0<a<1
+        \end{array}$\\
+    \end{tasks}
+    $$\log_af(x)<\log_ag(x)1\Longleftrightarrow
+        \begin{array}{l}
+            \begin{cases}
+                f(x) < g(x)\\
+                f(x) > 0
+            \end{cases}a>1\\
+            \begin{cases}
+                f(x) > g(x)\\
+                g(x) > 0
+            \end{cases}0<a<1\\
+        \end{array}$$
 \end{document}
