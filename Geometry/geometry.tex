@@ -41,7 +41,18 @@
 \usetikzlibrary{intersections}
 \usetikzlibrary{decorations.markings}
 \usetikzlibrary{positioning}
-\usetikzlibrary {3d}
+\usetikzlibrary{3d}
+\usetikzlibrary{perspective}
+
+\makeatletter
+\tikzoption{canvas is plane}[]{\@setOxy#1}
+\def\@setOxy O(#1,#2,#3)x(#4,#5,#6)y(#7,#8,#9)%
+  {\def\tikz@plane@origin{\pgfpointxyz{#1}{#2}{#3}}%
+   \def\tikz@plane@x{\pgfpointxyz{#4}{#5}{#6}}%
+   \def\tikz@plane@y{\pgfpointxyz{#7}{#8}{#9}}%
+   \tikz@canvas@is@plane
+  }
+\makeatother  
 
 
 %Математика
@@ -1775,9 +1786,7 @@
                 \begin{scope}[canvas is zx plane at y=0]
                     \draw[opacity=0.2] (0,-3) grid (7,3);
                 \end{scope}
-                \begin{scope}[plane origin={(0,0,3)}, plane x={(1,0,3)},
-                    plane y={(0,1,3.5)},
-                    canvas is plane]
+                \begin{scope}[canvas is plane={O(0,0,3)x(1,0,3)y(0,1,3.5)}]
                     \fill[color=white] (-3,-1) rectangle (3,3);
                     \draw[opacity=0.2] (-3,-1) grid (3,3);
                 \end{scope}
@@ -1835,7 +1844,7 @@
         Усечённой пирамидой называется часть пирамиды, заключённая между плоскостью основания и плоскостью, параллельной плоскости основания и пересекающей все боковые рёбра пирамиды.
     \end{definition}
     \begin{definition}
-        Призма – это многогранник, две грани которого – равные многоугольники, лежащие в параллельных плоскостях, а все рёбра, не лежащие в этих плоскостях, параллельны между собой. Два равных многоугольника, лежащие в параллельных плоскостях, называются основаниями призмы. Остальные грани призмы называются её боковыми гранями, а их объединение - боковой поверхностью призмы. Рёбра, не лежащие в основании призмы, называются её боковыми рёбрами. Если в основаниях призмы лежат $n$-угольники, то призма называется $n$-угольной.
+        Призма – это многогранник, две грани которого – равные многоугольники, лежащие в параллельных плоскостях, а все рёбра, не лежащие в этих плоскостях, параллельны между собой. Два равных многоугольника, лежащие в параллельных плоскостях, называются основаниями призмы. Остальные грани призмы называются её боковыми гранями, а их объединение \textendash\, боковой поверхностью призмы. Рёбра, не лежащие в основании призмы, называются её боковыми рёбрами. Если в основаниях призмы лежат $n$-угольники, то призма называется $n$-угольной.
     \end{definition}
     \begin{definition}
         Призма, основания которой являются параллелограммами, называется параллелепипедом.
@@ -2141,5 +2150,148 @@
     Пусть $\triangle ABC\subset\beta;\,l=\alpha\cap\beta;\,AB\,\|\,l$. Обозначим $H$ основание высоты $CH$ треугольника $ABC$, $M$ – проекция $A$ на $l$, $N$ – проекция $B$ на $l$, а $A',\,B',\,C',\,H'$ – проекции $A,\,B,\,C,\,H$ на $\alpha$ соответственно. Тогда $AB=MN$, следовательно, $MABN$ – прямоугольник, значит по теореме о трёх перпендикулярах $MA'\perp l;\,NB'\perp l$, то есть $MA'B'N$ – прямоугольник, а значит $AB=MN=A'B'$. $S_{\triangle ABC}=\frac{1}{2}AB\cdot CH;\,S_{\triangle A'B'C'}=\frac{1}{2}A'B'\cdot C'H'=\frac{1}{2}AB\cdot C'H'$. Пусть $K$ – проекция $C$ на $l$, тогда $H'\in C'K$. Пусть $\angle CKC'=\theta$, значит $KC'=KC\cdot\cos\theta;\,KH'=KH\cdot\cos\theta\Longrightarrow C'H'=CH\cdot\cos\theta$. То есть $S_{\triangle A'B'C'}=\frac{1}{2}AB\cdot C'H'=S_{\triangle ABC}\cdot\cos\theta$.\bigskip
 
     Теорема доказана для треугольника, одна из сторон которого параллельна ребру двугранного угла. Чтобы обобщить доказательство до произвольного треугольника, достаточно заметить, что мы можем провести прямую, параллельную ребру двугранного угла, через одну из вершин этого треугольника, разбив его на два треугольника, удовлетворяющих нашему условию. Для произвольного многоугольника достаточно сказать, что его можно разбить на треугольники, а значит теорема доказана.
+\end{proof}
+
+\section{Многогранные углы}
+
+\begin{definition}
+    Пусть $\Phi=A_1A_2\ldots A_n$ \textemdash\, $n$-угольник; $n\geq3$; точка $S\notin (A_1A_2A_3)$, тогда часть пространства, ограниченная гранями $SA_1A_2,\,SA_2A_3,\ldots,\,SA_nA_1$ называется многогранным углом. 
+\end{definition}
+\begin{definition}
+    Пусть $\Phi=A_1A_2\ldots A_n$ \textemdash\, $n$-угольник; $n\geq3$; точка $S\notin (A_1A_2A_3)$, тогда многогранным углом называется множество лучей $SX\,\forall\,x\in\Phi$.
+\end{definition}
+\begin{theorem}[Первая теорема косинусов]
+    $$\cos\angle C=\frac{\cos\gamma-\cos\alpha\cdot\cos\beta}{\sin\alpha\cdot\sin\beta}$$
+\end{theorem}
+\begin{proof}
+    $ $\par\nobreak\ignorespaces
+    \begin{center}
+        \begin{tikzpicture}[3d view={35}{25}]
+            \begin{scope}[canvas is xz plane at y=0]
+                \coordinate (O) at (180:3.5);
+                \coordinate (C) at (100:3.5);
+                \coordinate (A) at (0:3.5);
+                \draw (O) -- (A) -- (C) -- cycle;
+            \end{scope}
+            \coordinate (B) at (1,3,0);
+            \draw (A) -- (B) -- (C);
+            \draw[dashed] (O) -- (B);
+            \tkzMarkRightAngle(A,C,O);
+            \tkzMarkRightAngle(B,C,O);
+            \draw (O) node[left] {$O$};
+            \draw (A) node[below right] {$A$};
+            \draw (B) node[above right] {$B$};
+            \draw (C) node[above] {$C$};
+            \tkzMarkAngle[size=0.35cm](B,O,C);
+            \draw (-3.15,0.4,0.2) node {$\alpha$};
+            \tkzMarkAngle[size=1.25cm](A,O,B);
+            \tkzMarkAngle[size=1.35cm](A,O,B);
+            \tkzMarkAngle[size=1.45cm](A,O,B);
+            \draw (-1.7,0.4,0) node {$\gamma$};
+            \tkzMarkAngle[size=0.9cm](A,O,C);
+            \tkzMarkAngle[size=1cm](A,O,C);
+            \draw (-2,0,0.8) node {$\beta$};
+            \foreach \point in {(O), (A), (B), (C)}{
+    \fill \point circle (1.8pt);
+}
+          \end{tikzpicture}
+    \end{center}
+    Пусть $A$ и $B$ – такие точки на рёбрах угла, что $AC\perp OC$ и $BC\perp OC$. Тогда $\angle BCA$ – линейный угол $\angle C$. Из $\triangle OCA$ и $\triangle OCB$:
+    $$OA=\frac{OC}{\cos\beta};\,OB=\frac{OC}{\cos\alpha}\Longrightarrow AC=OC\cdot\tg \beta;\,BC=OC\cdot\tg \alpha$$
+    По теореме косинусов в $\triangle OBA$ и $\triangle ABC$:
+    $$AB^2=OC^2\cdot\left(\frac{1}{\cos^2\beta}+\frac{1}{\cos^2\alpha}-\frac{2\cos\gamma}{\cos\alpha\cdot\cos\beta}\right)=OC^2\cdot\left(\tg^2 \beta+\tg^2 \alpha -2\tg \beta \cdot \tg \alpha \cdot\cos \angle C\right)$$
+    Тогда если выразить $\cos\angle C$ получим:
+    $$\cos\angle C=\frac{\cos\gamma-\cos\alpha\cdot\cos\beta}{\sin\alpha\cdot\sin\beta}$$
+\end{proof}
+\begin{theorem}[Вторая теорема косинусов]
+    $$\cos\angle C=-\cos\angle A\cdot\cos\angle B+\sin\angle A\cdot\sin \angle B\cdot\cos\gamma$$
+\end{theorem}
+\begin{theorem}[Теорема синусов]
+    $$\frac{\sin\alpha}{\sin\angle A}=\frac{\sin\beta}{\sin\angle B}=\frac{\sin\gamma}{\sin\angle C}$$
+\end{theorem}
+\begin{proof}
+    $ $\par\nobreak\ignorespaces
+    \begin{center}
+        \begin{tikzpicture}[3d view={25}{25}]
+            \coordinate (O) at (0,0,0);
+            \coordinate (A) at (7,0,0);
+            \coordinate (B) at (5,4,0);
+            \coordinate (C) at (4,2,3);
+            \coordinate (H) at (4,2,0);
+            \coordinate (K) at (3.41,2.73,0);
+            \coordinate (L) at (4,0,0);
+            \draw (O) -- (A) -- (C) -- cycle;
+            \draw (A) -- (B) -- (C);
+            \draw[dashed] (O) -- (B);
+            \draw[dashed] (C) -- (K) -- (H) -- cycle;
+            \draw[dashed] (H) -- (L);
+            \draw (C) -- (L);
+            \draw (O) node[left] {$O$};
+            \draw (A) node[below right] {$A$};
+            \draw (B) node[above right] {$B$};
+            \draw (C) node[above] {$C$};
+            \draw (H) node[below right] {$H$};
+            \draw (K) node[above right] {$K$};
+            \draw (L) node[below left] {$L$};
+            \tkzMarkRightAngle(H,K,B);
+            \tkzMarkRightAngle(C,K,O);
+            \tkzMarkRightAngle(H,L,A);
+            \tkzMarkRightAngle(C,L,O);
+            \tkzMarkAngle[size=0.35cm](B,O,C);
+            \draw (0.6,0.4,0.2) node {$\alpha$};
+            \tkzMarkAngle[size=1cm](A,O,C);
+            \tkzMarkAngle[size=1.1cm](A,O,C);
+            \draw (1.5,0,0.5) node {$\beta$};
+            \foreach \point in {(O), (A), (B), (C), (H), (K), (L)}{
+    \fill \point circle (1.8pt);
+}
+          \end{tikzpicture}
+    \end{center}
+    Пусть $H$ – проекция $C$ на $(ABC)$, $K$ – проекция $C$ на $OB$ и $L$ – проекция $C$ на $OA$ соответственно. По теореме о трёх перпендикулярах $HK\perp OB$ и $HL\perp OA$. Тогда из $\triangle OCK$ и $\triangle CKH$:  $CH=OC\cdot\sin\alpha\cdot\sin\angle B$. Аналогично из $\triangle OCL$ и $\triangle CLH$: $CH=OC\cdot\sin\beta\cdot\sin\angle A$. То есть:
+    $$\frac{\sin\alpha}{\sin \angle A}=\frac{\sin\beta}{\sin \angle B}$$
+\end{proof}
+\begin{theorem}[Теорема о трёх синусах]
+    Пусть прямая $l$ содержится в одной из граней двугранного угла. Также пусть $\alpha$ – плоский угол данного двугранного, $\beta$ – угол между прямой и ребром двугранного угла, а $\gamma$ – угол между $l$ и её проекцией на вторую грань угла. Тогда:
+    $$\sin\gamma=\sin\alpha\cdot\sin\beta$$
+\end{theorem}
+\begin{proof}
+    $ $\par\nobreak\ignorespaces
+    \begin{center}
+        \begin{tikzpicture}[3d view={15}{15}]
+            \begin{scope}[canvas is xy plane at z=0]
+                \draw[opacity=0.3] (0,0) grid (8,-6);
+                \coordinate (C) at (7,-5);
+            \end{scope}
+            \begin{scope}[canvas is plane={O(0,0,0)x(1,0,0)y(0,-1,1)}]
+                \draw[opacity=0.3] (0,0) grid (8,6);
+                \coordinate (A) at (7,5);
+                \coordinate (B) at (7,0);
+                \coordinate (O) at (1,0);
+                \draw (4,3) node {$l$};
+            \end{scope}
+            \draw (A) -- (B) -- (C) -- cycle;
+            \draw (O) -- (C) -- (A) -- cycle;
+            \tkzMarkRightAngle(A,C,B);
+            \tkzMarkRightAngle(A,C,O);
+            \draw (O) node[above left] {$O$};
+            \draw (A) node[above left] {$A$};
+            \draw (B) node[above right] {$B$};
+            \draw (C) node[below left] {$C$};
+            \tkzMarkAngle[size=0.45cm](A,B,C);
+            \draw (6.7,-2,0.6) node {$\alpha$};
+            \tkzMarkAngle[size=0.55cm](B,O,A);
+            \tkzMarkAngle[size=0.65cm](B,O,A);
+            \draw (2,0,0.3) node {$\beta$};
+            \tkzMarkAngle[size=1.4cm](C,O,A);
+            \tkzMarkAngle[size=1.5cm](C,O,A);
+            \tkzMarkAngle[size=1.6cm](C,O,A);
+            \draw (3.3,-1,0.8) node {$\gamma$};
+            \foreach \point in {(A), (B), (C), (O)}{
+    \fill \point circle (1.8pt);
+}
+            \end{tikzpicture}
+    \end{center}
+    Пусть $l$ пересекает ребро двугранного угла в точке $O$. Возьмём произвольную точку $A$ на этой прямой. Пусть $C$ – основание перпендикуляра из $A$ на вторую грань двугранного угла. Тогда по теореме о трёх перпендикулярах $CB\perp AB$, а значит $\angle ABC=\alpha$. Тогда:
+    $$\sin\gamma=\frac{AC}{OA}=\frac{AB\cdot\sin\alpha}{OA}=\frac{OA\cdot\sin\beta\cdot\sin\alpha}{OA}=\sin\alpha\cdot\sin\beta$$
 \end{proof}
 \end{document}
