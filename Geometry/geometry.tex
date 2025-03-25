@@ -72,6 +72,7 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
 
 %Оглавление
 \title{\textbf{Геометрия}}\date{}\author{}
@@ -107,7 +108,7 @@
 \label{toc}
 \newpage
 
-\section{Бинарное отношение. Векторы.}
+\section{Бинарное отношение и векторы}
 
 \begin{definition}
      Пусть множество $a,b \in M$. Множество $R \subset \{(a,b)|a,b\in M\}$ упорядоченных пар. Если $(\widehat{a},\widehat{b})\subset R$, пишут $\widehat{a}\underset{R}{\sim}\widehat{b}.$
@@ -160,7 +161,7 @@
     \begin{proof}
     $ $\par\nobreak\ignorespaces
     \begin{center}
-        \begin{tikzpicture}
+        \begin{tikzpicture}[scale=0.8]
         \draw (-5,3) -- (5,3);
         \draw (-4.5,3) node[above] {$C$};
         \draw (-1.5,3) node[above] {$A$};
@@ -183,7 +184,7 @@
     \begin{proof}
     $ $\par\nobreak\ignorespaces
     \begin{center}
-        \begin{tikzpicture}
+        \begin{tikzpicture}[scale=0.75]
         \draw (0,0) circle (4.5);
         \draw (60:4.5) -- (-145:4.5) -- (-35:4.5) -- cycle;
         \draw (60:4.5) node[above right] {$B$};
@@ -545,9 +546,9 @@
     \begin{proof}
     $ $\par\nobreak\ignorespaces
     \begin{center}
-        \begin{tikzpicture}[scale = 3]
+        \begin{tikzpicture}[scale = 2.6]
             \begin{scope}
-                \clip (-1.5,-0.5) rectangle (1.5,2);
+                \clip (-1.3,-0.5) rectangle (1.3,1.5);
                 \draw[domain=-4:4, variable=\x, samples=50] plot ({(\x)},{(-1/4)});
                 \draw[domain=-4:4, variable=\x, samples=100] plot ({(\x)},{(\x)^2});
                 \draw[domain=-4:4, variable=\x, samples=50] plot (\x, {-2*\x-1});
@@ -685,7 +686,7 @@
     \begin{proof}
     $ $\par\nobreak\ignorespaces
     \begin{center}
-        \begin{tikzpicture}[scale = 0.8]
+        \begin{tikzpicture}[scale = 0.7]
         \def\a{2}
           \def\b{4}
           \def\ang{27}
@@ -732,7 +733,7 @@
     \begin{proof}
     $ $\par\nobreak\ignorespaces
     \begin{center}
-        \begin{tikzpicture}[scale = 2.5]
+        \begin{tikzpicture}[scale = 2.3]
             \begin{scope}
                 \clip (-1.5,-0.5) rectangle (1.5,2);
                 \draw[domain=-4:4, variable=\x, samples=50] plot ({(\x)},{(-1/4)});
@@ -770,7 +771,7 @@
     \begin{proof}
         $ $\par\nobreak\ignorespaces
         \begin{center}
-            \begin{tikzpicture}[scale = 4.5]
+            \begin{tikzpicture}[scale = 4]
             \begin{scope}
                 \clip (-1,-.6) rectangle (1,1);
                 \draw[domain=-4:4, variable=\x, samples=50] plot ({(\x)},{(-1/4)});
@@ -1352,7 +1353,7 @@
     \begin{proof}
         $ $\par\nobreak\ignorespaces
         \begin{center}
-            \begin{tikzpicture}
+            \begin{tikzpicture}[scale=0.8]
                 \coordinate (A) at (-140:4);
                 \coordinate (B) at (55:4);
                 \coordinate (C) at (-40:4);
@@ -1394,7 +1395,7 @@
     \begin{proof}
         $ $\par\nobreak\ignorespaces
         \begin{center}
-            \begin{tikzpicture}
+            \begin{tikzpicture}[scale=0.9]
                 \coordinate (A) at (0,0);
                 \coordinate (B) at (5.5,6);
                 \coordinate (C) at (8,0);
@@ -1733,6 +1734,9 @@
     \begin{definition}
         Углом между скрещивающимися прямыми называется угол между пересекающимися прямыми, параллельными данным и лежащим в одной плоскости.
     \end{definition}
+
+    \setcounter{subsection}{4}
+    \setcounter{consequence}{0}
     
     \subsection{Параллельность плоскостей}
     
@@ -2147,18 +2151,18 @@
 }
           \end{tikzpicture}
     \end{center}
-    Пусть $\triangle ABC\subset\beta;\,l=\alpha\cap\beta;\,AB\,\|\,l$. Обозначим $H$ основание высоты $CH$ треугольника $ABC$, $M$ – проекция $A$ на $l$, $N$ – проекция $B$ на $l$, а $A',\,B',\,C',\,H'$ – проекции $A,\,B,\,C,\,H$ на $\alpha$ соответственно. Тогда $AB=MN$, следовательно, $MABN$ – прямоугольник, значит по теореме о трёх перпендикулярах $MA'\perp l;\,NB'\perp l$, то есть $MA'B'N$ – прямоугольник, а значит $AB=MN=A'B'$. $S_{\triangle ABC}=\frac{1}{2}AB\cdot CH;\,S_{\triangle A'B'C'}=\frac{1}{2}A'B'\cdot C'H'=\frac{1}{2}AB\cdot C'H'$. Пусть $K$ – проекция $C$ на $l$, тогда $H'\in C'K$. Пусть $\angle CKC'=\theta$, значит $KC'=KC\cdot\cos\theta;\,KH'=KH\cdot\cos\theta\Longrightarrow C'H'=CH\cdot\cos\theta$. То есть $S_{\triangle A'B'C'}=\frac{1}{2}AB\cdot C'H'=S_{\triangle ABC}\cdot\cos\theta$.\bigskip
+    Пусть $\triangle ABC\subset\beta;\,l=\alpha\cap\beta;\,AB\,\|\,l$. Обозначим $H$ основание высоты $CH$ треугольника $ABC$, $M$ – проекция $A$ на $l$, $N$ – проекция $B$ на $l$, а $A',\,B',\,C',\,H'$ – проекции $A,\,B,\,C,\,H$ на $\alpha$ соответственно. Тогда $MABN$ – прямоугольник, значит по теореме о трёх перпендикулярах $MA'\perp l;\,NB'\perp l$, то есть $MA'B'N$ – прямоугольник, а значит $AB=MN=A'B'$. $S_{\triangle ABC}=\frac{1}{2}AB\cdot CH;\,S_{\triangle A'B'C'}=\frac{1}{2}A'B'\cdot C'H'=\frac{1}{2}AB\cdot C'H'$. Пусть $K$ – проекция $C$ на $l$, тогда $H'\in C'K$. Пусть $\angle CKC'=\theta$, значит $KC'=KC\cdot\cos\theta;\,KH'=KH\cdot\cos\theta\Longrightarrow C'H'=CH\cdot\cos\theta$. То есть $S_{\triangle A'B'C'}=\frac{1}{2}AB\cdot C'H'=S_{\triangle ABC}\cdot\cos\theta$.\bigskip
 
     Теорема доказана для треугольника, одна из сторон которого параллельна ребру двугранного угла. Чтобы обобщить доказательство до произвольного треугольника, достаточно заметить, что мы можем провести прямую, параллельную ребру двугранного угла, через одну из вершин этого треугольника, разбив его на два треугольника, удовлетворяющих нашему условию. Для произвольного многоугольника достаточно сказать, что его можно разбить на треугольники, а значит теорема доказана.
 \end{proof}
 
-\section{Многогранные углы}
+\subsection{Многогранные углы}
 
 \begin{definition}
     Пусть $\Phi=A_1A_2\ldots A_n$ \textemdash\, $n$-угольник; $n\geq3$; точка $S\notin (A_1A_2A_3)$, тогда часть пространства, ограниченная гранями $SA_1A_2,\,SA_2A_3,\ldots,\,SA_nA_1$ называется многогранным углом. 
 \end{definition}
 \begin{definition}
-    Пусть $\Phi=A_1A_2\ldots A_n$ \textemdash\, $n$-угольник; $n\geq3$; точка $S\notin (A_1A_2A_3)$, тогда многогранным углом называется множество лучей $SX\,\forall\,x\in\Phi$.
+    Пусть $\Phi=A_1A_2\ldots A_n$ \textemdash\, $n$-угольник; $n\geq3$; точка $S\notin (A_1A_2A_3)$, тогда многогранным углом называется множество лучей $SX\,\forall\,X\in\Phi$.
 \end{definition}
 \begin{theorem}[Первая теорема косинусов]
     $$\cos\angle C=\frac{\cos\gamma-\cos\alpha\cdot\cos\beta}{\sin\alpha\cdot\sin\beta}$$
@@ -2251,7 +2255,7 @@
     $$\frac{\sin\alpha}{\sin \angle A}=\frac{\sin\beta}{\sin \angle B}$$
 \end{proof}
 \begin{theorem}[Теорема о трёх синусах]
-    Пусть прямая $l$ содержится в одной из граней двугранного угла. Также пусть $\alpha$ – плоский угол данного двугранного, $\beta$ – угол между прямой и ребром двугранного угла, а $\gamma$ – угол между $l$ и её проекцией на вторую грань угла. Тогда:
+    Пусть прямая $l$ содержится в одной из граней двугранного угла. Также пусть $\alpha$ – плоский угол данного двугранного угла, $\beta$ – угол между прямой и ребром двугранного угла, а $\gamma$ – угол между $l$ и её проекцией на вторую грань угла. Тогда:
     $$\sin\gamma=\sin\alpha\cdot\sin\beta$$
 \end{theorem}
 \begin{proof}
@@ -2291,7 +2295,67 @@
 }
             \end{tikzpicture}
     \end{center}
-    Пусть $l$ пересекает ребро двугранного угла в точке $O$. Возьмём произвольную точку $A$ на этой прямой. Пусть $C$ – основание перпендикуляра из $A$ на вторую грань двугранного угла. Тогда по теореме о трёх перпендикулярах $CB\perp AB$, а значит $\angle ABC=\alpha$. Тогда:
+    Пусть $l$ пересекает ребро двугранного угла в точке $O$. Возьмём произвольную точку $A$ на этой прямой. Пусть $C$ – основание перпендикуляра из $A$ на вторую грань двугранного угла, а $B$ – проекция $A$ на ребро двугранного угла. Тогда по теореме о трёх перпендикулярах $CB\perp OB$, а значит $\angle ABC=\alpha$. Тогда:
     $$\sin\gamma=\frac{AC}{OA}=\frac{AB\cdot\sin\alpha}{OA}=\frac{OA\cdot\sin\beta\cdot\sin\alpha}{OA}=\sin\alpha\cdot\sin\beta$$
 \end{proof}
+
+\subsection{Тела вращения}
+
+\begin{definition}
+  Фигура называется фигурой вращения, если в пространстве существует такая ось, что при любом повороте вокруг этой оси фигура переходит в себя.
+\end{definition}
+\begin{definition}
+  Сфера суть ГМТ пространства, равноудалённых от данной точки, называемой центром.
+\end{definition}
+\begin{definition}
+  Шар суть ГМТ пространства, удалённых не более чем на фиксированное расстояние от данной точки, называемой центром.
+\end{definition}
+\begin{definition}
+  Плоскость называется касательной к сфере (шару), если она имеет с ней (с ним) ровно одну общую точку.
+\end{definition}
+\begin{statement}[Объём шара]
+  Пусть $R$ – радиус шара, тогда объём шара равен:
+  $$V=\frac{4}{3}\pi R^3$$
+\end{statement}
+\begin{proof}
+  $$V=2\int_{0}^{R}\pi\left(R^2-(R-r)^2\right)\diff r=4\pi r\int_{0}^{R}\diff r-2\pi\int_{0}^{R}r^2\diff r=4\pi R\cdot \frac{R^2}{2} - 2\pi\cdot \frac{R^3}{3}=\frac{4}{3}\pi R^3$$
+\end{proof}
+\begin{definition}
+  Пусть в одной плоскости даны прямая $l$ и круг $S$, не имеющие общих точек, тогда тело, полученное вращением плоскости относительно $l$ называется тором.
+\end{definition}
+\begin{statement}[Объём тора]
+  Пусть $R$ – радиус круга, образованного осевым сечением тора, $d$ – расстояние от оси тора до центра данного круга. Тогда объём тора равен:
+  $$V=2\pi^2 d R^2$$
+\end{statement}
+\begin{proof}
+  Уравнение окружности имеет вид $(x-d)^2 + y^2=R^2$, откуда $x=d\pm \sqrt{R^2-y^2}$. Пусть $x_1=d-\sqrt{R^2-y^2}$, $x_2=d+\sqrt{R^2-y^2}$. Тогда:
+  $$V=\int_{-R}^{R}(\pi x_2^2-\pi x_1^2)\diff y=\pi\int_{-R}^{R}2d\cdot2\sqrt{R^2-y^2}\cdot \diff y=4\pi d\int_{-R}^{R}\sqrt{R^2-y^2}\cdot \diff y=2\pi^2 d R^2$$
+\end{proof}
+\begin{definition}
+  Пусть в пространстве даны плоскость $\alpha$, содержащаяся в ней кривая $\gamma$ и прямая $l$, пересекающая данную плоскость. Тогда множество прямых, параллельных $l$ и пересекающих $\gamma$, называется цилиндрической поверхностью.
+\end{definition}
+\begin{definition}
+  Цилиндром называется тело, ограниченное замкнутой цилиндрической поверхностью и двумя параллельными плоскостями.
+\end{definition}
+\begin{definition}
+  Цилиндр называется прямым, если образующая его цилиндрическая плоскость перпендикулярная его основанию.
+\end{definition}
+\begin{definition}
+  Цилиндр называется круговым, если его основания являются кругами.
+\end{definition}
+\begin{definition}
+  Пусть в пространстве даны точка $S$, плоскость $\alpha$ и лежащая в ней кривая $\gamma$. Множество точек пространства называется конической поверхностью, если они принадлежат прямым, проходящим через $S$ и пересекающим $\gamma$. Точка $S$ называется её вершиной, $\gamma$ – её направляющей, а прямые, проходящие через вершину – образующими.
+\end{definition}
+\begin{definition}
+  Конусом называется тело, ограниченное замкнутой конической поверхностью и плоскостью, пересекающей все образующие с одной стороны от $S$.
+\end{definition}
+\begin{definition}
+  Конус называется круговым, если его основание является кругом.
+\end{definition}
+\begin{definition}
+  Конус называется прямым, если его вершина ортогонально проецируется в центр основания.
+\end{definition}
+\begin{definition}
+  Часть конуса, заключённая между его основанием и секущей плоскостью, параллельной основанию, называется усечённым конусом.
+\end{definition}
 \end{document}
