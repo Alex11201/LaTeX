@@ -748,7 +748,7 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
 \end{definition}
 \begin{definition}[Распределение Стьюдента]
     Случайная величина $\xi$ распределена по $t$, если:
-    $$\xi=\dfrac{\xi_0}{\frac{1}{n}\sum\limits_{i=1}^{n}\xi_i^2},\,\,\xi_i\sim\mathcal{N}(0;1)$$
+    $$\xi=\dfrac{\xi_0}{\sqrt{\frac{1}{n}\sum\limits_{i=1}^{n}\xi_i^2}},\,\,\xi_i\sim\mathcal{N}(0;1)$$
 \end{definition}
 \subsubsection{Интервальная оценка среднего}
 \begin{statement}[Оценка среднего при известной генеральной дисперсии]\label{Оценка среднего с дисперсией}
@@ -757,7 +757,7 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
 \end{statement}
 \begin{statement}[Оценка среднего при $n\geq30$]
     Аналогично утверждению \ref{Оценка среднего с дисперсией}, но вместо $\sigma$ используется $s$:
-    $$s=\frac{1}{n-1}\sum_{i=1}^{n}(x_i-\overline{x})$$
+    $$s=\sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(x_i-\overline{x})^2}$$
 \end{statement}
 \begin{statement}[Оценка среднего при $n<30$]
     Пусть $t_{\frac{\alpha}{2}}(n-1)$ – квантиль распределения Стьюдента с $n-1$ степенью свободы, тогда:
