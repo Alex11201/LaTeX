@@ -743,7 +743,7 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
 \end{statement}
 
 \begin{definition}[Распределение $\chi^2$]
-    Случайная величина $\xi$ распределена по $\chi^2$, если:
+    Случайная величина $\xi$ распределена по $\chi^2$ с $n$ степенями свободы, если:
     $$\xi=\sum_{i=1}^{n}\xi_i^2,\,\xi_i\sim\mathcal{N}(0;1)$$
 \end{definition}
 \begin{definition}[Распределение Стьюдента]
@@ -759,9 +759,75 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
     Аналогично утверждению \ref{Оценка среднего с дисперсией}, но вместо $\sigma$ используется $s$:
     $$s=\sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(x_i-\overline{x})^2}$$
 \end{statement}
+\renewcommand{\arraystretch}{1.5}
 \begin{statement}[Оценка среднего при $n<30$]
     Пусть $t_{\frac{\alpha}{2}}(n-1)$ – квантиль распределения Стьюдента с $n-1$ степенью свободы, тогда:
     $$I_\gamma=\left(\overline{x}-t_{\frac{\alpha}{2}}(n-1)\cdot\frac{s}{\sqrt{n}};\,\,\overline{x}+t_{\frac{\alpha}{2}}(n-1)\cdot\frac{s}{\sqrt{n}}\right)$$
+    При этом статистикой критерия будет:
+    $$T(X)=\dfrac{\overline{x}-\mu}{\sigma}\cdot\sqrt{n}\sim t(n-1)$$
+    А критическая область будет иметь вид:
+    \begin{center}
+        \begin{tabular}{c|c}
+            Альтернатива & Критическая область \\
+            \hline
+            Двусторонняя ($H_A:\,\overline{x}\neq\mu$) & $(-\infty;-t_{\frac{\alpha}{2}}(n-1))\cup(t_{\frac{\alpha}{2}}(n-1);+\infty)$\\
+            Правосторонняя ($H_A:\,\overline{x}>\mu$) & $(t_\alpha(n-1);+\infty)$\\
+            Левосторонняя ($H_A:\,\overline{x}<\mu$) & $(-\infty;-t_\alpha(n-1))$
+        \end{tabular}
+    \end{center}
+\end{statement}
+
+\subsection{Проверка гипотез о независимости признаков}
+
+\begin{statement}
+    Пусть дана таблица смежности признаков $A_1,A_2,\ldots,A_m$ и $B_1,B_2,\ldots,B_k$:
+    \begin{center}
+        \begin{tabular}{c|cccc}
+            & $A_1$ & $A_2$ & $\cdots$ & $A_m$\\
+            \hline
+            $B_1$ & $n_{11}$ & $n_{12}$ & $\cdots$ & $n_{1m}$\\
+            $B_2$ & $n_{21}$ & $n_{22}$ & $\cdots$ & $n_{2m}$\\
+            $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ & $\vdots$\\
+            $B_k$ & $n_{k1}$ & $n_{k2}$ & $\cdots$ & $n_{km}$\\
+        \end{tabular}
+    \end{center}
+    Тогда если требуется проверить гипотезу о независимости $A_i$ и $B_j$, то:
+    \begin{align*}
+        &H_0: \text{ признаки статистически независимы.}\\
+        &H_A: \text{ между признаками существует статистическая зависимость.}\\
+    \end{align*}
+    \\[-2\baselineskip]
+    Введём $N$ – общее число наблюдений, $n_{i+}$ – сумма наблюдений по строке и $n_{+i}$ – сумма наблюдений по столбцу. Тогда таблицу можно расширить до вида:
+    \begin{center}
+        \begin{tabular}{c|cccc|c}
+            & $A_1$ & $A_2$ & $\cdots$ & $A_m$ &\\
+            \hline
+            $B_1$ & $n_{11}$ & $n_{12}$ & $\cdots$ & $n_{1m}$ & $n_{1+}$\\
+            $B_2$ & $n_{21}$ & $n_{22}$ & $\cdots$ & $n_{2m}$ & $n_{2+}$\\
+            $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ & $\vdots$ & $\vdots$\\
+            $B_k$ & $n_{k1}$ & $n_{k2}$ & $\cdots$ & $n_{km}$ & $n_{k+}$\\
+            \hline
+            & $n_{+1}$ & $n_{+2}$ & $\cdots$ & $n_{+m}$ & $N$
+        \end{tabular}
+    \end{center}
+    Введём $n_{ij}^*$ – ожидаемое число наблюдений признаков $A_i$ и $B_j$ одновременно при условии их независимости:
+    $$n_{ij}^*=N\cdot\frac{n_{+i}}{N}\cdot\frac{n_{j+}}{N}=\frac{n_{+i}\cdot n_{j+}}{N}$$
+    Отсюда статистикой критерия будет:
+    $$T(X)=\sum_{i=1}^{m}\sum_{j=1}^{k}\frac{(n_{ij}-n_{ij}^*)^2}{n_{ij}^*}\sim \chi^2\left((m-1)(k-1)\right)$$
+    А критическая область будет иметь вид:
+    $$\overline{G}=\left(\chi^2_{1-\alpha}((m-1)(k-1));+\infty\right)$$
+\end{statement}
+
+\subsubsection{Критерий согласия Пирсона}
+
+\begin{statement}
+    Пусть дано некоторое распределение и требуется проверить равенство его и распределения некоторой случайной величины. Тогда если $\hat{p_i}$ – теоретическое значение вероятности, то:
+    \begin{align*}
+        &H_0:\, \forall\, i\in\{1,\ldots,k\}:\,p_i=\hat{p_i}\\
+        &H_A: \exists\, i\in\{1,\ldots,k\}:\,p_i\neq\hat{p_i}\\
+    \end{align*}
+    При этом если объём выборки равен $n$, а $n_i$ – количество реализаций $i$-го значения случайной величины, то статистикой критерия будет:
+    $$T(X)=\sum_{i=1}^{k}\frac{(n_i-p_i\cdot n)^2}{p_i\cdot n}\sim \chi^2(n-1)$$
 \end{statement}
 
 \section{Введение в математический анализ}
