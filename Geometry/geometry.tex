@@ -17,6 +17,7 @@
 \usepackage{transparent}
 \usepackage{amsthm}
 \usepackage{multicol}
+\usepackage[e]{esvect}
 \parindent=0cm
 
 \theoremstyle{definition}
@@ -135,28 +136,28 @@
 
     Свойства сложения векторов:
     \begin{itemize}
-        \item Коммутативно: $\vec{a}+\vec{b}=\vec{b}+\vec{a}$
-        \item Ассоциативно: $(\vec{a}+\vec{b})+\vec{c}=\vec{a}+(\vec{b}+\vec{c})$
+        \item Коммутативно: $\vv{a}+\vv{b}=\vv{b}+\vv{a}$
+        \item Ассоциативно: $(\vv{a}+\vv{b})+\vv{c}=\vv{a}+(\vv{b}+\vv{c})$
     \end{itemize}
 
     \begin{definition}
-        $\vec{a}$ коллинеарен $\vec{b}$, если $\exists \lambda \in \R: \lambda\vec{a}=\vec{b}.$
+        $\vv{a}$ коллинеарен $\vv{b}$, если $\exists \lambda \in \R: \lambda\vv{a}=\vv{b}.$
     \end{definition}
 
 \begin{definition}
-    Базисом на плоскости называется пара неколлинеарных векторов $(\vec{a};\vec{b}).$
+    Базисом на плоскости называется пара неколлинеарных векторов $(\vv{a};\vv{b}).$
 \end{definition}
 
 \begin{theorem}
-    $\forall \vec{\textit{v}}\in V_{\R^2} \exists!(x;y);x,y\in \R: \vec{\textit{v}}=x\vec{a}+y\vec{b}$, где $(\vec{a};\vec{b})$ -- базис $V_{\R^2}.$ То есть $(x;y)$ -- координаты $\vec{\textit{v}}$ в базисе $(\vec{a};\vec{b}).$
+    $\forall \vv{\textit{v}}\in V_{\R^2} \exists!(x;y);x,y\in \R: \vv{\textit{v}}=x\vv{a}+y\vv{b}$, где $(\vv{a};\vv{b})$ -- базис $V_{\R^2}.$ То есть $(x;y)$ -- координаты $\vv{\textit{v}}$ в базисе $(\vv{a};\vv{b}).$
 \end{theorem}
 
 \begin{definition}
-    Углом между векторами $\vec{a}$ и $\vec{b}$ называется: $\varphi=\arccos \left( \dfrac{(\vec{a};\vec{b})}{|\vec{a}\parallel\vec{b}|}\right)\Longleftrightarrow \cos \varphi = \dfrac{(\vec{a};\vec{b})}{|\vec{a}\parallel\vec{b}|}$, где $|\vec{a}|=\sqrt{(a,a)}.$
+    Углом между векторами $\vv{a}$ и $\vv{b}$ называется: $\varphi=\arccos \left( \dfrac{(\vv{a};\vv{b})}{|\vv{a}\parallel\vv{b}|}\right)\Longleftrightarrow \cos \varphi = \dfrac{(\vv{a};\vv{b})}{|\vv{a}\parallel\vv{b}|}$, где $|\vv{a}|=\sqrt{(a,a)}.$
 \end{definition}
 
 \begin{theorem}
-    $C\in AB \Longleftrightarrow \forall O: \exists \lambda \in \R: \lambda \overrightarrow{OA}+(1-\lambda) \overrightarrow{OB}=\overrightarrow{OC}$
+    $C\in AB \Longleftrightarrow \forall O: \exists \lambda \in \R: \lambda \vv{OA}+(1-\lambda) \vv{OB}=\vv{OC}$
 \end{theorem}
     \begin{proof}
     $ $\par\nobreak\ignorespaces
@@ -167,19 +168,19 @@
         \draw (-1.5,3) node[above] {$A$};
         \draw (4.5,3) node[above] {$B$};
         \draw (1,-1) node[below] {$O$};
-        \draw[-{Stealth[scale = 1.5]}] (1,-1) -- node[below left]{$\vec{c}$} ++(-5.5,4);
-        \draw[-{Stealth[scale = 1.5]}] (1,-1) -- node[above right]{$\vec{a}$} ++(-2.5,4);
-        \draw[-{Stealth[scale = 1.5]}] (1,-1) -- node[below right]{$\vec{b}$} ++(3.5,4);
+        \draw[-{Stealth[scale = 1.5]}] (1,-1) -- node[below left]{$\vv{c}$} ++(-5.5,4);
+        \draw[-{Stealth[scale = 1.5]}] (1,-1) -- node[above right]{$\vv{a}$} ++(-2.5,4);
+        \draw[-{Stealth[scale = 1.5]}] (1,-1) -- node[below right]{$\vv{b}$} ++(3.5,4);
         \foreach \point in {(-4.5,3), (1,-1), (-1.5,3), (4.5,3)}{
     \fill \point circle (1.8pt);
 }
         \end{tikzpicture}
     \end{center}
-        Обозначим $\overrightarrow{OA}=\vec{a},\overrightarrow{OB}=\vec{b},\overrightarrow{OC}=\vec{c}$. Тогда $\vec{c}-\vec{b}=\overrightarrow {BC}$; $\vec{a}-\vec{b}=\overrightarrow{BA}$. Тогда обозначим $\dfrac{\mid \vec{c}-\vec{b}\mid }{\mid \vec{a}-\vec{b}\mid }=x$, откуда $\vec{c}-\vec{b}=x(\vec{a}-\vec{b})$, то есть $\vec{c}=x\vec{a}-(1-x)\vec{b}$.
+        Обозначим $\vv{OA}=\vv{a},\vv{OB}=\vv{b},\vv{OC}=\vv{c}$. Тогда $\vv{c}-\vv{b}=\vv {BC}$; $\vv{a}-\vv{b}=\vv{BA}$. Тогда обозначим $\dfrac{\mid \vv{c}-\vv{b}\mid }{\mid \vv{a}-\vv{b}\mid }=x$, откуда $\vv{c}-\vv{b}=x(\vv{a}-\vv{b})$, то есть $\vv{c}=x\vv{a}-(1-x)\vv{b}$.
     \end{proof}
 
 \begin{theorem}
-    Пусть $O$ и $H$ -- центр описанной окружности и ортоцентр $\triangle ABC$ соответственно. Тогда $\overrightarrow{OH}=\overrightarrow{OA}+\overrightarrow{OB}+\overrightarrow{OC}$.
+    Пусть $O$ и $H$ -- центр описанной окружности и ортоцентр $\triangle ABC$ соответственно. Тогда $\vv{OH}=\vv{OA}+\vv{OB}+\vv{OC}$.
 \end{theorem}
     \begin{proof}
     $ $\par\nobreak\ignorespaces
@@ -210,11 +211,11 @@
         \tkzMarkRightAngle(C,Hc,A);
         \end{tikzpicture}
     \end{center}
-        Рассмотрим сумму $\overrightarrow{OA}+\overrightarrow{OC}=\overrightarrow{OK}$, $|\overrightarrow{OA}|=|\overrightarrow{OC}|$, как радиусы описанной окружности, следовательно, $AOCK$ -- ромб, а значит $AC\perp OK$ как диагонали. Тогда $OK\parallel BH$, а значит точка $M$ вектора $\overrightarrow{OM}=\overrightarrow{OK}+\overrightarrow{OB}$ лежит на $BH$, но аналогично эта точка лежит на всех высотах $\triangle ABC$, а значит является ортоцентром.
+        Рассмотрим сумму $\vv{OA}+\vv{OC}=\vv{OK}$, $|\vv{OA}|=|\vv{OC}|$, как радиусы описанной окружности, следовательно, $AOCK$ -- ромб, а значит $AC\perp OK$ как диагонали. Тогда $OK\parallel BH$, а значит точка $M$ вектора $\vv{OM}=\vv{OK}+\vv{OB}$ лежит на $BH$, но аналогично эта точка лежит на всех высотах $\triangle ABC$, а значит является ортоцентром.
     \end{proof}
 
 \begin{theorem}
-    Пусть $\overrightarrow{OK}$ и $\overrightarrow{OL}$ -- базис в $\triangle ABC$, а $M$ -- его центроид. Тогда $\overrightarrow{OM}=\dfrac{1}{3}(\overrightarrow{OA}+\overrightarrow{OB}+\overrightarrow{OC})$.
+    Пусть $\vv{OK}$ и $\vv{OL}$ -- базис в $\triangle ABC$, а $M$ -- его центроид. Тогда $\vv{OM}=\dfrac{1}{3}(\vv{OA}+\vv{OB}+\vv{OC})$.
 \end{theorem}
     \begin{proof}
     $ $\par\nobreak\ignorespaces
@@ -241,13 +242,13 @@
             \foreach \point in {(A), (B), (C), (O), (intersection-1)}{
     \fill \point circle (1.8pt);
 }
-            \tkzLabelSegment[above right](O,B){$\vec{b}$};
-            \tkzLabelSegment[below left](O,A){$\vec{a}$};
-            \tkzLabelSegment[below right](O,C){$\vec{c}$};
-            \tkzLabelSegment[above](O,intersection-1){$\vec{m}$};
+            \tkzLabelSegment[above right](O,B){$\vv{b}$};
+            \tkzLabelSegment[below left](O,A){$\vv{a}$};
+            \tkzLabelSegment[below right](O,C){$\vv{c}$};
+            \tkzLabelSegment[above](O,intersection-1){$\vv{m}$};
         \end{tikzpicture}
     \end{center}
-        Обозначим $\overrightarrow{OA}$ как $\vec{a}$, $\overrightarrow{OB}$ как $\vec{b}$, $\overrightarrow{OC}$ как $\vec{c}$, $\overrightarrow{OM}$ как $\vec{m}$. Представим $\overrightarrow{OM}$ в виде суммы векторов: $\vec{b}+\overrightarrow{BM}=\vec{b}+\dfrac{2}{3}\left( \dfrac{\overrightarrow{BA}+\overrightarrow{BC}}{2}\right)=\vec{b}+\dfrac{1}{3}\overrightarrow{BA}+\dfrac{1}{3}\overrightarrow{BC}=\vec{b}+\dfrac{1}{3}(\vec{a}-\vec{b})+\dfrac{1}{3}(\vec{c}-\vec{b})=\dfrac{1}{3}(\vec{a}+\vec{b}+\vec{c})$.
+        Обозначим $\vv{OA}$ как $\vv{a}$, $\vv{OB}$ как $\vv{b}$, $\vv{OC}$ как $\vv{c}$, $\vv{OM}$ как $\vv{m}$. Представим $\vv{OM}$ в виде суммы векторов: $\vv{b}+\vv{BM}=\vv{b}+\dfrac{2}{3}\left( \dfrac{\vv{BA}+\vv{BC}}{2}\right)=\vv{b}+\dfrac{1}{3}\vv{BA}+\dfrac{1}{3}\vv{BC}=\vv{b}+\dfrac{1}{3}(\vv{a}-\vv{b})+\dfrac{1}{3}(\vv{c}-\vv{b})=\dfrac{1}{3}(\vv{a}+\vv{b}+\vv{c})$.
     \end{proof}
 
 \begin{theorem}
@@ -255,16 +256,16 @@
 \end{theorem}
 
     \begin{proof}
-        Из предыдущих двух теорем нам известно, что $\overrightarrow{OH}=\overrightarrow{OA}+\overrightarrow{OB}+\overrightarrow{OC}$, а также что $\overrightarrow{OM}=\dfrac{1}{3}(\overrightarrow{OA}+\overrightarrow{OB}+\overrightarrow{OC})$, из чего следует, что $\overrightarrow{OH}=3\overrightarrow{OM}$.
+        Из предыдущих двух теорем нам известно, что $\vv{OH}=\vv{OA}+\vv{OB}+\vv{OC}$, а также что $\vv{OM}=\dfrac{1}{3}(\vv{OA}+\vv{OB}+\vv{OC})$, из чего следует, что $\vv{OH}=3\vv{OM}$.
     \end{proof}
 
 \begin{definition}
-    Скалярным произведением векторов $\vec{a}$ и $\vec{b}$ называется величина $|\vec{a}|\cdot |\vec{b}|\cdot \cos \varphi$, где $\varphi$ -- угол между векторами $\vec{a}$ и $\vec{b}$.
+    Скалярным произведением векторов $\vv{a}$ и $\vv{b}$ называется величина $|\vv{a}|\cdot |\vv{b}|\cdot \cos \varphi$, где $\varphi$ -- угол между векторами $\vv{a}$ и $\vv{b}$.
 \end{definition}
 
 \begin{theorem}
-    В прямоугольной системе Декарта скалярное произведение двух векторов\\ $\vec{a}(x_1;y_1)$ и $\vec{b}(x_2;y_2)$ равно сумме произведений их соответствующих координат: 
-    $$\vec{a}\cdot \vec{b}=x_1\cdot x_2 + y_1\cdot y_2$$
+    В прямоугольной системе Декарта скалярное произведение двух векторов\\ $\vv{a}(x_1;y_1)$ и $\vv{b}(x_2;y_2)$ равно сумме произведений их соответствующих координат: 
+    $$\vv{a}\cdot \vv{b}=x_1\cdot x_2 + y_1\cdot y_2$$
 \end{theorem}
     \begin{proof}
     $ $\par\nobreak\ignorespaces
@@ -281,8 +282,8 @@
             \draw[-{Stealth[scale = 1.5]}] (O) -- (A);
             \draw[-{Stealth[scale = 1.5]}] (O) -- (B);
             \draw[-{Stealth[scale = 1.5]}] (A) -- (B);
-            \tkzLabelSegment[above left](O,A){$\vec{a}$};
-            \tkzLabelSegment[below right](O,B){$\vec{b}$};
+            \tkzLabelSegment[above left](O,A){$\vv{a}$};
+            \tkzLabelSegment[below right](O,B){$\vv{b}$};
             \tkzMarkAngle[size=.65cm](B,O,A);
             \tkzLabelAngle(B,O,A){$\varphi$};
             \foreach \point in {(A), (B), (O)}{
@@ -309,15 +310,15 @@
     \subsection{Нормаль и направляющий вектор}
 
     \begin{definition}
-        Вектор $\vec{\textit{v}}$ называется направляющим для прямой $l$, если его начало и конец лежат на $l$.
+        Вектор $\vv{\textit{v}}$ называется направляющим для прямой $l$, если его начало и конец лежат на $l$.
     \end{definition}
 
     \begin{definition}
-        Любой вектор $\vec{n_l}:\, \vec{n_l}\perp l$, называется ее нормалью.
+        Любой вектор $\vv{n_l}:\, \vv{n_l}\perp l$, называется ее нормалью.
     \end{definition}
 
     \begin{theorem}
-        Вектор $\vec{n}(a;b)$ является вектором нормали к прямой $l$, заданной уравнением $ax+by+c=0$.
+        Вектор $\vv{n}(a;b)$ является вектором нормали к прямой $l$, заданной уравнением $ax+by+c=0$.
     \end{theorem}
     \begin{proof}
     $ $\par\nobreak\ignorespaces
@@ -333,14 +334,14 @@
         \draw (A) node[below left] {$A$};
         \draw (B) node[below left] {$B$};
         \draw (0,0) node[below left] {$O$};
-        \draw[-{Stealth[scale = 1.5]}] ($(A)!(C)!(B)$) -- (C) node[right]{$\vec{n}$};
+        \draw[-{Stealth[scale = 1.5]}] ($(A)!(C)!(B)$) -- (C) node[right]{$\vv{n}$};
         \draw[-{Stealth[scale = 1.5]}] (A) -- (B);
         \foreach \point in {(A), (B), (O)}{
     \fill \point circle (1.8pt);
 }
         \end{tikzpicture}
     \end{center}
-        Возьмем произвольные точки $A(x_1;y_1)$ и $B(x_2;y_2)$. Тогда $\overrightarrow{AB}(x_2-x_1;y_2-y_1)$. При этом $ax_1+by_1+c=ax_2+by_2+c=0$, следовательно, если вычесть одно из другого, получим $a(x_2-x_1)+b(y_2-y_1)=0$. Рассмотрим $\overrightarrow{AB}\cdot \vec{n} = a\cdot(x_2-x_1)+b\cdot(y_2-y_1)=0\Longrightarrow \overrightarrow{AB}\perp \vec{n}$.
+        Возьмем произвольные точки $A(x_1;y_1)$ и $B(x_2;y_2)$. Тогда $\vv{AB}(x_2-x_1;y_2-y_1)$. При этом $ax_1+by_1+c=ax_2+by_2+c=0$, следовательно, если вычесть одно из другого, получим $a(x_2-x_1)+b(y_2-y_1)=0$. Рассмотрим $\vv{AB}\cdot \vv{n} = a\cdot(x_2-x_1)+b\cdot(y_2-y_1)=0\Longrightarrow \vv{AB}\perp \vv{n}$.
     \end{proof}
 
     \subsection{Расстояние от точки до прямой}
@@ -1186,13 +1187,13 @@
     \section{Гомотетия}
 
     \begin{definition}
-        Гомотетия с центром $O$ и коэффициентом $k$ суть преобразование плоскости, при котором $\forall A \in \R^2: H_O^k(A)=A\,':\,\overrightarrow{OA}\cdot k = \overrightarrow{OA\,'},\,\overrightarrow{OA} \upuparrows \overrightarrow{OA\,'}$.
+        Гомотетия с центром $O$ и коэффициентом $k$ суть преобразование плоскости, при котором $\forall A \in \R^2: H_O^k(A)=A\,':\,\vv{OA}\cdot k = \vv{OA\,'},\,\vv{OA} \upuparrows \vv{OA\,'}$.
     \end{definition}
 
     \setcounter{subsection}{0}
     \subsection{Композиция гомотетий}
     \begin{definition}
-        Композиция гомотетий $H_O^k$ и $H_P^l$ при $k,\,l\neq 1$ -- это параллельный перенос при $k\cdot l=1$ или $H_Q^{kl}:\,Q \in OP,\, \overrightarrow{OQ}\cdot (k-1)=\overrightarrow{QP}\cdot \left(1-\dfrac{1}{l}\right)$.
+        Композиция гомотетий $H_O^k$ и $H_P^l$ при $k,\,l\neq 1$ -- это параллельный перенос при $k\cdot l=1$ или $H_Q^{kl}:\,Q \in OP,\, \vv{OQ}\cdot (k-1)=\vv{QP}\cdot \left(1-\dfrac{1}{l}\right)$.
     \end{definition}
 
     \section{Инверсия}
@@ -1864,23 +1865,23 @@
     \subsection{Векторы в пространстве}
     
     \begin{definition}
-        Векторы $\vec{v}$ и $\vec{u}$ называются коллинеарными, если $\exists\,\lambda:\,\vec{v}=\lambda\cdot\vec{u}$.
+        Векторы $\vv{v}$ и $\vv{u}$ называются коллинеарными, если $\exists\,\lambda:\,\vv{v}=\lambda\cdot\vv{u}$.
     \end{definition}
     \begin{theorem}[Признак копланарности векторов]
-        Векторы $\vec{a}$, $\vec{b}$ и $\vec{c}$ называются копланарными, если $\exists\,\alpha,\,\beta:\,\vec{c}=\alpha\cdot\vec{a}+\beta\cdot\vec{b}$.
+        Векторы $\vv{a}$, $\vv{b}$ и $\vv{c}$ называются копланарными, если $\exists\,\alpha,\,\beta:\,\vv{c}=\alpha\cdot\vv{a}+\beta\cdot\vv{b}$.
     \end{theorem}
     \begin{definition}
-        Набор $\vec{a_1},\,\vec{a_2},\ldots,\,\vec{a_n}$ векторов линейно независим, если уравнение $\lambda_1\vec{a_1}+\lambda_2\vec{a_2}+\ldots+\lambda_n\vec{a_n}=0$ имеет только тривиальное решение, то есть $\lambda_1=\lambda_2=\ldots=\lambda_n=0$.
+        Набор $\vv{a_1},\,\vv{a_2},\ldots,\,\vv{a_n}$ векторов линейно независим, если уравнение $\lambda_1\vv{a_1}+\lambda_2\vv{a_2}+\ldots+\lambda_n\vv{a_n}=0$ имеет только тривиальное решение, то есть $\lambda_1=\lambda_2=\ldots=\lambda_n=0$.
     \end{definition}
     \begin{definition}
         Базисом в $\R^n$ называется набор из $n$ линейно независимых векторов.
     \end{definition}
     \begin{definition}
-        Коэффициенты $\alpha$, $\beta$ и $\gamma$ в разложении $\vec{v}=\alpha\cdot\vec{a}+\beta\cdot\vec{b}+\gamma\cdot\vec{c}$ называют координатами вектора $\vec{v}$ в базисе $\{\vec{a};\,\vec{b},\,\vec{c}\}$.
+        Коэффициенты $\alpha$, $\beta$ и $\gamma$ в разложении $\vv{v}=\alpha\cdot\vv{a}+\beta\cdot\vv{b}+\gamma\cdot\vv{c}$ называют координатами вектора $\vv{v}$ в базисе $\{\vv{a};\,\vv{b},\,\vv{c}\}$.
     \end{definition}
     \begin{theorem}
         Точка $M$ принадлежит плоскости $(ABC)$ тогда и только тогда, когда:
-        $$\forall\,O\notin(ABC):\,\overrightarrow{OM}=x\cdot\overrightarrow{OA}+y\cdot\overrightarrow{OB}+z\cdot\overrightarrow{OC}\Longleftrightarrow x+y+z=1$$
+        $$\forall\,O\notin(ABC):\,\vv{OM}=x\cdot\vv{OA}+y\cdot\vv{OB}+z\cdot\vv{OC}\Longleftrightarrow x+y+z=1$$
     \end{theorem}
     
     \subsection{Перпендикулярность в пространстве}
@@ -1917,7 +1918,7 @@
         }
                   \end{tikzpicture}
             \end{center}
-            Пусть $\vec{v_a}$, $\vec{v_b}$ и $\vec{v_c}$ – направляющие векторы прямых $a$, $b$ и $c$ соответственно, тогда $\forall\,l\in\alpha:\,\vec{v_l}$ – направляющий $\vec{v_l}=x\vec{v_a}+y\vec{v_b}$, так как $a\cap b\neq\varnothing$. Тогда $\vec{v_c}\cdot\vec{v_l}=\vec{v_c}\cdot(x\vec{v_a}+y\vec{v_b})=0\Longrightarrow l\perp c$.
+            Пусть $\vv{v_a}$, $\vv{v_b}$ и $\vv{v_c}$ – направляющие векторы прямых $a$, $b$ и $c$ соответственно, тогда $\forall\,l\in\alpha:\,\vv{v_l}$ – направляющий $\vv{v_l}=x\vv{v_a}+y\vv{v_b}$, так как $a\cap b\neq\varnothing$. Тогда $\vv{v_c}\cdot\vv{v_l}=\vv{v_c}\cdot(x\vv{v_a}+y\vv{v_b})=0\Longrightarrow l\perp c$.
     \end{proof}
     \begin{theorem}
         Если одна из двух параллельных прямых перпендикулярна некоторой плоскости, то и вторая перпендикулярна этой плоскости.

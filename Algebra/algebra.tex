@@ -16,6 +16,7 @@
 \usepackage{amsthm}
 \usepackage{multicol}
 \usepackage{tasks}
+\usepackage[e]{esvect}
 \parindent=0cm
 
 \theoremstyle{definition}
@@ -959,4 +960,128 @@
                 g(x) > 0
             \end{cases}0<a<1\\
         \end{array}$$
+
+\section{Линейная алгебра}
+
+\subsection{Координаты на плоскости}
+
+\begin{statement}
+    Пусть даны $A(x_1;y_1)$ и $B(x_2;y_2)$. Тогда середина отрезка $AB$ будет иметь координаты $(\frac{x_1+x_2}{2};\frac{y_1+y_2}{2})$, а его длина будет равна $d=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.
+\end{statement}
+\begin{statement}
+    Пусть $A(x_0;y_0)\in\omega(O;r),\,O(a;b)$, тогда $(x_0-a)^2+(y_0-b)^2=r^2$.
+\end{statement}
+\begin{statement}
+    Пусть даны $A(x_1;y_1)$ и $B(x_2;y_2)$. Тогда каноническое уравнение прямой, проходящей через $A$ и $B$ будет иметь вид:
+    $$\frac{x-x_1}{x_2-x_1}=\frac{y-y_1}{y_2-y_1}$$
+\end{statement}
+\begin{statement}
+    Пусть даны точка $M(x_0;y_0)$ и прямая $l:\, ax+by+c=0$. Тогда:
+    $$\rho(M;l)=\frac{|ax_0+by_0+c|}{\sqrt{a^2+b^2}}$$
+\end{statement}
+
+\subsection{Векторы}
+
+\begin{definition}
+    Направленным отрезком $\vv{AB}$ называется отрезок $AB$, у которого заданы начало $A$ и конец $B$.
+\end{definition}
+\begin{definition}
+    Направленные отрезки $\vv{AB}$ и $\vv{CD}$ называются коллинеарными, если $AB\parallel CD$.
+\end{definition}
+\begin{definition}
+    Направленные отрезки $\vv{AB}$ и $\vv{CD}$ называются конгруэнтными, если они коллинеарны, $B$ и $D$ лежат в одной плоскости относительно $AC$ и их длины равны.
+\end{definition}
+\begin{definition}
+    Пусть $\vv{r_1},\ldots,\vv{r_n}$ – векторы в $\R^n$. Они называются линейно зависимыми, если $\exists\,a_1,\ldots,a_n$, не равные одновременно нулю, что $a_1\vv{r_1}+\ldots+a_n\vv{r_n}=0$.
+\end{definition}
+\begin{definition}
+    Пусть $X$ – множество, рассмотрим $X\times X=\{(x;y)\,|\,x,y\in X\}$. Тогда $\rho\subset X\times X$ – бинарное отношение.
+\end{definition}
+\begin{definition}
+    Бинарное отношение $\sim\subset X\times X$ называется отношением эквивалентности на множестве $X$, если $\forall\,x,y,z\in X:\,x\sim x;\,x\sim y\iff y\sim x;\,x\sim y,\,y\sim z\iff x\sim z$.
+\end{definition}
+
+\subsection{Линейные пространства}
+
+\begin{definition}
+    Элементами поля $F$ являются скаляры или векторы. $L$ называется линейным пространством над полем $F$, если $\forall\,a,b\in L;\,\forall\,\lambda,\,\mu \in F$:
+    \begin{center}
+        \begin{multicols}{2}
+            \begin{enumerate}
+                \item $a+b=b+a$\\
+                \item $(a+b)+c=a+(b+c)$\\
+                \item $\exists\,\vv{0}\in L:\,a+\vv{0}=a$\\
+                \item $\forall\,a\,\, \exists\,b:\,a+b=\vv{0}$\\
+                \item $\lambda(\mu a)=(\lambda \mu)a$\\
+                \item $(\lambda+\mu)a=\lambda a + \mu a$\\
+                \item $\lambda(a+b)=\lambda a+ \lambda b$\\
+                \item $1\cdot a = a$
+            \end{enumerate}
+        \end{multicols}
+    \end{center}
+\end{definition}
+\begin{definition}
+    Пусть $L$ – линейное пространство над полем $F$; $u_1,\ldots,u_n\in L;\,\alpha_1,\ldots,\alpha_n\in F$, тогда $\alpha_1u_1+\ldots+\alpha_nu_n$ – линейная комбинация. Линейная комбинация называется тривиальной, если $\forall\,i:\,\alpha_i=0$.
+\end{definition}
+\begin{definition}
+    Пусть $U\subset L$, множество векторов $\langle U\rangle$, которые не выражаются через элементы $U$ называется линейной оболочкой.
+\end{definition}
+\begin{definition}
+    Пусть $\{x_1,\ldots,x_n\}$ – система векторов. Она называется линейно зависимой, если существует нетривиальная линейная комбинация, равная нулю.
+\end{definition}
+\begin{theorem}
+    Система векторов является линейно зависимой тогда и только тогда, когда один из векторов является линейной комбинацией других.
+\end{theorem}
+\begin{definition}
+    Система $U=\{u_1,\ldots,u_n\}$ линейно независимых векторов линейного пространства $L$ называется базисом, если $\langle U \rangle=L$.
+\end{definition}
+\begin{definition}
+    Скалярным произведением векторов $\vv{a}\neq\vv{0}$ и $\vv{b}\neq\vv{0}$ называется величина $|\vv{a}|\cdot|\vv{b}|\cdot\cos\angle(\vv{a};\vv{b})$. Если $\vv{a}$ и $\vv{b}$ сонаправлены, то угол между ними равен нулю, а если коллинеарны, но не сонаправлены – $\pi$:
+    \begin{center}
+        \begin{multicols}{2}
+            \begin{enumerate}
+                \item $\vv{a}\cdot\vv{b}=\vv{b}\cdot\vv{a}$\\
+                \item $k\cdot(\vv{a};\vv{b})=(k\cdot\vv{a})\cdot\vv{b}=\vv{a}\cdot(k\cdot\vv{b})$\\
+                \item $\vv{a}\cdot(\vv{b}+\vv{c})=\vv{a}\cdot\vv{b}+\vv{a}\cdot\vv{c}$\\
+                \item $\vv{a}\cdot\vv{b}=\dfrac{1}{2}\left(|\vv{a}+\vv{b}|^2-|\vv{a}|^2-|\vv{b}|^2\right)$
+            \end{enumerate}
+        \end{multicols}
+    \end{center}
+\end{definition}
+
+\subsection{Матрицы}
+
+\begin{definition}
+    Квадратной матрицей называется матрица, у которой число строк равно числу столбцов.
+\end{definition}
+\begin{definition}
+    Диагональной матрицей называется матрица, у которой все элементы вне главной диагонали равны нулю.
+\end{definition}
+\begin{definition}
+    Верхней треугольной матрицей называется матрица, в которой $\forall\,i,j:\,i>j:\,a_{ij}=0$.
+\end{definition}
+\begin{definition}
+    Пусть дана матрица $A$, матрица $A^T$ называется транспонированной, если $\forall\,i,j:\,A^T_{ij}=A_{ji}$.
+\end{definition}
+\begin{definition}
+    Квадратная матрица $A$ называется симметричной, если $A=A^T$.
+\end{definition}
+\begin{definition}
+    Пусть даны матрица $A$ размера $m\times n$ и матрица $B$ размера $n\times k$. Их произведением будет матрица размера $m\times k$, в которой:
+    $$c_{ij}=\sum_{l=1}^{n}a_{il}\cdot b_{lj}$$
+\end{definition}
+\begin{statement}
+    Произведение верхних треугольных матриц является верхней треугольной матрицей.
+\end{statement}
+\begin{definition}
+    Пусть дана перестановка $\begin{pmatrix}
+        1 & 2 & \cdots & n\\
+        \alpha_1 & \alpha_2 & \cdots & \alpha_n
+    \end{pmatrix}$. Инверсией называется число таких пар $(i;j)$, что $i>j;\,\alpha_i<\alpha_j$.
+\end{definition}
+\begin{definition}
+    Пусть дана квадратная матрица $A$ размера $n\times n$. Если $\alpha_i$ – перестановка чисел от 1 до $n$, а $N(\alpha_i)$ – число инверсия в $\alpha_i$ перестановке, то определителем матрицы $A$ называется:
+    $$\det A=\sum_{a_i}(-1)^{N(\alpha_i)}\cdot a_{1\alpha_1}\cdot a_{2\alpha_2}\cdot\ldots\cdot a_{n\alpha_n}$$
+\end{definition}
+
 \end{document}
