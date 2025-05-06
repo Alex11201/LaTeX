@@ -63,6 +63,7 @@
 \newcommand{\equalto}[2]{\underset{\scriptstyle\overset{\mkern4mu\verteq}{#2}}{#1}}
 \newcommand{\vertneq}{\rotatebox{90}{$\,\neq$}}
 \newcommand{\notequalto}[2]{\underset{\scriptstyle\overset{\mkern4mu\vertneq}{#2}}{#1}}
+\DeclareMathOperator{\diag}{diag}
 \makeatletter
 \newenvironment{sqcases}{%
   \matrix@check\sqcases\env@sqcases
@@ -1055,16 +1056,54 @@
     Квадратной матрицей называется матрица, у которой число строк равно числу столбцов.
 \end{definition}
 \begin{definition}
-    Диагональной матрицей называется матрица, у которой все элементы вне главной диагонали равны нулю.
+    Квадратная матрица называется верхней треугольной, если $\forall\,i,j;\,i>j:\,a_{ij}=0$.
 \end{definition}
 \begin{definition}
-    Верхней треугольной матрицей называется матрица, в которой $\forall\,i,j:\,i>j:\,a_{ij}=0$.
+    Квадратная матрица называется нижней треугольной, если $\forall\,i,j;\,i<j:\,a_{ij}=0$.
 \end{definition}
 \begin{definition}
-    Пусть дана матрица $A$, матрица $A^T$ называется транспонированной, если $\forall\,i,j:\,A^T_{ij}=A_{ji}$.
+    Квадратная матрица называется диагональной, если $\forall\,i,j;\,i\neq j:\,a_{ij}=0$. Обозначение: $\diag(a_{11},\ldots,a_{nn})$.
 \end{definition}
 \begin{definition}
-    Квадратная матрица $A$ называется симметричной, если $A=A^T$.
+    Диагональная матрица порядка $n$, у которой все диагональные элементы равны 1, называется единичной. Обозначение: $E$ или $E_n$. Элементы единичной матрицы обозначаются $\delta_{ij}$:
+    $$\delta_{ij}=\left\{\begin{alignedat}{2}
+        & 1, && \text{ при }i=j \\
+        & 0  && \text{ при }i\neq j
+      \end{alignedat}\right.$$
+\end{definition}
+\begin{definition}
+    Квадратная матрица $A$ называется скалярной, если $A=\diag(\lambda,\ldots,\lambda)$.
+\end{definition}
+\begin{definition}
+    Матрица $B$ называется транспонированной по отношению к матрице $A$, если $\forall\,i,j:\,b_{ij}=a_{ji}$. Обозначение: $B=A^T$.
+\end{definition}
+\begin{definition}
+    Квадратная матрица $A$ называется симметрической, если $A^T=A$.
+\end{definition}
+\begin{definition}
+    Квадратная матрица $A$ называется кососимметрической, если $A^T=-A$.
+\end{definition}
+\begin{definition}
+    Матрица $B$ называется комплексно сопряжённой по отношению к матрице $A$, если $\forall\,i,j:\,b_{ij}=\overline{a_{ij}}$. Обозначение: $B=\overline{A}$.
+\end{definition}
+\begin{definition}
+    Матрица $B$ называется эрмитово сопряжённой по отношению к матрице $A$, если $\forall\,i,j:\,b_{ij}=\overline{a_{ji}}$. Обозначение: $B=A^*$.
+\end{definition}
+\begin{definition}
+    Квадратная матрица $A$ называется эрмитовой, если $A^*=A$.
+\end{definition}
+\begin{definition}
+    Квадратная матрица $A$ называется косоэрмитовой, если $A^*=-A$.
+\end{definition}
+\begin{definition}
+    Матрица называется нулевой, если все её элементы равны нулю. Обозначение: $A=O$.
+\end{definition}
+\begin{definition}
+    Матрица называется неотрицательной, если $\forall\,i,j:\,a_{ij}\geq0$.
+\end{definition}
+\begin{definition}
+    Матрица называется стохастической, если:
+    $$\forall\,i,j:\,a_{ij}\geq0;\,\forall\,i\in\{1,\ldots,n\}:\,\sum_{k=1}^{n}a_{ik}=1$$
 \end{definition}
 \begin{definition}
     Пусть даны матрица $A$ размера $m\times n$ и матрица $B$ размера $n\times k$. Их произведением будет матрица размера $m\times k$, в которой:
@@ -1074,14 +1113,48 @@
     Произведение верхних треугольных матриц является верхней треугольной матрицей.
 \end{statement}
 \begin{definition}
+    Пусть $A$ – квадратная матрица порядка $n$. Матрица $B$ называется обратной к $A$, если $A\cdot B=B\cdot A=E$. Обозначение: $B=A^{-1}$.
+\end{definition}
+\begin{definition}
+    Квадратная матрица $A$ называется ортогональной, если $A^T=A^{-1}$.
+\end{definition}
+\begin{definition}
+    Квадратная матрица $A$ называется унитарной, если $A^*=A^{-1}$.
+\end{definition}
+\begin{definition}
+    Матрица $A$ называется нильпотентной, если $A^k=O,\,k\in \N$. Наименьшее из таких $k$ называется показателем нильпотентности матрицы $A$.
+\end{definition}
+\begin{definition}
+    Матрица $A$ называется периодической, если $A^k=E,\,k\in \N$. Наименьшее из таких $k$ называется периодом матрицы $A$.
+\end{definition}
+\begin{definition}
     Пусть дана перестановка $\begin{pmatrix}
         1 & 2 & \cdots & n\\
         \alpha_1 & \alpha_2 & \cdots & \alpha_n
     \end{pmatrix}$. Инверсией называется число таких пар $(i;j)$, что $i>j;\,\alpha_i<\alpha_j$.
 \end{definition}
 \begin{definition}
-    Пусть дана квадратная матрица $A$ размера $n\times n$. Если $\alpha_i$ – перестановка чисел от 1 до $n$, а $N(\alpha_i)$ – число инверсия в $\alpha_i$ перестановке, то определителем матрицы $A$ называется:
+    Пусть дана квадратная матрица $A$ порядка $n$. Если $\alpha_i$ – перестановка чисел от 1 до $n$, а $N(\alpha_i)$ – число инверсия в $\alpha_i$ перестановке, то определителем матрицы $A$ называется:
     $$\det A=\sum_{a_i}(-1)^{N(\alpha_i)}\cdot a_{1\alpha_1}\cdot a_{2\alpha_2}\cdot\ldots\cdot a_{n\alpha_n}$$
+\end{definition}
+\begin{theorem}
+    Пусть дана квадратная матрица $A$, $M_{ji}$ – дополнительный минор элемента $a_{ji}$. Элементы её обратной матрицы можно вычислить по формуле:
+    $$b_{ij}=\frac{(-1)^{i+j}\cdot M_{ji}}{\det A}$$
+\end{theorem}
+\begin{definition}
+    Квадратная матрица $A$ называется вырожденной, если $\det A=0$.
+\end{definition}
+\begin{definition}
+    Квадратная матрица $A$ называется невырожденной, если $\det A\neq0$.
+\end{definition}
+\begin{definition}
+    Квадратная матрица $A$ называется унимодулярной, если $|\det A|=1,\,a_{ij}\in\Z$.
+\end{definition}
+\begin{definition}
+    Квадратная матрица $A$ называется матрицей перестановки, если она получена из $E$ перестановкой строк.
+\end{definition}
+\begin{definition}
+    Квадратная матрица $A$ называется элементарной, если она получена из $E$ элементарным преобразованием.
 \end{definition}
 
 \end{document}
