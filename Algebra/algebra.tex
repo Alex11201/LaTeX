@@ -64,6 +64,7 @@
 \newcommand{\vertneq}{\rotatebox{90}{$\,\neq$}}
 \newcommand{\notequalto}[2]{\underset{\scriptstyle\overset{\mkern4mu\vertneq}{#2}}{#1}}
 \DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\spur}{Sp}
 \makeatletter
 \newenvironment{sqcases}{%
   \matrix@check\sqcases\env@sqcases
@@ -1075,6 +1076,9 @@
     Квадратная матрица $A$ называется скалярной, если $A=\diag(\lambda,\ldots,\lambda)$.
 \end{definition}
 \begin{definition}
+    Сумма диагональных элементов матрицы $A$ называется её шпуром или следом. Обозначение: $\spur A$ или $\tr A$.
+\end{definition}
+\begin{definition}
     Матрица $B$ называется транспонированной по отношению к матрице $A$, если $\forall\,i,j:\,b_{ij}=a_{ji}$. Обозначение: $B=A^T$.
 \end{definition}
 \begin{definition}
@@ -1105,6 +1109,9 @@
     Матрица называется стохастической, если:
     $$\forall\,i,j:\,a_{ij}\geq0;\,\forall\,i\in\{1,\ldots,n\}:\,\sum_{k=1}^{n}a_{ik}=1$$
 \end{definition}
+
+\subsubsection{Произведение матриц}
+
 \begin{definition}
     Пусть даны матрица $A$ размера $m\times n$ и матрица $B$ размера $n\times k$. Их произведением будет матрица размера $m\times k$, в которой:
     $$c_{ij}=\sum_{l=1}^{n}a_{il}\cdot b_{lj}$$
@@ -1127,6 +1134,9 @@
 \begin{definition}
     Матрица $A$ называется периодической, если $A^k=E,\,k\in \N$. Наименьшее из таких $k$ называется периодом матрицы $A$.
 \end{definition}
+
+\subsubsection{Определитель}
+
 \begin{definition}
     Пусть дана перестановка $\begin{pmatrix}
         1 & 2 & \cdots & n\\
@@ -1156,5 +1166,43 @@
 \begin{definition}
     Квадратная матрица $A$ называется элементарной, если она получена из $E$ элементарным преобразованием.
 \end{definition}
+
+\subsubsection{Ранг матрицы}
+
+\begin{definition}
+    Рангом матрицы называется наибольший порядок из всех порядков её ненулевых миноров.
+\end{definition}
+\begin{theorem}[О базисном миноре]
+    Пусть $M_r$ – базисный минор матрицы $A$, строки соответствующей матрицы – базисные строки, а столбцы – базисные столбцы. Тогда:
+    \begin{multicols}{2}
+        \begin{enumerate}
+        \item \label{базисный минор 1} Базисные строки линейно независимы.
+        \item \label{базисный минор 2} Базисные столбцы линейно независимы.
+        \item Любая строка (столбец) матрицы $A$ – линейная комбинация базисных строк (столбцов).
+    \end{enumerate}
+    \end{multicols}
+\end{theorem}
+\begin{proof}
+    Пункты \ref{базисный минор 1} и \ref{базисный минор 2} следуют из определения базиса. Без ограничения общности пусть базисный минор находится в левом верхнем углу матрицы $A$, то есть матрица имеет вид:
+    $$\begin{pmatrix}
+        \boldsymbol{a_{11}} & \boldsymbol{a_{12}} & \cdots & \boldsymbol{a_{1r}} & a_{1(r+1)} & \cdots & a_{1n}\\
+        \boldsymbol{a_{21}} & \boldsymbol{a_{22}} & \cdots & \boldsymbol{a_{2r}} & a_{2(r+1)} & \cdots & a_{2n}\\
+        \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots\\
+        \boldsymbol{a_{r1}} & \boldsymbol{a_{r2}} & \cdots & \boldsymbol{a_{rr}} & a_{r(r+1)} & \cdots & a_{rn}\\
+        a_{(r+1)1} & a_{(r+1)2} & \cdots & a_{(r+1)r} & a_{(r+1)(r+1)} & \cdots & a_{(r+1)n}\\
+        \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots\\
+        a_{m1} & a_{m2} & \cdots & a_{mr} & a_{m(r+1)} & \cdots & a_{mn}
+    \end{pmatrix}$$
+    Если расширить базисный минор до $r+1$ строки и $r+1$ столбца, при этом все его строки и столбцы останутся линейно независимыми, тогда $\rank A=r+1$, но по условию $\rank A=r$, противоречие.
+\end{proof}
+\begin{theorem}[Кронекер-Капелли]
+    Система линейных алгебраических уравнений $A\cdot \vv{x}=\vv{b}$ совместна тогда и только тогда, когда $\rank A=\rank\left(A\,|\,\vv{b}\right)$.
+\end{theorem}
+\begin{proof}
+    Пусть система совместна, тогда:
+    $$b_i=\sum_{j}a_{ji}x_j;\, \vv{b}=\sum_{j}\vv{a_j}x_j$$
+    То есть $\vv{b}$ выражается через $\vv{a_i}$, а значит $\rank A=\rank\left(A\,|\,\vv{b}\right)$.
+    Пусть $\rank A=\rank\left(A\,|\,\vv{b}\right)$. Тогда по теореме о базисном миноре она совместна.
+\end{proof}
 
 \end{document}
