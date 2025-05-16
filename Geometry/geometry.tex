@@ -1274,7 +1274,7 @@
                 \coordinate (D') at ($(O)!\length!(D)$);
                 \draw (O) -- (D);
                 \draw (O) -- ($(O)!1.3!(M')$);
-                \draw[name path =line1] (M') -- (D');
+                \draw[name path = line1] (M') -- (D');
                 \draw[name path = line2] ($(A)!-0.5!(B)$) -- ($(A)!1.3!(B)$);
                 \draw[name intersections={of=line1 and line2}] (intersection-1) node[left] {$T$};
                 \coordinate (T) at (intersection-1);
