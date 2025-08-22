@@ -935,10 +935,13 @@
     \begin{tasks}(2)
     \task[] $a^x=a^{x_0}\Longleftrightarrow x=x_0$\\
     \task[] $a^x=b\Longleftrightarrow x=\log_ab$\\
-    \task[] $a^x>a^{x_0}\Longleftrightarrow x>x_0$\\
+    \task[] $a^x>a^{x_0}\Longleftrightarrow\begin{array}{l}
+        x>x_0\text{, если }a>1\\
+        x<x_0\text{, если }0<a<1
+    \end{array}$
     \task[] $a^x>b\Longleftrightarrow\begin{array}{l}
         x>\log_ab\text{, если }a>1\\
-        x>\log_ab\text{, если }0<a<1
+        x<\log_ab\text{, если }0<a<1
     \end{array}$
     \end{tasks}
 
@@ -1068,7 +1071,7 @@
 \begin{definition}
     Диагональная матрица порядка $n$, у которой все диагональные элементы равны 1, называется единичной. Обозначение: $E$ или $E_n$. Элементы единичной матрицы обозначаются $\delta_{ij}$:
     $$\delta_{ij}=\left\{\begin{alignedat}{2}
-        & 1, && \text{ при }i=j \\
+        & 1 && \text{ при }i=j \\
         & 0  && \text{ при }i\neq j
       \end{alignedat}\right.$$
 \end{definition}
