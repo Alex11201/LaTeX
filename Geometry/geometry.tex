@@ -2299,6 +2299,18 @@
     Пусть $l$ пересекает ребро двугранного угла в точке $O$. Возьмём произвольную точку $A$ на этой прямой. Пусть $C$ – основание перпендикуляра из $A$ на вторую грань двугранного угла, а $B$ – проекция $A$ на ребро двугранного угла. Тогда по теореме о трёх перпендикулярах $CB\perp OB$, а значит $\angle ABC=\alpha$. Тогда:
     $$\sin\gamma=\frac{AC}{OA}=\frac{AB\cdot\sin\alpha}{OA}=\frac{OA\cdot\sin\beta\cdot\sin\alpha}{OA}=\sin\alpha\cdot\sin\beta$$
 \end{proof}
+\begin{theorem}
+    Если трёхгранный угол одной треугольной пирамиды равен трёхгранному углу другой пирамиды, объёмы этих пирамид относятся как произведение рёбер, образующих трёхгранные углы:
+    $$\frac{V_{DABC}}{V_{D_1A_1B_1C_1}}=\frac{DA\cdot DB \cdot DC}{D_1A_1\cdot D_1B_1 \cdot D_1C_1}$$
+\end{theorem}
+\begin{proof}
+    Пусть в треугольных пирамидах равны трёхгранные углы при вершинах $D$ и $D_1$. Опустим перпендикуляры $BM$ и $B_1M_1$ на противоположные грани. Тогда $DM$ и $D_1M_1$ -- проекции $BD$ и $B_1D_1$ на эти грани. $\angle\left(DB;\,\left(DAC\right)\right)=\angle\left(D_1B_1;\,\left(D_1A_1C_1\right)\right)$. Тогда:
+    $$V_{DABC}=\frac{1}{3}\cdot \frac{1}{2}\cdot AD\cdot DC\cdot \sin \varphi \cdot MB\text{, где }MB=DB\cdot\sin\alpha,\,\,\varphi=\angle ADC,\,\,\alpha =\angle ADM$$
+    Отсюда для $DABC$ и аналогично для $D_1A_1B_1C_1$:
+    $$V_{DABC}=\frac{1}{3}\cdot \frac{1}{2}\cdot AD\cdot DC\cdot \sin \varphi \cdot DB\cdot \sin \alpha;\,\,V_{D_1A_1B_1C_1}=\frac{1}{3}\cdot \frac{1}{2}\cdot A_1D_1\cdot D_1C_1\cdot \sin \varphi \cdot D_1B_1\cdot \sin \alpha$$
+    Следовательно, 
+    $$\frac{V_{DABC}}{V_{D_1A_1B_1C_1}}=\frac{DA\cdot DB \cdot DC}{D_1A_1\cdot D_1B_1 \cdot D_1C_1}$$
+\end{proof}
 
 \subsection{Тела вращения}
 
@@ -2314,6 +2326,10 @@
 \begin{definition}
   Плоскость называется касательной к сфере (шару), если она имеет с ней (с ним) ровно одну общую точку.
 \end{definition}
+\begin{statement}[Объём тела вращения]
+    Пусть $f(x)$ -- непрерывная неотрицательная\\функция, определённая на $[a;\,b]$, а тело $T$ получено вращением криволинейной трапеции, ограниченной графиком $y=f(x)$ и прямыми $x=a,\,x=b\,y=0$. Тогда объём тела $T$ вычисляется по формуле:
+    $$V(T)=\pi \int_{a}^{b}f^2(x)\diff x$$
+\end{statement}
 \begin{statement}[Объём шара]
   Пусть $R$ – радиус шара, тогда объём шара равен:
   $$V=\frac{4}{3}\pi R^3$$
@@ -2359,4 +2375,127 @@
 \begin{definition}
   Часть конуса, заключённая между его основанием и секущей плоскостью, параллельной основанию, называется усечённым конусом.
 \end{definition}
+
+\section{Аналитическая геометрия}
+
+\begin{definition}
+	Уравнение плоскости в пространстве имеет вид:
+	$$Ax+By+Cz+D=0$$
+\end{definition}
+\begin{statement}
+	Уравнение плоскости с вектором нормали $\vv{n}(a;b;c)$, проходящей через точку $M(x_0;y_0;z_0)$ имеет вид:
+	$$a(x - x_0) + b(y - y_0) + c(z-z_0)=0$$
+\end{statement}
+\begin{proof}
+	Для любой точки $M$ в искомой плоскости вектор $\vv{OM}$ имеет координаты $(x-x_0;y-y_0;z-z_0)$. Тогда $\vv{n}\cdot \vv{OM} = 0$, откуда и следует уравнение.
+\end{proof}
+\begin{definition}
+	Упорядоченная тройка некомпланарных векторов $\{\vv{a};\vv{b};\vv{c}\}$ называется правой, если из конца вектора $\vv{c}$ кратчайший поворот от вектора $\vv{a}$ к вектору $\vv{b}$ виден совершающимся против часовой стрелки.
+\end{definition}
+\begin{definition}
+	Векторным произведением $\vv{a}\times\vv{b}$ векторов $\vv{a}$ и $\vv{b}$ называется такой вектор, что:
+	\begin{enumerate}
+		\item Его длина равна площади параллелограмма, натянутого на $\vv{a}$ и $\vv{b}$.
+		\item Он перпендикулярен одновременно $\vv{a}$ и $\vv{b}$.
+		\item Тройка векторов $\vv{a}$, $\vv{b}$ и $\vv{a}\times\vv{b}$ является правой.
+	\end{enumerate}
+\end{definition}
+\begin{statement}[Свойства векторного произведения]
+	$ $\par\nobreak\ignorespaces
+	\begin{multicols}{2}
+		\begin{enumerate}
+			\item Антикоммутативность.
+			\item Векторное произведение равно нулю тогда и только тогда, когда сомножители коллинеарны.
+			\item Линейность по обоим сомножителям.
+			\item (Тождество Лагранжа) $\vv{a}\times\left(\vv{b}\times \vv{c}\right)=\vv{b}\cdot \left(\vv{a}\cdot \vv{c}\right)-\vv{c}\cdot \left(\vv{a}\cdot \vv{b}\right)$
+		\end{enumerate}
+	\end{multicols}
+\end{statement}
+\begin{definition}
+	Смешанным произведением векторов $\vv{a}$, $\vv{b}$ и $\vv{c}$ называется число $\vv{a}\cdot\left(\vv{b}\times\vv{c}\right)$.
+\end{definition}
+\begin{statement}[Свойства векторного произведения]
+	$ $\par\nobreak\ignorespaces
+	\begin{enumerate}
+		\item Смешанное произведения равно нулю тогда и только тогда, когда его сомножители компланарны.
+		\item Смешанное произведение равно ориентированному объёму параллелепипеда, натянутого на векторы-сомножители.
+		\item Линейность по каждому из сомножителей.
+		\item $\forall \vv{a},\,\vv{b},\,\vv{c}:$
+		$$\left(\vv{a};\vv{b};\vv{c}\right)=\left(\vv{c};\vv{a};\vv{b}\right)=\left(\vv{b};\vv{c};\vv{a}\right)=-\left(\vv{b};\vv{a};\vv{c}\right)=-\left(\vv{c};\vv{b};\vv{a}\right)=-\left(\vv{a};\vv{c};\vv{b}\right)$$
+	\end{enumerate}
+\end{statement}
+\begin{theorem}
+	Пусть $\{\vv{e_1};\vv{e_2};\vv{e_3}\}$ -- правый ортонормированный базис. Если в этом базисе известны $\vv{a}\left(a_1;a_2;a_3\right)$ и $\vv{b}\left(b_1;b_2;b_3\right)$, то:
+	$$\vv{a}\times\vv{b}=\begin{vmatrix}
+    \vv{e_1} & \vv{e_2} & \vv{e_3}\\
+    a_1 & a_2 & a_3\\
+    b_1 & b_2 & b_3
+	\end{vmatrix}$$
+\end{theorem}
+\begin{proof}
+	\begin{align*}
+		\vv{a}\times\vv{b}&=\left(a_1\vv{e_1}+a_2\vv{e_2}+a_3\vv{e_3}\right)\times\left(b_1\vv{e_1}+b_2\vv{e_2}+b_3\vv{e_3}\right)=\\
+		&=\vv{e_1}\times\vv{e_2}\cdot\left(a_1b_2-a_2b_1\right)+\vv{e_2}\times\vv{e_3}\cdot\left(a_2b_3-a_3b_2\right)+\vv{e_1}\times\vv{e_3}\cdot\left(a_1b_3-a_3b_1\right)=\\
+		&=\vv{e_1}\times\vv{e_2}\cdot\begin{vmatrix}
+		a_1 & a_2\\
+		b_1 & b_2
+		\end{vmatrix}+\vv{e_2}\times\vv{e_3}\cdot\begin{vmatrix}
+		a_2 & a_2\\
+		b_3 & b_3
+		\end{vmatrix}+\vv{e_1}\times\vv{e_3}\cdot\begin{vmatrix}
+		a_1 & a_3\\
+		b_1 & b_3
+		\end{vmatrix}=\\
+		&=\vv{e_3}\cdot\begin{vmatrix}
+		a_1 & a_2\\
+		b_1 & b_2
+		\end{vmatrix}+\vv{e_1}\cdot\begin{vmatrix}
+		a_2 & a_3\\
+		b_2 & b_3
+		\end{vmatrix}-\vv{e_2}\cdot\begin{vmatrix}
+		a_1 & a_3\\
+		b_1 & b_3
+		\end{vmatrix}=\begin{vmatrix}
+		\vv{e_1} & \vv{e_2} & \vv{e_3}\\
+		a_1 & a_2 & a_3\\
+		b_1 & b_2 & b_3
+		\end{vmatrix}
+	\end{align*}
+\end{proof}
+\begin{theorem}
+	Пусть $\{\vv{g_1};\vv{g_2};\vv{g_3}\}$ -- произвольный базис. Если в этом базисе известны $\vv{a}\left(a_1;a_2;a_3\right)$, $\vv{b}\left(b_1;b_2;b_3\right)$ и $\vv{c}\left(c_1;c_2;c_3\right)$, то:
+	$$\left(\vv{a};\vv{b};\vv{c}\right)=\vv{a}\cdot\left(\vv{b}\times\vv{c}\right)=\begin{vmatrix}
+	a_1 & a_2 & a_3\\
+    b_1 & b_2 & b_3\\
+    c_1 & c_2 & c_3
+	\end{vmatrix}\cdot \left(\vv{g_1};\vv{g_2};\vv{g_3}\right)$$
+\end{theorem}
+\setcounter{subsection}{5}
+\begin{consequence}
+	Векторы $\vv{a}\left(a_1;a_2;a_3\right)$, $\vv{b}\left(b_1;b_2;b_3\right)$ и $\vv{c}\left(c_1;c_2;c_3\right)$ компланарны тогда и только тогда, когда:
+	$$\begin{vmatrix}
+	a_1 & a_2 & a_3\\
+    b_1 & b_2 & b_3\\
+    c_1 & c_2 & c_3
+	\end{vmatrix}=0$$
+\end{consequence}
+\begin{theorem}[Плоскость по точке и двум векторам]
+	Пусть даны точка $M(x_0;y_0;z_0)$ и два неколлинеарных вектора $\vv{a}\left(a_1;a_2;a_3\right)$ и $\vv{b}\left(b_1;b_2;b_3\right)$. Тогда уравнение плоскости, проходящей через $M$ параллельно плоскости, содержащей векторы $\vv{a}$ и $\vv{b}$, будет иметь вид:
+	$$\begin{vmatrix}
+		x-x_0 & a_1 & b_1\\
+		y-y_0 & a_2 & b_2\\
+		z-z_0 & a_3 & b_3
+	\end{vmatrix}=0$$
+\end{theorem}
+\setcounter{subsection}{6}
+\setcounter{consequence}{0}
+\begin{consequence}[Плоскость по трём точкам]
+	Пусть даны точки $M(x_0;y_0;z_0)$, $M_1(x_1;y_1;z_1)$ и $M_2(x_2;y_2;z_2)$. Тогда уравнение плоскости, проходящей через эти точки, будет иметь вид:
+	$$\begin{vmatrix}
+		x-x_0 & x_1-x_0 & x_2-x_0\\
+		y-y_0 & y_1-y_0 & y_2-y_0\\
+		z-z_0 & z_1-z_0 & z_2-z_0
+	\end{vmatrix}=0$$
+\end{consequence}
+\setcounter{subsection}{0}
 \end{document}
