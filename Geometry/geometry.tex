@@ -2390,8 +2390,15 @@
 	Для любой точки $M$ в искомой плоскости вектор $\vv{OM}$ имеет координаты $(x-x_0;y-y_0;z-z_0)$. Тогда $\vv{n}\cdot \vv{OM} = 0$, откуда и следует уравнение.
 \end{proof}
 \begin{definition}
+    Каноническое уравнение такой прямой $l$ в пространстве, что $M\left(x_0;y_0;z_0\right)\in l$ и $\vv{v}\left(\alpha;\beta;\gamma\right)$ – её направляющий вектор, имеет вид:
+    $$\frac{x-x_0}{\alpha}=\frac{y-y_0}{\beta}=\frac{z-z_0}{\gamma}$$
+\end{definition}
+\begin{definition}
 	Упорядоченная тройка некомпланарных векторов $\{\vv{a};\vv{b};\vv{c}\}$ называется правой, если из конца вектора $\vv{c}$ кратчайший поворот от вектора $\vv{a}$ к вектору $\vv{b}$ виден совершающимся против часовой стрелки.
 \end{definition}
+
+\subsection{Произведения векторов}
+
 \begin{definition}
 	Векторным произведением $\vv{a}\times\vv{b}$ векторов $\vv{a}$ и $\vv{b}$ называется такой вектор, что:
 	\begin{enumerate}
@@ -2497,17 +2504,85 @@
 		z-z_0 & z_1-z_0 & z_2-z_0
 	\end{vmatrix}=0$$
 \end{consequence}
-\setcounter{subsection}{7}
+\setcounter{subsection}{1}
 \setcounter{consequence}{0}
+
+\subsection{Расстояния в пространстве}
+
 \begin{theorem}[Расстояние от точки до плоскости]
     Пусть даны плоскость $\alpha$ с базисом $\{\vv{a};\vv{b}\}$, точка $A\in \alpha$ и точка $M$. Тогда если $\vv{C}=\vv{AM}$, то:
 	$$\rho\left(M;\alpha\right)=\frac{|(\vv{a};\vv{b};\vv{c})|}{|\vv{a}\times\vv{b}|}$$
 \end{theorem}
+\setcounter{subsection}{7}
 \begin{consequence}[Расстояние между скрещивающимися прямыми] Пусть даны плоскость $\alpha$, прямые $a$ и $b$ с направляющими $\vv{a}$ и $\vv{b}$ соответственно и произвольные точки $A\in a$ и $B\in b$. Тогда если $\vv{c}=\vv{AB}$, то:
 	$$\rho\left(a;b\right)=\frac{|(\vv{a};\vv{b};\vv{c})|}{|\vv{a}\times\vv{b}|}$$
 \end{consequence}
 \begin{consequence}[Расстояние от точки до плоскости] В декартовых координатах расстояние от точки $M(x_0;y_0;z_0)$ до плоскости $\alpha:\,Ax+By+Cz+D=0$ равно:
 	$$\rho\left(M;\alpha\right)=\frac{|Ax_0+By_0+Cz_0+D|}{\sqrt{A^2+B^2+C^2}}$$
 \end{consequence}
-\setcounter{subsection}{0}
+\setcounter{subsection}{2}
+
+\subsection{Экстремальные задачи}
+
+\begin{definition}[Предел функции]
+	$ $\par\nobreak\ignorespaces
+	$$A=\lim_{x\to x_0}f(x)\Longleftrightarrow \forall \varepsilon >0\,\, \exists\, \delta >0:\,|x-x_0|<\delta \Longrightarrow |f(x)-A|<\varepsilon$$
+\end{definition}
+\begin{definition}[Правосторонний предел функции]
+	$ $\par\nobreak\ignorespaces
+	$$A=\lim_{x\to x_0+0}f(x)\Longleftrightarrow \forall \varepsilon >0\,\, \exists\, \delta >0:\,\forall x \in (x_0; x_0 + \delta)\Longrightarrow |f(x)-A|<\varepsilon$$
+\end{definition}
+\begin{definition}[Левосторонний предел функции]
+	$ $\par\nobreak\ignorespaces
+	$$A=\lim_{x\to x_0-0}f(x)\Longleftrightarrow \forall \varepsilon >0\,\, \exists\, \delta >0:\,\forall x \in (x_0-\delta; x_0)\Longrightarrow |f(x)-A|<\varepsilon$$
+\end{definition}
+\begin{definition}
+	Функция $f(x)$ называется непрерывной в точке $x_0$, если:
+	$$\lim_{x\to x_0}f(x)=f(x_0)$$
+\end{definition}
+\begin{definition}
+	Производной функции $f(x)$ называется (если он существует) предел:
+	$$f'(x)=\lim_{\Delta x\to\infty}\frac{f(x+\Delta x)-f(x)}{\Delta x}$$
+\end{definition}
+\begin{statement}[Свойства производных]
+	$ $\par\nobreak\ignorespaces
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item $c'=0$
+			\item $(x^n)'=nx^{n-1},\,n\neq 0$
+			\item $(\sin x)'=\cos x$
+			\item $(\cos x)'=-\sin x$
+			\item $\left(c\cdot f(x)\right)'=c\cdot f'(x)$
+			\item $\left(f(x)+g(x)\right)'=f'(x)+g'(x)$
+			\item $\left(f(x)\cdot g(x)\right)'=f'(x)\cdot g(x)+g'(x)\cdot f(x)$
+			\item $\left(\dfrac{f(x)}{g(x)}\right)'=\dfrac{f'(x)\cdot g(x)-g'(x)\cdot f(x)}{g^2(x)}$
+			\item $\left(f(g(x))\right)'=f'(g(x))\cdot g'(x)$
+		\end{itemize}
+	\end{multicols}
+\end{statement}
+\begin{definition}
+	Точка $x_0$ называется критической для функции $f(x)$, если $f'(x_0)$ не существует или равна нулю.
+\end{definition}
+\begin{definition}
+	Точка $x_0$ называется стационарной для функции $f(x)$, если $f'(x_0)=0$.
+\end{definition}
+\begin{definition}
+	Точка $x_0$ называется точкой экстремума для функции $f(x)$, если $x_0$ – точка максимума или точка минимума.
+\end{definition}
+\begin{theorem}[Лагранжа]
+	Пусть $f(x)$ непрерывна и дифференцируема на $[a;b]$. Тогда:
+	$$\exists\,c\in(a;b):\,\frac{f(b)-f(a)}{b-a}=f'(c)$$
+\end{theorem}
+\begin{theorem}[Ролля]
+	Пусть $f(x)$ непрерывна и дифференцируема на $[a;b]$, $f(a)=f(b)$. Тогда:
+	$$\exists\,c\in(a;b):\,f'(c)=0$$
+\end{theorem}
+\begin{theorem}
+  $x=x_0$ -- вертикальная асимптота $f(x)$, если $x_0$ -- точка разрыва и хотя бы один из односторонних пределов в $x_0$ существует и бесконечен.
+\end{theorem}
+\begin{theorem}
+  $y=kx+b$ -- асимптота $f(x)$, если существуют и конечны пределы:
+  $$k=\lim_{x\to\pm\infty}\frac{f(x)}{x};\,\,b=\lim_{x\to\pm\infty}\left(f(x)-kx\right)$$
+\end{theorem}
+
 \end{document}
