@@ -2585,4 +2585,50 @@
   $$k=\lim_{x\to\pm\infty}\frac{f(x)}{x};\,\,b=\lim_{x\to\pm\infty}\left(f(x)-kx\right)$$
 \end{theorem}
 
+\section{Объёмы}
+
+\begin{definition}
+	Призматоидом называется многогранник, все вершины которого лежат в двух параллелльных плоскостях.
+\end{definition}
+\begin{definition}
+	Антипризма -- полуправильный многогранник, у которого две параллельные грани, называемые основаниями, -- правильные $n$-угольники, а остальные $2n$ граней, называемые боковыми, -- правильные треугольники.
+\end{definition}
+\begin{theorem}[Формула Симпсона]
+	Пусть $S_\text{нижн.}$ и $S_\text{верх.}$ -- площади оснований выпуклого призматоида; $S_\text{сред.}$ -- площадь его серединного сечения -- сечения плоскостью, параллельной плоскостям основания и проходящей на равном расстоянии от них; $H$ -- расстояние между плоскостями основания, тогда объём данного выпуклого призматоида равен:
+	$$V=\frac{H}{6}\left(S_\text{нижн.}+4S_\text{сред.}+S_\text{верх.}\right)$$
+\end{theorem}
+\begin{proof}
+	Рассмотрим произвольный выпуклый призматоид $A_1A_2\ldots A_nB_1B_2\ldots B_m$, а также произвольную точку $P$, принадлежащую $C_1C_2\ldots C_k$ -- серединному сечению данного призматоида. Тогда объём призматоида равен сумме объёмов пирамид $PA_1A_2\ldots A_n$ и\\$PB_1B_2\ldots B_m$, а также $k-1$ пирамид с вершиной $P$ и основаниями $A_1B_1B_2,\,A_1B_2A_2,\\A_2B_2B_3,\ldots,\,A_1B_1A_n$:
+	$$V_{PA_1A_2\ldots A_n}=\frac{1}{3}S_{A_1A_2\ldots A_n}\frac{H}{2};\,\,V_{PB_1B_2\ldots B_m}=\frac{1}{3}S_{B_1B_2\ldots B_m}\frac{H}{2}$$
+	Рассмотрим произвольную боковую пирамиду $PA_1B_1B_2$:
+	$ $\par\nobreak\ignorespaces
+    \begin{center}
+        \begin{tikzpicture}[3d view={-160}{-7},scale=0.8]
+            \coordinate (P) at (-1,0,0);
+			\coordinate (C1) at (4,2,0);
+			\coordinate (C2) at (3,-3.5,0);
+			\coordinate (A1) at (2,-1,3);
+			\coordinate (B1) at ($(A1)!2!(C1)$);
+			\coordinate (B2) at ($(A1)!2!(C2)$);
+			\coordinate (H) at (2.66,-.66,1.77);
+			\draw (B1) node[left] {$B_1$} -- (B2) node[below] {$B_2$} -- (P) node[right] {$P$} -- (A1) node[above] {$A_1$} -- cycle;
+			\draw (A1) -- (B2);
+			\draw (C1) node[above left] {$C_1$} -- (C2) node[below right] {$C_2$} -- (P);
+			\draw[dashed] (C1) -- (P) -- (B1);
+			\draw[dashed] (P) -- (H) node[midway, below left] {$h$};
+			\coordinate (T) at ($(C1)!.5!(C2)$);
+			\tkzMarkRightAngle(T,H,P);
+            \foreach \point in {(A1), (B1), (B2), (C1), (C2), (P), (H)}{
+				\fill \point circle (1.8pt);
+			}
+		\end{tikzpicture}
+    \end{center}
+	$$V_{PA_1B_1B_2}=\frac{1}{3}S_{A_1B_1B_2}h=\frac{4}{3}S_{A_1C_1C_2}h=\frac{4}{3}S_{C_1C_2P}\frac{H}{2}$$
+	Тогда объём исходного призматоида равен:
+	$$\frac{H}{6}\left(S_{A_1A_2\ldots A_n}+4(S_{C_1C_2P} + S_{C_2C_3P} + \ldots + S_{C_kC_1P})+S_{B_1B_2\ldots B_m}\right)=\frac{H}{6}\left(S_\text{верх.}+4S_\text{сред.}+S_\text{нижн.}\right)$$
+\end{proof}
+\begin{theorem}[Принцип Кавальери]
+	Если любая плоскость, параллельная данной, пересекает два тела по фигурам равной площади, то объёмы этих тел равны.
+\end{theorem}
+
 \end{document}
