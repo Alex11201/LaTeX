@@ -65,6 +65,10 @@
 \newcommand{\notequalto}[2]{\underset{\scriptstyle\overset{\mkern4mu\vertneq}{#2}}{#1}}
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\spur}{Sp}
+\let\limsup\relax
+\let\liminf\relax
+\DeclareMathOperator*{\limsup}{\overline{lim}}
+\DeclareMathOperator*{\liminf}{\underline{lim}}
 \makeatletter
 \newenvironment{sqcases}{%
   \matrix@check\sqcases\env@sqcases
@@ -248,6 +252,7 @@
 \end{consequence}
 
 \section{Множества}
+
 \begin{definition}
     Множества равномощны, если между ними существует биекция.
 \end{definition}
@@ -258,41 +263,16 @@
     Множества, равномощные $\N$, называются счетными.
 \end{definition}
 \begin{definition}
-    Декартовым произведением множеств $A$ и $B$ называется множество $A\times B=\{x\,|\,x=(a,b),\,a\in A,\,b\in B\}$.
+    Декартовым произведением множеств $A$ и $B$ называется множество:
+    $$A\times B=\{x\,|\,x=(a,b),\,a\in A,\,b\in B\}$$
 \end{definition}
 \begin{definition}
     Число $a$ называется числом кратности $k$ многочлена $f(x)$, если $f(x)$ делится на $(x-a)^k$, но не делится на $(x-a)^{k+1}$.
 \end{definition}
-
-\section{Числовые последовательности}
 \begin{definition}
-    Бесконечной числовой последовательностью $(a_n)$ называется отображение $\N \to \R$.
+    Множество $m$ называется ограниченным, если:
+    $$\exists\, c:\,\forall x\in M\,\,|x| \leq c$$
 \end{definition}
-\begin{definition}
-    Конечной числовой последовательностью $(a_n)$ называется отображение\\ $a:\,\{1,\,2,\,\ldots,\,k\}\to \R$.
-\end{definition}
-
-\begin{definition}
-    Множество $M,\,M\subset\R$ называется ограниченным сверху, если $\exists\, c:\,\forall x\in M:\,x \leq c$.
-\end{definition}
-\begin{definition}
-    Множество $M,\,M\subset\R$ называется ограниченным снизу, если $\exists\, c:\,\forall x\in M:\,x \geq c$.
-\end{definition}
-\begin{definition}
-    Множество $M,\,M\subset\R$ называется ограниченным, если оно ограничено сверху и снизу.
-\end{definition}
-\begin{definition}
-    Последовательность $a_n$ называется ограниченной, если $a(\N)$ ограничено. 
-\end{definition}
-\begin{definition}
-    Последовательность $a_n$ называется монотонно возрастающей, если $\forall n \in \N:\, a_{n+1}>a_n$.
-\end{definition}
-\begin{theorem}
-    Пусть все элементы последовательности $a_n$ положительны. Последовательность $a_n$ возрастает тогда и только тогда, когда $\dfrac{a_{n+1}}{a_n}>1$.
-\end{theorem}
-
-\subsection{Аксиоматика действительных чисел}
-
 \begin{definition}
     Пусть $M \subset \R,\,M$ ограничено. Тогда наименьшая из верхних граней множества $M$ называется точной верхней гранью (супремумом):
     $$a=\sup M\Longleftrightarrow \forall x \in M:\, x \leq a,\, \forall \varepsilon>0\,\,\, \exists\, x \in M:\, x>a-\varepsilon$$
@@ -301,10 +281,42 @@
     Пусть $M \subset \R,\,M$ ограничено. Тогда наибольшая из нижних граней множества $M$ называется точной нижней гранью (инфинумом):
     $$a=\inf M\Longleftrightarrow \forall x \in M:\, x \geq a,\, \forall \varepsilon>0\,\,\, \exists\, x \in M:\, x<a+\varepsilon$$
 \end{definition}
+\begin{definition}
+    Множество $M$ называется открытым, если:
+    $$\forall\,m\in M\,\,\exists\,\varepsilon>0:\,U_\varepsilon(m)\subset M$$
+\end{definition}
+\begin{definition}
+    Точка $A$ называется предельной точкой множества $M$, если:
+    $$\forall\,\varepsilon>0\,\,U_\varepsilon(A)\cap M\text{ бесконечно или } \mathring{U}_\varepsilon(A)\cap M\neq \varnothing$$
+\end{definition}
+\begin{definition}
+    Множество называется замкнутым, если оно содержит все свои предельные точки.
+\end{definition}
+\begin{definition}
+    Пусть $M\subset U_{A_i}$, $A_i$ -- открытое множество, тогда $U_{A_i}$ называется открытыми покрытиями.
+\end{definition}
 
+\section{Числовые последовательности}
+\begin{definition}
+    Числовой последовательностью $a_n$ называется отображение $a:\N \to \R$.
+\end{definition}
+\begin{definition}
+    Последовательность $a_n$ называется ограниченной, если $a(\N)$ ограничено. 
+\end{definition}
+\begin{definition}
+    Последовательность $a_n$ называется монотонно возрастающей, если:
+    $$\forall\, n \in \N:\, a_{n+1}>a_n$$
+\end{definition}
+\begin{definition}
+    Последовательность $a_n$ асимптотически больше $b_n$, если:
+    $$a_n\succ b_n\Longleftrightarrow\exists\, N\in \N:\,\forall\,n>N\,\,a_n\geq b_n$$
+\end{definition}
+\begin{definition}
+    Точка $A$ называется частичным пределом последовательности $a_n$, если:
+    $$\forall\,\varepsilon>0\,\,a^{-1}(U_\varepsilon(A))\text{ бесконечно}$$
+\end{definition}
 \begin{theorem}
-    Пусть $a:\,\N \to \R,\, a(\N)$ ограничена. Тогда:
-    $$\exists\, x_0\in \R:\, \forall \varepsilon >0:\, a^{-1}\equalto{((x_0-\varepsilon;\,x_0+\varepsilon))}{U_\varepsilon(x_0)}\text{ бесконечно}$$
+    Пусть последовательность $a_n$ ограничена, тогда у неё есть частичный предел.
 \end{theorem}
 \begin{proof}
     Если $\exists\, x_0:\,a^{-1}(x_0)$ бесконечно, то доказано. Если $\exists\, x_0:\,a^{-1}(x_0)$ конечно или пусто, то:
@@ -359,8 +371,22 @@
         &\text{То есть }\forall \varepsilon>0:\, a^{-1}(U_{\varepsilon}(M))\text{ бесконечно.}
     \end{align*}
 \end{proof}
+\begin{theorem}
+    Пусть $M$ -- множество частичных пределов последовательности $a_n$, тогда:
+    $$\limsup_{n\to\infty}a_n=\sup M;\,\,\liminf_{n\to\infty}a_n=\inf M$$
+\end{theorem}
+\begin{theorem}
+    Множество частичных пределов числовой последовательности замкнуто.
+\end{theorem}
 \begin{definition}
-    Число $x$ называется частичным пределом последовательности $a(\N)\to \R$, если $\forall \varepsilon>0:\, a^{-1}(U_{\varepsilon}(x))$ бесконечно.
+    Пусть даны $a:\,\N\to\R$ и $b:\,\N\to\N$, при этом $b$ монотонна. Тогда $a\,\circ\, b:\\\N\to\R$ называется подпоследовательностью.
+\end{definition}
+\begin{statement}
+    У всякой последовательности есть монотонная подпоследовательность.
+\end{statement}
+\begin{definition}
+    Пусть $a_n$ ограничена и $\limsup\limits_{n\to\infty}a_n=\liminf\limits_{n\to\infty}a_n$. Тогда $a_n$ сходится и имеет предел:
+    $$\lim_{n\to\infty}a_n=\limsup\limits_{n\to\infty}a_n=\liminf\limits_{n\to\infty}a_n$$
 \end{definition}
 
 \subsection{Прогрессии}
@@ -454,7 +480,9 @@
         4.\,\,&\forall a,\,b,\,c \in M:\,(a\times b)\times c=a\times(b\times c)= (a\times c)\times b
     \end{align*}
 \end{definition}
+
 \section{Пределы}
+
 \begin{definition}
     $A$ называется пределом $(x_n)$, если:
     $$\forall \varepsilon >0\,\,\,\exists\,N\in\N:\,\forall n>N\,\,\,|x_n-A|<\varepsilon$$
