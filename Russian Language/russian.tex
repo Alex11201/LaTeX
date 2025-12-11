@@ -1,0 +1,446 @@
+\documentclass[12pt]{article} 
+
+%Формат файла
+\usepackage[paperheight=297mm,
+   paperwidth=210mm,
+   top=20mm,
+   bottom=20mm,
+   left=15mm,
+   right=15mm]{geometry}
+
+
+%Текст
+\usepackage[fontsize=12pt]{fontsize}
+\usepackage[english, russian]{babel}
+\usepackage[T2A]{fontenc}
+\usepackage{color}
+\usepackage{transparent}
+\usepackage{amsthm}
+\usepackage{multicol}
+\usepackage{csquotes}
+\usepackage[e]{esvect}
+\renewcommand{\mkbegdispquote}[2]{\itshape}
+\parindent=0cm
+
+\theoremstyle{definition}
+\newtheorem{rrule}{Правило}[section]
+\newtheorem{algorithm}[rrule]{Алгоритм}
+\newtheorem{definition}{Определение}
+
+\theoremstyle{remark}
+\newtheorem*{example}{Пример}
+\newtheorem*{exception}{Исключения}
+
+%Картинки
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usepackage{pgfplots}
+\usetikzlibrary {arrows.meta}
+\usetikzlibrary{calc}
+\usetikzlibrary{through}
+\usetikzlibrary{intersections}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{positioning}
+\usetikzlibrary{3d}
+\usetikzlibrary{perspective}
+
+\makeatletter
+\tikzoption{canvas is plane}[]{\@setOxy#1}
+\def\@setOxy O(#1,#2,#3)x(#4,#5,#6)y(#7,#8,#9)%
+  {\def\tikz@plane@origin{\pgfpointxyz{#1}{#2}{#3}}%
+   \def\tikz@plane@x{\pgfpointxyz{#4}{#5}{#6}}%
+   \def\tikz@plane@y{\pgfpointxyz{#7}{#8}{#9}}%
+   \tikz@canvas@is@plane
+  }
+\makeatother  
+
+
+%Математика
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[makeroom]{cancel}
+
+%Всякое
+\usepackage{relsize}
+\usepackage{enumerate}
+\usepackage[inline]{enumitem}
+\usepackage{hyperref}
+\usepackage{rslingu}
+
+%Мат команды
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+%Оглавление
+\title{\textbf{Русский язык}}\date{}
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}}
+\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
+\renewcommand{\labelenumiv}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.\arabic{enumiv}}
+
+\pgfplotsset{compat=1.18}
+\setlist[enumerate]{itemsep=0mm}
+\begin{document}
+
+
+\maketitle
+\tableofcontents
+\label{toc}
+\newpage
+
+\section{Орфография}
+
+\subsection{Правописание НЕ с различными частями речи}
+
+\begin{algorithm}[Правописание НЕ с существительными]
+    $ $\par\nobreak\ignorespaces
+    \begin{center}
+        \begin{tikzpicture}
+            \def\gap {-0.7};
+            \draw (-.25,0) |- (-7,\gap) |- +(0,\gap) coordinate (A);
+            \draw (.25,0) |- (7,\gap) |- +(0,\gap) coordinate (B);
+            \draw (A) |- +(7,\gap) coordinate (C);
+            \draw (C) +(-.25,0) |- (-7,\gap*4) |- +(0,\gap) coordinate (D);
+            \draw (C) +(.25,0) |- (5,\gap*4) |- +(0,\gap) coordinate (E);
+            \draw (E) |- +(-5,\gap) coordinate (F);
+            \draw (F) +(-.25,0) |- (-5,\gap*7) |- +(0,\gap) coordinate (G);
+            \draw (F) +(.25,0) |- (5,\gap*7) |- +(0,\gap) coordinate (H);
+            \draw (G) -- +(0,-1) coordinate (I);
+            \draw (H) -- +(0,-1) coordinate (J);
+            \draw (D) |- (I);
+            \draw (B) |- (J);
+            \draw (0,0) node[fill=white, draw] {Употребляется без НЕ};
+            \draw (C) node[fill=white, draw] {Есть противопоставление с союзом «а»};
+            \draw (F) node[fill=white, draw] {Можно заменить синонимом без НЕ};
+            \draw (I) node[fill=white, draw] {Раздельно};
+            \draw (J) node[fill=white, draw] {Слитно};
+            \foreach \point in {(A), (D), (H)}{
+				\draw \point node[fill=white, draw] {Да};
+			}
+            \foreach \point in {(B), (E), (G)}{
+				\draw \point node[fill=white, draw] {Нет};
+			}
+        \end{tikzpicture}
+    \end{center}
+\end{algorithm}
+
+\begin{algorithm}[Правописание НЕ с прилагательными и наречиями на -о/-е]
+    $ $\par\nobreak\ignorespaces
+    \begin{center}
+        \begin{tikzpicture}
+            \def\gap {-0.7};
+            \draw (-.25,0) |- (-7,\gap) |- +(0,\gap) coordinate (A);
+            \draw (.25,0) |- (7,\gap) |- +(0,\gap) coordinate (B);
+            \draw (A) |- +(7,\gap) coordinate (C);
+            \draw (C) +(-.25,0) |- (-7,\gap*4) |- +(0,\gap) coordinate (D);
+            \draw (C) +(.25,0) |- (5,\gap*4) |- +(0,\gap) coordinate (E);
+            \draw (E) |- +(-5,\gap) coordinate (F);
+            \draw (F) +(-.25,0) |- (-5,\gap*7) |- +(0,\gap) coordinate (G);
+            \draw (F) +(.25,0) |- (5,\gap*7) |- +(0,\gap) coordinate (H);
+            \draw (H) |- +(-5,\gap) coordinate (I);
+            \draw (I) +(-.25,0) |- (-3,\gap*10) |- +(0,\gap) coordinate (J);
+            \draw (I) +(.25,0) |- (3,\gap*10) |- +(0,\gap) coordinate (K);
+            \draw (J) -- +(0,-1) coordinate (L);
+            \draw (K) -- +(0,-1) coordinate (M);
+            \draw (D) |- (L);
+            \draw (G) |- (L);
+            \draw (B) |- (M);
+            \draw (0,0) node[fill=white, draw] {Употребляется без НЕ};
+            \draw (C) node[fill=white, draw] {Есть противопоставление с союзом «а»};
+            \draw (F) node[fill=white, draw] {Есть зависимые слова};
+            \draw (I) node[fill=white, draw] {Можно заменить синонимом без НЕ};
+            \draw (L) node[fill=white, draw] {Раздельно};
+            \draw (M) node[fill=white, draw] {Слитно};
+            \foreach \point in {(A), (D), (G), (K)}{
+				\draw \point node[fill=white, draw] {Да};
+			}
+            \foreach \point in {(B), (E), (H), (J)}{
+				\draw \point node[fill=white, draw] {Нет};
+			}
+        \end{tikzpicture}
+    \end{center}
+\end{algorithm}
+\begin{exception}
+    $ $\par\nobreak\ignorespaces
+    \begin{enumerate}
+        \item НЕ с прилагательными пишется раздельно, если они стоят в сравнительной форме.
+        \item НЕ с прилагательными пишется раздельно, если они обозначают вкус или цвет.
+    \end{enumerate}
+\end{exception}
+
+\begin{rrule}[Правописание НЕ с краткими прилагательными]
+    $ $\par\nobreak\ignorespaces
+    \begin{enumerate}
+        \item НЕ с краткими прилагательными пишется как в полной форме прилагательного.
+        \item НЕ с краткими прилагательными пишется раздельно, если они не употребляются в полной форме.
+    \end{enumerate}
+\end{rrule}
+
+\begin{algorithm}[Правописание НЕ с причастиями]
+    $ $\par\nobreak\ignorespaces
+    \begin{center}
+        \begin{tikzpicture}
+            \def\gap {-0.7};
+            \draw (-.25,0) |- (-7,\gap) |- +(0,\gap) coordinate (A);
+            \draw (.25,0) |- (7,\gap) |- +(0,\gap) coordinate (B);
+            \draw (A) |- +(7,\gap) coordinate (C);
+            \draw (C) +(-.25,0) |- (-7,\gap*4) |- +(0,\gap) coordinate (D);
+            \draw (C) +(.25,0) |- (5,\gap*4) |- +(0,\gap) coordinate (E);
+            \draw (E) |- +(-5,\gap) coordinate (F);
+            \draw (F) +(-.25,0) |- (-5,\gap*7) |- +(0,\gap) coordinate (G);
+            \draw (F) +(.25,0) |- (5,\gap*7) |- +(0,\gap) coordinate (H);
+            \draw (H) |- +(-5,\gap) coordinate (I);
+            \draw (I) +(-.25,0) |- (-3,\gap*10) |- +(0,\gap) coordinate (J);
+            \draw (I) +(.25,0) |- (3,\gap*10) |- +(0,\gap) coordinate (K);
+            \draw (J) -- +(0,-1) coordinate (L);
+            \draw (K) -- +(0,-1) coordinate (M);
+            \draw (D) |- (L);
+            \draw (G) |- (L);
+            \draw (B) |- (M);
+            \draw (0,0) node[fill=white, draw] {Употребляется без НЕ};
+            \draw (C) node[fill=white, draw] {Краткое};
+            \draw (F) node[fill=white, draw] {Есть противопоставление с союзом «а»};
+            \draw (I) node[fill=white, draw] {Есть зависимые слова};
+            \draw (L) node[fill=white, draw] {Раздельно};
+            \draw (M) node[fill=white, draw] {Слитно};
+            \foreach \point in {(A), (D), (G), (J)}{
+				\draw \point node[fill=white, draw] {Да};
+			}
+            \foreach \point in {(B), (E), (H), (K)}{
+				\draw \point node[fill=white, draw] {Нет};
+			}
+        \end{tikzpicture}
+    \end{center}
+\end{algorithm}
+
+\begin{rrule}[Правописание НЕ с глаголами и деепричастями]
+    НЕ с глаголами и деепричастиями пишется слитно только в тех случаях, когда они не употребляются без НЕ или начинаются с приставки недо-.
+    \begin{example}
+        Нанавидеть; \rsPrefix{недо}есть; негодуя; \rsPrefix{недо}любливая.
+    \end{example}
+\end{rrule}
+
+\subsection{Правописание Н и НН в различных частях речи}
+
+\begin{rrule}[Правописание Н и НН в отымённых прилагательных]
+    $ $\par\nobreak\ignorespaces
+    \begin{enumerate}
+        \item НН пишется, если основа оканчивается на «н» и есть суффикс -н-.
+        \begin{example}
+            \rsRoot{\rsBase{картон}}\rsSuffix{н}ый; \rsRoot{\rsBase{лун}}\rsSuffix{н}ый; \rsRoot{\rsBase{камен}}\rsSuffix{н}ый.
+        \end{example}
+        \item НН пишется, когда есть суффикс -онн- или -енн-.
+        \begin{example}
+            Мысл\rsSuffix{енн}ый; листв\rsSuffix{енн}ый; революци\rsSuffix{онн}ый; позици\rsSuffix{онн}ый.
+        \end{example}
+        \begin{exception}
+            Ветреный (человек).
+        \end{exception}
+        \item Н пишется, когда есть суффикс -ин-, -ан- или -ян-.
+        \begin{example}
+            Льв\rsSuffix{ин}ый; песч\rsSuffix{ан}ый; трав\rsSuffix{ян}ой.
+        \end{example}
+        \begin{exception}
+            Стеклянный; оловянный; деревянный.
+        \end{exception}
+        \item В кратких прилагательных пишется столько же «н», сколько в полной форме.
+    \end{enumerate}
+\end{rrule}
+
+\begin{algorithm}[Правописание Н и НН в причастиях]
+    $ $\par\nobreak\ignorespaces
+    \begin{center}
+        \begin{tikzpicture}
+            \def\gap {-0.7};
+            \draw (-.25,0) |- (-8,\gap) |- +(0,\gap) coordinate (A);
+            \draw (.25,0) |- (8,\gap) |- +(0,\gap) coordinate (B);
+            \draw (B) |- +(-8,\gap) coordinate (C);
+            \draw (C) +(-.25,0) |- (-6,\gap*4) |- +(0,\gap) coordinate (D);
+            \draw (C) +(.25,0) |- (8,\gap*4) |- +(0,\gap) coordinate (E);
+            \draw (D) |- +(6,\gap) coordinate (F);
+            \draw (F) +(-.25,0) |- (-6,\gap*7) |- +(0,\gap) coordinate (G);
+            \draw (F) +(.25,0) |- (6,\gap*7) |- +(0,\gap) coordinate (H);
+            \draw (G) |- +(6,\gap) coordinate (I);
+            \draw (I) +(-.25,0) |- (-6,\gap*10) |- +(0,\gap) coordinate (J);
+            \draw (I) +(.25,0) |- (4,\gap*10) |- +(0,\gap) coordinate (K);
+            \draw (J) |- +(6,\gap) coordinate (L);
+            \draw (L) +(-.25,0) |- (-2,\gap*13-.3) |- +(0,\gap) coordinate (M);
+            \draw (L) +(.25,0) |- (2,\gap*13 -.3) |- +(0,\gap) coordinate (N);
+            \draw (M) -- +(0,-1) coordinate (O);
+            \draw (N) -- +(0,-1) coordinate (P);
+            \draw (A) |- (O);
+            \draw (E) |- (P);
+            \draw (H) |- (P);
+            \draw (K) |- (P);
+            \draw (0,0) node[fill=white, draw] {Краткое};
+            \draw (C) node[fill=white, draw] {Есть приставки кроме не-, свеже-, младо-};
+            \draw (F) node[fill=white, draw] {Есть зависимые слова};
+            \draw (I) node[fill=white, draw] {Оканчивается на -ованный/-ёванный};
+            \draw (L) node[fill=white, draw, align=center] {Образовано от бесприставочного\\глагола совершенного вида};
+            \draw (O) node[fill=white, draw] {Н};
+            \draw (P) node[fill=white, draw] {НН};
+            \foreach \point in {(A), (E), (H), (K), (N)}{
+				\draw \point node[fill=white, draw] {Да};
+			}
+            \foreach \point in {(B), (D), (G), (J), (M)}{
+				\draw \point node[fill=white, draw] {Нет};
+			}
+        \end{tikzpicture}
+    \end{center}
+\end{algorithm}
+\begin{exception}
+    Кованый; жёваный; клёваный; посажёный, названый (брат).
+\end{exception}
+
+\subsection{Правописание гласных в различных частях слова}
+
+\begin{rrule}[Чередование гласных в корне]
+    $ $\par\nobreak\ignorespaces
+    \begin{enumerate}
+        \item Зависят от суффикса -а-: -бер-/-бир-; -дер-/-дир-; -мер-/-мир-; -пер-/-пир-; -тер-/-тир-; -блест-/-блист-; -стел-/-стил-; -чет-/-чит-; -жег-/-жиг-.
+        \item Зависят от ударения: -г\'aр-/-гор-; -тв\'aр-/-твор-; -кл\'aн-/-клон-; -зар-/-з\'oр-.
+        \begin{exception}
+            $ $\par\nobreak\ignorespaces
+            \begin{enumerate}
+                \item В корнях -плав-/-плов-/-плыв- без ударения пишется «а» в словах плавучий, плавник, поплавок, жук-плавунец и производных от них; «о» пишется в словах пловец и пловчиха; «ы» пишется в словах выплыть, плывущий, плывун (слой грунта).
+                \item Пр\'{и}\rsRoot{гарь}; \'{и}з\rsRoot{гарь}; в\'{ы}\rsRoot{гар}ки; \rsRoot{гар}ев\'{о}й; \'{у}\rsRoot{тварь}; \rsRoot{зар}\'{я}; \rsRoot{зар}н\'{и}ца.
+            \end{enumerate}
+        \end{exception}
+        \item Зависят от последующей буквы: -кас-/-косн-; -лаг-/-лож-; -раст-/-ращ-/-рос-; -скак-/-скоч-
+        \item Зависят от значения:
+        \begin{enumerate}
+            \item -мак-/-мок-: пишется «а» в значении погружения в жидкость; пишется «о» в значении пропускания жидкости.
+            \begin{example}
+                Макать перо в чернила; обмакнуть кисть; туфли промокают; непромокаемый плащ.
+            \end{example}
+            \begin{exception}
+                В корне -моч- перед «ч» всегда пишется «о».
+            \end{exception}
+            \item -равн-/-ровн-: пишется «а» в значении «одинаковый, равный»; пишется «о» в значении «делать гладким, ровным».
+            \begin{example}
+                Сравнить числа; уравнять в правах; выровнять пол.
+            \end{example}
+            \begin{exception}
+                Равнина.
+            \end{exception}
+        \end{enumerate}
+    \end{enumerate}
+\end{rrule}
+
+\begin{rrule}[Правописание О и Ё после шипящих в корне]
+    В корне под ударением после шипящих пишется «ё» только в тех случаях, когда можно подобрать проверочное слово с «е».
+    \begin{example}
+        Шёпот -- шептать; жёлтый -- желтеть; крыжовник; трущоба.
+    \end{example}
+\end{rrule}
+
+\begin{rrule}[Правописание Ы и И после Ц]
+    $ $\par\nobreak\ignorespaces
+    \begin{enumerate}
+        \item В корнях слов после «ц» пишется «и».
+        \begin{exception}
+            Цыган на цыпочках цыплёнку цыкнул «Цыц!»
+        \end{exception}
+        \item В суффиксах и окончаниях существительных и прилагательных после «ц» пишется «ы».
+        \begin{example}
+            Сестриц\rsSuffix{ын}, цариц\rsSuffix{ын}, огурц\rsEnding{ы}, молодц\rsEnding{ы}.
+        \end{example}
+    \end{enumerate}
+\end{rrule}
+
+\subsection{Правописание приставок}
+
+\begin{rrule}[Правописание приставок на з/с]
+    В приставках с чередованием з/с пишется «з», если следующий после приставки согласный звонкий и «с» в противном случае. Приставка с- пишется как перед глухими, так и перед звонкими согласными; приставки з- нет.
+\end{rrule}
+
+\begin{rrule}[Правописание приставок ПРЕ и ПРИ]
+    $ $\par\nobreak\ignorespaces
+    \begin{multicols}{2}
+        Приставка при- пишется, если:
+        \begin{enumerate}
+            \item Имеет значение присоединения.
+            \begin{example}
+                Приклеить; прикрутить.
+            \end{example}
+            \item Имеет значение пространственной близости.
+            \begin{example}
+                Придворный; приморский.
+            \end{example}
+            \item Имеет значение неполноты действия:
+            \begin{example}
+                Прилечь; притормозить.
+            \end{example}
+        \end{enumerate}
+        Приставка пре- пишется, если:
+        \begin{enumerate}
+            \item Имеет значение высокой степени качества или действия.
+            \begin{example}
+                Пренеприятный; преуспевать.
+            \end{example}
+            \item Имеет значение, близкое к значению приставки пере-.
+            \begin{example}
+                Прервать; пресечь; преграждать.
+            \end{example}
+        \end{enumerate}
+    \end{multicols}
+    \begin{exception}
+        Преследовать; приготовить; причудливый; пресловутый; преувеличить; привередливый; неприступная (крепость) и другие.
+    \end{exception}
+\end{rrule}
+
+\begin{rrule}[Правописание разделительных Ъ и Ь]
+    $ $\par\nobreak\ignorespaces
+    \begin{enumerate}
+        \item Разделительный твёрдый знак пишется перед буквами «е», «ё», «ю», «я»:
+        \begin{enumerate}
+            \item После приставок, оканчивающихся на согласную.
+            \begin{example}
+                Предъявить; предъюбилейный.
+            \end{example}
+            \item В иноязычных словах.
+            \begin{example}
+                Адъютант; панъевропейский; инъекция; конъюнктура; объект; субъект.
+            \end{example}
+            \item В сложных словах, первая часть которых состоит из числительных.
+            \begin{example}
+                Двухъярусный; трехъязычный.
+            \end{example}
+        \end{enumerate}
+        \item Разделительный мягкий знак пишется перед буквами «и», «е», «ё», «ю», «я»:
+        \begin{enumerate}
+            \item В корне слова.
+            \begin{example}
+                Льёт; воробьи; подьячий; лисьей; завьюженный.
+            \end{example}
+            \item В иноязычных словах перед «о».
+            \begin{example}
+                Павильон; медальон; компаньон; батальон; почтальон.
+            \end{example}
+        \end{enumerate}
+    \end{enumerate}
+\end{rrule}
+
+\begin{rrule}[Правописание Ы и И после приставок]
+    После русских приставок, оканчивающихся на согласную, кроме меж- и сверх- вместо «и» пишется «ы».
+    \begin{example}
+        Разыграть; безынициативный; сверхинтересный; межинститутский; дезинфекция.
+    \end{example}
+\end{rrule}
+
+\end{document}
