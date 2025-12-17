@@ -295,8 +295,12 @@
 \begin{definition}
     Пусть $M\subset U_{A_i}$, $A_i$ -- открытое множество, тогда $U_{A_i}$ называется открытыми покрытиями.
 \end{definition}
+\begin{definition}
+    Говорят, что почти все элементы множества $M$ удовлетворяют некоторому условию, если этому условию не удовлетворяет конечное число элементов.
+\end{definition}
 
 \section{Числовые последовательности}
+
 \begin{definition}
     Числовой последовательностью $a_n$ называется отображение $a:\N \to \R$.
 \end{definition}
@@ -385,8 +389,15 @@
     У всякой последовательности есть монотонная подпоследовательность.
 \end{statement}
 \begin{definition}
-    Пусть $a_n$ ограничена и $\limsup\limits_{n\to\infty}a_n=\liminf\limits_{n\to\infty}a_n$. Тогда $a_n$ сходится и имеет предел:
-    $$\lim_{n\to\infty}a_n=\limsup\limits_{n\to\infty}a_n=\liminf\limits_{n\to\infty}a_n$$
+    Число $A$ называется пределом последовательности $a_n$, если:
+    $$A=\lim_{n\to\infty}a_n=\limsup\limits_{n\to\infty}a_n=\liminf\limits_{n\to\infty}a_n$$
+\end{definition}
+\begin{definition}
+    Число $A$ называется пределом последовательности $a_n$, если $\forall\,\varepsilon>0$ почти все элементы последовательности принадлежат $U_\varepsilon(A)$.
+\end{definition}
+\begin{definition}
+    Число $A$ называется пределом последовательности $a_n$, если:
+    $$\forall\,\varepsilon>0\,\,\exists\,n_0\in\N:\,\forall\,n>n_0,\,n\in\N\,\,|a_n-A|<\varepsilon$$
 \end{definition}
 
 \subsection{Прогрессии}
