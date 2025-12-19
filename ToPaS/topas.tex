@@ -830,17 +830,57 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
     $$T(X)=\sum_{i=1}^{k}\frac{(n_i-p_i\cdot n)^2}{p_i\cdot n}\sim \chi^2(n-1)$$
 \end{statement}
 
-\section{Введение в математический анализ}
+\subsection{Непрерывные распределения}
 
 \begin{definition}
-    Производной, если она существует, функции $f(x)$ называется:
-    $$\delta'(x)=\lim_{\Delta x\to0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$$
+    Функцией распределения случайной величины называется:
+    $$F_\xi(x)=\prob(\xi\leq x)$$
 \end{definition}
 \begin{definition}
-    $F(x)$ называется первообразной функцией функции $f(x)$, если $F'(x)=f(x)$.
+    Функцией плотности распределения называется:
+    $$f_\xi(x)=F_\xi'(x):\,\int_{\R}f_\xi(x)=1$$
 \end{definition}
-\begin{theorem}[Ньютон-Лейбниц]
-    $$\int_{a}^{b}f(x)\diff x=F(b)-F(a)$$
-\end{theorem}
+\begin{definition}
+    Математическим ожиданием непрерывно распределённой случайной величины называется:
+    $$\E(\xi)=\int_{-\infty}^{\infty}x\cdot f_\xi(x)\diff x$$
+\end{definition}
 
+\subsubsection{Экспоненциальное распределение}
+
+\begin{definition}
+    Случайная величина $\tau$ распределена показательно (экспоненциально), если она моделирует ожидание следующего успеха в Пуассоновском процессе.
+\end{definition}
+\begin{definition}
+    Функцией плотности экспоненциально распределённой случайной величины называется:
+    $$f_\tau(t)=\begin{cases}
+        \lambda e^{-\lambda t},\,\,t\geq 0\\
+        0,\,\,t<0
+    \end{cases}$$
+\end{definition}
+\begin{statement}
+    Пусть $\tau\sim Exp(\lambda)$. Тогда:
+    $$F_\tau(t)=\begin{cases}
+        1-e^{-\lambda t},\,\,t\geq 0\\
+        0,\,\,t<0
+    \end{cases}$$
+\end{statement}
+\begin{proof}
+    $$F_\tau(t)=\int_{0}^{t}\lambda e^{-\lambda \hat{t}}\diff \hat{t}=\begin{vmatrix}
+    x=-\lambda t\\
+    \diff x=-\lambda\diff \hat{t}
+    \end{vmatrix}=-\int_{0}^{-\lambda t}e^x\diff x=-e^x\Big|_0^{-\lambda t}=1-e^{-\lambda t}$$
+\end{proof}
+\begin{statement}
+    Пусть $\tau\sim Exp(\lambda)$. Тогда:
+    $$\E(\tau)=\frac{1}{\lambda};\,\,\,\D(\tau)=\frac{1}{\lambda^2}$$
+\end{statement}
+\begin{statement}[Независимость от приращений]
+    Пусть $\tau\sim Exp(\lambda)$. Тогда:
+    $$\prob(\tau>t_1+t_2,\,|\,\tau>t_1)=\prob(\tau>t_2)$$
+\end{statement}
+\begin{proof}
+    \begin{multline*}
+        \prob(\tau>t_1+t_2,\,|\,\tau>t_1)=\frac{\prob(\tau>t_1+t_2)}{\prob(\tau>t_1)}=\\=\frac{1-\prob(\tau\leq t_1+t_2)}{1-\prob(\tau\leq t_1)}=\frac{1-(1-e^{-\lambda(t_1+t_2)})}{1-(1-e^{-\lambda t_1})}=\frac{e^{-\lambda(t_1+t_2)}}{e^{-\lambda t_1}}=\\=e^{-\lambda t_2}=1-(1-e^{-\lambda t_2})=\prob(\tau>t_2)
+    \end{multline*}
+\end{proof}
 \end{document}

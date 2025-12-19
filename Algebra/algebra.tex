@@ -389,16 +389,18 @@
     У всякой последовательности есть монотонная подпоследовательность.
 \end{statement}
 \begin{definition}
-    Число $A$ называется пределом последовательности $a_n$, если:
-    $$A=\lim_{n\to\infty}a_n=\limsup\limits_{n\to\infty}a_n=\liminf\limits_{n\to\infty}a_n$$
+    Последовательность $a_n$ называется бесконечно малой, если $\lim\limits_{n\to\infty}a_n=0$.
 \end{definition}
-\begin{definition}
-    Число $A$ называется пределом последовательности $a_n$, если $\forall\,\varepsilon>0$ почти все элементы последовательности принадлежат $U_\varepsilon(A)$.
-\end{definition}
-\begin{definition}
-    Число $A$ называется пределом последовательности $a_n$, если:
-    $$\forall\,\varepsilon>0\,\,\exists\,n_0\in\N:\,\forall\,n>n_0,\,n\in\N\,\,|a_n-A|<\varepsilon$$
-\end{definition}
+\begin{theorem}
+    Пусть $\alpha_n$ -- бесконечно малая последовательность, тогда:
+    $$\lim_{n\to\infty}=A\Longleftrightarrow a_n=A+\alpha_n$$
+\end{theorem}
+\begin{theorem}
+    Пусть $a_n$ сходится, $\alpha_n$ -- бесконечно малая. Тогда $b_n=a_n\cdot\alpha_n$ -- бесконечно малая.
+\end{theorem}
+\begin{proof}
+    $$\forall\,\varepsilon>0\,\,\exists\,N:\,\forall\,n>N\,\,|\alpha_n|<\frac{\varepsilon}{c}\Longrightarrow\forall\,n>N\,\,|a_n\cdot\alpha_n|<c\cdot\frac{\varepsilon}{c}=\varepsilon$$
+\end{proof}
 
 \subsection{Прогрессии}
 
@@ -462,47 +464,35 @@
     \end{align*}
 \end{proof}
 
-\section{Эквивалентность и группы}
+\subsection{Пределы последовательностей}
 
 \begin{definition}
-    Пусть $M$ -- множество, тогда множество $R \subset \{(a,\,b)\,|\,a,\,b\in M\}$ упорядоченных пар элементов $M$ называется бинарным отношением на $M$. 
-\end{definition}
-
-\begin{definition}
-    Бинарное отношение называется отношением эквивалентности, если оно удовлетворяет свойствам:
-    \begin{align*}
-        1.\,\,&\text{Рефлексивность } a\sim a\\
-        2.\,\,&\text{Симметричность } a\sim b \Longleftrightarrow b\sim a\\
-        3.\,\,&\text{Транзитивность } a\sim b,\, b\sim c \Longleftrightarrow a\sim c
-    \end{align*}
-\end{definition}
-\begin{theorem}[Малая теорема Ферма]
-    $\forall n\in \N,\, p\in \prob:\, n^{p-1}\equiv_p 1$
-\end{theorem}
-\begin{definition}
-    Бинарной операцией $\times$ на множестве $M$ называется отображение из множества упорядоченных пар $M^2=\{(a,\,b)\,|\,a,\,b\in M\}$ в множество $M$.
+    Число $A$ называется пределом последовательности $a_n$, если:
+    $$A=\lim_{n\to\infty}a_n=\limsup\limits_{n\to\infty}a_n=\liminf\limits_{n\to\infty}a_n$$
 \end{definition}
 \begin{definition}
-    Пара $G(M;\,\times)$, $M$ -- множество, $\times$ -- бинарная операция, называется группой, если выполняются свойства:
-    \begin{align*}
-        1.\,\,&\forall a,\,b\in M:\,(a\times b)\in M\\
-        2.\,\,&\exists\, e\in M\,\,\,\forall a\in M:\, e\times a=a\\
-        3.\,\,&\forall a\in M\,\,\, \exists\, a^{-1}\in M:\, a\times a^{-1}=a^{-1}\times a=e\\
-        4.\,\,&\forall a,\,b,\,c \in M:\,(a\times b)\times c=a\times(b\times c)= (a\times c)\times b
-    \end{align*}
+    Число $A$ называется пределом последовательности $a_n$, если $\forall\,\varepsilon>0$ почти все элементы последовательности принадлежат $U_\varepsilon(A)$.
 \end{definition}
-
-\section{Пределы}
-
 \begin{definition}
-    $A$ называется пределом $(x_n)$, если:
-    $$\forall \varepsilon >0\,\,\,\exists\,N\in\N:\,\forall n>N\,\,\,|x_n-A|<\varepsilon$$
+    Число $A$ называется пределом последовательности $a_n$, если:
+    $$\forall\,\varepsilon>0\,\,\exists\,n_0\in\N:\,\forall\,n>n_0,\,n\in\N\,\,|a_n-A|<\varepsilon$$
 \end{definition}
 \begin{theorem}
-    $$\lim_{n\to\infty}(x_n+y_n)=\lim_{n\to\infty}(x_n)+\lim_{n\to\infty}(y_n)$$
+    Пусть $\lim\limits_{n\to\infty}a_n=A$; $\lim\limits_{n\to\infty}b_n=B$. Тогда:
+    $$\lim\limits_{n\to\infty}(a_n+b_n)=\lim\limits_{n\to\infty}a_n+\lim\limits_{n\to\infty}b_n=A+B$$
 \end{theorem}
 \begin{proof}
-    Пусть $x_n\to a;\,y_n\to b$. По определению $N_a(\varepsilon):\,\forall n>N_a(\varepsilon)\,\,\,|x_n-a|<\varepsilon,\,N_b(\varepsilon):\,\forall n>N_b(\varepsilon)\,\,\,|y_n-b|<\varepsilon$. Рассмотрим $N_c(\varepsilon):\,\forall n>N_c(\varepsilon)\,\,\,|x_n+y_n-a-b|<\varepsilon:\,|x_n+y_n-a-b|\leq|x_n-a|+|y_n-b|\leq 2\varepsilon$ при $N_c=\max(N_a(\varepsilon);\,N_b(\varepsilon))$, то есть $2N_c(\varepsilon)$ -- это номер, с которого утверждение точно выполняется.
+    \begin{multline*}
+        \forall\,\varepsilon>0\,\,\exists\,N_1:\,\forall\,n>N_1\,\,|a_n-A|<\frac{\varepsilon}{2};\,\,\exists\,N_2:\,\forall\,n>N_2\,\,|b_n-B|<\frac{\varepsilon}{2}\Longrightarrow\\
+        \Longrightarrow\forall\,n>N=\max(N_1;N_2)\,\,|a_n+b_n-A-B|\leq |a_n-A|+|b_n-B|=\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon
+    \end{multline*}
+\end{proof}
+\begin{theorem}
+    Пусть $\lim\limits_{n\to\infty}a_n=A$; $\lim\limits_{n\to\infty}b_n=B$. Тогда:
+    $$\lim\limits_{n\to\infty}(a_n\cdot b_n)=\lim\limits_{n\to\infty}a_n\cdot\lim\limits_{n\to\infty}b_n=AB$$
+\end{theorem}
+\begin{proof}
+    $$\lim_{n\to\infty}(a_n\cdot b_n)=\lim_{n\to\infty}((A+\alpha_n)(B+\beta_n))=\lim_{n\to\infty}(AB+A\beta_n+B\alpha_n+\alpha_n\beta_n)=AB$$
 \end{proof}
 \begin{theorem}[Теорема Вейерштрасса]
     Пусть $(x_n)$ монотонна, тогда:
@@ -535,7 +525,39 @@
     $$\left(\dfrac{n^2+2n+1}{n^2+2n}\right)^{n+1}=\left(1+\dfrac{1}{n^2+2n}\right)^{n+1}\geq1+\dfrac{n+1}{n^2+2n}=\dfrac{n^3+3n+1}{n^2+2n}$$
     То есть $\left(\dfrac{n^2+2n}{n^2+2n+1}\right)^{n+1}<\dfrac{n^2+2n}{n^3+3n+1}$, а значит $E_n$ монотонно возрастает. Тогда по теореме Вейерштрасса $\exists!$ предел $E_n$, а значит $\exists!$ предел $e_n$.
 \end{proof}
+
+\section{Эквивалентность и группы}
+
+\begin{definition}
+    Пусть $M$ -- множество, тогда множество $R \subset \{(a,\,b)\,|\,a,\,b\in M\}$ упорядоченных пар элементов $M$ называется бинарным отношением на $M$. 
+\end{definition}
+
+\begin{definition}
+    Бинарное отношение называется отношением эквивалентности, если оно удовлетворяет свойствам:
+    \begin{align*}
+        1.\,\,&\text{Рефлексивность } a\sim a\\
+        2.\,\,&\text{Симметричность } a\sim b \Longleftrightarrow b\sim a\\
+        3.\,\,&\text{Транзитивность } a\sim b,\, b\sim c \Longleftrightarrow a\sim c
+    \end{align*}
+\end{definition}
+\begin{theorem}[Малая теорема Ферма]
+    $\forall n\in \N,\, p\in \prob:\, n^{p-1}\equiv_p 1$
+\end{theorem}
+\begin{definition}
+    Бинарной операцией $\times$ на множестве $M$ называется отображение из множества упорядоченных пар $M^2=\{(a,\,b)\,|\,a,\,b\in M\}$ в множество $M$.
+\end{definition}
+\begin{definition}
+    Пара $G(M;\,\times)$, $M$ -- множество, $\times$ -- бинарная операция, называется группой, если выполняются свойства:
+    \begin{align*}
+        1.\,\,&\forall a,\,b\in M:\,(a\times b)\in M\\
+        2.\,\,&\exists\, e\in M\,\,\,\forall a\in M:\, e\times a=a\\
+        3.\,\,&\forall a\in M\,\,\, \exists\, a^{-1}\in M:\, a\times a^{-1}=a^{-1}\times a=e\\
+        4.\,\,&\forall a,\,b,\,c \in M:\,(a\times b)\times c=a\times(b\times c)= (a\times c)\times b
+    \end{align*}
+\end{definition}
+
 \section{Тригонометрия}
+
 \begin{definition}
     Синусом угла в прямоугольном треугольнике называется отношение его противолежащего катета к гипотенузе.
 \end{definition}
