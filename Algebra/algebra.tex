@@ -388,19 +388,6 @@
 \begin{statement}
     У всякой последовательности есть монотонная подпоследовательность.
 \end{statement}
-\begin{definition}
-    Последовательность $a_n$ называется бесконечно малой, если $\lim\limits_{n\to\infty}a_n=0$.
-\end{definition}
-\begin{theorem}
-    Пусть $\alpha_n$ -- бесконечно малая последовательность, тогда:
-    $$\lim_{n\to\infty}=A\Longleftrightarrow a_n=A+\alpha_n$$
-\end{theorem}
-\begin{theorem}
-    Пусть $a_n$ сходится, $\alpha_n$ -- бесконечно малая. Тогда $b_n=a_n\cdot\alpha_n$ -- бесконечно малая.
-\end{theorem}
-\begin{proof}
-    $$\forall\,\varepsilon>0\,\,\exists\,N:\,\forall\,n>N\,\,|\alpha_n|<\frac{\varepsilon}{c}\Longrightarrow\forall\,n>N\,\,|a_n\cdot\alpha_n|<c\cdot\frac{\varepsilon}{c}=\varepsilon$$
-\end{proof}
 
 \subsection{Прогрессии}
 
@@ -487,6 +474,19 @@
         \Longrightarrow\forall\,n>N=\max(N_1;N_2)\,\,|a_n+b_n-A-B|\leq |a_n-A|+|b_n-B|=\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon
     \end{multline*}
 \end{proof}
+\begin{definition}
+    Последовательность $a_n$ называется бесконечно малой, если $\lim\limits_{n\to\infty}a_n=0$.
+\end{definition}
+\begin{theorem}
+    Пусть $\alpha_n$ -- бесконечно малая последовательность, тогда:
+    $$\lim_{n\to\infty}=A\Longleftrightarrow a_n=A+\alpha_n$$
+\end{theorem}
+\begin{theorem}
+    Пусть $a_n$ сходится, $\alpha_n$ -- бесконечно малая. Тогда $b_n=a_n\cdot\alpha_n$ -- бесконечно малая.
+\end{theorem}
+\begin{proof}
+    $$\forall\,\varepsilon>0\,\,\exists\,N:\,\forall\,n>N\,\,|\alpha_n|<\frac{\varepsilon}{c}\Longrightarrow\forall\,n>N\,\,|a_n\cdot\alpha_n|<c\cdot\frac{\varepsilon}{c}=\varepsilon$$
+\end{proof}
 \begin{theorem}
     Пусть $\lim\limits_{n\to\infty}a_n=A$; $\lim\limits_{n\to\infty}b_n=B$. Тогда:
     $$\lim\limits_{n\to\infty}(a_n\cdot b_n)=\lim\limits_{n\to\infty}a_n\cdot\lim\limits_{n\to\infty}b_n=AB$$
@@ -495,18 +495,22 @@
     $$\lim_{n\to\infty}(a_n\cdot b_n)=\lim_{n\to\infty}((A+\alpha_n)(B+\beta_n))=\lim_{n\to\infty}(AB+A\beta_n+B\alpha_n+\alpha_n\beta_n)=AB$$
 \end{proof}
 \begin{theorem}[Теорема Вейерштрасса]
-    Пусть $(x_n)$ монотонна, тогда:
+    Пусть $x_n$ монотонна, тогда:
     \begin{align*}
         1.\,\,&\text{Она имеет предел в }\bar{\R}=\R\cup\{-\infty;\,+\infty\}\\
         2.\,\,&\text{Если она ограничена, то она имеет предел в }\R
     \end{align*}
 \end{theorem}
 \begin{proof}
-    Пусть $(x_n)$ монотонно возрастает. По определению монотонно возрастающей последовательности: $\forall n:\, x_{n+1}>x_n$, пусть $(x_n)$ не ограничена, то есть $\nexists\,m:\,\forall n\,\,\,x_n<m$, тогда $\sup(x_n)=+\infty$, а значит $(x_n)\to \infty$. Пусть $\exists\,m:\,\forall n \,\,\,x_n\leq m$ и $m=\sup(x_n)$. Тогда $m=\lim_{n\to\infty}(x_n)$. Доказательство для монотонно убывающей последовательности аналогично.
+    Пусть $x_n$ монотонно возрастает. По определению $\forall n:\, x_{n+1}>x_n$. Пусть $x_n$ не ограничена, то есть $\nexists\,m:\,\forall n\,\,\,x_n<m$, тогда $\sup(x_n)=+\infty$, а значит $x_n\to \infty$. Пусть $\exists\,m:\,\forall n \,\,\,x_n\leq m$ и $m=\sup(x_n)$. Тогда $m=\lim\limits_{n\to\infty}x_n$. Доказательство для монотонно убывающей последовательности аналогично.
 \end{proof}
-\begin{theorem}
-    Пусть $(x_n)$, $(y_n)$, $(z_n)$ -- последовательности, причем $x_n\leq y_n\leq z_n$, кроме того $\lim_{n\to\infty}(x_n)=a=\lim_{n\to\infty}(z_n)$, тогда $\lim_{n\to\infty}(y_n)=a$.
+\begin{theorem}[Теорема о двух милиционерах]
+    Пусть даны последовательности: $x_n\leq y_n\leq z_n$; $\lim\limits_{n\to\infty}x_n=\lim\limits_{n\to\infty}z_n=A$, тогда:
+    $$\lim_{n\to\infty}x_n=\lim_{n\to\infty}y_n=\lim_{n\to\infty}z_n=A$$
 \end{theorem}
+\begin{proof}
+    $$\forall\,\varepsilon>0\,\,\exists\,N:\,\forall\,n>N\,\,|x_n-A|<\varepsilon;\,\,|z_n-A|<\varepsilon\Longrightarrow|x_n-A|\leq|y_n-A|\leq|z_n-A|<\varepsilon$$
+\end{proof}
 \begin{lemma}[Неравенство Бернулли]
     $$(1+x)^n\geq 1+xn,\,n\in \N,\,x>0$$
 \end{lemma}
@@ -518,12 +522,14 @@
     $$e=\lim_{n\to \infty}\left(1+\dfrac{1}{n}\right)^n$$
 \end{definition}
 \begin{proof}
-    Рассмотрим $E_n=\left(1+\dfrac{1}{n}\right)^{n+1}=\left(\dfrac{n+1}{n}\right)\cdot e_n$:
-    $$\left(1+\dfrac{1}{n}\right)^{n+1}\geq 1+\dfrac{n+1}{n}>2\text{ -- последовательность ограничена снизу.}$$
+    Рассмотрим последовательность $E_n$:
+    $$E_n=\left(\dfrac{n+1}{n}\right)\cdot e_n=\left(1+\dfrac{1}{n}\right)^{n+1}\geq 1+\dfrac{n+1}{n};\,\,\,2<2+\frac{1}{n}\leq3$$
     $$\dfrac{E_{n+1}}{E_n}=\dfrac{\left(1+\dfrac{1}{n+1}\right)^{n+2}}{\left(1+\dfrac{1}{n}\right)^{n+1}}=\dfrac{\left(\dfrac{n+2}{n+1}\right)^{n+2}}{\left(\dfrac{n+1}{n}\right)^{n+1}}=\left(\dfrac{n+2}{n+1}\right)\cdot\left(\dfrac{n^2+2n}{n^2+2n+1}\right)^{n+1}$$
-    Рассмотрим $\left(\dfrac{n^2+2n+1}{n^2+2n}\right)^{n+1}$ и используем неравенство Бернулли:
+    Рассмотрим последовательность, в которой поменяем местами числитель и знаменатель:
     $$\left(\dfrac{n^2+2n+1}{n^2+2n}\right)^{n+1}=\left(1+\dfrac{1}{n^2+2n}\right)^{n+1}\geq1+\dfrac{n+1}{n^2+2n}=\dfrac{n^3+3n+1}{n^2+2n}$$
-    То есть $\left(\dfrac{n^2+2n}{n^2+2n+1}\right)^{n+1}<\dfrac{n^2+2n}{n^3+3n+1}$, а значит $E_n$ монотонно возрастает. Тогда по теореме Вейерштрасса $\exists!$ предел $E_n$, а значит $\exists!$ предел $e_n$.
+    Вернувшись к изначальной последовательности, получаем:
+    $$\left(\dfrac{n^2+2n}{n^2+2n+1}\right)^{n+1}<\dfrac{n^2+2n}{n^3+3n+1}$$
+    Таким образом, $E_{n+1}>E_n$, а значит $E_n$ монотонно возрастает, при этом она ограничена, а значит по теореме Вейерштрасса имеет предел, то есть $e_n$ также имеет предел.
 \end{proof}
 
 \section{Эквивалентность и группы}
