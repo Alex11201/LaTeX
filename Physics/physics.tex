@@ -24,6 +24,7 @@
 \newtheorem{lemma}[theorem]{Лемма}
 \newtheorem{definition}{Определение}
 \newtheorem{law}[theorem]{Закон}
+\newtheorem{postulate}[theorem]{Постулат}
 \newtheorem{formula}[theorem]{Формула}
 \newtheorem{statement}[theorem]{Утверждение}
 \newtheorem{consequence}{Следствие}[subsection]
@@ -123,6 +124,7 @@
             \item Магнитный поток: [Вб] -- вебер.
             \item Магнитная индукция: [Тл] -- тесла.
             \item Индуктивность: [Гн] -- генри.
+            \item Оптическая сила линзы: [дптр] -- диоптрия.
         \end{itemize}
     \end{multicols}
 \end{center}
@@ -661,39 +663,32 @@
 \section{Оптика}
 
 \begin{definition}
-    Свет — электромагнитное излучение, воспринимаемое человеческим глазом.
-\end{definition}
-\begin{center}
-    \begin{tikzpicture}
-        \draw[white] (-8,0) -- (8,0);
-        \draw (0,0) node[above] {\textbf{Источники света}};
-        \draw[-{Stealth[scale = 1.5]}] (-0.25,0) -- (-0.25,-0.5) -- (-5,-0.5) -- (-5,-1);
-        \draw[-{Stealth[scale = 1.5]}] (0.25,0) -- (0.25,-0.5) -- (5,-0.5) -- (5,-1);
-        \draw (-5,-1) node[below] {Естественные};
-        \draw (5,-1) node[below] {Исскуственные};
-    \end{tikzpicture}
-\end{center}
-\begin{definition}
-    Точечный источник света -- источник света, размерами которого можно пренебречь.
+    Свет — электромагнитная волна
 \end{definition}
 \begin{definition}
-    Световой луч -- линия, вдоль которой рассматривается свет.
-\end{definition}
-\begin{definition}
-    Тень -- область пространства, куда не попадает свет.
-\end{definition}
-\begin{definition}
-    Полутень -- слабоосвещенное пространство.
-\end{definition}
-\begin{definition}
-    Плоское зеркало -- плоская поверхность, отражающая свет.
-\end{definition}
-\begin{definition}
-    Абсолютный показатель преломления -- отношение скорости света в веществе к скорости света в вакууме.
+    Абсолютный показатель преломления -- отношение скорости распространения электромагнитной волны в среде к скорости света в вакууме:
+    $$n=\frac{c}{v_{\text{в среде}}}$$
+    $n$ -- абсолютный показатель преломления, $c$ -- скорость света в вакууме ($\approx 3\cdot 10^8$ м/с), $v_{\text{в среде}}$ [м/с] -- скорость распространения электромагнитной волны в среде.
 \end{definition}
 \begin{definition}
     Относительный показатель преломления -- отношение абсолютных показателей преломления двух сред.
 \end{definition}
+\begin{definition}
+    Световой луч -- линия, вдоль которой распространяется энергия, переносимая световой волной.
+\end{definition}
+\begin{postulate}[Закон прямолинейного распространения света]
+    В однородной среде световые лучи -- прямые линии.
+\end{postulate}
+\begin{definition}
+    Тень -- область пространства, куда не попадает свет.
+\end{definition}
+\begin{definition}
+    Полутень -- область пространства, куда попадает только часть света от протяженного источника.
+\end{definition}
+\begin{postulate}[Закон независимости лучей]
+    Световые лучи не взаимодействуют друг с другом.
+\end{postulate}
+
 \begin{center}
     \begin{tikzpicture}
         \coordinate (O) at (0,0);
@@ -702,35 +697,53 @@
         \coordinate (C) at (0,-3);
         \coordinate (D) at (1.5,-3);
         \coordinate (F) at (4,0);
+        \coordinate (E) at (2.5,2);
         \draw (-4,0) -- (4,0);
         \draw (0,-3) -- (0,3);
         \draw (A) -- (O);
         \draw (D) -- (O);
+        \draw (E) -- (O);
         \fill (O) circle (1.8pt);
         \tkzMarkAngle[size=.65cm](B,O,A);
         \tkzLabelAngle(B,O,A){$\alpha$};
+        \tkzMarkAngle[size=.45cm](E,O,B);
+        \tkzMarkAngle[size=.55cm](E,O,B);
+        \tkzLabelAngle(E,O,B){$\beta$};
         \tkzMarkAngle[size=.65cm](C,O,D);
         \tkzMarkAngle[size=.55cm](C,O,D);
-        \tkzLabelAngle(C,O,D){$\beta$};
-        \tkzMarkRightAngle(F,O,B);
+        \tkzMarkAngle[size=.45cm](C,O,D);
+        \tkzLabelAngle(C,O,D){$\gamma$};
         \draw (-4,0) node[above right] {$n_1$};
         \draw (-4,0) node[below right] {$n_2$};
-        \node[right, align=left] at (5,.75) {
+        \node[right, align=left] at (5,0) {
+              $n_i$ -- коэффициент преломления\\
               $\alpha$ -- угол падения\\
-              $\beta$ -- угол преломления\\
-              $n$ -- коэффициент преломления
+              $\beta$ -- угол отражения\\
+              $\gamma$ -- угол преломления\\
+              $n_1<n_2\Longrightarrow\alpha<\gamma;\,\,n_1>n_2\Longrightarrow\alpha>\gamma$
         };
-        \draw (6.25,-1) node[right] {$\dfrac{\sin \alpha}{\sin \beta}=n_{21}=\dfrac{n_2}{n_1}$};
     \end{tikzpicture}
 \end{center}
+\begin{postulate}[Закон отражения света]
+    Угол падения луча равен его углу отражения.
+\end{postulate}
+\begin{postulate}[Закон Снеллиуса]
+    $$n_1\sin\alpha=n_2\sin\gamma$$
+\end{postulate}
 \begin{definition}
     Действительное изображение -- изображение, находящееся на пересечении лучей, выходящих из источника света.
 \end{definition}
 \begin{definition}
     Мнимое изображение -- изображение, находящееся на пересечении продолжений лучей.
 \end{definition}
+\begin{definition}
+    Полное внутренее отражение -- явление, при котором свет при переходе в менее плотную среду полностью отражается, не преломляясь. 
+\end{definition}
+\begin{definition}
+    Критический угол -- угол отражения, при котором происходит полное внутренее отражение.
+\end{definition}
 \begin{formula}
-    $$n=\left[\frac{360^\circ-\alpha}{\alpha}\right]$$
+    $$n=\left\lfloor\frac{360^\circ-\alpha}{\alpha}\right\rfloor$$
     \begin{center}
         \begin{minipage}{12cm}
             \centering
@@ -797,6 +810,27 @@
 \begin{definition}
     Фокальной плоскостью называется плоскость, перпендикулярная главной оптической оси, проходящая через её главный фокус.
 \end{definition}
+\begin{definition}
+    Оптическая сила линзы -- мера её способности преломлять свет.
+    $$D=\frac{1}{F}$$
+    $D$ [дптр] -- оптическая сила линзы, $F$ [м] -- фокусное расстояние линзы.
+\end{definition}
+\begin{formula}[Формула тонкой линзы]
+    $$\pm\frac{1}{F}=\pm\frac{1}{f}+\frac{1}{d}$$
+    \begin{center}
+        \begin{minipage}{12cm}
+            $F$ [м] -- фокусное расстояние (берётся положительное, если линза собирающая и отрицательное, если рассеивающая), $f$ [м] -- расстояние от предмета до линзы (берётся положительное, если изображение действительное и отрицательное, если мнимое), $d$ [м] -- расстояние от изображения до линзы.
+        \end{minipage}
+    \end{center}
+\end{formula}
+\begin{formula}
+    $$\Gamma=\frac{f}{d}$$
+    \begin{center}
+        \begin{minipage}{12cm}
+            $\Gamma$ -- поперечное увеличение линзы, $f$ [м] –- расстояние от предмета до линзы, $d$ [м] -- расстояние от изображения до линзы.
+        \end{minipage}
+    \end{center}
+\end{formula}
 
 \section{Механика}
 
