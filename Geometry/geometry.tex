@@ -109,6 +109,490 @@
 \label{toc}
 \newpage
 
+\section{Планиметрия}
+
+\subsection{Введение}
+
+\begin{statement}
+	В прямоугольном $\triangle ABC$ с прямым углом $C$ и сторонами $a$, $b$ и $c$ радиус вписанной окружности равен $p-c$, радиус вневписанной окружности, касающейся гипотенузы, равен $p$.
+\end{statement}
+\begin{proof}
+	\hfill
+	\begin{center}
+		\begin{tikzpicture}
+			\coordinate (C) at (0,0);
+			\coordinate (A) at (0,4);
+			\coordinate (B) at (3,0);
+			\coordinate (Ic) at (6,6);
+			\coordinate (I) at (1,1);
+			\coordinate (A') at (0,6);
+			\coordinate (B') at (6,0);
+			\coordinate (K) at ($(A)!.4!(B)$);
+			\draw (A) -- (B) -- (C) -- cycle;
+			\draw[dashed] (A) -- (A') -- (Ic) -- (B') -- (B);
+			\draw ([shift=(180:6)]6,6) arc (180:270:6);
+			\draw (I) circle (1);
+			\draw (C) node[below left] {$C$};
+			\draw (A) node[left] {$A$};
+			\draw (B) node[below] {$B$};
+			\draw (I) node[above right] {$I$};
+			\draw (K) node[above right] {$K$};
+			\draw (Ic) node[above right] {$I_C$};
+			\draw (A') node[above left] {$D$};
+			\draw (B') node[below right] {$E$};
+			\coordinate (F) at ($(A)!.6!(B)$);
+			\tkzMarkSegment[mark=|](C,(.7,0));
+			\tkzMarkSegment[mark=|](C,(0,.7));
+			\tkzMarkSegment[mark=||](B,(1,0));
+			\tkzMarkSegment[mark=||](B,F);
+			\tkzMarkSegment[mark=||](B,B');
+			\tkzMarkSegment[mark=|||](A,(0,1));
+			\tkzMarkSegment[mark=|||](A,F);
+			\tkzMarkSegment[mark=|||](A,A');
+			\foreach \point in {(A), (B), (C), (I), (Ic), (K), (A'), (B')}{
+		\fill \point circle (1.8pt);
+	}
+        \end{tikzpicture}
+        \end{center}
+		Пусть отрезки касательных из вершин $A$, $B$ и $C$ равны $x$, $y$ и $z$ соответственно. Тогда радиус вневписанной окружности равен $CE=x+y+c=p$. Радиус вписанной окружности равен $z=CE-x-y=CE-AB=p-c$.
+\end{proof}
+\begin{statement}
+	Если медиана в треугольнике равна половине стороны, к которой она проведена, треугольник прямоугольный.
+\end{statement}
+\begin{proof}
+	\hfill
+	\begin{center}
+		\begin{tikzpicture}
+			\def\r{3.5}
+			\coordinate (A) at (180:\r);
+			\coordinate (B) at (0:\r);
+			\coordinate (C) at (120:\r);
+			\coordinate (M) at (0,0) node[below] {$M$};
+			\draw (A) -- (B) -- (C) -- cycle;
+			\draw (C) -- (M);
+			\draw (A) node[below left] {$A$};
+			\draw (B) node[below right] {$B$};
+			\draw (C) node[above] {$C$};
+			\tkzMarkSegment[mark=|](A,M);
+			\tkzMarkSegment[mark=|](M,B);
+			\tkzMarkSegment[mark=|](C,M);
+			\tkzMarkRightAngle(B,C,A);
+			\foreach \point in {(A), (B), (C), (M)}{
+		\fill \point circle (1.8pt);
+	}
+		\end{tikzpicture}
+	\end{center}
+	$\triangle ACM$ -- равнобедренный, так как $AM=CM$. Значит, $\angle CAM=\angle ACM=\alpha$. Аналогично $\angle MBC=\angle BCM=\beta$ в равнобедренном $\triangle CMB$. Тогда по сумме углов треугольника $2\alpha+2\beta=180^\circ\Longrightarrow \alpha+\beta=90^\circ\Longrightarrow \angle ACB=90^\circ$.
+\end{proof}
+\begin{statement}
+	Биссектрисы треугольника конкурентны.
+\end{statement}
+\begin{proof}
+	Пусть две биссектрисы пересеклись в точке $I$. Опустим из неё перпендикуляры на стороны треугольника, тогда в силу равноудалённости $I$ от сторон двух углов, все три перпендикуляра равны, а значит $I$ равноудалена от сторон третьего угла, то есть лежит на его биссектрисе.
+\end{proof}
+\begin{statement}
+  	Серединные перпендикуляры треугольника конкурентны.
+\end{statement}
+\begin{proof}
+	Пусть два серединных перпендикуляра пересеклись в точке $O$. Соединим $O$ с вершинами треугольника. Эти отрезки равны в силу равноудалённости серединного перпендикуляра от концов отрезка, к которому он построен. Следовательно, $O$ равноудалена от вершин третьей стороны треугольника, а значит лежит на серединном перпендикуляре к ней.
+\end{proof}
+\begin{statement}
+	Высоты треугольника конкурентны.
+\end{statement}
+\begin{proof}
+	Проведём через вершины треугольника прямые, параллельные противоположным сторонам. В образованном треугольнике вершины исходного -- середины сторон, что следует из равенства параллелограммов, построенных на двух сторонах исходного треугольника. Тогда прямые, содержащие высоты исходного треугольника, по определению являются серединными перпендикулярами для образованного, а значит пересекаются в одной точке.
+\end{proof}
+\begin{statement}
+	Медианы треугольника конкурентны и делятся точкой их пересечения в отношении $2:1$, считая от вершины.
+\end{statement}
+\begin{proof}
+	\hfill
+	\begin{center}
+		\begin{tikzpicture}[scale=.8]
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (4.5,6);
+			\coordinate (C) at (7,0);
+			\coordinate (Ma) at (5.75,3);
+			\coordinate (Mc) at (2.25,3);
+			\coordinate (M) at ($(A)!.667!(Ma)$);
+			\coordinate (Nc) at ($(A)!.5!(M)$);
+			\coordinate (Na) at ($(C)!.5!(M)$);
+			\draw (A) -- (B) -- (C) -- cycle;
+			\draw (A) -- (Ma) -- (Mc) -- (C);
+			\draw (Ma) -- (Na);
+			\draw (Mc) -- (Nc);
+			\draw (Nc) -- (Na);
+			\draw (A) node[below left] {$A$};
+			\draw (B) node[above] {$B$};
+			\draw (C) node[below right] {$C$};
+			\draw (Mc) node[above left] {$M_C$};
+			\draw (Ma) node[above right] {$M_A$};
+			\draw (Nc) node[below] {$N_C$};
+			\draw (Na) node[below] {$N_A$};
+			\draw (M) node[above] {$M$};
+			\tkzMarkSegment[mark=|](Mc,Ma);
+			\tkzMarkSegment[mark=|](Nc,Na);
+			\foreach \point in {(A), (B), (C), (M), (Ma), (Mc), (Nc), (Na)}{
+			\fill \point circle (1.8pt);}
+		\end{tikzpicture}
+	\end{center}
+	Пусть медианы $AM_A$ и $CM_C$ треугольника $ABC$ пересекаются в точке $M$. Отметим $N_A$ и $N_C$ -- середины $AM$ и $CM$ соответственно. По свойству средней линии в $\triangle ABC$ и $\triangle AMC$: $M_CM_A=\frac{1}{2}AC=N_CN_A$, при этом $M_CM_A\parallel AC\parallel N_CN_A$, значит $M_CM_AN_AN_C$ -- параллелограмм, и диагонали в нём точкой пересечения делятся пополам. То есть:
+	$$\frac{AM}{MM_A}=\frac{AN_C+N_CM}{MM_A}=\frac{2}{1}$$
+	Аналогично третья медиана треугольника также проходит через $M$ и делится ей в отношении $2:1$, считая от вершины.
+\end{proof}
+
+\subsection{Углы, ассоциированные с окружностью}
+
+\begin{definition}
+	Центральным углом называется угол, вершина которого совпадает с центром окружности, а стороны являются радиусами.
+\end{definition}
+\begin{definition}
+	Вписанным углом называется угол, вершина которого лежит на окружности, а стороны являются хордами.
+\end{definition}
+\begin{statement}
+	Градусная мера вписанного угла равна половине градусной меры центрального угла, опирающегося на ту же дугу.
+\end{statement}
+\begin{proof}
+	\hfill
+	\begin{center}
+		\begin{tikzpicture}
+			\def\r{3}
+			\coordinate (O) at (0,0);
+			\coordinate (A) at (130:\r);
+			\coordinate (C) at (75:\r);
+			\coordinate (B) at (-105:\r);
+			\draw (A) -- (B) -- (C);
+			\draw (A) -- (O);
+			\draw ([shift=(C)]0,0) arc (75:130:\r);
+			\draw[dashed] ([shift=(A)]0,0) arc (-230:75:\r);
+			\draw (A) node[above left] {$A$};
+			\draw (C) node[above right] {$C$};
+			\draw (B) node[below left] {$B$};
+			\draw (O) node[below right] {$O$};
+			\tkzMarkSegment[mark=|](A,O);
+			\tkzMarkSegment[mark=|](B,O);
+			\tkzMarkAngle[size=.45cm](O,B,A);
+			\tkzLabelAngle(O,B,A){$\alpha$};
+			\tkzMarkAngle[size=.45cm](B,A,O);
+			\tkzMarkAngle[arc=ll,size=.45](C,O,A);
+			\tkzLabelAngle(C,O,A){$2\alpha$};
+			\foreach \point in {(A), (B), (C), (O)}{
+				\fill \point circle (1.8pt);
+			}
+		\end{tikzpicture}
+	\end{center}
+	Построим вписанный угол, опирающийся на ту же дугу $AC$ и проходящий через центр $O$ окружности, тогда в силу равенства радиусов будут образован равнобедренный треугольник $AOB$. По теореме о внешнем угле треугольника $\angle AOC=\angle ABC+\angle BAO=2\angle ABC$.
+\end{proof}
+\begin{statement}
+	Если сумма противоположных углов четырёхугольника равна $180^\circ$, он вписан.
+\end{statement}
+\begin{statement}
+	Если два угла четырёхугольника с вершинами в одной полуплоскости опираются на один отрезок и равны, данный четырёхугольник вписан.
+\end{statement}
+\begin{statement}
+	Пусть $AC$ и $BD$ -- диагонали четырёхугольника, $O$ -- их точка пересечения. Тогда если $AO\cdot OC=BO\cdot OD$, то данный четырёхугольник вписан.
+\end{statement}
+\begin{statement}
+	Величина угла, образованного пересечением хорд окружности, равна полусумме градусных мер дуг, заключённых между его сторонами.
+\end{statement}
+\begin{proof}
+	\hfill
+	\begin{center}
+		\begin{tikzpicture}
+			\def\r{3}
+			\coordinate (A) at (200:\r);
+			\coordinate (C) at (30:\r);
+			\coordinate (B) at (130:\r);
+			\coordinate (D) at (250:\r);
+			\tkzInterLL(A,C)(B,D);
+			\tkzGetPoint{E};
+			\draw (A) -- (C) -- (D) -- (B);
+			\draw ([shift=(C)]0,0) arc (30:130:\r);
+			\draw ([shift=(A)]0,0) arc (200:250:\r);
+			\draw[dashed] ([shift=(B)]0,0) arc (130:200:\r);
+			\draw[dashed] ([shift=(D)]0,0) arc (-110:30:\r);
+			\draw (A) node[below left] {$A$};
+			\draw (B) node[above left] {$B$};
+			\draw (C) node[above right] {$C$};
+			\draw (D) node[below] {$D$};
+			\draw (E) node[below right] {$E$};
+			\draw (80:\r) node[above] {$\varphi$};
+			\draw (225:\r) node[below left] {$\theta$};
+			\tkzMarkAngle[size=.45](C,E,B);
+			\tkzMarkAngle[arc=ll,size=.45](C,D,E);
+			\tkzMarkAngle[arc=lll,size=.45](A,C,D);
+			\foreach \point in {(A), (B), (C), (D), (E)} {
+				\fill \point circle (1.8pt);
+			}
+		\end{tikzpicture}
+	\end{center}
+	Пусть градусные меры дуг $CB$ и $AD$ равны $\varphi$ и $\theta$ соответственно. В силу вписанности углов $\angle BDC=\dfrac{\varphi}{2}$, $\angle ACD=\dfrac{\theta}{2}$, тогда $\angle BEC=\dfrac{\varphi+\theta}{2}$ как внешний угол $\triangle CDE$.
+\end{proof}
+\begin{statement}
+	Величина угла, образованного секущими, пересекающимися вне круга, равна полуразности градусных мер дуг, заключённых между его сторонами.
+\end{statement}
+\begin{proof}
+	\hfill
+	\begin{center}
+		\begin{tikzpicture}
+			\def\r{2.5}
+			\coordinate (A) at (200:\r);
+			\coordinate (B) at (7,-0.855);
+			\coordinate (C) at (119:\r);
+			\coordinate (D) at (-20:\r);
+			\coordinate (E) at (20:\r);
+			\draw (A) -- (B) -- (C) -- (D);
+			\draw ([shift=(C)]0,0) arc (119:200:\r);
+			\draw ([shift=(D)]0,0) arc (-20:20:\r);
+			\draw[dashed] ([shift=(E)]0,0) arc (20:119:\r);
+			\draw[dashed] ([shift=(A)]0,0) arc (200:340:\r);
+			\draw (A) node[below left] {$A$};
+			\draw (B) node[right] {$B$};
+			\draw (C) node[above left] {$C$};
+			\draw (D) node[below right] {$D$};
+			\draw (E) node[above right] {$E$};
+			\draw (159.5:\r) node[left] {$\varphi$};
+			\draw (0:\r) node[right] {$\theta$};
+			\tkzMarkAngle[size=.45](C,B,A);
+			\tkzMarkAngle[arc=ll,size=.45](C,D,A);
+			\tkzMarkAngle[arc=lll,size=.45](D,C,E);
+			\foreach \point in {(A), (B), (C), (D), (E)} {
+				\fill \point circle (1.8pt);
+			}
+		\end{tikzpicture}
+	\end{center}
+	Пусть градусные меры дуг $CA$ и $DE$ равны $\varphi$ и $\theta$ соответственно. В силу вписанности углов $\angle ADC=\dfrac{\varphi}{2}$, $\angle DCE=\dfrac{\theta}{2}$, тогда $\angle ABC=\dfrac{|\varphi-\theta|}{2}$ из суммы углов $\triangle BCD$.
+\end{proof}
+\begin{statement}
+	Величина угла, образованного касательной и хордой, проходящей через точку касания, равна половине величины дуги, заключённой между его сторонами.
+\end{statement}
+\begin{proof}
+	\hfill
+	\begin{center}
+		\begin{tikzpicture}
+			\def\r{3}
+			\coordinate (O) at (0,0);
+			\coordinate (A) at (-90:\r);
+			\coordinate (B) at (20:\r);
+			\coordinate (C) at (90:\r);
+			\coordinate (D) at (2,-\r);
+			\coordinate (D') at (-2,-\r);
+			\draw (A) -- (B) -- (C) -- cycle;
+			\draw ($(A)!-1.5!(D)$) -- ($(A)!1.5!(D)$);
+			\draw ([shift=(A)]0,0) arc (-90:20:\r);
+			\draw[dashed] ([shift=(B)]0,0) arc (20:270:\r);
+			\draw (A) node[below] {$A$};
+			\draw (B) node[above right] {$B$};
+			\draw (C) node[above] {$C$};
+			\draw (D) node[below] {$D$};
+			\draw (O) node[left] {$O$};
+			\tkzMarkRightAngle(C,B,A);
+			\tkzMarkRightAngle(D',A,C);
+			\tkzMarkAngle[size=.45](D,A,B);
+			\tkzLabelAngle(D,A,B){$\alpha$};
+			\tkzMarkAngle[size=.45](A,C,B);
+			\tkzLabelAngle(A,C,B){$\alpha$};
+			\draw (-35:\r) node[below right] {$2\alpha$};
+			\foreach \point in {(A), (B), (C), (D), (O)} {
+				\fill \point circle (1.8pt);
+			}
+		\end{tikzpicture}
+	\end{center}
+	Пусть градусная мера дуги, на которую опирается хорда $AB$, равна $2\alpha$. Возьмём точку $C$, диаметрально противоположную $A$. Тогда $\angle ACB=\alpha$ как вписанный, при этом $\angle ABC=90^\circ$, так как опирается на диаметр. $\angle CAD=90^\circ$ как радиус к касательной, тогда $\angle BAD=90^\circ-(90^\circ-\alpha)=\alpha$.
+\end{proof}
+
+\subsection{Пропорциональность отрезков}
+
+\begin{theorem}[Свойство биссектрисы]
+	Биссектриса угла треугольника делит противоположную сторону в отношении стягивающих его сторон.
+\end{theorem}
+\begin{proof}
+	\hfill
+	\begin{center}
+		\begin{tikzpicture}
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (4,3);
+			\coordinate (C) at (6,0);
+			\coordinate (D) at ($(A)!1.721!(B)$);
+			\coordinate (L) at ($(A)!.581!(C)$);
+			\draw (A) -- (C) -- (D) -- cycle;
+			\draw (L) -- (B) -- (C);
+			\draw (A) node[below left] {$A$};
+			\draw (B) node[above left] {$B$};
+			\draw (C) node[below right] {$C$};
+			\draw (D) node[above right] {$D$};
+			\draw (L) node[below] {$L$};
+			\tkzMarkAngle[size=.45](A,B,L);
+			\tkzMarkAngle[size=.45](L,B,C);
+			\tkzMarkAngle[size=.45](D,C,B);
+			\tkzMarkAngle[size=.45](B,D,C);
+			\tkzMarkSegment[mark=|](B,C);
+			\tkzMarkSegment[mark=|](B,D);
+			\foreach \point in {(A), (B), (C), (D), (L)} {
+				\fill \point circle (1.8pt);
+			}
+		\end{tikzpicture}
+	\end{center}
+	Проведём через точку $C$ треугольника $ABC$ прямую, параллельную биссектрисе $BL$ до пересечения со стороной $AB$ в точке $D$. Тогда $\angle BCD=\angle LBC$ как накрест лежащие, $\angle ABL=\angle BDC$ как соответственные. Значит, $\triangle BCD$ -- равнобедренный. По теореме о пропорциональных отрезках:
+	$$\frac{AL}{LC}=\frac{AB}{BD}=\frac{AB}{BC}$$
+\end{proof}
+\begin{statement}
+	Пусть хорды $AB$ и $CD$ пересекаются в точке $O$, тогда $AO\cdot OB=CO\cdot OD$
+\end{statement}
+\begin{proof}
+	\hfill
+	\begin{center}
+		\begin{tikzpicture}
+			\def\r{3}
+			\draw[dashed] (0,0) circle (\r);
+			\coordinate (A) at (210:\r);
+			\coordinate (B) at (40:\r);
+			\coordinate (C) at (130:\r);
+			\coordinate (D) at (280:\r);
+			\tkzInterLL(A,B)(C,D);
+			\tkzGetPoint{O};
+			\draw (A) node[below left] {$A$};
+			\draw (B) node[above right] {$B$};
+			\draw (C) node[above left] {$C$};
+			\draw (D) node[below right] {$D$};
+			\draw (O) node[above=5pt] {\hspace{6pt}$O$};
+			\tkzMarkAngle[size=.45](A,C,D);
+			\tkzMarkAngle[size=.45](A,B,D);
+			\tkzMarkAngle[size=.45, arc=ll](B,A,C);
+			\tkzMarkAngle[size=.45, arc=ll](B,D,C);
+			\draw (A) -- (C) -- (D) -- (B) -- cycle;
+			\foreach \point in {(A), (B), (C), (D), (O)} {
+				\fill \point circle (1.8pt);
+			}
+		\end{tikzpicture}
+	\end{center}
+	$\angle ACD=\angle ABD$, так как они опираются на одну дугу, аналогично $\angle CAB=\angle CDB$. Значит, $\triangle AOC\sim \triangle DOB$ по двум углам, откуда:
+	$$\frac{AO}{OD}=\frac{CO}{OB}\Longrightarrow AO\cdot OB=CO\cdot OD$$
+\end{proof}
+\begin{statement}
+	Пусть через точку $M$ проведены две секущие, пересекающие окружность в точках $A$, $B$ и $C$, $D$ соответственно. Тогда $MA\cdot MB=MC\cdot MD$.
+\end{statement}
+\begin{proof}
+	\hfill
+	\begin{center}
+		\begin{tikzpicture}
+			\def\r{2.5}
+			\coordinate (A) at (200:\r);
+			\coordinate (B) at (7,-0.855);
+			\coordinate (C) at (119:\r);
+			\coordinate (D) at (-20:\r);
+			\coordinate (E) at (20:\r);
+			\draw (A) -- (B) -- (C) --cycle;
+			\draw (E) -- (D);
+			\draw[dashed] (0,0) circle (\r);
+			\draw (A) node[below left] {$A$};
+			\draw (B) node[right] {$M$};
+			\draw (C) node[above left] {$C$};
+			\draw (D) node[below right] {$B$};
+			\draw (E) node[above right] {$D$};
+			\tkzMarkAngle[size=.45](C,B,A);
+			\tkzMarkAngle[arc=ll,size=.45](D,A,C);
+			\tkzMarkAngle[arc=ll,size=.45](D,E,B);
+			\foreach \point in {(A), (B), (C), (D), (E)} {
+				\fill \point circle (1.8pt);
+			}
+		\end{tikzpicture}
+	\end{center}
+	Четырёхугольник $ACDB$ вписан, следовательно, $\angle BDM=180^\circ-\angle CDB=180^\circ-(180^\circ-\angle CAB)=\angle CAB$. Тогда $\triangle BDM\sim \triangle CAM$ по двум углам ($\angle AMC$ общий), откуда:
+	$$\frac{MB}{MD}=\frac{MC}{MA}\Longrightarrow MA\cdot MB=MC\cdot MD$$
+\end{proof}
+\begin{statement}
+	Пусть через точку $M$ проведены касательная и секущая, касающаяся и пересекающая окружность в точках $K$ и $A$, $B$ соответственно. Тогда $MK^2=MA\cdot MB$.
+\end{statement}
+\begin{proof}
+	\hfill
+	\begin{center}
+		\begin{tikzpicture}
+			\def\r{3}
+			\coordinate (K) at (-90:\r);
+			\coordinate (A) at (210:\r);
+			\coordinate (B) at (60:\r);
+			\coordinate (K') at (-1,-\r);
+			\tkzInterLL(K,K')(A,B);
+			\tkzGetPoint{M};
+			\draw[dashed] (0,0) circle (\r);
+			\draw (A) -- (K) -- (B) -- (M) -- ($(M)!1.3!(K)$);
+			\draw (M) node[left] {$M$};
+			\draw (A) node[left=4pt] {$A$};
+			\draw (B) node[above right] {$B$};
+			\draw (K) node[below] {$K$};
+			\tkzMarkAngle[size=.45](K,M,B);
+			\tkzMarkAngle[arc=ll,size=.45](A,K,M);
+			\tkzMarkAngle[arc=ll,size=.45](M,B,K);
+			\foreach \point in {(A), (B), (M), (K)} {
+				\fill \point circle (1.8pt);
+			}
+		\end{tikzpicture}
+	\end{center}
+	$\angle AKM=\angle ABK$ как угол между хордой и касательной, значит $\triangle AMK\sim\triangle KMB$ по двум углам ($\angle BMK$ общий). Тогда:
+	$$\frac{MK}{MA}=\frac{MB}{MK}\Longrightarrow MK^2=MA\cdot MB$$
+\end{proof}
+\begin{lemma}[О бабочке]
+	Пусть хорды $AB$ и $CD$ пересекаются в середине $M$ хорды $EF$. Также пусть $K$ и $L$ -- точки пересечения $AC$ и $BD$ хорды $EF$ соответственно. Тогда $MK=ML$.
+\end{lemma}
+\begin{proof}
+	\hfill
+	\begin{center}
+		\begin{tikzpicture}
+			\def\r{3}
+			\coordinate (O) at (0,0);
+			\coordinate (A) at (110:\r);
+			\coordinate (E) at (150:\r);
+			\coordinate (F) at (30:\r);
+			\coordinate (M) at ($(E)!.5!(F)$);
+			\coordinate (D) at (55:\r);
+			\tkzInterLC(A,M)(O,D);
+			\tkzGetPoints{B}{t1};
+			\tkzInterLC(D,M)(O,A);
+			\tkzGetPoints{t2}{C};
+			\tkzInterLL(E,F)(A,C);
+			\tkzGetPoint{K};
+			\tkzInterLL(E,F)(D,B);
+			\tkzGetPoint{L};
+			\tkzDefLine[parallel=through K](B,D);
+			\tkzGetPoint{x};
+			\tkzInterLL(K,x)(C,D);
+			\tkzGetPoint{Q};
+			\tkzInterLL(K,x)(A,B);
+			\tkzGetPoint{P};
+			\draw[dashed] (O) circle (\r);
+			\draw (A) -- (B) -- (D) -- (C) -- cycle;
+			\draw (E) -- (F);
+			\draw (A) -- (P) -- (Q);
+			\draw (A) node[above=3pt] {\hspace{3pt}$A$};
+			\draw (B) node[below right] {$B$};
+			\draw (C) node[left] {$C$};
+			\draw (D) node[above right] {$D$};
+			\draw (E) node[left] {$E$};
+			\draw (F) node[right] {$F$};
+			\draw (M) node[above=3pt] {\hspace{4.5pt}$M$};
+			\draw (K) node[below right] {$K$};
+			\draw (L) node[below left] {$L$};
+			\draw (P) node[above left] {$P$};
+			\draw (Q) node[below] {$Q$};
+			\tkzMarkAngle[size=.35](M,Q,K);
+			\tkzMarkAngle[size=.35](M,D,L);
+			\tkzMarkAngle[arc=ll,size=.45](K,P,M);
+			\tkzMarkAngle[arc=ll,size=.45](M,C,A);
+			\tkzMarkAngle[arc=ll,size=.45](D,B,A);
+			\tkzMarkSegment[mark=|](K,M);
+			\tkzMarkSegment[mark=|](L,M);
+			\foreach \point in {(A), (B), (C), (D), (E), (F), (M), (K), (L), (P), (Q)} {
+				\fill \point circle (1.8pt);
+			}
+		\end{tikzpicture}
+	\end{center}
+	Проведём через $K$ прямую $PQ$, параллельную $BD$. Тогда $\angle QPM=\angle MBD=\angle ACD$ как накрест лежащие и вписанные. Аналогично $\angle PQM=\angle MDB$. $\triangle PAK\sim \triangle CQK$ по двум углам, откуда $PK\cdot KQ=AK\cdot KC$, при этом $AK\cdot KC=EK\cdot KF=(EM-KM)(MF+KM)=EM^2-KM^2$ как отрезки хорд ($EM=MF$ по условию). Аналогично $BL\cdot LD=EM^2-ML^2$. Рассмотрим подобные треугольники:
+	$$\triangle PKM\sim \triangle BLM\Longrightarrow \frac{PK}{KM}=\frac{BL}{ML};\,\,\triangle QKM\sim \triangle DLM\Longrightarrow \frac{KQ}{KM}=\frac{DL}{ML}$$
+	Перемножим полученные равенства:
+	$$\frac{PK\cdot KQ}{KM^2}=\frac{BL\cdot DL}{ML^2}\Longleftrightarrow \frac{EM^2-KM^2}{KM^2}=\frac{EM^2-ML^2}{ML^2}\Longrightarrow KM = ML$$
+\end{proof}
+
 \section{Бинарное отношение и векторы}
 
 \begin{definition}
