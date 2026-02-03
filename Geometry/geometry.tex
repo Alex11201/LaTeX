@@ -401,7 +401,7 @@
 	Пусть градусная мера дуги, на которую опирается хорда $AB$, равна $2\alpha$. Возьмём точку $C$, диаметрально противоположную $A$. Тогда $\angle ACB=\alpha$ как вписанный, при этом $\angle ABC=90^\circ$, так как опирается на диаметр. $\angle CAD=90^\circ$ как радиус к касательной, тогда $\angle BAD=90^\circ-(90^\circ-\alpha)=\alpha$.
 \end{proof}
 
-\subsection{Пропорциональность отрезков}
+\subsection{Пропорциональность отрезков в окружности}
 
 \begin{theorem}[Свойство биссектрисы]
 	Биссектриса угла треугольника делит противоположную сторону в отношении стягивающих его сторон.
@@ -591,6 +591,430 @@
 	$$\triangle PKM\sim \triangle BLM\Longrightarrow \frac{PK}{KM}=\frac{BL}{ML};\,\,\triangle QKM\sim \triangle DLM\Longrightarrow \frac{KQ}{KM}=\frac{DL}{ML}$$
 	Перемножим полученные равенства:
 	$$\frac{PK\cdot KQ}{KM^2}=\frac{BL\cdot DL}{ML^2}\Longleftrightarrow \frac{EM^2-KM^2}{KM^2}=\frac{EM^2-ML^2}{ML^2}\Longrightarrow KM = ML$$
+\end{proof}
+\begin{theorem}[Птолемея]
+	Если четырёхугольник вписан в окружность, произведение его диагоналей равно сумме попарных произведений его противоположных сторон.
+\end{theorem}
+\begin{proof}
+	\hfill
+	\begin{center}
+		\begin{tikzpicture}
+			\def\r{3}
+			\coordinate (A) at (170:\r);
+			\coordinate (B) at (110:\r);
+			\coordinate (C) at (-15:\r);
+			\coordinate (D) at (250:\r);
+			\coordinate (E') at (-95:\r);
+			\tkzInterLL(A,C)(B,E');
+			\tkzGetPoint{E};
+			\draw (A) -- (B) -- (C) -- (D) -- cycle;
+			\draw (0,0) circle (\r);
+			\draw (A) -- (C);
+			\draw (D) -- (B) -- (E);
+			\draw (A) node[left] {$A$};
+			\draw (B) node[above] {$B$};
+			\draw (C) node[right] {$C$};
+			\draw (D) node[below] {$D$};
+			\draw (E) node[below] {$E$};
+			\tkzMarkAngle[size=.45](A,B,D);
+			\tkzMarkAngle[size=.45](E,B,C);
+			\tkzMarkAngle[size=.45, arc=ll](B,D,A);
+			\tkzMarkAngle[size=.45, arc=ll](B,C,A);
+			\tkzMarkAngle[size=.45, arc=lll](C,A,B);
+			\tkzMarkAngle[size=.45, arc=lll](C,D,B);
+			\foreach \point in {(A), (B), (C), (D), (E)} {
+				\fill \point circle (1.8pt);
+			}
+		\end{tikzpicture}
+	\end{center}
+	Пусть $E$ -- такая точка на диагонали $AC$ четырёхугольника $ABCD$, что $\angle ABD=\angle CBE$. $\angle ADB=\angle ACB$ и $\angle BAC=\angle BDC$ как вписанные, тогда в силу подобий треугольников:
+	$$\triangle ABD\sim \triangle EBC\Longrightarrow AD\cdot BC=BD\cdot EC;\,\,\triangle ABE\sim \triangle DBC\Longrightarrow AB\cdot CD=BD\cdot AE$$
+	Сложив данные равенства, получаем:
+	$$AD\cdot BC+AB\cdot CD=BD\cdot (AE + EC)=BD\cdot AC$$
+\end{proof}
+\begin{theorem}[Брахмагупты]
+	Пусть диагонали вписанного четырёхугольника пересекаются в точке $O$ под прямым углом, тогда если прямая проходит через $O$ и перпендикулярная одной из сторон четырёхугольника, она делит его противоположную сторону пополам.
+\end{theorem}
+\begin{proof}
+	\hfill
+	\begin{center}
+		\begin{tikzpicture}
+			\def\r{3}
+			\coordinate (A) at (220:\r);
+			\coordinate (C) at (40:\r);
+			\coordinate (O) at ($(A)!.7!(C)$);
+			\coordinate (o) at (0,0);
+			\tkzDefLine[perpendicular=through O](A,C);
+			\tkzGetPoint{x}
+			\tkzInterLC(O,x)(o,A);
+			\tkzGetPoints{D}{B};
+			\coordinate (M) at ($(A)!.5!(B)$);
+			\tkzInterLL(M,O)(C,D);
+			\tkzGetPoint{H};
+			\draw[dashed] (o) circle (\r);
+			\draw (A) -- (B) -- (C) -- (D) -- cycle;
+			\draw (A) -- (C);
+			\draw (B) -- (D);
+			\draw (M) -- (H);
+			\tkzMarkAngle[size=.45](A,B,D);
+			\tkzMarkAngle[size=.45](B,O,M);
+			\tkzMarkAngle[size=.45](D,O,H);
+			\tkzMarkAngle[size=.45, arc=ll](O,A,B);
+			\tkzMarkAngle[size=.45, arc=ll](C,D,B);
+			\tkzMarkRightAngle(C,H,M);
+			\tkzMarkRightAngle(A,O,D);
+			\tkzMarkSegment[mark=|](A,M);
+			\tkzMarkSegment[mark=|](M,B);
+			\tkzMarkSegment[mark=|](M,O);
+			\draw (A) node[below left] {$A$};
+			\draw (B) node[above left] {$B$};
+			\draw (C) node[above right] {$C$};
+			\draw (D) node[below right] {$D$};
+			\draw (O) node[above=3pt] {\hspace{3pt}$O$};
+			\draw (M) node[left] {$M$};
+			\draw (H) node[below left] {$H$};
+			\foreach \point in {(A), (B), (C), (D), (O), (M), (H)} {
+				\fill \point circle (1.8pt);
+			}
+		\end{tikzpicture}
+	\end{center}
+	$MO=MA=MB$ как медиана в прямоугольном $\triangle ABO$. Отсюда $\angle MBO=\angle MOB=\angle DOH$ как вертикальные, при этом $\angle BAO=\angle BDC$ как вписанные. Тогда $\angle OHD=180^\circ-(\angle BAO+\angle ABO)=90^\circ$.
+\end{proof}
+
+\subsection{Отношения площадей}
+
+\begin{statement}
+	Площади треугольников с равными основаниями относятся как их высоты.
+\end{statement}
+\begin{proof}
+	\hfill
+	\begin{center}
+		\begin{tikzpicture}
+			\coordinate[label=left:$A$] (A) at (0,0);
+			\coordinate[label=right:$B$] (B) at (7,0);
+			\coordinate[label=above:$C$] (C) at (5.5,3);
+			\coordinate[label=below:$D$] (D) at (2,-1.5);
+			\coordinate (H1) at (5.5,0);
+			\coordinate (H2) at (2,0);
+			\draw (A) -- (C) -- (B) -- (D) -- (A) -- (B);
+			\draw (C) -- (H1);
+			\draw (D) -- (H2); 
+			\tkzMarkRightAngle(A,H2,D);
+			\tkzMarkRightAngle(C,H1,A);
+			\tkzLabelSegment[right](H2,D){$h_2$};
+			\tkzLabelSegment[left](H1,C){$h_1$};
+			\foreach \point in {(A), (B), (C), (D), (H1), (H2)} {
+				\fill \point circle (1.8pt);
+			}
+		\end{tikzpicture}
+	\end{center}
+	$$\frac{S_{ABC}}{S_{ABD}}=\frac{\frac{1}{2}AB\cdot h_1}{\frac{1}{2}AB\cdot h_2}=\frac{h_1}{h_2}$$
+\end{proof}
+\begin{statement}
+	Площади треугольников с равными высотами, проведёнными к основаниям, относятся как их основания.
+\end{statement}
+\begin{proof}
+	\hfill
+	\begin{center}
+		\begin{tikzpicture}
+			\coordinate[label=left:$A$] (A) at (0,0);
+			\coordinate[label=above:$B$] (B) at (4.5,4);
+			\coordinate[label=right:$C$] (C) at (7,0);
+			\coordinate[label=below:$D$] (D) at (2.5,0);
+			\coordinate[label=below:$E$] (E) at (5.5,0);
+			\coordinate (H) at (4.5,0);
+			\draw (A) -- (B) -- (C) -- cycle;
+			\draw (D) -- (B) -- (E);
+			\draw (B) -- (H);
+			\tkzMarkRightAngle(B,H,A);
+			\tkzLabelSegment[left](B,H){$h$};
+			\foreach \point in {(A), (B), (C), (D), (E), (H)} {
+				\fill \point circle (1.8pt);
+			}	
+		\end{tikzpicture}
+	\end{center}
+	$$\frac{S_{ABC}}{S_{DBE}}=\frac{\frac{1}{2}AC\cdot h}{\frac{1}{2}DE\cdot h}=\frac{AC}{DE}$$
+\end{proof}
+\setcounter{subsection}{22}
+\begin{consequence}[Свойство чевианы]
+	Чевиана делит площадь треугольника в том же отношении, что его основание.
+\end{consequence}
+\begin{consequence}
+	Медиана треугольника делит его на два равновеликих.
+\end{consequence}
+\setcounter{subsection}{4}
+\begin{statement}[Свойство дельтаплана]
+	Пусть в выпуклом четырёхугольнике $ABCD$ диагонали $AC$ и $BD$ пересекаются в точке $O$, тогда:
+	$$S_{ABO}\cdot S_{CDO}=S_{BCO}\cdot S_{ADO}$$
+\end{statement}
+\begin{proof}
+	\hfill
+	\begin{center}
+		\begin{tikzpicture}
+			\coordinate[label=below left:$A$] (A) at (0,0);
+			\coordinate[label=below right:$D$] (D) at (7,0);
+			\coordinate[label=above left:$B$] (B) at (1,3);
+			\coordinate[label=above right:$C$] (C) at (5,4);
+			\coordinate (M1) at ($(A)!.5!(B)$);
+			\coordinate (M2) at ($(C)!.5!(B)$);
+			\coordinate (M3) at ($(C)!.5!(D)$);
+			\coordinate (M4) at ($(A)!.5!(D)$);
+			\tkzInterLL(A,C)(B,D);
+			\tkzGetPoint{O};
+			\draw (O) node[below] {$O$};
+			\draw ($(M1)!.333!(O)$) node {$S_1$};
+			\draw ($(M2)!.333!(O)$) node {$S_2$};
+			\draw ($(M3)!.333!(O)$) node {$S_3$};
+			\draw ($(M4)!.333!(O)$) node {$S_4$};
+			\draw (A) -- (B) -- (C) -- (D) -- (A) -- (C);
+			\draw (B) -- (D);
+			\foreach \point in {(A), (B), (C), (D), (O)} {
+				\fill \point circle (1.8pt);
+			}
+		\end{tikzpicture}
+	\end{center}
+	По свойству чевианы в $\triangle ABD$ и $\triangle BCD$:
+	$$\frac{S_1}{S_4}=\frac{BO}{OD}=\frac{S_2}{S_3}\Longrightarrow S_1\cdot S_3=S_2\cdot S_4$$
+\end{proof}
+\begin{lemma}[О ласточкином хвосте]
+	Пусть на чевиане $BK$ треугольника $ABC$ взята точка $O$, тогда:
+	$$\frac{S_{ABO}}{S_{BCO}}=\frac{AK}{KC}$$
+\end{lemma}
+\begin{proof}
+	\hfill
+	\begin{center}
+		\begin{tikzpicture}
+			\coordinate[label=left:$A$] (A) at (0,0);
+			\coordinate[label=above:$B$] (B) at (5,4);
+			\coordinate[label=right:$C$] (C) at (7,0);
+			\coordinate[label=below:$K$] (K) at (3,0);
+			\coordinate (O) at ($(B)!.6!(K)$);
+			\draw (O) node[above=-3pt] {\hspace{20pt}$O$};
+			\draw (A) -- (B) -- (C) -- (A) -- (O) -- (C);
+			\draw (B) -- (O);
+			\draw[dashed] (O) -- (K);
+			\draw (3.3,2) node {$S_1$};
+			\draw (5.2,2) node {$S_2$};
+			\foreach \point in {(A), (B), (C), (K), (O)} {
+				\fill \point circle (1.8pt);
+			}
+		\end{tikzpicture}
+	\end{center}
+	По свойству чевианы в $\triangle ABC$:
+	$$\frac{S_{ABK}}{S_{BCK}}=\frac{AK}{KC}=\frac{S_{AKO}}{S_{CKO}}\Longrightarrow \frac{S_1}{S_2}=\frac{AK}{KC}$$
+\end{proof}
+\begin{statement}
+	Площади треугольников с равными углами относятся как произведения сторон, стягивающих этот угол.
+\end{statement}
+\begin{proof}
+	\hfill
+	\begin{center}
+		\begin{tikzpicture}
+			\coordinate[label=left:$A$] (A) at (0,0);
+			\coordinate[label=above:$B$] (B) at (5,3);
+			\coordinate[label=right:$C$] (C) at (7,0);
+			\coordinate[label=above left:$B_1$] (B1) at ($(A)!.6!(B)$);
+			\coordinate[label=below:$C_1$] (C1) at ($(A)!.4!(C)$);
+			\draw (A) -- (B) -- (C) -- cycle;
+			\draw (B1) -- (C1);
+			\tkzMarkAngle[size=.45](C,A,B);
+			\foreach \point in {(A), (B), (C), (B1), (C1)} {
+				\fill \point circle (1.8pt);
+			}
+		\end{tikzpicture}
+	\end{center}
+	$$\frac{S_{ABC}}{S_{AB_1C_1}}=\frac{\frac{1}{2}AB\cdot AC\cdot \sin \angle BAC}{\frac{1}{2}AB_1\cdot AC_1\cdot \sin \angle BAC}=\frac{AB\cdot AC}{AB_1\cdot AC_1}$$
+\end{proof}
+\setcounter{subsection}{25}
+\setcounter{consequence}{0}
+\begin{consequence}
+	Площади подобных треугольников относятся как квадрат коэффициента подобия.
+\end{consequence}
+\setcounter{subsection}{4}
+\begin{theorem}[Формула длины биссектрисы]
+	Пусть $BL$ -- биссектриса $\angle ABC=\varphi$, который стягивают стороны $a$ и $b$ треугольника $ABC$, тогда:
+	$$BL=\frac{2ab\cos\frac{\varphi}{2}}{a+b}$$
+\end{theorem}
+\begin{proof}
+	\hfill
+	\begin{center}
+		\begin{tikzpicture}
+			\coordinate[label=left:$A$] (A) at (0,0);
+			\coordinate[label=above:$B$] (B) at (5,4);
+			\coordinate[label=right:$C$] (C) at (7,0);
+			\tkzDefLine[bisector](A,B,C);
+			\tkzGetPoint{x};
+			\tkzInterLL(B,x)(A,C);
+			\tkzGetPoint{L};
+			\draw (L) node[below] {$L$};
+			\draw (B) -- (C) -- (A) -- (B) -- (L);
+			\tkzMarkAngle[size=.45](A,B,L);
+			\tkzMarkAngle[size=.45](L,B,C);
+			\tkzLabelAngle(A,B,L){$\frac{\varphi}{2}$};
+			\tkzLabelAngle(L,B,C){$\frac{\varphi}{2}$};
+			\tkzLabelSegment[above left](A,B){$a$};
+			\tkzLabelSegment[above right](B,C){$b$};
+			\foreach \point in {(A), (B), (C), (L)} {
+				\fill \point circle (1.8pt);
+			}
+		\end{tikzpicture}
+	\end{center}
+	$$S_{ABC}=S_{ABL}+S_{LBC}\Longleftrightarrow \frac{1}{2}ab\sin\varphi=\frac{1}{2}BL\cdot \sin \frac{\varphi}{2}(a+b)\Longrightarrow BL=\frac{ab\sin\varphi}{(a+b)\sin\frac{\varphi}{2}}=\frac{2ab\cos\frac{\varphi}{2}}{a+b}$$
+\end{proof}
+
+\subsection{Отношения отрезков}
+
+\begin{theorem}[Менелая]
+	Пусть точки $A_1$, $B_1$ и $C_1$ лежат соответственно на прямых $BC$, $AC$ и $AB$, содержащих стороны $\triangle ABC$. Точки $A_1$, $B_1$ и $C_1$ коллинеарны тогда и только тогда, когда:
+	$$\frac{AC_1}{C_1B}\cdot \frac{BA_1}{A_1C}\cdot \frac{CB_1}{B_1A}=1$$
+\end{theorem}
+\begin{proof}
+	\hfill
+	\begin{center}
+		\begin{tikzpicture}
+			\coordinate[label=below left:$A$] (A) at (0,0);
+			\coordinate[label=above:$B$] (B) at (2,4);
+			\coordinate[label=below:$C$] (C) at (5.5,0);
+			\coordinate[label=below right:$B_1$] (B1) at (7,0);
+			\coordinate (C1) at ($(A)!.7!(B)$);
+			\tkzInterLL(B,C)(B1,C1);
+			\tkzGetPoint{A1};
+			\coordinate (x) at (0,4);
+			\tkzInterLL(B,x)(B1,C1);
+			\tkzGetPoint{D};
+			\draw (A1) node[above right] {$A_1$};
+			\draw (D) node[left] {$D$};
+			\draw (C1) node[above=-13pt] {\hspace{-23pt}$C_1$};
+			\draw (C) -- (B) -- (D) -- (B1) -- (A) -- (B);
+			\tkzMarkAngle[size=.45](C1,D,B);
+			\tkzMarkAngle[size=.45](A1,B1,C);
+			\tkzMarkAngle[size=.45, arc=ll](B,C1,D);
+			\tkzMarkAngle[size=.45, arc=ll](A,C1,B1);
+			\tkzMarkAngle[size=.45, arc=lll](B,A1,D);
+			\tkzMarkAngle[size=.45, arc=lll](C,A1,B1);
+			\foreach \point in {(A), (B), (C), (D), (A1), (B1), (C1)} {
+				\fill \point circle (1.8pt);
+			}
+		\end{tikzpicture}
+	\end{center}
+	Проведём прямую Евклида через $B$, пусть она пересекает $A_1C_1$ в точке $D$. $\angle BDC_1=\angle CB_1A_1$ как накрест лежащие, откуда:
+	$$\triangle AC_1B_1\sim \triangle BC_1D\Longrightarrow \frac{BC_1}{C_1A}=\frac{BD}{AB_1};\,\,\triangle CA_1B_1\sim \triangle BA_1D\Longrightarrow \frac{BA_1}{A_1C}=\frac{BD}{CB_1}$$
+	Выразим из данных неравенств $BD$ и приравняем:
+	$$\frac{BC_1\cdot AB_1}{AC_1}=\frac{BA_1\cdot CB_1}{A_1C}\Longrightarrow \frac{AC_1}{C_1B}\cdot \frac{BA_1}{A_1C}\cdot \frac{CB_1}{B_1A}=1$$
+	Обратное доказательство (коллинеарности при условии равенства отношения) очевидно и рассуждать можно от противного.
+\end{proof}
+\begin{theorem}[Чевы]
+	Пусть чевианы $AA_1$, $BB_1$ и $CC_1$ треугольника $ABC$ пересекаются в точке $O$, тогда:
+	$$\frac{AC_1}{C_1B}\cdot\frac{BA_1}{A_1C}\cdot\frac{CB_1}{B_1A}=1$$
+\end{theorem}
+\begin{proof}
+	\hfill
+	\begin{center}
+		\begin{tikzpicture}
+			\coordinate[label=left:$A$] (A) at (0,0);
+			\coordinate[label=above:$B$] (B) at (5,4);
+			\coordinate[label=right:$C$] (C) at (7,0);
+			\coordinate[label=above right:$A_1$] (A1) at ($(B)!.55!(C)$);
+			\coordinate[label=below:$B_1$] (B1) at ($(A)!.45!(C)$);
+			\tkzInterLL(A,A1)(B,B1) \tkzGetPoint{O};
+			\draw (O) node[above] {\hspace{-10pt}$O$};
+			\tkzInterLL(C,O)(A,B) \tkzGetPoint{C1};
+			\draw (C1) node[above left] {$C_1$};
+			\draw (A) -- (B) -- (C) -- cycle;
+			\draw (A) -- (A1);
+			\draw (B) -- (B1);
+			\draw (C) -- (C1);
+			\foreach \point in {(A), (B), (C), (A1), (B1), (C1), (O)} {
+				\fill \point circle (1.8pt);
+			}
+		\end{tikzpicture}
+	\end{center}
+	Из леммы о ласточкином хвосте:
+	$$\frac{S_{AOB}}{S_{AOC}}=\frac{BA_1}{A_1C};\,\,\frac{S_{AOB}}{S_{BOC}}=\frac{AB_1}{B_1C};\,\,\frac{S_{AOC}}{S_{BOC}}=\frac{AC_1}{C_1B}$$
+	Тогда при перемножении соотношений получаем искомое равенство.
+\end{proof}
+\begin{theorem}[Точка Жергона]
+	Пусть $K_A$, $K_B$, $K_C$ -- точки касания вписанной окружности $\triangle ABC$ со сторонами $BC$, $AC$ и $AB$ соответственно. Тогда $AK_A$, $BK_B$ и $CK_C$ пересекаются в одной точке, называемой точкой Жергона.
+\end{theorem}
+\begin{proof}
+	\hfill
+	\begin{center}
+		\begin{tikzpicture}
+			\coordinate[label=left:$A$] (A) at (0,0);
+			\coordinate[label=above:$B$] (B) at (2.5,4);
+			\coordinate[label=right:$C$] (C) at (7,0);
+			\tkzDefCircle[in](A,B,C) \tkzGetFirstPoint{I} \tkzGetLength{r};
+			\tkzDefPointBy[projection=onto A--B](I) \tkzGetPoint{Kc};
+			\tkzDefPointBy[projection=onto A--C](I) \tkzGetPoint{Kb};
+			\tkzDefPointBy[projection=onto C--B](I) \tkzGetPoint{Ka};
+			\tkzInterLL(A,Ka)(B,Kb) \tkzGetPoint{G};
+			\draw (A) -- (B) -- (C) -- cycle;
+			\draw (I) circle (\r);
+			\draw[dashed] (A) -- (Ka);
+			\draw[dashed] (B) -- (Kb);
+			\draw[dashed] (C) -- (Kc);
+			\draw (Ka) node[above right] {$K_A$};
+			\draw (Kb) node[below] {$K_B$};
+			\draw (Kc) node[above left] {$K_C$};
+			\draw (G) node[above=3pt] {\hspace{-15pt}$G$};
+			\tkzMarkSegment[mark=|](A,Kc);
+			\tkzMarkSegment[mark=|](A,Kb);
+			\tkzMarkSegment[mark=||](B,Kc);
+			\tkzMarkSegment[mark=||](B,Ka);
+			\tkzMarkSegment[mark=|||](C,Ka);
+			\tkzMarkSegment[mark=|||](C,Kb);
+			\foreach \point in {(A), (B), (C), (Ka), (Kb), (Kc), (G)} {
+				\fill \point circle (1.8pt);
+			}
+		\end{tikzpicture}
+	\end{center}
+	В силу равенства отрезков касательных:
+	$$\frac{AK_C}{K_CB}\cdot \frac{BK_A}{K_AC}\cdot \frac{CK_B}{K_BA}=\frac{AK_C}{K_CB}\cdot\frac{K_CB}{K_AC}\cdot \frac{K_AC}{AK_C}=1$$
+	Тогда по теореме Чевы отрезки $AK_A$, $BK_B$ и $CK_C$ конкурентны.
+\end{proof}
+\begin{theorem}[Точка Нагеля]
+	Пусть $K_A$, $K_B$, $K_C$ -- точки касания вневписанных окружностей $\triangle ABC$ со сторонами $BC$, $AC$ и $AB$ соответственно. Тогда $AK_A$, $BK_B$ и $CK_C$ пересекаются в одной точке, называемой точкой Нагеля.
+\end{theorem}
+\begin{proof}
+	\hfill
+	\begin{center}
+		\begin{tikzpicture}
+			\clip (-1.5,-1.5) rectangle (9.5,6.5);
+			\coordinate[label=above left:$A$] (A) at (0,0);
+			\coordinate[label=above:$B$] (B) at (4.7,4);
+			\coordinate[label=above right:$C$] (C) at (7,0);
+			\tkzDefCircle[ex](A,B,C) \tkzGetFirstPoint{Ib} \tkzGetLength{rb};
+			\tkzDefPointBy[projection=onto A--C](Ib) \tkzGetPoint{Kb};
+			\tkzDefCircle[ex](B,A,C) \tkzGetFirstPoint{Ia} \tkzGetLength{ra};
+			\tkzDefPointBy[projection=onto B--C](Ia) \tkzGetPoint{Ka};
+			\tkzDefCircle[ex](A,C,B) \tkzGetFirstPoint{Ic} \tkzGetLength{rc};
+			\tkzDefPointBy[projection=onto A--B](Ic) \tkzGetPoint{Kc};
+			\tkzInterLL(A,Ka)(B,Kb) \tkzGetPoint{N};
+			\tkzInterLC(A,B)(Ia,Ka) \tkzGetFirstPoint{Tb};
+			\tkzInterLC(A,C)(Ia,Ka) \tkzGetFirstPoint{Tc};
+			\draw ($(A)!-.5!(B)$) -- ($(A)!1.8!(B)$);
+			\draw ($(B)!-.8!(C)$) -- ($(B)!1.5!(C)$);
+			\draw ($(A)!-.5!(C)$) -- ($(A)!1.5!(C)$);
+			\draw[dotted, line width = 0.2mm] (Ia) circle (\ra);
+			\draw[dotted, line width = 0.2mm] (Ib) circle (\rb);
+			\draw[dotted, line width = 0.2mm] (Ic) circle (\rc);
+			\draw[dashed] (A) -- (Ka);
+			\draw[dashed] (B) -- (Kb);
+			\draw[dashed] (C) -- (Kc);
+			\draw (Ka) node[above right] {$K_A$};
+			\draw (Kb) node[below] {$K_B$};
+			\draw (Kc) node[above left] {$K_C$};
+			\draw (Tb) node[above left] {$T_B$};
+			\draw (Tc) node[below] {$T_C$};
+			\draw (N) node[above=3pt] {\hspace{-15pt}$N$};
+			\foreach \point in {(A), (B), (C), (Ka), (Kb), (Kc), (N), (Tb), (Tc)} {
+				\fill \point circle (1.8pt);
+			}
+		\end{tikzpicture}
+	\end{center}
+	Пусть окружность, касающаяся $BC$ в точке $K_A$, касается $AB$ в точке $T_B$, а $AC$ -- в точке $T_C$. Тогда как касательные $CK_A=CT_C=BC-BK_A=BC-BT_B$, при этом $AT_B=AT_C$, то есть $AC+(BC-BT_B)=AB+BT_B\Longrightarrow BT_B=BK_A=\frac{1}{2}(AC+BC-AB)=p-AB$. Аналогично $K_AC=p-AC$, $AK_B=p-AB$, $AK_C=p-AC$, $K_CB=p-BC$. Отсюда получаем:
+	$$\frac{AK_C}{K_CB}\cdot\frac{BK_A}{K_AC}\cdot\frac{CK_B}{K_BA}=\frac{p-AC}{p-BC}\cdot \frac{p-AB}{p-AC}\cdot\frac{p-BC}{p-AB}=1$$
+	Тогда по теореме Чевы отрезки $AK_A$, $BK_B$ и $CK_C$ конкурентны.
 \end{proof}
 
 \section{Бинарное отношение и векторы}
@@ -2636,7 +3060,7 @@
 }
           \end{tikzpicture}
     \end{center}
-    Пусть $\triangle ABC\subset\beta;\,l=\alpha\cap\beta;\,AB\,\|\,l$. Обозначим $H$ основание высоты $CH$ треугольника $ABC$, $M$ – проекция $A$ на $l$, $N$ – проекция $B$ на $l$, а $A',\,B',\,C',\,H'$ – проекции $A,\,B,\,C,\,H$ на $\alpha$ соответственно. Тогда $MABN$ – прямоугольник, значит по теореме о трёх перпендикулярах $MA'\perp l;\,NB'\perp l$, то есть $MA'B'N$ – прямоугольник, а значит $AB=MN=A'B'$. $S_{\triangle ABC}=\frac{1}{2}AB\cdot CH;\,S_{\triangle A'B'C'}=\frac{1}{2}A'B'\cdot C'H'=\frac{1}{2}AB\cdot C'H'$. Пусть $K$ – проекция $C$ на $l$, тогда $H'\in C'K$. Пусть $\angle CKC'=\theta$, значит $KC'=KC\cdot\cos\theta;\,KH'=KH\cdot\cos\theta\Longrightarrow C'H'=CH\cdot\cos\theta$. То есть $S_{\triangle A'B'C'}=\frac{1}{2}AB\cdot C'H'=S_{\triangle ABC}\cdot\cos\theta$.\bigskip
+    Пусть $\triangle ABC\subset\beta;\,l=\alpha\cap\beta;\,AB\,\|\,l$. Обозначим $H$ основание высоты $CH$ треугольника $ABC$, $M$ – проекция $A$ на $l$, $N$ – проекция $B$ на $l$, а $A',\,B',\,C',\,H'$ – проекции $A,\,B,\,C,\,H$ на $\alpha$ соответственно. Тогда $MABN$ – прямоугольник, значит по теореме о трёх перпендикулярах $MA'\perp l;\,NB'\perp l$, то есть $MA'B'N$ – прямоугольник, а значит $AB=MN=A'B'$. $S_{ABC}=\frac{1}{2}AB\cdot CH;\,S_{A'B'C'}=\frac{1}{2}A'B'\cdot C'H'=\frac{1}{2}AB\cdot C'H'$. Пусть $K$ – проекция $C$ на $l$, тогда $H'\in C'K$. Пусть $\angle CKC'=\theta$, значит $KC'=KC\cdot\cos\theta;\,KH'=KH\cdot\cos\theta\Longrightarrow C'H'=CH\cdot\cos\theta$. То есть $S_{A'B'C'}=\frac{1}{2}AB\cdot C'H'=S_{ABC}\cdot\cos\theta$.\bigskip
 
     Теорема доказана для треугольника, одна из сторон которого параллельна ребру двугранного угла. Чтобы обобщить доказательство до произвольного треугольника, достаточно заметить, что мы можем провести прямую, параллельную ребру двугранного угла, через одну из вершин этого треугольника, разбив его на два треугольника, удовлетворяющих нашему условию. Для произвольного многоугольника достаточно сказать, что его можно разбить на треугольники, а значит теорема доказана.
 \end{proof}
