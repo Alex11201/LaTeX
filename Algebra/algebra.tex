@@ -119,8 +119,9 @@
 
 \subsection{Иррациональные неравенства}
 
-\begin{multicols}{2}
-    \[\frac{f(x)}{g(x)}\leq 0\Longleftrightarrow \left[
+\renewcommand*{\arraystretch}{5}
+$$\begin{matrix}
+    \dfrac{f(x)}{g(x)}\leq 0\Longleftrightarrow \left[
 \begin{gathered}
     \begin{cases}
         f(x)\geq 0\\
@@ -131,14 +132,7 @@
         g(x)>0
     \end{cases}
 \end{gathered}
-\right.\]\\
-\[\sqrt{f(x)}<g(x) \Longleftrightarrow
-    \begin{cases}
-        g(x)\geq 0\\
-        f(x) \geq 0\\
-        f(x) < (g(x))^2
-    \end{cases}\]\\
-\[\sqrt{f(x)}>g(x) \Longleftrightarrow
+\right. & \sqrt{f(x)}>g(x) \Longleftrightarrow
 \begin{sqcases}
     \begin{cases}
         g(x)<0\\
@@ -148,13 +142,20 @@
         g(x)\geq 0\\
         f(x)>(g(x))^2
     \end{cases}
-\end{sqcases}\]\\
-\[\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow 
+\end{sqcases}\\
+\sqrt{f(x)}<g(x) \Longleftrightarrow
+    \begin{cases}
+        g(x)\geq 0\\
+        f(x) \geq 0\\
+        f(x) < (g(x))^2
+    \end{cases} & 
+\sqrt{f(x)}>\sqrt{g(x)} \Longleftrightarrow 
     \begin{cases}
         f(x)>g(x)\\
         g(x)\geq 0
-    \end{cases}\]
-\end{multicols}
+    \end{cases}
+\end{matrix}$$
+\renewcommand*{\arraystretch}{1}
 
 \subsection{Неравенства с модулем}
 
@@ -335,24 +336,8 @@
             \draw (b0) node[below] {$b_0$};
             \draw (c0) node[below] {$c_0$};
             \draw (c1) node[below] {$c_1$};
-            \draw [
-                decoration={
-                brace,
-                mirror,
-                raise=1.2cm
-            },
-            decorate
-        ] (a0) -- (b0) 
-        node [pos=0.5,anchor=north,yshift=-1.25cm] {$I_0$};
-        \draw [
-                decoration={
-                brace,
-                mirror,
-                raise=0.5cm
-            },
-            decorate
-        ] (c0) -- (b0) 
-        node [pos=0.5,anchor=north,yshift=-0.55cm] {$I_1$}; 
+            \draw [decoration={brace,mirror,raise=1.2cm},decorate] (a0) -- (b0) node [pos=0.5,anchor=north,yshift=-1.25cm] {$I_0$};
+        \draw [decoration={brace,mirror,raise=0.5cm},decorate] (c0) -- (b0) node [pos=0.5,anchor=north,yshift=-0.55cm] {$I_1$}; 
             \foreach \point in {(a0), (b0), (c0), (c1)}{
     \fill \point circle (1.8pt);
             }
@@ -494,6 +479,10 @@
 \begin{proof}
     $$\lim_{n\to\infty}(a_n\cdot b_n)=\lim_{n\to\infty}((A+\alpha_n)(B+\beta_n))=\lim_{n\to\infty}(AB+A\beta_n+B\alpha_n+\alpha_n\beta_n)=AB$$
 \end{proof}
+\begin{definition}
+    Последовательность $x_n$ называется бесконечно большой, если:
+    $$\lim_{n\to\infty}x_n=+\infty\Longleftrightarrow\forall\,c\enspace\exists\, n_0:\,\forall\,n>n_0\enspace x_n>c$$
+\end{definition}
 \begin{theorem}[Теорема Вейерштрасса]
     Пусть $x_n$ монотонна, тогда:
     \begin{align*}
@@ -504,12 +493,18 @@
 \begin{proof}
     Пусть $x_n$ монотонно возрастает. По определению $\forall n:\, x_{n+1}>x_n$. Пусть $x_n$ не ограничена, то есть $\nexists\,m:\,\forall n\,\,\,x_n<m$, тогда $\sup(x_n)=+\infty$, а значит $x_n\to \infty$. Пусть $\exists\,m:\,\forall n \,\,\,x_n\leq m$ и $m=\sup(x_n)$. Тогда $m=\lim\limits_{n\to\infty}x_n$. Доказательство для монотонно убывающей последовательности аналогично.
 \end{proof}
-\begin{theorem}[Теорема о двух милиционерах]
+\begin{theorem}[Принцип двух милиционеров]
     Пусть даны последовательности: $x_n\leq y_n\leq z_n$; $\lim\limits_{n\to\infty}x_n=\lim\limits_{n\to\infty}z_n=A$, тогда:
     $$\lim_{n\to\infty}x_n=\lim_{n\to\infty}y_n=\lim_{n\to\infty}z_n=A$$
 \end{theorem}
 \begin{proof}
     $$\forall\,\varepsilon>0\,\,\exists\,N:\,\forall\,n>N\,\,|x_n-A|<\varepsilon;\,\,|z_n-A|<\varepsilon\Longrightarrow|x_n-A|\leq|y_n-A|\leq|z_n-A|<\varepsilon$$
+\end{proof}
+\begin{theorem}
+    Пусть $a_n$ монотонно не убывает и ограничена сверху, тогда $a_n$ сходится.
+\end{theorem}
+\begin{proof}
+    В силу ограниченности $a_n$ имеет частичный предел. Пусть $B$ -- частичный предел $a_n$ и $B<\sup a_n=A$. Возьмём $\varepsilon<\frac{a-b}{3}$, тогда $\exists\,n:\,a_n>A-\varepsilon$. Значит, $a_n-B>2\varepsilon$ и $\forall\,m>n\,\,a_m-B\geq a_n-B$, то есть $\lim\limits_{n\to\infty}a_n=\sup a_n$.
 \end{proof}
 \begin{lemma}[Неравенство Бернулли]
     $$(1+x)^n\geq 1+xn,\,n\in \N,\,x>0$$
@@ -530,6 +525,78 @@
     Вернувшись к изначальной последовательности, получаем:
     $$\left(\dfrac{n^2+2n}{n^2+2n+1}\right)^{n+1}<\dfrac{n^2+2n}{n^3+3n+1}$$
     Таким образом, $E_{n+1}>E_n$, а значит $E_n$ монотонно возрастает, при этом она ограничена, а значит по теореме Вейерштрасса имеет предел, то есть $e_n$ также имеет предел.
+\end{proof}
+
+\subsection{Пределы функций}
+
+\begin{definition}[Предел функции по Коши]
+    Число $A$ называется пределом $f(x)$ в точке $x_0$, если $f(x)$ определена в проколотой окрестности точки $x_0$, а также:
+    $$A=\lim_{x\to x_0}f(x)\Longleftrightarrow\forall\,\varepsilon>0\enspace \exists\,\delta>0:\, \forall\,x\in \mathring{U}_\delta(x_0)\enspace f(x)\in U_\varepsilon(A)$$
+\end{definition}
+\begin{definition}[Предел функции по Гейне]
+    Число $A$ называется пределом $f(x)$ в точке $x_0$, если $f(x)$ определена в проколотой окрестности точки $x_0$, а также:
+    $$A=\lim_{x\to x_0}f(x)\Longleftrightarrow\forall\,x_n\neq x_0\enspace \lim_{n\to\infty}x_n=x_0\Longrightarrow \lim_{n\to\infty}f(x_n)=A$$
+\end{definition}
+\begin{statement}
+    Определения предела функции по Коши и по Гейне эквивалентны.
+\end{statement}
+\begin{proof}
+    Пусть определение по Коши верно, также пусть $x_n\neq x_0$ -- некоторая последовательность, такая что $\lim\limits_{n\to\infty}x_n=x_0$, то есть $\exists\,n_0:\,\forall\,n>n_0\enspace x_n\in U_\delta(x_0)$, но тогда по Коши $f(x_n)\in U_\varepsilon(A)$.\bigskip
+
+    Пусть определение по Гейне верно, а по Коши нет, то есть:
+    $$\exists\,\varepsilon>0:\,\forall\,\delta>0\enspace\exists\,x\in\mathring{U}_\delta(x_0):\,f(x)\notin U_\varepsilon(A)$$
+    Возьмём $\delta=\frac{1}{k},\,k\in\N$, тогда $\exists\,x_n\in\mathring{U}_\delta(x_0)$, причём $f(x_n)\notin U_\varepsilon(A)$, что противоречит определению по Гейне.
+\end{proof}
+\begin{theorem}[Принцип двух милиционеров для функций]
+    Пусть $f(x)$, $g(x)$ и $h(x)$ определены в проколотой окрестности точки $x_0$, тогда:
+    $$f(x)\leq g(x)\leq h(x);\enspace \lim_{x\to x_0}f(x)=\lim_{x\to x_0}h(x)=A\Longrightarrow \lim_{x\to x_0}g(x)=A$$
+\end{theorem}
+\begin{proof}
+    Пусть $x_n\neq x_0:\,\lim\limits_{n\to\infty}x_n=x_0$. Из условия $\lim\limits_{n\to\infty}f(x_n)=\lim\limits_{n\to\infty}h(x_n)=A$. Тогда по принципу двух милиционеров для последовательностей $\lim\limits_{n\to\infty}g(x_n)=A$.
+\end{proof}
+\begin{definition}
+    Пусть $f(x)$ определена на некотором неограниченном множестве, тогда:
+    $$\lim_{x\to+\infty}f(x)=B\Longleftrightarrow \forall\,\varepsilon>0\enspace\exists\,c:\,\forall\,x>c\enspace f(x)\in U_\varepsilon(B)$$
+\end{definition}
+\begin{theorem}
+    Если у $f(x)$ существует предел в точке $x_0$, он единственный.
+\end{theorem}
+\begin{proof}
+    Пусть у $f(x)$, определённой в проколотой окрестности точки $x_0$, есть два предела $A_1$ и $A_2$, тогда:
+    $$\forall\,\varepsilon>0\enspace\exists\,\delta_1,\,\delta_2>0:\,\forall\,x_1\in\mathring{U}_{\delta_1}(x_0),\,x_2\in\mathring{U}_{\delta_2}(x_0)\enspace f(x_1)\in U_\varepsilon(A_1),\,f(x_2)\in U_\varepsilon(A_2)$$
+    Возьмём $\delta=\min(\delta_1;\,\delta_2)$, тогда $\forall\,x\in\mathring{U}_\delta(x_0)\enspace f(x)\in U_\varepsilon(A_1),\,f(x)\in U_\varepsilon(A_2)$, но $U_\varepsilon(A_1)\cap U_\varepsilon(A_2)=\varnothing$, противоречие.
+\end{proof}
+\begin{definition}
+    Пусть $f(x)$ определена в проколотой левой (правой) полуокрестности точки $x_0$. Число $A$ называется левым (правым) пределом $f(x)$ в точке $x_0$, если:
+    $$A=\lim_{x\to\pm\infty}f(x)\Longleftrightarrow \forall\,\varepsilon>0\enspace\exists\,\delta>0:\,\forall\,x\in\mathring{U}_\delta^\pm(x_0)\enspace f(x)\in U_\varepsilon(A)$$ 
+\end{definition}
+\begin{statement}
+    Функция $f(x)$, определённая в проколотой окрестности точки $x_0$, имеет в ней предел тогда и только тогда, когда:
+    $$\lim_{x\to x_0-0}f(x)=\lim_{x\to x_0+0}f(x)=\lim_{x\to x_0}f(x)$$
+\end{statement}
+\begin{definition}
+    Точка $x_0$ называется изолированной точкой множества $M\subset\R$, если:
+    $$\exists\,\varepsilon>0:\,\mathring{U}_\varepsilon(x_0)\cap M=\varnothing$$
+\end{definition}
+\begin{definition}
+    Пусть $f(x)$ определена на $M\subset\R$. Она называется непрерывной в точке $x_0\in M$, если $x_0$ -- изолированная точка или $\lim\limits_{x\to x_0}f(x)=f(x_0)$.
+\end{definition}
+\begin{definition}[Непрерывность по Гейне]
+    Пусть $f(x)$ определена на $M\subset\R$. Она называется непрерывной в точке $x_0\in M$, если:
+    $$\forall\,x_n\in M:\,\lim_{n\to\infty}x_n=x_0\enspace \lim_{n\to\infty}f(x_n)=f(x_0)$$
+\end{definition}
+\begin{definition}[Непрерывность по Коши]
+    Пусть $f(x)$ определена на $M\subset\R$. Она называется непрерывной в точке $x_0\in M$, если:
+    $$\forall\,\varepsilon>0\enspace\exists\,\delta>0:\,\forall\,x\in U_\delta(x_0)\cap M\enspace f(x)\in U_\varepsilon(f(x_0))$$
+\end{definition}
+\begin{theorem}[1-я теорема Больцана-Коши]
+    Пусть функция $f(x)$ определена и непрерывна на отрезке $\left[a;b\right]$, тогда:
+    $$f(a)<0,\,f(b)>0\Longrightarrow\exists\,c\in \left[a;b\right]:\,f(c)=0$$
+\end{theorem}
+\begin{proof}
+    Рассмотрим $d=\frac{a+b}{2}$. Если $f(d)=0$, то $c=d$. Если $f(d)<0$, то $a_1=d$, $b_1=b$, аналогично если $f(d)>0$, то $a_1=a$, $b_1=d$, при этом $d_1=\frac{a_1+b_1}{2}$. Таким образом:
+    $$\bigcap_n\left[a_n;b_n\right]={c};\enspace \lim_{n\to\infty}a_n=\lim_{n\to\infty}b_n=c$$
+    Пусть $f(c)=k>0$, тогда $\forall\,n\enspace a_n <0\Longrightarrow\forall\,\delta>0\enspace\exists\,a_n\in U_\delta(c):\,|f(c)-f(a_n)|>\frac{k}{2}$, что невозможно, так как $\lim\limits_{n\to\infty}a_n=c$, противоречие. Аналогично при $f(c)<0$.
 \end{proof}
 
 \section{Эквивалентность и группы}
@@ -599,7 +666,7 @@
     $$\cos(\alpha - \beta)=\cos\alpha\cdot\cos\beta+\sin\alpha\cdot\sin\beta$$
 \end{statement}
     \begin{proof}
-    $ $\newline
+    \hfill
     \begin{center}
         \begin{tikzpicture}
             \coordinate (O) at (0,0);
@@ -920,7 +987,17 @@
     \subsection{Матрицы поворота}
     \begin{definition}
         Матрицей поворота на угол $\alpha$ называется:
-        $$R_\alpha=\left({\cos \alpha \atop \sin \alpha}\,\,\, {-\sin \alpha \atop \cos \alpha}\right)=\cos \alpha \cdot \left({1 \atop 0}\,\,\, {0 \atop 1}\right)+\sin \alpha \cdot \left({0 \atop 1}\,\,\, {-1 \atop 0}\right)=\cos \alpha\cdot E+\sin\alpha\cdot I$$
+        $$R_\alpha=\begin{pmatrix}
+            \cos\alpha & -\sin\alpha\\
+            \sin\alpha & \cos\alpha
+        \end{pmatrix}
+        =\cos \alpha \cdot \begin{pmatrix}
+            1 & 0\\
+            0 & 1
+        \end{pmatrix} +\sin \alpha \cdot \begin{pmatrix}
+            0 & -1\\
+            1 & 0
+        \end{pmatrix}=\cos \alpha\cdot E+\sin\alpha\cdot I$$
     \end{definition}
     \begin{statement}
         $$z=r\cdot(\cos\varphi+ i\sin\varphi)\Longleftrightarrow z=re^{i\varphi}$$

@@ -1016,6 +1016,54 @@
 	$$\frac{AK_C}{K_CB}\cdot\frac{BK_A}{K_AC}\cdot\frac{CK_B}{K_BA}=\frac{p-AC}{p-BC}\cdot \frac{p-AB}{p-AC}\cdot\frac{p-BC}{p-AB}=1$$
 	Тогда по теореме Чевы отрезки $AK_A$, $BK_B$ и $CK_C$ конкурентны.
 \end{proof}
+\begin{theorem}[О глазных яблоках]
+	Пусть из центров двух непересекающихся окружностей проведены касательные друг к другу. Тогда точки пересечения касательных с окружностями образуют прямоугольник.
+\end{theorem}
+\begin{proof}
+	\hfill
+	\begin{center}
+		\begin{tikzpicture}
+			\def\ra{2}
+			\def\rb{3}
+			\coordinate[label=above left:$O_1$] (O1) at (0,0);
+			\coordinate[label=above right:$O_2$] (O2) at (7,1.5);
+			\tkzDefCircle[R](O1,\ra) \tkzGetPoint{x1};
+			\tkzDefCircle[R](O2,\rb) \tkzGetPoint{x2};
+			\tkzDefLine[tangent from=O1](O2,x2) \tkzGetPoints{K}{L};
+			\tkzDefLine[tangent from=O2](O1,x1) \tkzGetPoints{N}{M};
+			\tkzInterLC(O1,K)(O1,x1) \tkzGetSecondPoint{A};
+			\tkzInterLC(O1,L)(O1,x1) \tkzGetSecondPoint{B};
+			\tkzInterLC(O2,N)(O2,x2) \tkzGetSecondPoint{C};
+			\tkzInterLC(O2,M)(O2,x2) \tkzGetSecondPoint{D};
+			\coordinate[label=above right:$Q_1$] (Q1) at ($(A)!.5!(B)$);
+			\coordinate[label=above left:$Q_2$] (Q2) at ($(C)!.5!(D)$);
+			\draw (O1) circle (\ra);
+			\draw (O2) circle (\rb);
+			\draw (K) -- (O1) -- (O2) -- cycle;
+			\draw (A) -- (Q1);
+			\draw[dashed] (O1) -- (L);
+			\draw[dashed] (N) -- (O2) -- (M);
+			\draw (K) node[above left] {$K$};
+			\draw (L) node[below] {$L$};
+			\draw (M) node[above] {$M$};
+			\draw (N) node[below right] {$N$};
+			\draw (A) node[left] {$A$};
+			\draw (B) node[below left] {$B$};
+			\draw (C) node[below=-5pt] {\hspace{20pt}$C$};
+			\draw (D) node[above right] {$D$};
+			\tkzMarkRightAngle(A,Q1,O1);
+			\tkzMarkRightAngle(O1,K,O2);
+			\tkzLabelSegment[above left](O1,A){$R_1$};
+			\tkzLabelSegment[above right](O2,K){$R_2$};
+			\foreach \point in {(O1), (O2), (K), (L), (M), (N), (A), (B), (C), (D), (Q1), (Q2)} {
+				\fill \point circle (1.8pt);
+			}
+		\end{tikzpicture}
+	\end{center}
+	Пусть даны окружности $\omega_1(O_1;R_1)$ и $\omega_2(O_2;R_2)$, касательные $O_1K$, $O_1L$, $O_2M$, $O_2N$, точки $A$, $B$, $C$, $D$ пересечения касательных с окружностями и точка $Q_1$ и $Q_2$ -- середины $AB$ и $CD$ соответственно. $\triangle AO_1B$ равнобедренный, откуда $\angle AQ_1O_1$ прямой, то есть:
+	$$\triangle O_1AQ_1\sim\triangle O_1O_2K\Longrightarrow\frac{AQ_1}{R_1}=\frac{R_2}{O_1O_2}\Longrightarrow AQ_1=\frac{R_1\cdot R_2}{O_1O_2}$$
+	Аналогично можно вычислить $DQ_2$, получая $AQ_1=DQ_2$, при этом $AQ_1\parallel DQ_2$, то есть $AQ_1Q_2D$ -- прямоугольник. Аналогично $Q_1BCQ_2$, а значит и $ABCD$ -- прямоугольники.
+\end{proof}
 
 \section{Бинарное отношение и векторы}
 
@@ -3438,11 +3486,11 @@
 \end{definition}
 \begin{definition}[Правосторонний предел функции]
 	\hfill
-	$$A=\lim_{x\to x_0+}f(x)\Longleftrightarrow \forall \varepsilon >0\,\, \exists\, \delta >0:\,\forall x \in (x_0; x_0 + \delta)\Longrightarrow |f(x)-A|<\varepsilon$$
+	$$A=\lim_{x\to x_0+0}f(x)\Longleftrightarrow \forall \varepsilon >0\,\, \exists\, \delta >0:\,\forall x \in (x_0; x_0 + \delta)\Longrightarrow |f(x)-A|<\varepsilon$$
 \end{definition}
 \begin{definition}[Левосторонний предел функции]
 	\hfill
-	$$A=\lim_{x\to x_0-}f(x)\Longleftrightarrow \forall \varepsilon >0\,\, \exists\, \delta >0:\,\forall x \in (x_0-\delta; x_0)\Longrightarrow |f(x)-A|<\varepsilon$$
+	$$A=\lim_{x\to x_0-0}f(x)\Longleftrightarrow \forall \varepsilon >0\,\, \exists\, \delta >0:\,\forall x \in (x_0-\delta; x_0)\Longrightarrow |f(x)-A|<\varepsilon$$
 \end{definition}
 \begin{definition}
 	Функция $f(x)$ называется непрерывной в точке $x_0$, если:
