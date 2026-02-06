@@ -54,7 +54,6 @@
 \usepackage{hyperref}
 \usepackage{multirow}
 \usepackage{booktabs}
-\usepackage{physics}
 \usepackage{mhchem}
 
 %Мат команды
@@ -68,19 +67,6 @@
 \newcommand{\vertneq}{\rotatebox{90}{$\,\neq$}}
 \newcommand{\notequalto}[2]{\underset{\scriptstyle\overset{\mkern4mu\vertneq}{#2}}{#1}}
 \DeclareMathOperator{\const}{const}
-\makeatletter
-\newenvironment{sqcases}{%
-  \matrix@check\sqcases\env@sqcases
-}{%
-  \endarray\right.%
-}
-\def\env@sqcases{%
-  \let\@ifnextchar\new@ifnextchar
-  \left\lbrack
-  \def\arraystretch{1.2}%
-  \array{@{}l@{\quad}l@{}}%
-}
-\makeatother
 
 %Оглавление
 \title{\textbf{Физика}}\date{}
@@ -103,6 +89,9 @@
 \section{Обозначения в системе СИ}
 
 \setlength{\columnsep}{1.5cm}
+
+\subsection{Единицы измерения}
+
 \begin{center}
     \begin{multicols}{2}
         \begin{itemize}[leftmargin=*, itemsep=0pt]
@@ -128,6 +117,22 @@
         \end{itemize}
     \end{multicols}
 \end{center}
+
+\subsection{Десятичные приставки}
+
+\def\arraystretch{1.5}
+\begin{center}
+    \begin{tabular}{ccc|ccc}
+        Наименование & Обозначение & Множитель & Наименование & Обозначение & Множитель\\
+        \hline
+        гига & Г & $10^9$ & санти & с & $10^{-2}$\\
+        мега & М & $10^6$ & милли & м & $10^{-3}$\\
+        кило & к & $10^3$ & микро & мк & $10^{-6}$\\
+        гекто & г & $10^2$ & нано & н & $10^{-9}$\\
+        деци & д & $10^{-1}$ & пико & п & $10^{-12}$
+    \end{tabular}
+\end{center}
+\def\arraystretch{1}
 
 \section{Теплопередача}
 
@@ -169,7 +174,7 @@
 \end{definition}
 
 \begin{formula}
-    $$Q=c\cdot m\cdot \Delta t$$
+    $$Q=c m \Delta t$$
     \begin{center}
         \begin{minipage}{12cm}
             $Q$ [Дж] -- количество теплоты, $c$ $\left[\frac{\text{Дж}}{\text{кг}\cdot {^\circ \text{C}}}\right]$ -- удельная теплоемкость, $m$ [кг] -- масса вещества, $\Delta t$ $[^\circ$C] -- разность температур.
@@ -248,7 +253,7 @@
     Удельная теплота -- скалярная физическая величина, обозначающая количество теплоты, требуемое для смены агрегатного состояния единицы массы.
 \end{definition}
 \begin{formula}
-    $$Q=q\cdot m$$
+    $$Q=q m$$
     \begin{center}
         \begin{minipage}{12cm}
             $Q$ [Дж] – количество теплоты, $q$ [Дж/кг] -- удельная теплота сгорания, $m$ [кг] – масса вещества.
@@ -256,7 +261,7 @@
     \end{center}
 \end{formula}
 \begin{formula}
-    $$Q=L\cdot m$$
+    $$Q=L m$$
     \begin{center}
         \begin{minipage}{12cm}
             $Q$ [Дж] – количество теплоты, $L$ [Дж/кг] -- удельная теплота парообразования, $m$ [кг] – масса вещества.
@@ -264,7 +269,7 @@
     \end{center}
 \end{formula}
 \begin{formula}
-    $$Q=\lambda\cdot m$$
+    $$Q=\lambda m$$
     \begin{center}
         \begin{minipage}{12cm}
             $Q$ [Дж] – количество теплоты, $\lambda$ [Дж/кг] -- удельная теплота плавления, $m$ [кг] – масса вещества.
@@ -272,12 +277,83 @@
     \end{center}
 \end{formula}
 
-\section{Электричество}
+\section{Электродинамика}
+
+\subsection{Электростатика}
+
+\begin{law}[Закон сохранения заряда]
+    В замкнутой системе алгебраическая сумма зарядов остаётся постоянной:
+    $$\sum_{i=1}^{n}q_i=\const$$
+\end{law}
+\begin{law}[Закон Кулона]
+    $$\vv{F}=k \frac{|q_1|\cdot|q_2|}{\varepsilon\cdot r^2}$$
+    \begin{center}
+        \begin{minipage}{15cm}
+            $\vv{F}$ [Н] -- сила взаимодействия зарядов, $k$ -- постоянная Кулона $\left(\approx 9\cdot 10^9\,\frac{\text{Н}\cdot\text{м}^2}{\text{Кл}^2}\right)$, $q_1$ и $q_2$ [Кл] -- точечные заряды тел, $r$ [м] -- расстояние между зарядами, $\varepsilon$ -- относительная диэлектрическая проницаемость среды (равна 1 для воздуха).
+        \end{minipage}
+    \end{center}
+\end{law}
+\begin{formula}
+    $$k=\frac{1}{4\pi\varepsilon_0}$$
+    \begin{center}
+        \begin{minipage}{13cm}
+            $k$ $\left[\frac{\text{Н}\cdot\text{м}^2}{\text{Кл}^2}\right]$ – постоянная Кулона, $\varepsilon_0$ [Ф/м] -- электрическая постоянная.
+        \end{minipage}
+    \end{center}
+\end{formula}
+\begin{definition}
+    Электрическое поле -- особый вид материи (не вещество), создающийся зарядами и действующий на заряды.
+\end{definition}
+\begin{definition}
+    Напряженность -- отношение силы, с которой поле воздействует на точечный заряд к величине этого заряда.
+\end{definition}
+\begin{formula}
+    $$\vv{E}=\frac{\vv{F}}{q}$$
+    \begin{center}
+        \begin{minipage}{12cm}
+            $\vv{E}$ [Н/Кл] – напряженность поля, $\vv{F}$ [Н] -- сила воздействия поля, $q$ [Кл] – точечный заряд.
+        \end{minipage}
+    \end{center}
+\end{formula}
+\begin{definition}
+    Силовые линии -- воображаемые кривые, касательные к которым в каждой точке совпадают с вектором напряжённости электрического поля.
+\end{definition}
+\begin{definition}
+    Однородное электрическое поле -- электрическое поле, сила действия на заряд которого одинакова во всех точках поля.\bigskip
+
+    \textit{Силовые линии однородного электрического поля -- параллельные прямые.}
+\end{definition}
+\begin{law}[Принцип суперпозиции]
+    Если в данной точке пространства электрическое поле создано несколькими зарядами и напряженность поля каждого заряда равна $\vv{E_1},\,\vv{E_2},\ldots$, то результирующая напряженность этого поля равна векторной сумме напряженностей составляющих его полей.
+    $$\vv{E}=\sum_{i=1}^{n}\vv{E_i}$$
+\end{law}
+\begin{definition}
+    Потенциалом электрического поля называется его характеристика, которая показывает, какой потенциальной энергией обладает единичный электрический заряд, помещенный в данную точку пространства.
+\end{definition}
+\begin{formula}
+    $$\varphi=\frac{E}{q}$$
+    \begin{center}
+        \begin{minipage}{12cm}
+            $\varphi$ [Дж/Кл] – потенциал, $E$ [Дж] -- энергия заряда, $q$ [Кл] -- величина заряда.
+        \end{minipage}
+    \end{center}
+\end{formula}
+\begin{definition}
+    Разность потенциалов электрического поля (между точками 1 и 2) -- отношение работы электрического поля по перемещению пробного заряда из точки 1 в точку 2 к величине этого заряда.
+    $$U_{12}=\varphi_1-\varphi_2=\frac{A_{12}}{q}$$
+\end{definition}
+
+\subsection{Электрический ток}
 
 \begin{definition}
     Электрический ток -- упорядоченное движение заряженных частиц. Направление электрического тока определяется движением положительных зарядов.
 \end{definition}
-\begin{law}[Ома]
+\begin{definition}
+    Сила тока — количественная характеристика электрического тока, равная отношению количества заряда, прошедшего через некоторую поверхность за некоторое время, к величине этого промежутка времени:
+    $$I=\frac{\Delta q}{\Delta t}$$
+    $I$ [А] -- сила тока, $q$ [Кл] -- заряд, $t$ [с] -- время.
+\end{definition}
+\begin{law}[Ома для участка цепи]
     $$I=\frac{U}{R}$$
     \begin{center}
         \begin{minipage}{12cm}
@@ -286,38 +362,6 @@
         \end{minipage}
     \end{center}
 \end{law}
-
-\subsection{Электрическое поле}
-
-\begin{definition}
-    Поле -- материальная среда, передающая воздействие тел друг на друга.
-\end{definition}
-\begin{definition}
-    Электростатическое поле -- поле, передающее взаимодействие одного неподвижного электрического заряда на другой.
-\end{definition}
-\begin{definition}
-    Электрическая сила – сила, с которой электрическое поле одного заряда действует на внесенный в него другой электрический заряд. Сила воздействия электрического поля на заряд уменьшается по мере удаления.
-\end{definition}
-
-\subsection{Источник тока}
-
-\begin{definition}
-    Источник тока -- устройство, в котором происходит преобразование какого-либо вида энергии в электрическую энергию.
-\end{definition}
-
-\begin{center}
-    \begin{tikzpicture}
-        \draw[white] (-8,0) -- (8,0);
-        \draw (0,0) node[above] {\textbf{Источник тока}};
-        \draw[-{Stealth[scale = 1.5]}] (-0.75,0) -- (-0.75,-0.5) -- (-6,-0.5) -- (-6,-1) node[below] {Механический};
-        \draw[-{Stealth[scale = 1.5]}] (-0.25,0) -- (-0.25,-1) -- (-3,-1) -- (-3,-1.5) node[below] {Тепловой};
-        \draw[-{Stealth[scale = 1.5]}] (0.25,0) -- (0.25,-1) -- (3,-1) -- (3,-1.5) node[below] {Световой};
-        \draw[-{Stealth[scale = 1.5]}] (0.75,0) -- (0.75,-0.5) -- (6,-0.5) -- (6,-1) node[below] {Химический};
-    \end{tikzpicture}
-\end{center}
-
-\subsection{Проводники}
-
 \begin{definition}
     Проводники -- вещества, обладающие свободными носителями заряда. При помещении проводящего тела в электрическое поле, свободные носители заряда приходят в движение, возникает электрический ток, который существует до тех пор, пока поле внутри проводника отлично от нуля.\bigskip
 
@@ -326,32 +370,42 @@
 \begin{definition}
     Диэлектрики -- вещества, в которых все носители заряда связаны в нейтральных молекулах. При помещении во внешнее электрическое поле диэлектрики поляризуются, что приводит к ослаблению поля внутри них.
 \end{definition}
-
 \begin{formula}
-    $$A=U\cdot I\cdot t$$
+    $$R=\frac{\rho l}{S}$$
     \begin{center}
-        \begin{minipage}{11cm}
-            $A$ [Дж] – работа тока, $U$ [В] -- напряжение, $I$ [А] – сила тока, $t$ [с] -- время.
+        \begin{minipage}{12cm}
+            $R$ [Ом] – сопротивление, $\rho$ [Ом $\cdot$ м] -- удельное сопротивление, $l$ [м] – длина проводника, $S$ [м$^2$] -- площадь поперечного сечения проводника.
         \end{minipage}
     \end{center}
 \end{formula}
+\begin{definition}
+    Электродвижущая сила -- скалярная величина, характеризующая работу сторонних сил (неэлектрического происхождения) по перемещению единичного положительного заряда внутри источника тока.
+\end{definition}
 \begin{formula}
-    $$P=U\cdot I$$
+    $$\varepsilon=\frac{A_\text{ст}}{q}$$
+    \begin{center}
+        \begin{minipage}{12cm}
+            $\varepsilon$ [В] -- электродижущая сила, $A_\text{ст}$ [Дж] -- работа сторонних сил, $q$ [Кл] -- заряд.
+        \end{minipage}
+    \end{center}
+\end{formula}
+\begin{law}[Ома для полной цепи]
+    $$I=\frac{\varepsilon}{R+r}$$
     \begin{center}
         \begin{minipage}{12cm}
             \centering
-            $P$ [Вт] – мощность тока, $U$ [В] -- напряжение, $I$ [А] – сила тока.
-        \end{minipage}
-    \end{center}
-\end{formula}
-\begin{law}[Джоуля-Ленца]
-    $$Q=I^2\cdot R\cdot t$$
-    \begin{center}
-        \begin{minipage}{11cm}
-            $Q$ [Дж] – количество теплоты, $I$ [А] -- сила тока, $R$ [Ом] – сопротивление, $t$ [с] -- время.
+            $I$ [А] – сила тока, $\varepsilon$ [В] -- электродвижущая сила, $R$ [Ом] -- внешнее сопротивление., $r$ [Ом] -- внутреннее сопротивление источника.
         \end{minipage}
     \end{center}
 \end{law}
+\begin{formula}
+    $$U=\varepsilon-Ir$$
+    \begin{center}
+        \begin{minipage}{12cm}
+            $U$ [В] -- напряжение на источнике, $\varepsilon$ [В] -- электродвижущая сила, $I$ [А] – сила тока, $r$ [Ом] -- внутреннее сопротивление источника.
+        \end{minipage}
+    \end{center}
+\end{formula}
 \newsavebox{\circuita}
 \sbox{\circuita}{
     \begin{circuitikz}
@@ -392,118 +446,32 @@
 \end{tikzpicture}
 \end{center}
 \singlespacing
-
 \begin{formula}
-    $$R=\frac{\rho\cdot l}{S}$$
+        $$A=IU\Delta t=U\Delta q$$
     \begin{center}
         \begin{minipage}{12cm}
-            $R$ [Ом] – сопротивление, $\rho$ [Ом $\cdot$ м] -- удельное сопротивление, $l$ [м] – длина проводника, $S$ [м$^2$] -- площадь поперечного сечения проводника.
+            $A$ [Дж] – работа тока, $U$ [В] -- напряжение, $I$ [А] – сила тока, $t$ [с] -- время, $q$ [Кл] -- заряд.
         \end{minipage}
     \end{center}
 \end{formula}
-
-\subsection{Напряженность электрического поля}
-
-\begin{law}[Закон сохранения заряда]
-    В замкнутой системе алгебраическая сумма зарядов остаётся постоянной:
-    $$\sum_{i=1}^{n}q_i=\const$$
+\begin{formula}
+    $$P=\frac{A}{\Delta t}=UI$$
+    \begin{center}
+        \begin{minipage}{12cm}
+            $P$ [Вт] – мощность тока, $A$ [Дж] -- работа тока, $t$ [с] -- время, $U$ [В] -- напряжение, $I$ [А] – сила тока.
+        \end{minipage}
+    \end{center}
+\end{formula}
+\begin{law}[Джоуля-Ленца]
+    $$Q=I^2Rt$$
+    \begin{center}
+        \begin{minipage}{12cm}
+            $Q$ [Дж] -- количество теплоты, $I$ [А] -- сила тока, $R$ [Ом] – сопротивление, $t$ [с] -- время.
+        \end{minipage}
+    \end{center}
 \end{law}
 
-\begin{law}[Закон Кулона]
-    $$\vv{F}=k\cdot \frac{|q_1|\cdot|q_2|}{\varepsilon\cdot r^2}$$
-    \begin{center}
-        \begin{minipage}{15cm}
-            $\vv{F}$ [Н] -- сила взаимодействия зарядов, $k$ -- постоянная Кулона $\left(\approx 9\cdot 10^9\,\frac{\text{Н}\cdot\text{м}^2}{\text{Кл}^2}\right)$, $q_1$ и $q_2$ [Кл] -- точечные заряды тел, $r$ [м] -- расстояние между зарядами, $\varepsilon$ -- относительная диэлектрическая проницаемость среды (равна 1 для воздуха).
-        \end{minipage}
-    \end{center}
-\end{law}
-\begin{formula}
-    $$k=\frac{1}{4\pi\varepsilon_0}$$
-    \begin{center}
-        \begin{minipage}{13cm}
-            $k$ $\left[\frac{\text{Н}\cdot\text{м}^2}{\text{Кл}^2}\right]$ – постоянная Кулона, $\varepsilon_0$ [Ф/м] -- электрическая постоянная.
-        \end{minipage}
-    \end{center}
-\end{formula}
-\begin{definition}
-    Потенциалом электрического поля называется его характеристика, которая показывает, какой потенциальной энергией обладает единичный электрический заряд, помещенный в данную точку пространства.
-\end{definition}
-\begin{formula}
-    $$\varphi=\frac{E}{q}$$
-    \begin{center}
-        \begin{minipage}{12cm}
-            $\varphi$ [Дж/Кл] – потенциал, $E$ [Дж] -- энергия заряда, $q$ [Кл] -- величина заряда.
-        \end{minipage}
-    \end{center}
-\end{formula}
-\begin{definition}
-    Разность потенциалов электрического поля (между точками 1 и 2) -- отношение работы электрического поля по перемещению пробного заряда из точки 1 в точку 2 к величине этого заряда.
-    $$U_{12}=\varphi_1-\varphi_2=\frac{A_{12}}{q}$$
-\end{definition}
-\begin{definition}
-    Напряженность -- отношение силы, с которой поле воздействует на точечный заряд к величине этого заряда.
-\end{definition}
-\begin{formula}
-    $$\vv{E}=\frac{\vv{F}}{q}$$
-    \begin{center}
-        \begin{minipage}{12cm}
-            $\vv{E}$ [Н/Кл] – напряженность поля, $\vv{F}$ [Н] -- сила воздействия поля, $q$ [Кл] – точечный заряд.
-        \end{minipage}
-    \end{center}
-\end{formula}
-\begin{law}[Принцип суперпозиции]
-    Если в данной точке пространства электрическое поле создано несколькими зарядами и напряженность поля каждого заряда равна $\vv{E_1},\,\vv{E_2},\ldots$, то результирующая напряженность этого поля равна векторной сумме напряженностей составляющих его полей.
-\end{law}
-
-\subsection{Конденсаторы}
-
-\begin{definition}
-    Электроемкость -- физическая величина, характеризующая способность проводников накапливать заряд.
-\end{definition}
-\begin{formula}
-    $$C=\frac{q}{U}$$
-    \begin{center}
-        \begin{minipage}{12cm}
-            $C$ [Ф] -- электроемкость, $q$ [Кл] -- заряд пластины конденсатора, $U$ [В] – напряжение.
-        \end{minipage}
-    \end{center}
-\end{formula}
-\begin{formula}
-    $$C=\frac{\varepsilon\cdot\varepsilon_0\cdot S}{d}$$
-    \begin{center}
-        \begin{minipage}{12cm}
-            $C$ [Ф] -- электроемкость, $\varepsilon$ -- диэлектрическая проницаемость, $\varepsilon_0$ -- электрическая постоянная, $d$ [м] -- расстояние между пластинами конденсатора.
-        \end{minipage}
-    \end{center}
-\end{formula}
-\begin{formula}
-    $$W=\dfrac{q\cdot U}{2}=\dfrac{C\cdot U^2}{2}=\dfrac{q^2}{2C}$$
-    \begin{center}
-        \begin{minipage}{12cm}
-            $W$ [Дж] -- энергия заряженного конденсатора, $q$ [Кл] -- заряд пластины конденсатора, $U$ [В] -- разность потенциалов, $C$ [Ф] -- электроемкость.
-        \end{minipage}
-    \end{center}
-\end{formula}
-
-\begin{center}
-    \begin{circuitikz}
-        \draw (-7.5,0) to[capacitor, o-*] (-5,0)
-        to[capacitor, *-o] (-2.5,0);
-        \draw (2.5,0) to[short, o-*] (3.75,0) -- (3.75,0.75)
-        to[capacitor] (6.25,0.75) -- (6.25,0)
-        to[short, *-o] (7.5, 0);
-        \draw (3.75,0) -- (3.75,-0.75)
-        to[capacitor] (6.25,-0.75) -- (6.25,0);
-        \node[align=center] at (-5,-2.25) {
-            $\dfrac{1}{C}=\dfrac{1}{C_1}+\dfrac{1}{C_2}$
-        };
-        \node[align=center] at (5,-2.25) {
-            $C=C_1+C_2$
-        };
-    \end{circuitikz}
-\end{center}
-
-\subsection{Магнитное поле}
+\subsection{Магнетизм}
 
 \begin{definition}
     Магнитное поле -- особый вид материи, существующий вокруг любого проводника с током. Неподвижные электрические заряды создают электрическое поле, а подвижные -- электрическое и магнитное поля.
@@ -517,16 +485,6 @@
 \begin{definition}
     Магнитная индукция -- векторная физическая величина, которая показывает, с какой силой магнитное поле действует на движущиеся заряженные частицы.
 \end{definition}
-\begin{center}
-    \begin{tikzpicture}
-        \draw[white] (-8,0) -- (8,0);
-        \draw (0,0) node[above] {\textbf{Электромагнитная сила}};
-        \draw[-{Stealth[scale = 1.5]}] (-0.25,0) -- (-0.25,-0.5) -- (-5,-0.5) -- (-5,-1);
-        \draw[-{Stealth[scale = 1.5]}] (0.25,0) -- (0.25,-0.5) -- (5,-0.5) -- (5,-1);
-        \draw (-5,-1) node[below] {Сила Лоренца};
-        \draw (5,-1) node[below] {Сила Ампера};
-    \end{tikzpicture}
-\end{center}
 \begin{definition}
     Сила Ампера -- сила, с которой магнитное поле воздействует на проводник с током.
 \end{definition}
@@ -558,11 +516,6 @@
     Если расположить ладонь левой руки так, чтобы линии индукции магнитного поля входили во внутреннюю сторону ладони, перпендикулярно к ней, а четыре пальца направлены по току, то отставленный на 90° большой палец укажет направление силы, действующей со стороны магнитного поля на проводник с током.
 \end{law}
 \begin{definition}
-    Поверхностная плотность заряда -- скалярная физическая величина, которая характеризует количество заряда на единицу площади поверхности.
-    $$\sigma=\frac{q}{S}$$
-    $\sigma$ [Кл/м$^2$] -- поверхностная плотность заряда, $q$ [Кл] -- заряд, $S$ [м$^2$] -- площадь поверхности.
-\end{definition}
-\begin{definition}
     Циклотронный (Ларморовский) радиус -- радиус кругового движения заряженной частицы в однородном магнитном поле.
     $$R=\frac{mv}{qB}$$
     $R$ [м] -- циклотронный радиус, $m$ [кг] -- масса заряженной частицы, $v$ [м/с] -- скорость частицы, $q$ [Кл] -- заряд частицы, $B$ [Тл] -- магнитная индукция.
@@ -580,16 +533,13 @@
     По определению периода вращения:
     $$T=\frac{2\pi R}{v}=\frac{2\pi mv}{qBv}=\frac{2\pi m}{qB}=\frac{1}{\nu}\Longrightarrow \nu=\frac{qB}{2\pi m}$$
 \end{proof}
-
-\subsection{Индукционный ток}
-
 \begin{definition}
     Магнитный поток -- мера общего магнитного поля, проходящего сквозь заданную площадь.
-    $$\Phi=|\vv{B}\cdot \vv{S}|=B\cdot S\cdot |\cos\alpha|$$
+    $$\Phi=|\vv{B}\cdot \vv{S}|=B S\cdot |\cos\alpha|$$
     $\Phi$ [Вб] -- магнитный поток, $B$ [Тл] -- магнитная индукция, $S$ [м$^2$] -- площадь, $\alpha$ -- угол между $\vv{B}$ и $\vv{S}$ (вектор площади).
 \end{definition}
 \begin{formula}
-    $$\Phi=N\cdot B\cdot S\cdot |\cos\alpha|$$
+    $$\Phi=N B S\cdot |\cos\alpha|$$
     \begin{center}
         \begin{minipage}{12cm}
             $\Phi$ [Вб] -- магнитный поток катушки, $N$ -- количество ветков катушки, $B$ [Тл] -- магнитная индукция, $S$ [м$^2$] -- площадь, $\alpha$ -- угол между $\vv{B}$ и $\vv{S}$.
@@ -613,6 +563,70 @@
 \begin{definition}
     ЭДС самоиндукции – ЭДС, возникающая в катушке при изменении силы тока через неё.
 \end{definition}
+
+\subsection{Конденсаторы}
+
+\begin{definition}
+    Поверхностная плотность заряда -- скалярная физическая величина, которая характеризует количество заряда на единицу площади поверхности.
+    $$\sigma=\frac{q}{S}$$
+    $\sigma$ [Кл/м$^2$] -- поверхностная плотность заряда, $q$ [Кл] -- заряд, $S$ [м$^2$] -- площадь поверхности.
+\end{definition}
+\begin{definition}
+    Электроемкость -- физическая величина, характеризующая способность проводников накапливать заряд.
+\end{definition}
+\begin{formula}
+    $$C=\frac{q}{U}$$
+    \begin{center}
+        \begin{minipage}{12cm}
+            $C$ [Ф] -- электроемкость, $q$ [Кл] -- заряд пластины конденсатора, $U$ [В] – напряжение.
+        \end{minipage}
+    \end{center}
+\end{formula}
+\begin{formula}
+    $$C=\frac{\varepsilon\varepsilon_0 S}{d}$$
+    \begin{center}
+        \begin{minipage}{12cm}
+            $C$ [Ф] -- электроемкость, $\varepsilon$ -- диэлектрическая проницаемость, $\varepsilon_0$ -- электрическая постоянная, $d$ [м] -- расстояние между пластинами конденсатора.
+        \end{minipage}
+    \end{center}
+\end{formula}
+\begin{formula}
+    $$W=\dfrac{q U}{2}=\dfrac{C U^2}{2}=\dfrac{q^2}{2C}$$
+    \begin{center}
+        \begin{minipage}{12cm}
+            $W$ [Дж] -- энергия заряженного конденсатора, $q$ [Кл] -- заряд пластины конденсатора, $U$ [В] -- разность потенциалов, $C$ [Ф] -- электроемкость.
+        \end{minipage}
+    \end{center}
+\end{formula}
+\begin{center}
+    \begin{circuitikz}
+        \draw (-7.5,0) to[capacitor, o-*] (-5,0)
+        to[capacitor, *-o] (-2.5,0);
+        \draw (2.5,0) to[short, o-*] (3.75,0) -- (3.75,0.75)
+        to[capacitor] (6.25,0.75) -- (6.25,0)
+        to[short, *-o] (7.5, 0);
+        \draw (3.75,0) -- (3.75,-0.75)
+        to[capacitor] (6.25,-0.75) -- (6.25,0);
+        \node[align=center] at (-5,-2.25) {
+            $\dfrac{1}{C}=\dfrac{1}{C_1}+\dfrac{1}{C_2}$
+        };
+        \node[align=center] at (5,-2.25) {
+            $C=C_1+C_2$
+        };
+    \end{circuitikz}
+\end{center}
+
+\begin{law}[Изменения энергии в электрической цепи]
+    $$A_\text{ист}+A_\text{мех}=\Delta W+Q$$
+    \begin{center}
+        \begin{minipage}{12cm}
+            $A_\text{ист}$ [Дж] -- работа источника тока, $A_\text{мех}$ [Дж] -- механическая работа, $W$ [Дж] -- энергия в цепи, $Q$ [Дж] -- выделяемое количество теплоты.
+        \end{minipage}
+    \end{center}
+\end{law}
+
+\subsection{Катушки индуктивности}
+
 \begin{definition}
     Индуктивность катушки – физическая величина, характеризующая способность катушки накапливать энергию в магнитном поле и сопротивляться изменению протекающего через неё тока.
     $$L=\frac{\Phi}{I}$$
@@ -642,28 +656,33 @@
         \end{minipage}
     \end{center}
 \end{formula}
-
-\subsection{Электромагнитные волны}
-
-\begin{definition}
-    Электромагнитные волны -- это распространение колебаний электрического и магнитных полей в пространстве.\bigskip
-
-    \textit{Скорость распространения электромагнитной волны в вакууме: $c=3\cdot 10^8$} м/с
-\end{definition}
+\begin{formula}
+    $$W=W_C+W_L$$
+    \begin{center}
+        \begin{minipage}{12cm}
+            $W$ [Дж] -- энергия в электрической цепи, $W_C$ [Дж] -- энергия в конденсаторе, $W_L$ [Дж] -- энергия в катушке индуктивности.
+        \end{minipage}
+    \end{center}
+\end{formula}
 \begin{law}[Следствие из уравнения Максвелла]
     Переменное магнитное поле порождает переменное электрическое поле и наоборот.
 \end{law}
 \begin{definition}
     Открытый колебательный контур -- это колебательный контур (катушка и конденсатор), в котором одна или обе его части (пластины конденсатора или витки катушки) вынесены в окружающее пространство, что позволяет ему излучать или принимать электромагнитные волны.
 \end{definition}
-\begin{law}
-    Плотность потока энергии электромагнитного излучения пропорциональна его частоте в четвёртой степени.
-\end{law}
+\begin{formula}
+    $$T=2\pi\sqrt{LC}$$
+    \begin{center}
+        \begin{minipage}{12cm}
+            $T$ [с] -- период электромагнитных колебаний, $L$ [Гн] -- индуктивность катушки, $C$ [Ф] -- электроёмкость конденсатора.
+        \end{minipage}
+    \end{center}
+\end{formula}
 
 \section{Оптика}
 
 \begin{definition}
-    Свет — электромагнитная волна
+    Свет — электромагнитная волна.
 \end{definition}
 \begin{definition}
     Абсолютный показатель преломления -- отношение скорости распространения электромагнитной волны в среде к скорости света в вакууме:
@@ -832,6 +851,17 @@
     \end{center}
 \end{formula}
 
+\subsection{Электромагнитные волны}
+
+\begin{definition}
+    Электромагнитные волны -- это распространение колебаний электрического и магнитных полей в пространстве.\bigskip
+
+    \textit{Скорость распространения электромагнитной волны в вакууме: $c=3\cdot 10^8$} м/с.
+\end{definition}
+\begin{law}
+    Плотность потока энергии электромагнитного излучения пропорциональна его частоте в четвёртой степени.
+\end{law}
+
 \subsection{Оптические явления}
 
 \begin{definition}
@@ -860,7 +890,7 @@
     \textit{Отклонение от геометрической оптики.}
 \end{definition}
 \begin{formula}
-    $$d\cdot\sin\alpha=k\cdot\lambda$$
+    $$d\sin\alpha=k\lambda$$
     \begin{center}
         \begin{minipage}{12cm}
             $d$ [м] -- период дефракционной решётки, $\alpha$ –- угол дефракции, $k$ -- порядок максимума ($k\in\Z$), $\lambda$ [м] -- длина волны.
