@@ -73,7 +73,6 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
-\newcommand*\diff{\mathop{}\!\mathrm{d}}
 
 %Оглавление
 \title{\textbf{Геометрия}}\date{}\author{}
@@ -3283,14 +3282,14 @@
 \end{definition}
 \begin{statement}[Объём тела вращения]
     Пусть $f(x)$ -- непрерывная неотрицательная\\функция, определённая на $[a;\,b]$, а тело $T$ получено вращением криволинейной трапеции, ограниченной графиком $y=f(x)$ и прямыми $x=a,\,x=b\,y=0$. Тогда объём тела $T$ вычисляется по формуле:
-    $$V(T)=\pi \int_{a}^{b}f^2(x)\diff x$$
+    $$V(T)=\pi \int_{a}^{b}f^2(x)\,d x$$
 \end{statement}
 \begin{statement}[Объём шара]
   Пусть $R$ – радиус шара, тогда объём шара равен:
   $$V=\frac{4}{3}\pi R^3$$
 \end{statement}
 \begin{proof}
-  $$V=2\int_{0}^{R}\pi\left(R^2-(R-r)^2\right)\diff r=4\pi r\int_{0}^{R}\diff r-2\pi\int_{0}^{R}r^2\diff r=4\pi R\cdot \frac{R^2}{2} - 2\pi\cdot \frac{R^3}{3}=\frac{4}{3}\pi R^3$$
+  $$V=2\int_{0}^{R}\pi\left(R^2-(R-r)^2\right)\,d r=4\pi r\int_{0}^{R}\,d r-2\pi\int_{0}^{R}r^2\,d r=4\pi R\cdot \frac{R^2}{2} - 2\pi\cdot \frac{R^3}{3}=\frac{4}{3}\pi R^3$$
 \end{proof}
 \begin{definition}
   Пусть в одной плоскости даны прямая $l$ и круг $S$, не имеющие общих точек, тогда тело, полученное вращением плоскости относительно $l$ называется тором.
@@ -3301,7 +3300,7 @@
 \end{statement}
 \begin{proof}
   Уравнение окружности имеет вид $(x-d)^2 + y^2=R^2$, откуда $x=d\pm \sqrt{R^2-y^2}$. Пусть $x_1=d-\sqrt{R^2-y^2}$, $x_2=d+\sqrt{R^2-y^2}$. Тогда:
-  $$V=\int_{-R}^{R}(\pi x_2^2-\pi x_1^2)\diff y=\pi\int_{-R}^{R}2d\cdot2\sqrt{R^2-y^2}\cdot \diff y=4\pi d\int_{-R}^{R}\sqrt{R^2-y^2}\cdot \diff y=2\pi^2 d R^2$$
+  $$V=\int_{-R}^{R}(\pi x_2^2-\pi x_1^2)\,d y=\pi\int_{-R}^{R}2d\cdot2\sqrt{R^2-y^2}\cdot d y=4\pi d\int_{-R}^{R}\sqrt{R^2-y^2}\cdot d y=2\pi^2 d R^2$$
 \end{proof}
 \begin{definition}
   Пусть в пространстве даны плоскость $\alpha$, содержащаяся в ней кривая $\gamma$ и прямая $l$, пересекающая данную плоскость. Тогда множество прямых, параллельных $l$ и пересекающих $\gamma$, называется цилиндрической поверхностью.

@@ -58,7 +58,6 @@
 \newcommand{\D}{\mathbb{D}}
 \newcommand{\prob}{\mathbb{P}}
 \newcommand{\nd}{\mathcal{N}}
-\newcommand*\diff{\mathop{}\!\mathrm{d}}
 
 %Оглавление
 \title{\textbf{ТВиМС}}\date{}\author{}
@@ -842,7 +841,7 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
 \end{definition}
 \begin{definition}
     Математическим ожиданием непрерывно распределённой случайной величины называется:
-    $$\E(\xi)=\int_{-\infty}^{\infty}x\cdot f_\xi(x)\diff x$$
+    $$\E(\xi)=\int_{-\infty}^{\infty}x\cdot f_\xi(x)\,d x$$
 \end{definition}
 
 \subsubsection{Экспоненциальное распределение}
@@ -865,10 +864,10 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
     \end{cases}$$
 \end{statement}
 \begin{proof}
-    $$F_\tau(t)=\int_{0}^{t}\lambda e^{-\lambda \hat{t}}\diff \hat{t}=\begin{vmatrix}
+    $$F_\tau(t)=\int_{0}^{t}\lambda e^{-\lambda \hat{t}}\,d \hat{t}=\begin{vmatrix}
     x=-\lambda t\\
-    \diff x=-\lambda\diff \hat{t}
-    \end{vmatrix}=-\int_{0}^{-\lambda t}e^x\diff x=-e^x\Big|_0^{-\lambda t}=1-e^{-\lambda t}$$
+    \,d x=-\lambda\,d \hat{t}
+    \end{vmatrix}=-\int_{0}^{-\lambda t}e^x\,d x=-e^x\Big|_0^{-\lambda t}=1-e^{-\lambda t}$$
 \end{proof}
 \begin{statement}
     Пусть $\tau\sim Exp(\lambda)$. Тогда:

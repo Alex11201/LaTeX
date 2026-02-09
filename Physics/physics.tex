@@ -36,7 +36,7 @@
 \usepackage{subcaption}
 \usepackage{tikz}
 \usepackage{tkz-euclide}
-\usetikzlibrary {arrows.meta}
+\usetikzlibrary{arrows.meta}
 \usetikzlibrary{calc}
 \usetikzlibrary{intersections}
 \usepackage[european,siunitx]{circuitikz}
@@ -69,7 +69,7 @@
 \DeclareMathOperator{\const}{const}
 
 %Оглавление
-\title{\textbf{Физика}}\date{}
+\title{\textbf{Физика}}\date{}\author{}
 
 \hypersetup{
     colorlinks,
@@ -311,7 +311,7 @@
     $$\vv{E}=\frac{\vv{F}}{q}$$
     \begin{center}
         \begin{minipage}{12cm}
-            $\vv{E}$ [Н/Кл] – напряженность поля, $\vv{F}$ [Н] -- сила воздействия поля, $q$ [Кл] – точечный заряд.
+            $E$ [Н/Кл] – напряженность поля, $F$ [Н] -- сила воздействия поля, $q$ [Кл] – точечный заряд.
         \end{minipage}
     \end{center}
 \end{formula}
@@ -330,11 +330,19 @@
 \begin{definition}
     Потенциалом электрического поля называется его характеристика, которая показывает, какой потенциальной энергией обладает единичный электрический заряд, помещенный в данную точку пространства.
 \end{definition}
+\begin{theorem}[Гаусса]
+    Поток вектора $\vv{E}$ через поверхность:
+    $$\Phi=\oint \vv{E}\cdot d \vv{S}=\frac{q}{\varepsilon_0}$$
+    $\Phi$ [Вб] -- магнитный поток, $E$ [Н/Кл] -- напряжённость поля, $S$ [м$^2$] -- площадь поверхности, $q$ [Кл] -- суммарный заряд поверхности, $\varepsilon_0$ [Ф/м] -- электрическая постоянная.
+\end{theorem}
+\begin{law}
+    Электрическое поле потенциально, то есть: его работа по замкнутому контуру равна нулю, работа не зависит от траектории, можно ввести потенциал и потенциальную энергию.
+\end{law}
 \begin{formula}
-    $$\varphi=\frac{E}{q}$$
+    $$\varphi=\frac{W_p}{q}$$
     \begin{center}
         \begin{minipage}{12cm}
-            $\varphi$ [Дж/Кл] – потенциал, $E$ [Дж] -- энергия заряда, $q$ [Кл] -- величина заряда.
+            $\varphi$ [Дж/Кл] – потенциал, $W_p$ [Дж] -- потенциальная энергия заряда, $q$ [Кл] -- величина заряда.
         \end{minipage}
     \end{center}
 \end{formula}
@@ -585,7 +593,7 @@
     $$C=\frac{\varepsilon\varepsilon_0 S}{d}$$
     \begin{center}
         \begin{minipage}{12cm}
-            $C$ [Ф] -- электроемкость, $\varepsilon$ -- диэлектрическая проницаемость, $\varepsilon_0$ -- электрическая постоянная, $d$ [м] -- расстояние между пластинами конденсатора.
+            $C$ [Ф] -- электроемкость, $\varepsilon$ -- диэлектрическая проницаемость, $\varepsilon_0$ [Ф/м] -- электрическая постоянная, $d$ [м] -- расстояние между пластинами конденсатора.
         \end{minipage}
     \end{center}
 \end{formula}
@@ -1101,7 +1109,7 @@
     Решением уравнения незатухающих гармонических колебаний является:
     $$x(t)=A\sin (\omega t + \varphi_0)$$
     $A$ [м] -- амплитудное значение колебаний, $\omega$ [1/с] -- циклическая частота, $t$ [с] -- время, $\varphi_0$ -- начальная фаза, $\omega t+\varphi_0$ -- фаза колебаний.
-\end{theorem}
+\end{theorem}ч
 \setcounter{subsection}{12}
 \begin{consequence}
     Для пружинного маятника $\omega=\sqrt{\dfrac{k}{m}}\Longrightarrow T=2\pi\sqrt{\dfrac{m}{k}}$. Для математического маятника $\omega=\sqrt{\dfrac{g}{l}}\Longrightarrow T = 2\pi\sqrt{\dfrac{l}{g}}$.
@@ -1112,7 +1120,7 @@
     $$\left(\frac{x(t)}{x_{\max}}\right)^2+\left(\frac{v(t)}{v_{\max}}\right)^2=1;\,\,\left(\frac{a(t)}{a_{\max}}\right)^2+\left(\frac{v(t)}{v_{\max}}\right)^2=1$$
 \end{theorem}
 
-\subsection{Волны}
+\subsection{Механические волны}
 
 \begin{definition}
     Механическая волна -- распространение колебаний в упругой среде.
