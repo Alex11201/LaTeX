@@ -568,7 +568,7 @@ $$\begin{matrix}
 \end{proof}
 \begin{definition}
     Пусть $f(x)$ определена в проколотой левой (правой) полуокрестности точки $x_0$. Число $A$ называется левым (правым) пределом $f(x)$ в точке $x_0$, если:
-    $$A=\lim_{x\to\pm\infty}f(x)\Longleftrightarrow \forall\,\varepsilon>0\enspace\exists\,\delta>0:\,\forall\,x\in\mathring{U}_\delta^\pm(x_0)\enspace f(x)\in U_\varepsilon(A)$$ 
+    $$A=\lim_{x\to x_0\pm0}f(x)\Longleftrightarrow \forall\,\varepsilon>0\enspace\exists\,\delta>0:\,\forall\,x\in\mathring{U}_\delta^\pm(x_0)\enspace f(x)\in U_\varepsilon(A)$$ 
 \end{definition}
 \begin{statement}
     Функция $f(x)$, определённая в проколотой окрестности точки $x_0$, имеет в ней предел тогда и только тогда, когда:
@@ -589,14 +589,34 @@ $$\begin{matrix}
     Пусть $f(x)$ определена на $M\subset\R$. Она называется непрерывной в точке $x_0\in M$, если:
     $$\forall\,\varepsilon>0\enspace\exists\,\delta>0:\,\forall\,x\in U_\delta(x_0)\cap M\enspace f(x)\in U_\varepsilon(f(x_0))$$
 \end{definition}
-\begin{theorem}[1-я теорема Больцана-Коши]
+\begin{theorem}[1-я теорема Больцано-Коши]
     Пусть функция $f(x)$ определена и непрерывна на отрезке $\left[a;b\right]$, тогда:
     $$f(a)<0,\,f(b)>0\Longrightarrow\exists\,c\in \left[a;b\right]:\,f(c)=0$$
 \end{theorem}
 \begin{proof}
     Рассмотрим $d=\frac{a+b}{2}$. Если $f(d)=0$, то $c=d$. Если $f(d)<0$, то $a_1=d$, $b_1=b$, аналогично если $f(d)>0$, то $a_1=a$, $b_1=d$, при этом $d_1=\frac{a_1+b_1}{2}$. Таким образом:
-    $$\bigcap_n\left[a_n;b_n\right]={c};\enspace \lim_{n\to\infty}a_n=\lim_{n\to\infty}b_n=c$$
+    $$\bigcap_{n=1}^\infty\left[a_n;b_n\right]=\{c\};\enspace \lim_{n\to\infty}a_n=\lim_{n\to\infty}b_n=c$$
     Пусть $f(c)=k>0$, тогда $\forall\,n\enspace a_n <0\Longrightarrow\forall\,\delta>0\enspace\exists\,a_n\in U_\delta(c):\,|f(c)-f(a_n)|>\frac{k}{2}$, что невозможно, так как $\lim\limits_{n\to\infty}a_n=c$, противоречие. Аналогично при $f(c)<0$.
+\end{proof}
+\begin{theorem}
+    Пусть $f(x)$ непрерывна на $\left[a;b\right]$, тогда она ограничена на $\left[a;b\right]$.
+\end{theorem}
+\begin{proof}
+    Пусть $f(x)$ не ограничена на $\left[a;b\right]$. Возьмём $c=\frac{a+b}{2}$. Тогда на одном из отрезков $\left[a;c\right]$ или $\left[c;b\right]$ она не ограничена. Без ограничения общности пусть это отрезок $\left[a;c\right]$. Тогда $a_1=a$, $b_1=c$, $c_1=\frac{a_1+b_1}{2}$. Аналогично в противном случае. Таким образом:
+    $$\bigcap_{n=1}^\infty\left[a_n;b_n\right]=\{k\}$$
+    Возьмём бесконечно большую последовательность $d_n$. Тогда $\forall\, n\enspace  \exists\,x_n\in \left[a_n;b_n\right]:\,f(x_n)>d_n$, то есть $\lim\limits_{n\to\infty}x_n=k$; из непрерывности $\lim\limits_{n\to\infty}f(x_n)=f(k)$, но $f(x_n)$ -- бесконечно большая. Таким образом, значение функции в точке равно бесконечности, противоречие.
+\end{proof}
+\begin{theorem}
+    Пусть $f(x)$ непрерывна на $\left[a;b\right]$, тогда она достигает своего супремума на этом отрезке.
+\end{theorem}
+\begin{proof}
+    Возьмём $c=\frac{a+b}{2}$. Тогда:
+    $$\sup_{\left[a;c\right]}f(x)\leq \sup_{\left[a;b\right]}f(x);\quad \sup_{\left[c;b\right]}f(x)\leq \sup_{\left[a;b\right]}f(x)$$
+    Из данных неравенств следует, что на $\left[a;c\right]$ или на $\left[c;b\right]$ супремум равен супремуму на $\left[a;b\right]$. Без ограничения общности пусть это отрезок $\left[a;c\right]$. Тогда $a_1=a$, $b_1=c$, $c_1=\frac{a_1+b_1}{2}$. Аналогично в противном случае. Таким образом:
+    $$\bigcap_{n=1}^\infty\left[a_n;b_n\right]=\{k\}$$
+    Возьмём бесконечно малую последовательность $\varepsilon_n$. Тогда: 
+    $$\forall\, n\enspace  \exists\,x_n\in \left[a_n;b_n\right]:\,f(x_n)>\sup\limits_{\left[a_n;b_n\right]}f(x)-\varepsilon_n\Longrightarrow\lim\limits_{n\to\infty}x_n=k;\enspace \lim\limits_{n\to\infty}f(x_n)=\sup\limits_{\left[a;b\right]}f(x)$$
+    Значит, из непрерывности функции $f(k)=\sup\limits_{\left[a;b\right]}f(x)$.
 \end{proof}
 
 \section{Эквивалентность и группы}
