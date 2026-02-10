@@ -1,4 +1,4 @@
-%Формат файла
+% Формат файла
 \documentclass[12pt]{article} 
 \usepackage[paperheight=297mm,
    paperwidth=210mm,
@@ -7,70 +7,11 @@
    left=15mm,
    right=15mm]{geometry}
 
+% Импорт преамбулы
+\usepackage{../mypreamble}
 
-%Текст
-\usepackage[fontsize=12pt]{fontsize}
-\usepackage[russian]{babel}
-\usepackage{color}
-\usepackage{transparent}
-\usepackage{amsthm}
-\usepackage{multicol}
-\parindent=0cm
-
-\theoremstyle{definition}
-\newtheorem{theorem}{Теорема}[section]
-\newtheorem*{example}{Пример}
-\newtheorem{lemma}[theorem]{Лемма}
-\newtheorem{definition}{Определение}
-\newtheorem{statement}[theorem]{Утверждение}
-\newtheorem{consequence}{Следствие}[subsection]
-\renewcommand\qedsymbol{$\blacksquare$}
-
-
-%Картинки
-\usepackage{graphicx}
-\usepackage{wrapfig}
-\usepackage{subcaption}
-\usepackage{pgfplots}
-\usepackage{tikz}
-\usetikzlibrary {arrows.meta}
-
-%Математика
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{mathtools}
-\usepackage[output-decimal-marker={,}]{siunitx}
-
-%Всякое
-\usepackage{relsize}
-\usepackage{enumerate}
-\usepackage[inline]{enumitem}
-\usepackage{hyperref}
-
-%Мат команды
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\I}{\mathbb{I}}
-\newcommand{\E}{\mathbb{E}}
-\newcommand{\D}{\mathbb{D}}
-\newcommand{\prob}{\mathbb{P}}
-\newcommand{\nd}{\mathcal{N}}
-
-%Оглавление
+% Оглавление
 \title{\textbf{ТВиМС}}\date{}\author{}
-
-\hypersetup{
-    colorlinks,
-    citecolor=black,
-    filecolor=black,
-    linkcolor=black,
-    urlcolor=black
-}
-
-\newcommand\defeq{\stackrel{\mathclap{\scalebox{0.6}{def}}}{=}}
 
 \begin{document}
 

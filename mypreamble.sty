@@ -1,0 +1,146 @@
+% Создание пакета
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mypreamble}
+
+% Текст
+\usepackage[fontsize=12pt]{fontsize}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+\usepackage{color}
+\usepackage{transparent}
+\usepackage{amsthm}
+\usepackage{multicol}
+\usepackage{setspace}
+\usepackage[e]{esvect}
+\parindent=0cm
+
+% Виды теорем
+\theoremstyle{definition}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem*{example}{Пример}
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{definition}{Определение}
+\newtheorem{axiom}{Аксиома}
+\newtheorem{law}[theorem]{Закон}
+\newtheorem{postulate}[theorem]{Постулат}
+\newtheorem{formula}[theorem]{Формула}
+\newtheorem{statement}[theorem]{Утверждение}
+\newtheorem{consequence}{Следствие}[subsection]
+\renewcommand\qedsymbol{$\blacksquare$}
+
+% Картинки
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{calc}
+\usetikzlibrary{through}
+\usetikzlibrary{intersections}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{positioning}
+\usetikzlibrary{3d}
+\usetikzlibrary{perspective}
+
+% Опция для плоскостей в пространстве
+\makeatletter
+\tikzoption{canvas is plane}{\@setOxy#1}
+\def\@setOxy O(#1,#2,#3)x(#4,#5,#6)y(#7,#8,#9)%
+  {\def\tikz@plane@origin{\pgfpointxyz{#1}{#2}{#3}}%
+   \def\tikz@plane@x{\pgfpointxyz{#4}{#5}{#6}}%
+   \def\tikz@plane@y{\pgfpointxyz{#7}{#8}{#9}}%
+   \tikz@canvas@is@plane
+  }
+\makeatother
+
+% Математические шрифты
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[makeroom]{cancel}
+\usepackage[output-decimal-marker={,}]{siunitx}
+
+% Форматирование текста
+\usepackage{relsize}
+\usepackage{enumerate}
+\usepackage[inline]{enumitem}
+\usepackage{hyperref}
+\usepackage{tasks}
+
+% Ссылки для содержания
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+% Мат команды
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\clx}{\mathbb{C}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\nd}{\mathcal{N}}
+\newcommand{\prob}{\mathbb{P}}
+\DeclareMathOperator{\const}{const}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\spur}{Sp}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\tr}{tr}
+
+% Верхний и нижний частичные пределы
+\let\limsup\relax
+\let\liminf\relax
+\DeclareMathOperator*{\limsup}{\overline{lim}}
+\DeclareMathOperator*{\liminf}{\underline{lim}}
+
+% Вертикальное равно
+\newcommand{\verteq}{\rotatebox{90}{$\,=$}}
+\newcommand{\equalto}[2]{\underset{\scriptstyle\overset{\mkern4mu\verteq}{#2}}{#1}}
+\newcommand{\vertneq}{\rotatebox{90}{$\,\neq$}}
+\newcommand{\notequalto}[2]{\underset{\scriptstyle\overset{\mkern4mu\vertneq}{#2}}{#1}}
+
+% Обозначение скрещивающихся прямых
+\providecommand{\dotdiv}{% Don't redefine it if available
+  \mathbin{% We want a binary operation
+    \vphantom{+}% The same height as a plus or minus
+    \text{% Change size in sub/superscripts
+      \mathsurround=0pt % To be on the safe side
+      \ooalign{% Superimpose the two symbols
+        \noalign{\kern-.25ex}% but the dot is raised a bit
+        \hidewidth$\smash{\cdot}$\hidewidth\cr % Dot
+        \noalign{\kern.5ex}% Backup for vertical alignment
+        $-$\cr % Minus
+      }%
+    }%
+  }%
+}
+
+% Совокупность уравнений
+\makeatletter
+\newenvironment{sqcases}{%
+  \matrix@check\sqcases\env@sqcases
+}{%
+  \endarray\right.%
+}
+\def\env@sqcases{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrack
+  \def\arraystretch{1.2}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+
+% Обозначение равно по определению
+\newcommand\defeq{\stackrel{\mathclap{\scalebox{0.6}{def}}}{=}}
+
+\pgfplotsset{compat=1.18}

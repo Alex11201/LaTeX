@@ -1,6 +1,5 @@
-\documentclass[12pt]{article} 
-
-%Формат файла
+% Формат файла
+\documentclass[12pt]{article}
 \usepackage[paperheight=297mm,
    paperwidth=210mm,
    top=20mm,
@@ -8,20 +7,18 @@
    left=15mm,
    right=15mm]{geometry}
 
-
-%Текст
+% Текст
 \usepackage[fontsize=12pt]{fontsize}
-\usepackage[english, russian]{babel}
 \usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
 \usepackage{color}
 \usepackage{transparent}
 \usepackage{amsthm}
 \usepackage{multicol}
-\usepackage{csquotes}
-\usepackage[e]{esvect}
-\renewcommand{\mkbegdispquote}[2]{\itshape}
 \parindent=0cm
 
+% Виды теорем
 \theoremstyle{definition}
 \newtheorem{rrule}{Правило}[section]
 \newtheorem{algorithm}[rrule]{Алгоритм}
@@ -31,57 +28,34 @@
 \newtheorem*{example}{Пример}
 \newtheorem*{exception}{Исключения}
 
-%Картинки
-\usepackage{graphicx}
-\usepackage{wrapfig}
-\usepackage{subcaption}
+% Картинки
 \usepackage{tikz}
 \usepackage{tkz-euclide}
 \usepackage{pgfplots}
 \usetikzlibrary {arrows.meta}
 \usetikzlibrary{calc}
-\usetikzlibrary{through}
-\usetikzlibrary{intersections}
-\usetikzlibrary{decorations.markings}
 \usetikzlibrary{positioning}
-\usetikzlibrary{3d}
-\usetikzlibrary{perspective}
 
-\makeatletter
-\tikzoption{canvas is plane}[]{\@setOxy#1}
-\def\@setOxy O(#1,#2,#3)x(#4,#5,#6)y(#7,#8,#9)%
-  {\def\tikz@plane@origin{\pgfpointxyz{#1}{#2}{#3}}%
-   \def\tikz@plane@x{\pgfpointxyz{#4}{#5}{#6}}%
-   \def\tikz@plane@y{\pgfpointxyz{#7}{#8}{#9}}%
-   \tikz@canvas@is@plane
-  }
-\makeatother  
-
-
-%Математика
+% Математические шрифты
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage[makeroom]{cancel}
 
-%Всякое
+% Форматирование текста
 \usepackage{relsize}
 \usepackage{enumerate}
 \usepackage[inline]{enumitem}
 \usepackage{hyperref}
+
+% Обозначения в русском языке
 \usepackage{rslingu}
 
-%Мат команды
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\R}{\mathbb{R}}
+% Заглавные римские цифры
 \newcommand{\romannumeralcaps}[1]
     {\MakeUppercase{\romannumeral #1}}
 
-%Оглавление
-\title{\textbf{Русский язык}}\date{}
-
+% Ссылки для содержания
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -90,12 +64,18 @@
     urlcolor=black
 }
 
+% Настройка нумерации
 \renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}}
 \renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
 \renewcommand{\labelenumiv}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.\arabic{enumiv}}
 
-\pgfplotsset{compat=1.18}
 \setlist[enumerate]{itemsep=0mm}
+
+\pgfplotsset{compat=1.18}
+
+%Оглавление
+\title{\textbf{Русский язык}}\date{}\author{}
+
 \begin{document}
 
 

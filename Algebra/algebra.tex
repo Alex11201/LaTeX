@@ -1,5 +1,5 @@
-\documentclass[12pt]{article} 
-
+% Формат файла
+\documentclass[12pt]{article}
 \usepackage[paperheight=297mm,
    paperwidth=210mm,
    top=20mm,
@@ -7,92 +7,11 @@
    left=15mm,
    right=15mm]{geometry}
 
+% Импорт преамбулы
+\usepackage{../mypreamble}
 
-%Текст
-\usepackage[fontsize=12pt]{fontsize}
-\usepackage[russian]{babel}
-\usepackage{color}
-\usepackage{transparent}
-\usepackage{amsthm}
-\usepackage{multicol}
-\usepackage{tasks}
-\usepackage[e]{esvect}
-\parindent=0cm
-
-\theoremstyle{definition}
-\newtheorem{theorem}{Теорема}[section]
-\newtheorem{lemma}[theorem]{Лемма}
-\newtheorem{definition}{Определение}
-\newtheorem{statement}[theorem]{Утверждение}
-\newtheorem{consequence}{Следствие}[subsection]
-\renewcommand\qedsymbol{$\blacksquare$}
-
-%Картинки
-\usepackage{graphicx}
-\usepackage{wrapfig}
-\usepackage{subcaption}
-\usepackage{tikz}
-\usepackage{tkz-euclide}
-\usetikzlibrary {arrows.meta}
-\usetikzlibrary{calc}
-\usetikzlibrary{intersections}
-
-
-%Математика
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-
-%Всякое
-\usepackage{relsize}
-\usepackage{enumerate}
-\usepackage[inline]{enumitem}
-\usepackage{hyperref}
-\usepackage{multirow}
-\usepackage{booktabs}
-\usepackage{physics}
-
-%Мат команды
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\clx}{\mathbb{C}}
-\newcommand{\prob}{\mathbb{P}}
-\newcommand{\verteq}{\rotatebox{90}{$\,=$}}
-\newcommand{\equalto}[2]{\underset{\scriptstyle\overset{\mkern4mu\verteq}{#2}}{#1}}
-\newcommand{\vertneq}{\rotatebox{90}{$\,\neq$}}
-\newcommand{\notequalto}[2]{\underset{\scriptstyle\overset{\mkern4mu\vertneq}{#2}}{#1}}
-\DeclareMathOperator{\diag}{diag}
-\DeclareMathOperator{\spur}{Sp}
-\let\limsup\relax
-\let\liminf\relax
-\DeclareMathOperator*{\limsup}{\overline{lim}}
-\DeclareMathOperator*{\liminf}{\underline{lim}}
-\makeatletter
-\newenvironment{sqcases}{%
-  \matrix@check\sqcases\env@sqcases
-}{%
-  \endarray\right.%
-}
-\def\env@sqcases{%
-  \let\@ifnextchar\new@ifnextchar
-  \left\lbrack
-  \def\arraystretch{1.2}%
-  \array{@{}l@{\quad}l@{}}%
-}
-\makeatother
-
-%Оглавление
+% Оглавление
 \title{\textbf{Алгебра}}\date{}\author{}
-
-\hypersetup{
-    colorlinks,
-    citecolor=black,
-    filecolor=black,
-    linkcolor=black,
-    urlcolor=black
-}
 
 \begin{document}
 
