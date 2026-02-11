@@ -56,17 +56,15 @@
 			\draw (A') node[above left] {$D$};
 			\draw (B') node[below right] {$E$};
 			\coordinate (F) at ($(A)!.6!(B)$);
-			\tkzMarkSegment[mark=|](C,(.7,0));
-			\tkzMarkSegment[mark=|](C,(0,.7));
-			\tkzMarkSegment[mark=||](B,(1,0));
-			\tkzMarkSegment[mark=||](B,F);
-			\tkzMarkSegment[mark=||](B,B');
-			\tkzMarkSegment[mark=|||](A,(0,1));
-			\tkzMarkSegment[mark=|||](A,F);
-			\tkzMarkSegment[mark=|||](A,A');
-			\foreach \point in {(A), (B), (C), (I), (Ic), (K), (A'), (B')}{
-		\fill \point circle (1.8pt);
-	}
+			\tkzMarkSegment[mark=|](C,(.7,0))
+			\tkzMarkSegment[mark=|](C,(0,.7))
+			\tkzMarkSegment[mark=||](B,(1,0))
+			\tkzMarkSegment[mark=||](B,F)
+			\tkzMarkSegment[mark=||](B,B')
+			\tkzMarkSegment[mark=|||](A,(0,1))
+			\tkzMarkSegment[mark=|||](A,F)
+			\tkzMarkSegment[mark=|||](A,A')
+		    \tkzDrawPoints(A, B, C, I, Ic, K, A', B')
         \end{tikzpicture}
         \end{center}
 		Пусть отрезки касательных из вершин $A$, $B$ и $C$ равны $x$, $y$ и $z$ соответственно. Тогда радиус вневписанной окружности равен $CE=x+y+c=p$. Радиус вписанной окружности равен $z=CE-x-y=CE-AB=p-c$.
@@ -88,13 +86,11 @@
 			\draw (A) node[below left] {$A$};
 			\draw (B) node[below right] {$B$};
 			\draw (C) node[above] {$C$};
-			\tkzMarkSegment[mark=|](A,M);
-			\tkzMarkSegment[mark=|](M,B);
-			\tkzMarkSegment[mark=|](C,M);
-			\tkzMarkRightAngle(B,C,A);
-			\foreach \point in {(A), (B), (C), (M)}{
-		\fill \point circle (1.8pt);
-	}
+			\tkzMarkSegment[mark=|](A,M)
+			\tkzMarkSegment[mark=|](M,B)
+			\tkzMarkSegment[mark=|](C,M)
+			\tkzMarkRightAngle(B,C,A)
+            \tkzDrawPoints(A, B, C, M)
 		\end{tikzpicture}
 	\end{center}
 	$\triangle ACM$ -- равнобедренный, так как $AM=CM$. Значит, $\angle CAM=\angle ACM=\alpha$. Аналогично $\angle MBC=\angle BCM=\beta$ в равнобедренном $\triangle CMB$. Тогда по сумме углов треугольника $2\alpha+2\beta=180^\circ\Longrightarrow \alpha+\beta=90^\circ\Longrightarrow \angle ACB=90^\circ$.
@@ -145,10 +141,9 @@
 			\draw (Nc) node[below] {$N_C$};
 			\draw (Na) node[below] {$N_A$};
 			\draw (M) node[above] {$M$};
-			\tkzMarkSegment[mark=|](Mc,Ma);
-			\tkzMarkSegment[mark=|](Nc,Na);
-			\foreach \point in {(A), (B), (C), (M), (Ma), (Mc), (Nc), (Na)}{
-			\fill \point circle (1.8pt);}
+			\tkzMarkSegment[mark=|](Mc,Ma)
+			\tkzMarkSegment[mark=|](Nc,Na)
+            \tkzDrawPoints(A, B, C, M, Ma, Mc, Nc, Na)
 		\end{tikzpicture}
 	\end{center}
 	Пусть медианы $AM_A$ и $CM_C$ треугольника $ABC$ пересекаются в точке $M$. Отметим $N_A$ и $N_C$ -- середины $AM$ и $CM$ соответственно. По свойству средней линии в $\triangle ABC$ и $\triangle AMC$: $M_CM_A=\frac{1}{2}AC=N_CN_A$, при этом $M_CM_A\parallel AC\parallel N_CN_A$, значит $M_CM_AN_AN_C$ -- параллелограмм, и диагонали в нём точкой пересечения делятся пополам. То есть:
@@ -184,16 +179,14 @@
 			\draw (C) node[above right] {$C$};
 			\draw (B) node[below left] {$B$};
 			\draw (O) node[below right] {$O$};
-			\tkzMarkSegment[mark=|](A,O);
-			\tkzMarkSegment[mark=|](B,O);
-			\tkzMarkAngle[size=.45cm](O,B,A);
-			\tkzLabelAngle(O,B,A){$\alpha$};
-			\tkzMarkAngle[size=.45cm](B,A,O);
-			\tkzMarkAngle[arc=ll,size=.45](C,O,A);
-			\tkzLabelAngle(C,O,A){$2\alpha$};
-			\foreach \point in {(A), (B), (C), (O)}{
-				\fill \point circle (1.8pt);
-			}
+			\tkzMarkSegment[mark=|](A,O)
+			\tkzMarkSegment[mark=|](B,O)
+			\tkzMarkAngle[size=.45cm](O,B,A)
+			\tkzLabelAngle(O,B,A){$\alpha$}
+			\tkzMarkAngle[size=.45cm](B,A,O)
+			\tkzMarkAngle[arc=ll,size=.45](C,O,A)
+			\tkzLabelAngle(C,O,A){$2\alpha$}
+            \tkzDrawPoints(A, B, C, O)
 		\end{tikzpicture}
 	\end{center}
 	Построим вписанный угол, опирающийся на ту же дугу $AC$ и проходящий через центр $O$ окружности, тогда в силу равенства радиусов будут образован равнобедренный треугольник $AOB$. По теореме о внешнем угле треугольника $\angle AOC=\angle ABC+\angle BAO=2\angle ABC$.
@@ -219,8 +212,8 @@
 			\coordinate (C) at (30:\r);
 			\coordinate (B) at (130:\r);
 			\coordinate (D) at (250:\r);
-			\tkzInterLL(A,C)(B,D);
-			\tkzGetPoint{E};
+			\tkzInterLL(A,C)(B,D)
+			\tkzGetPoint{E}
 			\draw (A) -- (C) -- (D) -- (B);
 			\draw ([shift=(C)]0,0) arc (30:130:\r);
 			\draw ([shift=(A)]0,0) arc (200:250:\r);
@@ -233,12 +226,10 @@
 			\draw (E) node[below right] {$E$};
 			\draw (80:\r) node[above] {$\varphi$};
 			\draw (225:\r) node[below left] {$\theta$};
-			\tkzMarkAngle[size=.45](C,E,B);
-			\tkzMarkAngle[arc=ll,size=.45](C,D,E);
-			\tkzMarkAngle[arc=lll,size=.45](A,C,D);
-			\foreach \point in {(A), (B), (C), (D), (E)} {
-				\fill \point circle (1.8pt);
-			}
+			\tkzMarkAngle[size=.45](C,E,B)
+			\tkzMarkAngle[arc=ll,size=.45](C,D,E)
+			\tkzMarkAngle[arc=lll,size=.45](A,C,D)
+            \tkzDrawPoints(A, B, C, D, E)
 		\end{tikzpicture}
 	\end{center}
 	Пусть градусные меры дуг $CB$ и $AD$ равны $\varphi$ и $\theta$ соответственно. В силу вписанности углов $\angle BDC=\dfrac{\varphi}{2}$, $\angle ACD=\dfrac{\theta}{2}$, тогда $\angle BEC=\dfrac{\varphi+\theta}{2}$ как внешний угол $\triangle CDE$.
@@ -268,12 +259,10 @@
 			\draw (E) node[above right] {$E$};
 			\draw (159.5:\r) node[left] {$\varphi$};
 			\draw (0:\r) node[right] {$\theta$};
-			\tkzMarkAngle[size=.45](C,B,A);
-			\tkzMarkAngle[arc=ll,size=.45](C,D,A);
-			\tkzMarkAngle[arc=lll,size=.45](D,C,E);
-			\foreach \point in {(A), (B), (C), (D), (E)} {
-				\fill \point circle (1.8pt);
-			}
+			\tkzMarkAngle[size=.45](C,B,A)
+			\tkzMarkAngle[arc=ll,size=.45](C,D,A)
+			\tkzMarkAngle[arc=lll,size=.45](D,C,E)
+            \tkzDrawPoints(A, B, C, D, E)
 		\end{tikzpicture}
 	\end{center}
 	Пусть градусные меры дуг $CA$ и $DE$ равны $\varphi$ и $\theta$ соответственно. В силу вписанности углов $\angle ADC=\dfrac{\varphi}{2}$, $\angle DCE=\dfrac{\theta}{2}$, тогда $\angle ABC=\dfrac{|\varphi-\theta|}{2}$ из суммы углов $\triangle BCD$.
@@ -301,16 +290,14 @@
 			\draw (C) node[above] {$C$};
 			\draw (D) node[below] {$D$};
 			\draw (O) node[left] {$O$};
-			\tkzMarkRightAngle(C,B,A);
-			\tkzMarkRightAngle(D',A,C);
-			\tkzMarkAngle[size=.45](D,A,B);
-			\tkzLabelAngle(D,A,B){$\alpha$};
-			\tkzMarkAngle[size=.45](A,C,B);
-			\tkzLabelAngle(A,C,B){$\alpha$};
+			\tkzMarkRightAngle(C,B,A)
+			\tkzMarkRightAngle(D',A,C)
+			\tkzMarkAngle[size=.45](D,A,B)
+			\tkzLabelAngle(D,A,B){$\alpha$}
+			\tkzMarkAngle[size=.45](A,C,B)
+			\tkzLabelAngle(A,C,B){$\alpha$}
 			\draw (-35:\r) node[below right] {$2\alpha$};
-			\foreach \point in {(A), (B), (C), (D), (O)} {
-				\fill \point circle (1.8pt);
-			}
+            \tkzDrawPoints(A, B, C, D, O)
 		\end{tikzpicture}
 	\end{center}
 	Пусть градусная мера дуги, на которую опирается хорда $AB$, равна $2\alpha$. Возьмём точку $C$, диаметрально противоположную $A$. Тогда $\angle ACB=\alpha$ как вписанный, при этом $\angle ABC=90^\circ$, так как опирается на диаметр. $\angle CAD=90^\circ$ как радиус к касательной, тогда $\angle BAD=90^\circ-(90^\circ-\alpha)=\alpha$.
@@ -337,15 +324,13 @@
 			\draw (C) node[below right] {$C$};
 			\draw (D) node[above right] {$D$};
 			\draw (L) node[below] {$L$};
-			\tkzMarkAngle[size=.45](A,B,L);
-			\tkzMarkAngle[size=.45](L,B,C);
-			\tkzMarkAngle[size=.45](D,C,B);
-			\tkzMarkAngle[size=.45](B,D,C);
-			\tkzMarkSegment[mark=|](B,C);
-			\tkzMarkSegment[mark=|](B,D);
-			\foreach \point in {(A), (B), (C), (D), (L)} {
-				\fill \point circle (1.8pt);
-			}
+			\tkzMarkAngle[size=.45](A,B,L)
+			\tkzMarkAngle[size=.45](L,B,C)
+			\tkzMarkAngle[size=.45](D,C,B)
+			\tkzMarkAngle[size=.45](B,D,C)
+			\tkzMarkSegment[mark=|](B,C)
+			\tkzMarkSegment[mark=|](B,D)
+            \tkzDrawPoints(A, B, C, D, L)
 		\end{tikzpicture}
 	\end{center}
 	Проведём через точку $C$ треугольника $ABC$ прямую, параллельную биссектрисе $BL$ до пересечения со стороной $AB$ в точке $D$. Тогда $\angle BCD=\angle LBC$ как накрест лежащие, $\angle ABL=\angle BDC$ как соответственные. Значит, $\triangle BCD$ -- равнобедренный. По теореме о пропорциональных отрезках:
@@ -364,21 +349,19 @@
 			\coordinate (B) at (40:\r);
 			\coordinate (C) at (130:\r);
 			\coordinate (D) at (280:\r);
-			\tkzInterLL(A,B)(C,D);
-			\tkzGetPoint{O};
+			\tkzInterLL(A,B)(C,D)
+			\tkzGetPoint{O}
 			\draw (A) node[below left] {$A$};
 			\draw (B) node[above right] {$B$};
 			\draw (C) node[above left] {$C$};
 			\draw (D) node[below right] {$D$};
 			\draw (O) node[above=5pt] {\hspace{6pt}$O$};
-			\tkzMarkAngle[size=.45](A,C,D);
-			\tkzMarkAngle[size=.45](A,B,D);
-			\tkzMarkAngle[size=.45, arc=ll](B,A,C);
-			\tkzMarkAngle[size=.45, arc=ll](B,D,C);
+			\tkzMarkAngle[size=.45](A,C,D)
+			\tkzMarkAngle[size=.45](A,B,D)
+			\tkzMarkAngle[size=.45, arc=ll](B,A,C)
+			\tkzMarkAngle[size=.45, arc=ll](B,D,C)
 			\draw (A) -- (C) -- (D) -- (B) -- cycle;
-			\foreach \point in {(A), (B), (C), (D), (O)} {
-				\fill \point circle (1.8pt);
-			}
+            \tkzDrawPoints(A, B, C, D, O)
 		\end{tikzpicture}
 	\end{center}
 	$\angle ACD=\angle ABD$, так как они опираются на одну дугу, аналогично $\angle CAB=\angle CDB$. Значит, $\triangle AOC\sim \triangle DOB$ по двум углам, откуда:
@@ -405,12 +388,10 @@
 			\draw (C) node[above left] {$C$};
 			\draw (D) node[below right] {$B$};
 			\draw (E) node[above right] {$D$};
-			\tkzMarkAngle[size=.45](C,B,A);
-			\tkzMarkAngle[arc=ll,size=.45](D,A,C);
-			\tkzMarkAngle[arc=ll,size=.45](D,E,B);
-			\foreach \point in {(A), (B), (C), (D), (E)} {
-				\fill \point circle (1.8pt);
-			}
+			\tkzMarkAngle[size=.45](C,B,A)
+			\tkzMarkAngle[arc=ll,size=.45](D,A,C)
+			\tkzMarkAngle[arc=ll,size=.45](D,E,B)
+            \tkzDrawPoints(A, B, C, D, E)
 		\end{tikzpicture}
 	\end{center}
 	Четырёхугольник $ACDB$ вписан, следовательно, $\angle BDM=180^\circ-\angle CDB=180^\circ-(180^\circ-\angle CAB)=\angle CAB$. Тогда $\triangle BDM\sim \triangle CAM$ по двум углам ($\angle AMC$ общий), откуда:
@@ -428,20 +409,18 @@
 			\coordinate (A) at (210:\r);
 			\coordinate (B) at (60:\r);
 			\coordinate (K') at (-1,-\r);
-			\tkzInterLL(K,K')(A,B);
-			\tkzGetPoint{M};
+			\tkzInterLL(K,K')(A,B)
+			\tkzGetPoint{M}
 			\draw[dashed] (0,0) circle (\r);
 			\draw (A) -- (K) -- (B) -- (M) -- ($(M)!1.3!(K)$);
 			\draw (M) node[left] {$M$};
 			\draw (A) node[left=4pt] {$A$};
 			\draw (B) node[above right] {$B$};
 			\draw (K) node[below] {$K$};
-			\tkzMarkAngle[size=.45](K,M,B);
-			\tkzMarkAngle[arc=ll,size=.45](A,K,M);
-			\tkzMarkAngle[arc=ll,size=.45](M,B,K);
-			\foreach \point in {(A), (B), (M), (K)} {
-				\fill \point circle (1.8pt);
-			}
+			\tkzMarkAngle[size=.45](K,M,B)
+			\tkzMarkAngle[arc=ll,size=.45](A,K,M)
+			\tkzMarkAngle[arc=ll,size=.45](M,B,K)
+            \tkzDrawPoints(A, B, M, K)
 		\end{tikzpicture}
 	\end{center}
 	$\angle AKM=\angle ABK$ как угол между хордой и касательной, значит $\triangle AMK\sim\triangle KMB$ по двум углам ($\angle BMK$ общий). Тогда:
@@ -461,20 +440,20 @@
 			\coordinate (F) at (30:\r);
 			\coordinate (M) at ($(E)!.5!(F)$);
 			\coordinate (D) at (55:\r);
-			\tkzInterLC(A,M)(O,D);
-			\tkzGetPoints{B}{t1};
-			\tkzInterLC(D,M)(O,A);
-			\tkzGetPoints{t2}{C};
-			\tkzInterLL(E,F)(A,C);
-			\tkzGetPoint{K};
-			\tkzInterLL(E,F)(D,B);
-			\tkzGetPoint{L};
-			\tkzDefLine[parallel=through K](B,D);
-			\tkzGetPoint{x};
-			\tkzInterLL(K,x)(C,D);
-			\tkzGetPoint{Q};
-			\tkzInterLL(K,x)(A,B);
-			\tkzGetPoint{P};
+			\tkzInterLC(A,M)(O,D)
+			\tkzGetPoints{B}{t1}
+			\tkzInterLC(D,M)(O,A)
+			\tkzGetPoints{t2}{C}
+			\tkzInterLL(E,F)(A,C)
+			\tkzGetPoint{K}
+			\tkzInterLL(E,F)(D,B)
+			\tkzGetPoint{L}
+			\tkzDefLine[parallel=through K](B,D)
+			\tkzGetPoint{x}
+			\tkzInterLL(K,x)(C,D)
+			\tkzGetPoint{Q}
+			\tkzInterLL(K,x)(A,B)
+			\tkzGetPoint{P}
 			\draw[dashed] (O) circle (\r);
 			\draw (A) -- (B) -- (D) -- (C) -- cycle;
 			\draw (E) -- (F);
@@ -490,20 +469,18 @@
 			\draw (L) node[below left] {$L$};
 			\draw (P) node[above left] {$P$};
 			\draw (Q) node[below] {$Q$};
-			\tkzMarkAngle[size=.35](M,Q,K);
-			\tkzMarkAngle[size=.35](M,D,L);
-			\tkzMarkAngle[arc=ll,size=.45](K,P,M);
-			\tkzMarkAngle[arc=ll,size=.45](M,C,A);
-			\tkzMarkAngle[arc=ll,size=.45](D,B,A);
-			\tkzMarkSegment[mark=|](K,M);
-			\tkzMarkSegment[mark=|](L,M);
-			\foreach \point in {(A), (B), (C), (D), (E), (F), (M), (K), (L), (P), (Q)} {
-				\fill \point circle (1.8pt);
-			}
+			\tkzMarkAngle[size=.35](M,Q,K)
+			\tkzMarkAngle[size=.35](M,D,L)
+			\tkzMarkAngle[arc=ll,size=.45](K,P,M)
+			\tkzMarkAngle[arc=ll,size=.45](M,C,A)
+			\tkzMarkAngle[arc=ll,size=.45](D,B,A)
+			\tkzMarkSegment[mark=|](K,M)
+			\tkzMarkSegment[mark=|](L,M)
+            \tkzDrawPoints(A, B, C, D, E, F, M, K, L, P, Q)
 		\end{tikzpicture}
 	\end{center}
 	Проведём через $K$ прямую $PQ$, параллельную $BD$. Тогда $\angle QPM=\angle MBD=\angle ACD$ как накрест лежащие и вписанные. Аналогично $\angle PQM=\angle MDB$. $\triangle PAK\sim \triangle CQK$ по двум углам, откуда $PK\cdot KQ=AK\cdot KC$, при этом $AK\cdot KC=EK\cdot KF=(EM-KM)(MF+KM)=EM^2-KM^2$ как отрезки хорд ($EM=MF$ по условию). Аналогично $BL\cdot LD=EM^2-ML^2$. Рассмотрим подобные треугольники:
-	$$\triangle PKM\sim \triangle BLM\Longrightarrow \frac{PK}{KM}=\frac{BL}{ML};\,\,\triangle QKM\sim \triangle DLM\Longrightarrow \frac{KQ}{KM}=\frac{DL}{ML}$$
+	$$\triangle PKM\sim \triangle BLM\Longrightarrow \frac{PK}{KM}=\frac{BL}{ML};\quad\triangle QKM\sim \triangle DLM\Longrightarrow \frac{KQ}{KM}=\frac{DL}{ML}$$
 	Перемножим полученные равенства:
 	$$\frac{PK\cdot KQ}{KM^2}=\frac{BL\cdot DL}{ML^2}\Longleftrightarrow \frac{EM^2-KM^2}{KM^2}=\frac{EM^2-ML^2}{ML^2}\Longrightarrow KM = ML$$
 \end{proof}
@@ -520,8 +497,8 @@
 			\coordinate (C) at (-15:\r);
 			\coordinate (D) at (250:\r);
 			\coordinate (E') at (-95:\r);
-			\tkzInterLL(A,C)(B,E');
-			\tkzGetPoint{E};
+			\tkzInterLL(A,C)(B,E')
+			\tkzGetPoint{E}
 			\draw (A) -- (B) -- (C) -- (D) -- cycle;
 			\draw (0,0) circle (\r);
 			\draw (A) -- (C);
@@ -531,19 +508,17 @@
 			\draw (C) node[right] {$C$};
 			\draw (D) node[below] {$D$};
 			\draw (E) node[below] {$E$};
-			\tkzMarkAngle[size=.45](A,B,D);
-			\tkzMarkAngle[size=.45](E,B,C);
-			\tkzMarkAngle[size=.45, arc=ll](B,D,A);
-			\tkzMarkAngle[size=.45, arc=ll](B,C,A);
-			\tkzMarkAngle[size=.45, arc=lll](C,A,B);
-			\tkzMarkAngle[size=.45, arc=lll](C,D,B);
-			\foreach \point in {(A), (B), (C), (D), (E)} {
-				\fill \point circle (1.8pt);
-			}
+			\tkzMarkAngle[size=.45](A,B,D)
+			\tkzMarkAngle[size=.45](E,B,C)
+			\tkzMarkAngle[size=.45, arc=ll](B,D,A)
+			\tkzMarkAngle[size=.45, arc=ll](B,C,A)
+			\tkzMarkAngle[size=.45, arc=lll](C,A,B)
+			\tkzMarkAngle[size=.45, arc=lll](C,D,B)
+            \tkzDrawPoints(A, B, C, D, E)
 		\end{tikzpicture}
 	\end{center}
 	Пусть $E$ -- такая точка на диагонали $AC$ четырёхугольника $ABCD$, что $\angle ABD=\angle CBE$. $\angle ADB=\angle ACB$ и $\angle BAC=\angle BDC$ как вписанные, тогда в силу подобий треугольников:
-	$$\triangle ABD\sim \triangle EBC\Longrightarrow AD\cdot BC=BD\cdot EC;\,\,\triangle ABE\sim \triangle DBC\Longrightarrow AB\cdot CD=BD\cdot AE$$
+	$$\triangle ABD\sim \triangle EBC\Longrightarrow AD\cdot BC=BD\cdot EC;\enspace\triangle ABE\sim \triangle DBC\Longrightarrow AB\cdot CD=BD\cdot AE$$
 	Сложив данные равенства, получаем:
 	$$AD\cdot BC+AB\cdot CD=BD\cdot (AE + EC)=BD\cdot AC$$
 \end{proof}
@@ -559,28 +534,28 @@
 			\coordinate (C) at (40:\r);
 			\coordinate (O) at ($(A)!.7!(C)$);
 			\coordinate (o) at (0,0);
-			\tkzDefLine[perpendicular=through O](A,C);
+			\tkzDefLine[perpendicular=through O](A,C)
 			\tkzGetPoint{x}
-			\tkzInterLC(O,x)(o,A);
-			\tkzGetPoints{D}{B};
+			\tkzInterLC(O,x)(o,A)
+			\tkzGetPoints{D}{B}
 			\coordinate (M) at ($(A)!.5!(B)$);
-			\tkzInterLL(M,O)(C,D);
-			\tkzGetPoint{H};
+			\tkzInterLL(M,O)(C,D)
+			\tkzGetPoint{H}
 			\draw[dashed] (o) circle (\r);
 			\draw (A) -- (B) -- (C) -- (D) -- cycle;
 			\draw (A) -- (C);
 			\draw (B) -- (D);
 			\draw (M) -- (H);
-			\tkzMarkAngle[size=.45](A,B,D);
-			\tkzMarkAngle[size=.45](B,O,M);
-			\tkzMarkAngle[size=.45](D,O,H);
-			\tkzMarkAngle[size=.45, arc=ll](O,A,B);
-			\tkzMarkAngle[size=.45, arc=ll](C,D,B);
-			\tkzMarkRightAngle(C,H,M);
-			\tkzMarkRightAngle(A,O,D);
-			\tkzMarkSegment[mark=|](A,M);
-			\tkzMarkSegment[mark=|](M,B);
-			\tkzMarkSegment[mark=|](M,O);
+			\tkzMarkAngle[size=.45](A,B,D)
+			\tkzMarkAngle[size=.45](B,O,M)
+			\tkzMarkAngle[size=.45](D,O,H)
+			\tkzMarkAngle[size=.45, arc=ll](O,A,B)
+			\tkzMarkAngle[size=.45, arc=ll](C,D,B)
+			\tkzMarkRightAngle(C,H,M)
+			\tkzMarkRightAngle(A,O,D)
+			\tkzMarkSegment[mark=|](A,M)
+			\tkzMarkSegment[mark=|](M,B)
+			\tkzMarkSegment[mark=|](M,O)
 			\draw (A) node[below left] {$A$};
 			\draw (B) node[above left] {$B$};
 			\draw (C) node[above right] {$C$};
@@ -588,9 +563,7 @@
 			\draw (O) node[above=3pt] {\hspace{3pt}$O$};
 			\draw (M) node[left] {$M$};
 			\draw (H) node[below left] {$H$};
-			\foreach \point in {(A), (B), (C), (D), (O), (M), (H)} {
-				\fill \point circle (1.8pt);
-			}
+            \tkzDrawPoints(A, B, C, D, O, M, H)
 		\end{tikzpicture}
 	\end{center}
 	$MO=MA=MB$ как медиана в прямоугольном $\triangle ABO$. Отсюда $\angle MBO=\angle MOB=\angle DOH$ как вертикальные, при этом $\angle BAO=\angle BDC$ как вписанные. Тогда $\angle OHD=180^\circ-(\angle BAO+\angle ABO)=90^\circ$.
@@ -614,13 +587,11 @@
 			\draw (A) -- (C) -- (B) -- (D) -- (A) -- (B);
 			\draw (C) -- (H1);
 			\draw (D) -- (H2); 
-			\tkzMarkRightAngle(A,H2,D);
-			\tkzMarkRightAngle(C,H1,A);
-			\tkzLabelSegment[right](H2,D){$h_2$};
-			\tkzLabelSegment[left](H1,C){$h_1$};
-			\foreach \point in {(A), (B), (C), (D), (H1), (H2)} {
-				\fill \point circle (1.8pt);
-			}
+			\tkzMarkRightAngle(A,H2,D)
+			\tkzMarkRightAngle(C,H1,A)
+			\tkzLabelSegment[right](H2,D){$h_2$}
+			\tkzLabelSegment[left](H1,C){$h_1$}
+            \tkzDrawPoints(A, B, C, D, H1, H2)
 		\end{tikzpicture}
 	\end{center}
 	$$\frac{S_{ABC}}{S_{ABD}}=\frac{\frac{1}{2}AB\cdot h_1}{\frac{1}{2}AB\cdot h_2}=\frac{h_1}{h_2}$$
@@ -641,11 +612,9 @@
 			\draw (A) -- (B) -- (C) -- cycle;
 			\draw (D) -- (B) -- (E);
 			\draw (B) -- (H);
-			\tkzMarkRightAngle(B,H,A);
-			\tkzLabelSegment[left](B,H){$h$};
-			\foreach \point in {(A), (B), (C), (D), (E), (H)} {
-				\fill \point circle (1.8pt);
-			}	
+			\tkzMarkRightAngle(B,H,A)
+			\tkzLabelSegment[left](B,H){$h$}
+            \tkzDrawPoints(A, B, C, D, E, H)
 		\end{tikzpicture}
 	\end{center}
 	$$\frac{S_{ABC}}{S_{DBE}}=\frac{\frac{1}{2}AC\cdot h}{\frac{1}{2}DE\cdot h}=\frac{AC}{DE}$$
@@ -674,8 +643,8 @@
 			\coordinate (M2) at ($(C)!.5!(B)$);
 			\coordinate (M3) at ($(C)!.5!(D)$);
 			\coordinate (M4) at ($(A)!.5!(D)$);
-			\tkzInterLL(A,C)(B,D);
-			\tkzGetPoint{O};
+			\tkzInterLL(A,C)(B,D)
+			\tkzGetPoint{O}
 			\draw (O) node[below] {$O$};
 			\draw ($(M1)!.333!(O)$) node {$S_1$};
 			\draw ($(M2)!.333!(O)$) node {$S_2$};
@@ -683,9 +652,7 @@
 			\draw ($(M4)!.333!(O)$) node {$S_4$};
 			\draw (A) -- (B) -- (C) -- (D) -- (A) -- (C);
 			\draw (B) -- (D);
-			\foreach \point in {(A), (B), (C), (D), (O)} {
-				\fill \point circle (1.8pt);
-			}
+            \tkzDrawPoints(A, B, C, D, O)
 		\end{tikzpicture}
 	\end{center}
 	По свойству чевианы в $\triangle ABD$ и $\triangle BCD$:
@@ -710,9 +677,7 @@
 			\draw[dashed] (O) -- (K);
 			\draw (3.3,2) node {$S_1$};
 			\draw (5.2,2) node {$S_2$};
-			\foreach \point in {(A), (B), (C), (K), (O)} {
-				\fill \point circle (1.8pt);
-			}
+            \tkzDrawPoints(A, B, C, K, O)
 		\end{tikzpicture}
 	\end{center}
 	По свойству чевианы в $\triangle ABC$:
@@ -732,10 +697,8 @@
 			\coordinate[label=below:$C_1$] (C1) at ($(A)!.4!(C)$);
 			\draw (A) -- (B) -- (C) -- cycle;
 			\draw (B1) -- (C1);
-			\tkzMarkAngle[size=.45](C,A,B);
-			\foreach \point in {(A), (B), (C), (B1), (C1)} {
-				\fill \point circle (1.8pt);
-			}
+			\tkzMarkAngle[size=.45](C,A,B)
+            \tkzDrawPoints(A, B, C, B1, C1)
 		\end{tikzpicture}
 	\end{center}
 	$$\frac{S_{ABC}}{S_{AB_1C_1}}=\frac{\frac{1}{2}AB\cdot AC\cdot \sin \angle BAC}{\frac{1}{2}AB_1\cdot AC_1\cdot \sin \angle BAC}=\frac{AB\cdot AC}{AB_1\cdot AC_1}$$
@@ -757,21 +720,19 @@
 			\coordinate[label=left:$A$] (A) at (0,0);
 			\coordinate[label=above:$B$] (B) at (5,4);
 			\coordinate[label=right:$C$] (C) at (7,0);
-			\tkzDefLine[bisector](A,B,C);
-			\tkzGetPoint{x};
-			\tkzInterLL(B,x)(A,C);
-			\tkzGetPoint{L};
+			\tkzDefLine[bisector](A,B,C)
+			\tkzGetPoint{x}
+			\tkzInterLL(B,x)(A,C)
+			\tkzGetPoint{L}
 			\draw (L) node[below] {$L$};
 			\draw (B) -- (C) -- (A) -- (B) -- (L);
-			\tkzMarkAngle[size=.45](A,B,L);
-			\tkzMarkAngle[size=.45](L,B,C);
-			\tkzLabelAngle(A,B,L){$\frac{\varphi}{2}$};
-			\tkzLabelAngle(L,B,C){$\frac{\varphi}{2}$};
-			\tkzLabelSegment[above left](A,B){$a$};
-			\tkzLabelSegment[above right](B,C){$b$};
-			\foreach \point in {(A), (B), (C), (L)} {
-				\fill \point circle (1.8pt);
-			}
+			\tkzMarkAngle[size=.45](A,B,L)
+			\tkzMarkAngle[size=.45](L,B,C)
+			\tkzLabelAngle(A,B,L){$\frac{\varphi}{2}$}
+			\tkzLabelAngle(L,B,C){$\frac{\varphi}{2}$}
+			\tkzLabelSegment[above left](A,B){$a$}
+			\tkzLabelSegment[above right](B,C){$b$}
+            \tkzDrawPoints(A, B, C, L)
 		\end{tikzpicture}
 	\end{center}
 	$$S_{ABC}=S_{ABL}+S_{LBC}\Longleftrightarrow \frac{1}{2}ab\sin\varphi=\frac{1}{2}BL\cdot \sin \frac{\varphi}{2}(a+b)\Longrightarrow BL=\frac{ab\sin\varphi}{(a+b)\sin\frac{\varphi}{2}}=\frac{2ab\cos\frac{\varphi}{2}}{a+b}$$
@@ -792,28 +753,26 @@
 			\coordinate[label=below:$C$] (C) at (5.5,0);
 			\coordinate[label=below right:$B_1$] (B1) at (7,0);
 			\coordinate (C1) at ($(A)!.7!(B)$);
-			\tkzInterLL(B,C)(B1,C1);
-			\tkzGetPoint{A1};
+			\tkzInterLL(B,C)(B1,C1)
+			\tkzGetPoint{A1}
 			\coordinate (x) at (0,4);
-			\tkzInterLL(B,x)(B1,C1);
-			\tkzGetPoint{D};
+			\tkzInterLL(B,x)(B1,C1)
+			\tkzGetPoint{D}
 			\draw (A1) node[above right] {$A_1$};
 			\draw (D) node[left] {$D$};
 			\draw (C1) node[above=-13pt] {\hspace{-23pt}$C_1$};
 			\draw (C) -- (B) -- (D) -- (B1) -- (A) -- (B);
-			\tkzMarkAngle[size=.45](C1,D,B);
-			\tkzMarkAngle[size=.45](A1,B1,C);
-			\tkzMarkAngle[size=.45, arc=ll](B,C1,D);
-			\tkzMarkAngle[size=.45, arc=ll](A,C1,B1);
-			\tkzMarkAngle[size=.45, arc=lll](B,A1,D);
-			\tkzMarkAngle[size=.45, arc=lll](C,A1,B1);
-			\foreach \point in {(A), (B), (C), (D), (A1), (B1), (C1)} {
-				\fill \point circle (1.8pt);
-			}
+			\tkzMarkAngle[size=.45](C1,D,B)
+			\tkzMarkAngle[size=.45](A1,B1,C)
+			\tkzMarkAngle[size=.45, arc=ll](B,C1,D)
+			\tkzMarkAngle[size=.45, arc=ll](A,C1,B1)
+			\tkzMarkAngle[size=.45, arc=lll](B,A1,D)
+			\tkzMarkAngle[size=.45, arc=lll](C,A1,B1)
+            \tkzDrawPoints(A, B, C, D, A1, B1, C1)
 		\end{tikzpicture}
 	\end{center}
 	Проведём прямую Евклида через $B$, пусть она пересекает $A_1C_1$ в точке $D$. $\angle BDC_1=\angle CB_1A_1$ как накрест лежащие, откуда:
-	$$\triangle AC_1B_1\sim \triangle BC_1D\Longrightarrow \frac{BC_1}{C_1A}=\frac{BD}{AB_1};\,\,\triangle CA_1B_1\sim \triangle BA_1D\Longrightarrow \frac{BA_1}{A_1C}=\frac{BD}{CB_1}$$
+	$$\triangle AC_1B_1\sim \triangle BC_1D\Longrightarrow \frac{BC_1}{C_1A}=\frac{BD}{AB_1};\quad\triangle CA_1B_1\sim \triangle BA_1D\Longrightarrow \frac{BA_1}{A_1C}=\frac{BD}{CB_1}$$
 	Выразим из данных неравенств $BD$ и приравняем:
 	$$\frac{BC_1\cdot AB_1}{AC_1}=\frac{BA_1\cdot CB_1}{A_1C}\Longrightarrow \frac{AC_1}{C_1B}\cdot \frac{BA_1}{A_1C}\cdot \frac{CB_1}{B_1A}=1$$
 	Обратное доказательство (коллинеарности при условии равенства отношения) очевидно и рассуждать можно от противного.
@@ -831,21 +790,19 @@
 			\coordinate[label=right:$C$] (C) at (7,0);
 			\coordinate[label=above right:$A_1$] (A1) at ($(B)!.55!(C)$);
 			\coordinate[label=below:$B_1$] (B1) at ($(A)!.45!(C)$);
-			\tkzInterLL(A,A1)(B,B1) \tkzGetPoint{O};
+			\tkzInterLL(A,A1)(B,B1) \tkzGetPoint{O}
 			\draw (O) node[above] {\hspace{-10pt}$O$};
-			\tkzInterLL(C,O)(A,B) \tkzGetPoint{C1};
+			\tkzInterLL(C,O)(A,B) \tkzGetPoint{C1}
 			\draw (C1) node[above left] {$C_1$};
 			\draw (A) -- (B) -- (C) -- cycle;
 			\draw (A) -- (A1);
 			\draw (B) -- (B1);
 			\draw (C) -- (C1);
-			\foreach \point in {(A), (B), (C), (A1), (B1), (C1), (O)} {
-				\fill \point circle (1.8pt);
-			}
+            \tkzDrawPoints(A, B, C, A1, B1, C1, O)
 		\end{tikzpicture}
 	\end{center}
 	Из леммы о ласточкином хвосте:
-	$$\frac{S_{AOB}}{S_{AOC}}=\frac{BA_1}{A_1C};\,\,\frac{S_{AOB}}{S_{BOC}}=\frac{AB_1}{B_1C};\,\,\frac{S_{AOC}}{S_{BOC}}=\frac{AC_1}{C_1B}$$
+	$$\frac{S_{AOB}}{S_{AOC}}=\frac{BA_1}{A_1C};\quad\frac{S_{AOB}}{S_{BOC}}=\frac{AB_1}{B_1C};\quad\frac{S_{AOC}}{S_{BOC}}=\frac{AC_1}{C_1B}$$
 	Тогда при перемножении соотношений получаем искомое равенство.
 \end{proof}
 \begin{theorem}[Точка Жергона]
@@ -859,10 +816,10 @@
 			\coordinate[label=above:$B$] (B) at (2.5,4);
 			\coordinate[label=right:$C$] (C) at (7,0);
 			\tkzDefCircle[in](A,B,C) \tkzGetFirstPoint{I} \tkzGetLength{r};
-			\tkzDefPointBy[projection=onto A--B](I) \tkzGetPoint{Kc};
-			\tkzDefPointBy[projection=onto A--C](I) \tkzGetPoint{Kb};
-			\tkzDefPointBy[projection=onto C--B](I) \tkzGetPoint{Ka};
-			\tkzInterLL(A,Ka)(B,Kb) \tkzGetPoint{G};
+			\tkzDefPointBy[projection=onto A--B](I) \tkzGetPoint{Kc}
+			\tkzDefPointBy[projection=onto A--C](I) \tkzGetPoint{Kb}
+			\tkzDefPointBy[projection=onto C--B](I) \tkzGetPoint{Ka}
+			\tkzInterLL(A,Ka)(B,Kb) \tkzGetPoint{G}
 			\draw (A) -- (B) -- (C) -- cycle;
 			\draw (I) circle (\r);
 			\draw[dashed] (A) -- (Ka);
@@ -872,15 +829,13 @@
 			\draw (Kb) node[below] {$K_B$};
 			\draw (Kc) node[above left] {$K_C$};
 			\draw (G) node[above=3pt] {\hspace{-15pt}$G$};
-			\tkzMarkSegment[mark=|](A,Kc);
-			\tkzMarkSegment[mark=|](A,Kb);
-			\tkzMarkSegment[mark=||](B,Kc);
-			\tkzMarkSegment[mark=||](B,Ka);
-			\tkzMarkSegment[mark=|||](C,Ka);
-			\tkzMarkSegment[mark=|||](C,Kb);
-			\foreach \point in {(A), (B), (C), (Ka), (Kb), (Kc), (G)} {
-				\fill \point circle (1.8pt);
-			}
+			\tkzMarkSegment[mark=|](A,Kc)
+			\tkzMarkSegment[mark=|](A,Kb)
+			\tkzMarkSegment[mark=||](B,Kc)
+			\tkzMarkSegment[mark=||](B,Ka)
+			\tkzMarkSegment[mark=|||](C,Ka)
+			\tkzMarkSegment[mark=|||](C,Kb)
+            \tkzDrawPoints(A, B, C, Ka, Kb, Kc, G)
 		\end{tikzpicture}
 	\end{center}
 	В силу равенства отрезков касательных:
@@ -898,15 +853,15 @@
 			\coordinate[label=above left:$A$] (A) at (0,0);
 			\coordinate[label=above:$B$] (B) at (4.7,4);
 			\coordinate[label=above right:$C$] (C) at (7,0);
-			\tkzDefCircle[ex](A,B,C) \tkzGetFirstPoint{Ib} \tkzGetLength{rb};
-			\tkzDefPointBy[projection=onto A--C](Ib) \tkzGetPoint{Kb};
-			\tkzDefCircle[ex](B,A,C) \tkzGetFirstPoint{Ia} \tkzGetLength{ra};
-			\tkzDefPointBy[projection=onto B--C](Ia) \tkzGetPoint{Ka};
-			\tkzDefCircle[ex](A,C,B) \tkzGetFirstPoint{Ic} \tkzGetLength{rc};
-			\tkzDefPointBy[projection=onto A--B](Ic) \tkzGetPoint{Kc};
-			\tkzInterLL(A,Ka)(B,Kb) \tkzGetPoint{N};
-			\tkzInterLC(A,B)(Ia,Ka) \tkzGetFirstPoint{Tb};
-			\tkzInterLC(A,C)(Ia,Ka) \tkzGetFirstPoint{Tc};
+			\tkzDefCircle[ex](A,B,C) \tkzGetFirstPoint{Ib} \tkzGetLength{rb}
+			\tkzDefPointBy[projection=onto A--C](Ib) \tkzGetPoint{Kb}
+			\tkzDefCircle[ex](B,A,C) \tkzGetFirstPoint{Ia} \tkzGetLength{ra}
+			\tkzDefPointBy[projection=onto B--C](Ia) \tkzGetPoint{Ka}
+			\tkzDefCircle[ex](A,C,B) \tkzGetFirstPoint{Ic} \tkzGetLength{rc}
+			\tkzDefPointBy[projection=onto A--B](Ic) \tkzGetPoint{Kc}
+			\tkzInterLL(A,Ka)(B,Kb) \tkzGetPoint{N}
+			\tkzInterLC(A,B)(Ia,Ka) \tkzGetFirstPoint{Tb}
+			\tkzInterLC(A,C)(Ia,Ka) \tkzGetFirstPoint{Tc}
 			\draw ($(A)!-.5!(B)$) -- ($(A)!1.8!(B)$);
 			\draw ($(B)!-.8!(C)$) -- ($(B)!1.5!(C)$);
 			\draw ($(A)!-.5!(C)$) -- ($(A)!1.5!(C)$);
@@ -922,9 +877,7 @@
 			\draw (Tb) node[above left] {$T_B$};
 			\draw (Tc) node[below] {$T_C$};
 			\draw (N) node[above=3pt] {\hspace{-15pt}$N$};
-			\foreach \point in {(A), (B), (C), (Ka), (Kb), (Kc), (N), (Tb), (Tc)} {
-				\fill \point circle (1.8pt);
-			}
+            \tkzDrawPoints(A, B, C, Ka, Kb, Kc, N, Tb, Tc)
 		\end{tikzpicture}
 	\end{center}
 	Пусть окружность, касающаяся $BC$ в точке $K_A$, касается $AB$ в точке $T_B$, а $AC$ -- в точке $T_C$. Тогда как касательные $CK_A=CT_C=BC-BK_A=BC-BT_B$, при этом $AT_B=AT_C$, то есть $AC+(BC-BT_B)=AB+BT_B\Longrightarrow BT_B=BK_A=\frac{1}{2}(AC+BC-AB)=p-AB$. Аналогично $K_AC=p-AC$, $AK_B=p-AB$, $AK_C=p-AC$, $K_CB=p-BC$. Отсюда получаем:
@@ -942,14 +895,14 @@
 			\def\rb{3}
 			\coordinate[label=above left:$O_1$] (O1) at (0,0);
 			\coordinate[label=above right:$O_2$] (O2) at (7,1.5);
-			\tkzDefCircle[R](O1,\ra) \tkzGetPoint{x1};
-			\tkzDefCircle[R](O2,\rb) \tkzGetPoint{x2};
-			\tkzDefLine[tangent from=O1](O2,x2) \tkzGetPoints{K}{L};
-			\tkzDefLine[tangent from=O2](O1,x1) \tkzGetPoints{N}{M};
-			\tkzInterLC(O1,K)(O1,x1) \tkzGetSecondPoint{A};
-			\tkzInterLC(O1,L)(O1,x1) \tkzGetSecondPoint{B};
-			\tkzInterLC(O2,N)(O2,x2) \tkzGetSecondPoint{C};
-			\tkzInterLC(O2,M)(O2,x2) \tkzGetSecondPoint{D};
+			\tkzDefCircle[R](O1,\ra) \tkzGetPoint{x1}
+			\tkzDefCircle[R](O2,\rb) \tkzGetPoint{x2}
+			\tkzDefLine[tangent from=O1](O2,x2) \tkzGetPoints{K}{L}
+			\tkzDefLine[tangent from=O2](O1,x1) \tkzGetPoints{N}{M}
+			\tkzInterLC(O1,K)(O1,x1) \tkzGetSecondPoint{A}
+			\tkzInterLC(O1,L)(O1,x1) \tkzGetSecondPoint{B}
+			\tkzInterLC(O2,N)(O2,x2) \tkzGetSecondPoint{C}
+			\tkzInterLC(O2,M)(O2,x2) \tkzGetSecondPoint{D}
 			\coordinate[label=above right:$Q_1$] (Q1) at ($(A)!.5!(B)$);
 			\coordinate[label=above left:$Q_2$] (Q2) at ($(C)!.5!(D)$);
 			\draw (O1) circle (\ra);
@@ -966,13 +919,11 @@
 			\draw (B) node[below left] {$B$};
 			\draw (C) node[below=-5pt] {\hspace{20pt}$C$};
 			\draw (D) node[above right] {$D$};
-			\tkzMarkRightAngle(A,Q1,O1);
-			\tkzMarkRightAngle(O1,K,O2);
-			\tkzLabelSegment[above left](O1,A){$R_1$};
-			\tkzLabelSegment[above right](O2,K){$R_2$};
-			\foreach \point in {(O1), (O2), (K), (L), (M), (N), (A), (B), (C), (D), (Q1), (Q2)} {
-				\fill \point circle (1.8pt);
-			}
+			\tkzMarkRightAngle(A,Q1,O1)
+			\tkzMarkRightAngle(O1,K,O2)
+			\tkzLabelSegment[above left](O1,A){$R_1$}
+			\tkzLabelSegment[above right](O2,K){$R_2$}
+            \tkzDrawPoints(O1, O2, K, L, M, N, A, B, C, D, Q1, Q2)
 		\end{tikzpicture}
 	\end{center}
 	Пусть даны окружности $\omega_1(O_1;R_1)$ и $\omega_2(O_2;R_2)$, касательные $O_1K$, $O_1L$, $O_2M$, $O_2N$, точки $A$, $B$, $C$, $D$ пересечения касательных с окружностями и точки $Q_1$ и $Q_2$ -- середины $AB$ и $CD$ соответственно. $\triangle AO_1B$ равнобедренный, откуда $\angle AQ_1O_1$ прямой, то есть:
@@ -1035,16 +986,14 @@
     \begin{center}
         \begin{tikzpicture}[scale=0.8]
         \draw (-5,3) -- (5,3);
-        \draw (-4.5,3) node[above] {$C$};
-        \draw (-1.5,3) node[above] {$A$};
-        \draw (4.5,3) node[above] {$B$};
-        \draw (1,-1) node[below] {$O$};
+        \coordinate[label=above:$C$] (C) at (-4.5,3);
+        \coordinate[label=above:$A$] (A) at (-1.5,3);
+        \coordinate[label=above:$B$] (B) at (4.5,3);
+        \coordinate[label=below:$O$] (O) at (1,-1);
         \draw[-{Stealth[scale = 1.5]}] (1,-1) -- node[below left]{$\vv{c}$} ++(-5.5,4);
         \draw[-{Stealth[scale = 1.5]}] (1,-1) -- node[above right]{$\vv{a}$} ++(-2.5,4);
         \draw[-{Stealth[scale = 1.5]}] (1,-1) -- node[below right]{$\vv{b}$} ++(3.5,4);
-        \foreach \point in {(-4.5,3), (1,-1), (-1.5,3), (4.5,3)}{
-    \fill \point circle (1.8pt);
-}
+        \tkzDrawPoints(A, B, C, O)
         \end{tikzpicture}
     \end{center}
         Обозначим $\vv{OA}=\vv{a},\vv{OB}=\vv{b},\vv{OC}=\vv{c}$. Тогда $\vv{c}-\vv{b}=\vv {BC}$; $\vv{a}-\vv{b}=\vv{BA}$. Тогда обозначим $\dfrac{\mid \vv{c}-\vv{b}\mid }{\mid \vv{a}-\vv{b}\mid }=x$, откуда $\vv{c}-\vv{b}=x(\vv{a}-\vv{b})$, то есть $\vv{c}=x\vv{a}-(1-x)\vv{b}$.
@@ -1057,29 +1006,31 @@
     \hfill
     \begin{center}
         \begin{tikzpicture}[scale=0.75]
-        \draw (0,0) circle (4.5);
-        \draw (60:4.5) -- (-145:4.5) -- (-35:4.5) -- cycle;
-        \draw (60:4.5) node[above right] {$B$};
-        \draw (-145:4.5) node[below left] {$A$};
-        \draw (-35:4.5) node[below right] {$C$};
-        \draw (0,0) node[above left] {$O$};
-        \draw[-{Stealth[scale = 1.5]}] (0,0) -- (60:4.5);
-        \draw[-{Stealth[scale = 1.5]}] (0,0) -- (-145:4.5);
-        \draw[-{Stealth[scale = 1.5]}] (0,0) -- (-35:4.5);
-        \draw (0,-5.1621) node[below] {$K$};
-        \draw[-{Stealth[scale = 1.5]}, name path = line3] (0,0) -- (0,-5.1621);
-        \draw (-145:4.5) -- (0,-5.1621) -- (-35:4.5);
-        \draw[draw opacity = 0, name path =line1] ($(-145:4.5)!(-35:4.5)!(60:4.5)$) -- (-35:4.5);
-        \draw[name path = line2] ($(-145:4.5)!(60:4.5)!(-35:4.5)$) -- (60:4.5);
-        \draw[name intersections={of=line1 and line2}] (intersection-1) node[right] {$H$};
-        \coordinate (Hc) at ($(-145:4.5)!(60:4.5)!(-35:4.5)$) {};
-        \coordinate (C) at (60:4.5) {};
-        \coordinate (A) at (-145:4.5) {};
-        \foreach \point in {(60:4.5), (-145:4.5), (0,0), (-35:4.5), (0,-5.1621), (intersection-1)}{
-    \fill \point circle (1.8pt);
-}
-        \draw[-{Stealth[scale = 1.5]}] (0,0) -- (intersection-1);
-        \tkzMarkRightAngle(C,Hc,A);
+            \tkzDefPoint(60:4.5){B}
+            \tkzDefPoint(-145:4.5){A}
+            \tkzDefPoint(-35:4.5){C}
+            \tkzDefPoint(0,0){O}
+            \tkzDefPoint(0,-5.1621){K}
+            \draw[dashed] (0,0) circle (4.5);
+            \draw (60:4.5) -- (-145:4.5) -- (-35:4.5) -- cycle;
+            \draw (60:4.5) node[above right] {$B$};
+            \draw (-145:4.5) node[below left] {$A$};
+            \draw (-35:4.5) node[below right] {$C$};
+            \draw (0,0) node[above left] {$O$};
+            \draw[-{Stealth[scale = 1.5]}] (0,0) -- (60:4.5);
+            \draw[-{Stealth[scale = 1.5]}] (0,0) -- (-145:4.5);
+            \draw[-{Stealth[scale = 1.5]}] (0,0) -- (-35:4.5);
+            \draw (0,-5.1621) node[below] {$K$};
+            \draw[-{Stealth[scale = 1.5]}, name path = line3] (0,0) -- (0,-5.1621);
+            \draw (-145:4.5) -- (0,-5.1621) -- (-35:4.5);
+            \draw[draw opacity = 0, name path =line1] ($(-145:4.5)!(-35:4.5)!(60:4.5)$) -- (-35:4.5);
+            \draw[dashed, name path = line2] ($(-145:4.5)!(60:4.5)!(-35:4.5)$) -- (60:4.5);
+            \draw[name intersections={of=line1 and line2}] (intersection-1) node[right] {$H$};
+            \coordinate (Hc) at ($(-145:4.5)!(60:4.5)!(-35:4.5)$);
+            \coordinate (int) at (intersection-1);
+            \tkzDrawPoints(A, B, C, K, O, int)
+            \draw[-{Stealth[scale = 1.5]}] (0,0) -- (int);
+            \tkzMarkRightAngle(C,Hc,A)
         \end{tikzpicture}
     \end{center}
         Рассмотрим сумму $\vv{OA}+\vv{OC}=\vv{OK}$, $|\vv{OA}|=|\vv{OC}|$, как радиусы описанной окружности, следовательно, $AOCK$ -- ромб, а значит $AC\perp OK$ как диагонали. Тогда $OK\parallel BH$, а значит точка $M$ вектора $\vv{OM}=\vv{OK}+\vv{OB}$ лежит на $BH$, но аналогично эта точка лежит на всех высотах $\triangle ABC$, а значит является ортоцентром.
@@ -1092,10 +1043,10 @@
     \hfill
     \begin{center}
         \begin{tikzpicture}
-            \coordinate (A) at (-4,-1) {};
-            \coordinate (B) at (-0.5,1.5) {};
-            \coordinate (C) at (0.5,-3) {};
-            \coordinate (O) at (3,-1.5) {};
+            \coordinate (A) at (-4,-1);
+            \coordinate (B) at (-0.5,1.5);
+            \coordinate (C) at (0.5,-3);
+            \coordinate (O) at (3,-1.5);
             \coordinate (Mb) at ($(A)!0.5!(C)$);
             \coordinate (Mc) at ($(A)!0.5!(B)$);
             \draw (A)--(B)--(C)--cycle;
@@ -1105,18 +1056,17 @@
             \draw[name path = B--Mb, draw opacity = 0] (B)--(Mb);
             \draw[name path = C--Mc, draw opacity = 0] (C)--(Mc);
             \draw[name intersections={of=B--Mb and C--Mc}] (intersection-1) node[above] {$M$};
+            \coordinate (M) at (intersection-1);
             \draw[-{Stealth[scale = 1.5]}] (O)--(intersection-1);
             \draw (A) node[left] {$A$};
             \draw (B) node[above] {$B$};
             \draw (C) node[below] {$C$};
             \draw (O) node[right] {$O$};
-            \foreach \point in {(A), (B), (C), (O), (intersection-1)}{
-    \fill \point circle (1.8pt);
-}
-            \tkzLabelSegment[above right](O,B){$\vv{b}$};
-            \tkzLabelSegment[below left](O,A){$\vv{a}$};
-            \tkzLabelSegment[below right](O,C){$\vv{c}$};
-            \tkzLabelSegment[above](O,intersection-1){$\vv{m}$};
+            \tkzDrawPoints(A, B, C, O, M)
+            \tkzLabelSegment[above right](O,B){$\vv{b}$}
+            \tkzLabelSegment[below left](O,A){$\vv{a}$}
+            \tkzLabelSegment[below right](O,C){$\vv{c}$}
+            \tkzLabelSegment[above](O,intersection-1){$\vv{m}$}
         \end{tikzpicture}
     \end{center}
         Обозначим $\vv{OA}$ как $\vv{a}$, $\vv{OB}$ как $\vv{b}$, $\vv{OC}$ как $\vv{c}$, $\vv{OM}$ как $\vv{m}$. Представим $\vv{OM}$ в виде суммы векторов: $\vv{b}+\vv{BM}=\vv{b}+\dfrac{2}{3}\left( \dfrac{\vv{BA}+\vv{BC}}{2}\right)=\vv{b}+\dfrac{1}{3}\vv{BA}+\dfrac{1}{3}\vv{BC}=\vv{b}+\dfrac{1}{3}(\vv{a}-\vv{b})+\dfrac{1}{3}(\vv{c}-\vv{b})=\dfrac{1}{3}(\vv{a}+\vv{b}+\vv{c})$.
@@ -1153,13 +1103,11 @@
             \draw[-{Stealth[scale = 1.5]}] (O) -- (A);
             \draw[-{Stealth[scale = 1.5]}] (O) -- (B);
             \draw[-{Stealth[scale = 1.5]}] (A) -- (B);
-            \tkzLabelSegment[above left](O,A){$\vv{a}$};
-            \tkzLabelSegment[below right](O,B){$\vv{b}$};
-            \tkzMarkAngle[size=.65cm](B,O,A);
-            \tkzLabelAngle(B,O,A){$\varphi$};
-            \foreach \point in {(A), (B), (O)}{
-    \fill \point circle (1.8pt);
-}
+            \tkzLabelSegment[above left](O,A){$\vv{a}$}
+            \tkzLabelSegment[below right](O,B){$\vv{b}$}
+            \tkzMarkAngle[size=.65cm](B,O,A)
+            \tkzLabelAngle(B,O,A){$\varphi$}
+            \tkzDrawPoints(A, B, O)
         \end{tikzpicture}
     \end{center}
         По теореме косинусов $AB^2=OA^2+OB^2-2\cdot OA\cdot OB \cdot \cos \varphi$, но по теореме Пифагора $OA^2=(x_1)^2+(y_1)^2$, $OB^2=(x_2)^2+(y_2)^2$, $AB^2=(x_1-x_2)^2+(y_1-y_2)^2$. Тогда если подставить в первое выражение и упростить получим $x_1\cdot x_2 + y_1\cdot y_2=OA\cdot OB\cdot \cos \varphi$.
@@ -1208,9 +1156,7 @@
         \draw (O) node[below left] {$O$};
         \draw[-{Stealth[scale = 1.5]}] ($(A)!(C)!(B)$) -- (C) node[right]{$\vv{n}$};
         \draw[-{Stealth[scale = 1.5]}] (A) -- (B);
-        \foreach \point in {(A), (B), (O)}{
-    \fill \point circle (1.8pt);
-}
+        \tkzDrawPoints(A, B, O)
         \end{tikzpicture}
     \end{center}
         Возьмем произвольные точки $A(x_1;y_1)$ и $B(x_2;y_2)$. Тогда $\vv{AB}(x_2-x_1;y_2-y_1)$. При этом $ax_1+by_1+c=ax_2+by_2+c=0$, следовательно, если вычесть одно из другого, получим $a(x_2-x_1)+b(y_2-y_1)=0$. Рассмотрим $\vv{AB}\cdot \vv{n} = a\cdot(x_2-x_1)+b\cdot(y_2-y_1)=0\Longrightarrow \vv{AB}\perp \vv{n}$.
@@ -1238,8 +1184,8 @@
             \coordinate (O) at (0,0) {};
             \coordinate (A) at (4,3) {};
             \draw (A) node[above right]{$A(x_0;y_0)$};
-            \tkzMarkAngle[size=.65cm](B,C,O);
-            \tkzLabelAngle(B,C,O){$\alpha$};
+            \tkzMarkAngle[size=.65cm](B,C,O)
+            \tkzLabelAngle(B,C,O){$\alpha$}
             \begin{scope}
                 \clip (-0.5,-0.5) rectangle (6,8);
                 \draw[domain=-0.5:6, variable=\x, samples=50] plot ({\x},{-(\x)+7});
@@ -1252,13 +1198,12 @@
             \draw (D) -- (A);
             \draw (D) -- (E);
             \draw (D) ++(0,1.75) node[scale=.8,left]{$\dfrac{|f|}{b}$};
-            \tkzMarkRightAngle(A,D,C);
-            \tkzMarkAngle[size=.65cm](A,D,E);
-            \tkzLabelAngle(A,D,E){$\alpha$};
+            \tkzMarkRightAngle(A,D,C)
+            \tkzMarkAngle[size=.65cm](A,D,E)
+            \tkzLabelAngle(A,D,E){$\alpha$}
             \draw (4,1) node[above left]{$l$};
-            \foreach \point in {(A), (B), (C), (D), (E), (0,7), (O)}{
-    \fill \point circle (1.8pt);
-}
+            \coordinate (x) at (0,7);
+            \tkzDrawPoints(A, B, C, D, E, x, O)
         \end{tikzpicture}
     \end{center}
         Пусть $A(x_0;y_0)$, тогда $ax_0+by_0+c=f\Longrightarrow y_0=\dfrac{f-c}{b}-\dfrac{ax_0}{b}$. Проведем через точку $A$ перпендикуляр к $l$, а также прямую, параллельную $l$. Отметим найденные ранее координаты на $OY$, а также найдем расстояние между ними. Пусть угол наклона $l$ относительно $OX$ равен $\alpha$, тогда $\tg \alpha = -\dfrac{a}{b}$. Из основного тригонометрического тождества:
@@ -1297,16 +1242,14 @@
           \coordinate (F2) at ({+sqrt(\a*\a-\b*\b)},0);
           \draw (F1) node[below right] {$F_1$};
           \draw (F2) node[below left] {$F_2$};
-          \tkzLabelSegment[right](O,C){$b$};
-          \tkzLabelSegment[above](O,A){$a$};
+          \tkzLabelSegment[right](O,C){$b$}
+          \tkzLabelSegment[above](O,A){$a$}
           \node[align=left] at ({\a*2},0) {
               $F_1,\, F_2$ -- фокусы эллипса\\
               $a$ -- большая ось
               \\$b$ -- малая ось
           };
-          \foreach \point in {(F1), (F2)}{
-    \fill \point circle (1.8pt);
-}
+          \tkzDrawPoints(F1, F2)
         \end{tikzpicture}
     \end{center}
 
@@ -1331,17 +1274,15 @@
             \coordinate (B) at (1.5,-0.25);
             \coordinate (C) at (2,-0.25);
             \draw (B) -- (A) -- (F);
-            \tkzMarkSegment[mark=||](F,A);
-            \tkzMarkSegment[mark=||](A,B);
+            \tkzMarkSegment[mark=||](F,A)
+            \tkzMarkSegment[mark=||](A,B)
             \tkzMarkRightAngle(A,B,C);
             \node[align=left] at (7,1.5) {
               $l\, '$ -- ось параболы\\
               $F$ -- фокус параболы\\
               $l$ -- директриса параболы
           };
-          \foreach \point in {(F), (A), (B)}{
-    \fill \point circle (1.8pt);
-}
+          \tkzDrawPoints(F, A, B)
         \end{tikzpicture}
     \end{center}
 
@@ -1368,9 +1309,7 @@
                 $F_1,\, F_2$ -- фокусы гиперболы\\
                 $l,\, l\, '$ -- асимптоты гиперболы
             };
-            \foreach \point in {(F1), (F2)}{
-    \fill \point circle (1.8pt);
-}
+            \tkzDrawPoints(F1, F2)
         \end{tikzpicture}
     \end{center}
     
@@ -1402,12 +1341,10 @@
         \draw (F2) node[below left]{$F_2$};
         \draw (F1) -- ($(F1)!1.7!(P)$);
         \draw (F2) -- ($(F2)!1.2!(P)$);
-        \tkzMarkAngle[size=.65cm, mark=|](Y,P,F1);
-        \tkzMarkAngle[size=.65cm, mark=|](F2,P,X);
-        \tkzMarkAngle[size=.65cm,mark=|](X,P,Z);
-        \foreach \point in {(F1), (F2), (Y), (P), (X)}{
-    \fill \point circle (1.8pt);
-}
+        \tkzMarkAngle[size=.65cm, mark=|](Y,P,F1)
+        \tkzMarkAngle[size=.65cm, mark=|](F2,P,X)
+        \tkzMarkAngle[size=.65cm,mark=|](X,P,Z)
+        \tkzDrawPoints(F1, F2, Y, P, X)
         \end{tikzpicture}
     \end{center}
         Пусть $X, \, Y \in l$, тогда по определению касательной $XF_1+XF_2\geq PF_1 + PF_2$. Следовательно, $P$ -- точка на $l$, сумма расстояний от которой до фокусов минимальна, откуда $\angle F_2PX=\angle F_1PY$.
@@ -1439,15 +1376,13 @@
             \draw (P') -- (P) -- (F);
             \draw (T) -- (T') -- (F);
             \draw (P') -- (T) -- (F);
-            \tkzMarkSegment[mark=|](P,P');
-            \tkzMarkSegment[mark=|](P,F);
-            \tkzMarkSegment[mark=||](P',T);
-            \tkzMarkSegment[mark=||](T,F);
-            \tkzMarkAngle[size=.3cm,mark=|](P',P,T);
-            \tkzMarkAngle[size=.3cm,mark=|](T,P,F);
-            \foreach \point in {(F), (P), (P'), (T), (T')}{
-    \fill \point circle (.6pt);
-}
+            \tkzMarkSegment[mark=|](P,P')
+            \tkzMarkSegment[mark=|](P,F)
+            \tkzMarkSegment[mark=||](P',T)
+            \tkzMarkSegment[mark=||](T,F)
+            \tkzMarkAngle[size=.3cm,mark=|](P',P,T)
+            \tkzMarkAngle[size=.3cm,mark=|](T,P,F)
+            \tkzDrawPoints(F, P, P', T, T')
         \end{tikzpicture}
     \end{center}
         Пусть биссектриса не касается параболы, то есть пересекает ее в точке $T$. По определению параболы $PP\,'=PF\Longrightarrow \triangle P\,'PT=\triangle PFT$ по двум сторонам и углу между ними. Отсюда $P\,'T=TF$, но тогда если $T\,'$ -- проекция $T$ на директрису, то $TT\,'=TF$, то есть $TP\,'=TT\,'$, противоречие.
@@ -1480,14 +1415,12 @@
                 \draw (T) node[above] {$T$};
                 \draw (F1) -- (P) -- (F2);
                 \draw (F1) -- (T);
-                \tkzMarkAngle[size=.65cm, mark=|](F1,P,t);
-                \tkzMarkAngle[size=.65cm, mark=|](t,P,F2);
-                \tkzMarkSegment[mark=||](F2,T);
-                \tkzMarkSegment[mark=||](T,F2');
+                \tkzMarkAngle[size=.65cm, mark=|](F1,P,t)
+                \tkzMarkAngle[size=.65cm, mark=|](t,P,F2)
+                \tkzMarkSegment[mark=||](F2,T)
+                \tkzMarkSegment[mark=||](T,F2')
                 \draw (F2) -- (F2');
-                \foreach \point in {(P), (F1), (F2), (F2'), (T)}{
-    \fill \point circle (1.2pt);
-}
+                \tkzDrawPoints(F1, F2, T, P, F2')
             \end{scope}
         \end{scope}   
         \end{tikzpicture}
@@ -1532,17 +1465,15 @@
         \draw (F1) -- (P) -- (F2);
         \draw[dashed] (X) -- (F1) -- (F2');
         \draw[dashed] (Y) -- (F2) -- (F1');
-        \tkzMarkAngle[size=.65cm](F1',P,X);
-        \tkzMarkAngle[size=.85cm](X,P,F1);
-        \tkzMarkAngle[size=.85cm](F2,P,Y);
-        \tkzMarkAngle[size=.65cm](Y,P,F2');
-        \tkzMarkSegment[mark=||](P,F1');
-        \tkzMarkSegment[mark=||](P,F1);
-        \tkzMarkSegment[mark=|](P,F2');
-        \tkzMarkSegment[mark=|](P,F2);
-        \foreach \point in {(F1), (P), (X), (Y), (F2), (F1'), (F2')}{
-    \fill \point circle (1.8pt);
-}
+        \tkzMarkAngle[size=.65cm](F1',P,X)
+        \tkzMarkAngle[size=.85cm](X,P,F1)
+        \tkzMarkAngle[size=.85cm](F2,P,Y)
+        \tkzMarkAngle[size=.65cm](Y,P,F2')
+        \tkzMarkSegment[mark=||](P,F1')
+        \tkzMarkSegment[mark=||](P,F1)
+        \tkzMarkSegment[mark=|](P,F2')
+        \tkzMarkSegment[mark=|](P,F2)
+        \tkzDrawPoints(F1, F2, X, Y, P, F1', F2')
         \end{tikzpicture}
     \end{center}
         Пусть $F_1\,'$ и $F_2\,'$ -- точки, симметричные $F_1$ и $F_2$ относительно $PX$ и $PY$ соответственно. Тогда $PF_1=PF_1\,'$ и $PF_2=PF_2\,'$, при этом $F_1$, $Y$ и $F_2\,'$, а также $F_2$, $X$ и $F_1\,'$ коллинеарны по оптическому свойству эллипса. Получаем, что $F_2F_1\,'=F_2X+XF_1=F_2Y+YF_1=F_1F_2\,'$. То есть $\triangle F_1PF_2\,'=\triangle F_2PF_1\,'$ по трем сторонам. Тогда $\angle F_1PF_2+2\angle F_1PX=\angle F_2PF_1\,'=\angle F_1PF_2\,'=\angle F_1PF_2+2\angle F_2PY\Longrightarrow \angle F_1PX=\angle F_2PY$.
@@ -1587,14 +1518,12 @@
         \coordinate (H) at ($(P)!(F1)!(X)$);
         \coordinate (F1') at ($(F1)!2!(H)$);
         \draw (F1') node[above left] {$F_1\,'$};
-        \tkzMarkRightAngle(X,P,Y);
+        \tkzMarkRightAngle(X,P,Y)
         \draw (F2) -- (F1') -- (P) -- cycle;
         \draw (F1) -- (X);
-        \tkzMarkSegment[mark=|](F1,X);
-        \tkzMarkSegment[mark=|](F1',X);
-        \foreach \point in {(F1), (P), (X), (Y), (F2), (F1')}{
-    \fill \point circle (2.25pt);
-}
+        \tkzMarkSegment[mark=|](F1,X)
+        \tkzMarkSegment[mark=|](F1',X)
+        \tkzDrawPoints(F1, F2, X, Y, P, F1')
         \end{tikzpicture}
     \end{center}
         Пусть $F_1\,'$ -- образ $F_1$ относительно прямой $PX$. Из теоремы 3.4 следует, что $\angle F_1\,'PF_2=\angle XPY=90^{\circ}$. По теореме Пифагора $F_1\,'P^2+F_2P^2=F_1\,'F_2\,^2$, то есть получаем уравнение окружности с центром в середине $F_1F_2$.
@@ -1619,17 +1548,15 @@
             \coordinate (H) at ($(F)!0.5!(P')$);
             \draw (F) -- (P) -- (P');
             \draw[dashed] (F) -- (P');
-            \tkzMarkSegment[mark=|](F,P);
-            \tkzMarkSegment[mark=|](P',P);
-            \tkzMarkAngle[size=.35cm](F,P,H);
-            \tkzMarkAngle[size=.4cm](H,P,P');
+            \tkzMarkSegment[mark=|](F,P)
+            \tkzMarkSegment[mark=|](P',P)
+            \tkzMarkAngle[size=.35cm](F,P,H)
+            \tkzMarkAngle[size=.4cm](H,P,P')
             \draw (1.3, 1.69) node[below right] {$l$};
             \draw (F) node[above left] {$F$};
             \draw (P) node[right] {$P$};
             \draw (P') node[below] {$P\,'$};
-            \foreach \point in {(F), (P), (P'), (H)}{
-    \fill \point circle (0.72pt);
-}
+            \tkzDrawPoints(F, P, P', H)
         \end{tikzpicture}
     \end{center}
         Пусть прямая $l$ касается параболы в точке $P$, $P\,'$ -- проекция $P$ на директрису параболы. $l$ -- биссектриса $\angle FPP\,'$, но $\triangle FPP\,'$ -- равнобедренный по определению параболы, а значит $l$ в нем медиана и высота, откуда $P\,'$ -- образ $F$.
@@ -1668,11 +1595,9 @@
             \draw (P) node[above] {$P$};
             \draw[dashed] (X) -- (X');
             \draw[dashed] (Y) -- (Y');
-            \tkzMarkRightAngle[scale=.5](X,X',Y');
-            \tkzMarkRightAngle[scale=.5](Y,Y',X');
-            \foreach \point in {(F), (X), (Y), (X'), (Y'), (P)}{
-    \fill \point circle (0.4pt);
-}
+            \tkzMarkRightAngle[scale=.5](X,X',Y')
+            \tkzMarkRightAngle[scale=.5](Y,Y',X')
+            \tkzDrawPoints(F, P, X, Y, X', Y')
         \end{tikzpicture}
         \end{center}
         Из леммы 3.8 следует, что $PX$ и $PY$ являются серединными перпендикулярами к $FX\,'$ и $FY\,'$ соответственно. Тогда их точка пересечения будет являться центром окружности, описанной около $\triangle FX\,'Y\,'$.
@@ -1714,20 +1639,18 @@
             \draw[dashed] (Y) -- (Y');
             \draw (X) -- (Y);
             \draw (F) -- (P);
-            \tkzMarkRightAngle[scale=.5](X,F,P);
-            \tkzMarkRightAngle[scale=.5](X,X',Y');
-            \tkzMarkRightAngle[scale=.5](Y,Y',X');
-            \tkzMarkAngle[size=.15cm](X,P,X');
-            \tkzMarkAngle[size=.18cm](F,P,X);
-            \tkzMarkAngle[size=.15cm, mark=|](Y,P,F);
-            \tkzMarkAngle[size=.18cm, mark=|](Y',P,Y);
-            \tkzMarkSegment[mark=|](X,X');
-            \tkzMarkSegment[mark=|](F,X);
-            \tkzMarkSegment[mark=||](F,Y);
-            \tkzMarkSegment[mark=||](Y,Y');
-            \foreach \point in {(F), (X), (Y), (X'), (Y'), (P)}{
-    \fill \point circle (0.4pt);
-}
+            \tkzMarkRightAngle[scale=.5](X,F,P)
+            \tkzMarkRightAngle[scale=.5](X,X',Y')
+            \tkzMarkRightAngle[scale=.5](Y,Y',X')
+            \tkzMarkAngle[size=.15cm](X,P,X')
+            \tkzMarkAngle[size=.18cm](F,P,X)
+            \tkzMarkAngle[size=.15cm, mark=|](Y,P,F)
+            \tkzMarkAngle[size=.18cm, mark=|](Y',P,Y)
+            \tkzMarkSegment[mark=|](X,X')
+            \tkzMarkSegment[mark=|](F,X)
+            \tkzMarkSegment[mark=||](F,Y)
+            \tkzMarkSegment[mark=||](Y,Y')
+            \tkzDrawPoints(F, P, X, Y, X', Y')
         \end{tikzpicture}
         \end{center}
         Пусть $P$ лежит на директрисе, тогда если $X\,'$ и $Y\,'$ -- проекции $X$ и $Y$ на директрису соответственно, то $\triangle PXX\,'= \triangle PXF$, а значит $\angle PFX=\angle PX\,'X=90^{\circ}$. Аналогично $\angle PFY=90^{\circ}$. То есть $X$, $F$ и $Y$ коллинеарны. При этом $\angle XPX\,'=\angle XPF,\,\angle YPF=\angle YPY\,'$, следовательно, $\angle XPY=\dfrac{1}{2}(\angle FPX\,'+\angle FPY\,')=90^{\circ}$.
@@ -1758,7 +1681,7 @@
             \draw (F) node[above] {$F$};
             \tkzDefCircle[circum](F,X',Y')
             \tkzGetPoint{P} \tkzGetLength{rayon}
-            \draw[dotted] (P) circle(\rayon);
+            \draw[dotted, line width = 0.2mm] (P) circle(\rayon);
             \draw (P) node[right] {$P$};
             \begin{scope}
                 \clip (-1,-.6) rectangle (1,0.7);
@@ -1777,21 +1700,19 @@
             \coordinate (H) at ($(X')!(P)!(Y')$);
             \draw[name intersections={of=line1 and line2}] (intersection-1) node[above] {};
             \coordinate (N) at (intersection-1);
-            \tkzMarkRightAngle[scale=.5](X,X',K);
-            \tkzMarkRightAngle[scale=.5](L,Y',Y);
-            \tkzMarkRightAngle[scale=.5](M,H,Y');
-            \tkzMarkAngle[size=.1](X,P,X');
-            \tkzMarkAngle[size=.12](F,P,X);
-            \tkzMarkAngle[size=.1](Y,P,N);
-            \tkzMarkAngle[size=.1](N,Y,P);
-            \tkzMarkAngle[size=.12](P,Y,Y');
-            \tkzMarkAngle[size=.1](X,F,P);
-            \tkzMarkAngle[size=.12](P,F,Y);
-            \tkzMarkAngle[size=.05](X,F,P);
-            \tkzMarkAngle[size=.06](P,F,Y);
-            \foreach \point in {(F), (X), (Y), (X'), (Y'), (P)}{
-    \fill \point circle (0.4pt);
-}
+            \tkzMarkRightAngle[scale=.5](X,X',K)
+            \tkzMarkRightAngle[scale=.5](L,Y',Y)
+            \tkzMarkRightAngle[scale=.5](M,H,Y')
+            \tkzMarkAngle[size=.1](X,P,X')
+            \tkzMarkAngle[size=.12](F,P,X)
+            \tkzMarkAngle[size=.1](Y,P,N)
+            \tkzMarkAngle[size=.1](N,Y,P)
+            \tkzMarkAngle[size=.12](P,Y,Y')
+            \tkzMarkAngle[size=.1](X,F,P)
+            \tkzMarkAngle[size=.12](P,F,Y)
+            \tkzMarkAngle[size=.05](X,F,P)
+            \tkzMarkAngle[size=.06](P,F,Y)
+            \tkzDrawPoints(F, P, X, Y, X', Y')
         \end{tikzpicture}
         \end{center}
         Пусть $X\,'$ и $Y\,'$ -- проекции $X$ и $Y$ на директрису соответственно. Угол между $PY$ и $l$ равен $\angle X\,'Y\,'F$, так как $l\perp X\,'Y\,'$ и $PY\perp Y\,'F$. При этом по лемме 3.8 $F$, $X\,'$ и $Y\,'$ лежат на окружности с центром в $P$. Тогда $\angle X\,'Y\,'F=\dfrac{1}{2}\angle X\,'PF=\angle XPF$. Поскольку $l\parallel YY\,'$, угол между $PY$ и $l$ равен $\angle PYY\,'$, который в силу оптического свойства параболы равен $\angle PYF$. То есть $\angle PYF=\angle XPF$, аналогично $\angle FXP = \angle YPF$. Тогда $\triangle XFP \sim \triangle PFY$ по двум углам и $PF$ -- биссектриса $\angle XFY$.
@@ -1833,12 +1754,10 @@
                 \draw[dashed] (P) -- (Pa);
                 \draw[dashed] (P) -- (Pc);
                 \draw[dashed] (P) -- (Pb);
-                \tkzMarkRightAngle(P,Pc,A);
-                \tkzMarkRightAngle(P,Pb,A);
-                \tkzMarkRightAngle(P,Pa,K);
-                \foreach \point in {(A), (B), (C), (P), (Pa), (Pb), (Pc)}{
-    \fill \point circle (1.8pt);
-}
+                \tkzMarkRightAngle(P,Pc,A)
+                \tkzMarkRightAngle(P,Pb,A)
+                \tkzMarkRightAngle(P,Pa,K)
+                \tkzDrawPoints(A, B, C, P, Pa, Pb, Pc)
             \end{tikzpicture}
         \end{center}
         Пусть $P_a$, $P_b$ и $P_c$ -- проекции точки $P$ на $BC$, $AC$ и $AB$ соответственно. $AP_cP_bP$ вписанный, так как $\angle AP_cP=\angle AP_bP$. Тогда $\angle APP_c=\angle AP_bP_C$. Аналогично $\angle CP_bP_a=\angle CPP_a$. В силу вписанности $ABCP$ $\angle PCP_a=180^{\circ}-\angle BCP=\angle BAP$. При этом $\angle PCP_a=90^{\circ}-\angle CPP_a=90^{\circ}-\angle CP_bP_a$. То есть $\angle AP_cP=90^{\circ}-\angle APP_c=90^{\circ}-\angle AP_bP_c=90^{\circ}-\angle CP_bP_a$, а значит $\angle AP_bP_c=\angle CP_bP_a$. В таком случае они вертикальные, следовательно, $P_a$, $P_b$ и $P_c$ коллинеарны. Обратное утверждение доказывается аналогично.
@@ -1873,19 +1792,17 @@
             \draw (Fa) node[below right] {$F_a$};
             \draw (Fb) node[below left] {$F_b$};
             \draw (Fc) node[below right] {$F_c$};
-            \draw (F) -- (Fa);
-            \draw (F) -- (Fb);
-            \draw (F) -- (Fc);
+            \draw[dashed] (F) -- (Fa);
+            \draw[dashed] (F) -- (Fb);
+            \draw[dashed] (F) -- (Fc);
             \draw ($(Fb)!1.2!(Fa)$) -- ($(Fa)!1.2!(Fb)$);
             \tkzDefCircle[circum](A,B,C)
             \tkzGetPoint{O} \tkzGetLength{rayon}
-            \draw (O) circle(\rayon);
-            \tkzMarkRightAngle[scale=.8](F,Fc,A);
-            \tkzMarkRightAngle[scale=.8](F,Fb,K);
-            \tkzMarkRightAngle[scale=.8](F,Fa,B);
-            \foreach \point in {(F), (A), (B), (C), (Fa), (Fb), (Fc)}{
-    \fill \point circle (0.9pt);
-}
+            \draw[dotted, line width=.25mm] (O) circle(\rayon);
+            \tkzMarkRightAngle[scale=.8](F,Fc,A)
+            \tkzMarkRightAngle[scale=.8](F,Fb,K)
+            \tkzMarkRightAngle[scale=.8](F,Fa,B)
+            \tkzDrawPoints(F, A, B, C, Fa, Fb, Fc)
         \end{tikzpicture}
         \end{center}
         Пусть $F_a$, $F_b$ и $F_c$ -- проекции фокуса параболы на стороны треугольника. По лемме 3.7 они коллинеарны. Тогда по теореме о прямой Симсона $F$ принадлежит окружности, описанной около $\triangle ABC$.
@@ -1921,14 +1838,12 @@
                 \draw (P) -- (Pc);
                 \draw (P) -- (B');
                 \draw (B) -- (B');
-                \tkzMarkRightAngle(P,Pc,A);
-                \tkzMarkRightAngle(P,Pb,A);
-                \tkzMarkAngle[size=.4](B',B,A);
-                \tkzMarkAngle[size=.4](Pb,Pc,B);
-                \tkzMarkAngle[size=.4](B',P,A);
-                \foreach \point in {(A), (B), (C), (P), (Pb), (Pc), (B')}{
-    \fill \point circle (1.8pt);
-}
+                \tkzMarkRightAngle(P,Pc,A)
+                \tkzMarkRightAngle(P,Pb,A)
+                \tkzMarkAngle[size=.4](B',B,A)
+                \tkzMarkAngle[size=.4](Pb,Pc,B)
+                \tkzMarkAngle[size=.4](B',P,A)
+                \tkzDrawPoints(A, B, C, P, Pb, Pc, B')
             \end{tikzpicture}
         \end{center}
         Пусть $P_b$ и $P_c$ -- проекции $P$ на $AC$ и $AB$ соответственно. $\angle ABB\,'=\angle APB\,'$ как вписанные. $AP_cP_bP$ -- вписанный, так как $\angle AP_cP=\angle AP_bP$, следовательно, $\angle APP_b=\angle P_bP_cB$. То есть $\angle P_cBB\,'=\angle P_bP_cB$, а значит $BB\,'\parallel P_bP_c$.
@@ -1970,9 +1885,9 @@
                 \draw (B') node[above right] {$B\,'$};
                 \draw (H') node[below right] {$H\,'$};
                 \draw (P') node[below left] {$P\,'$};
-                \draw ($(Pc)!1.68!(Pb)$) -- ($(Pb)!1.5!(Pc)$);
+                \draw[dashed] ($(Pc)!1.68!(Pb)$) -- ($(Pb)!1.5!(Pc)$);
                 \draw (P) -- (A);
-                \draw (P) -- (Pc);
+                \draw[dotted, line width=.25mm] (P) -- (Pc);
                 \draw (P) -- (B');
                 \draw (B) -- (B');
                 \draw (B) -- (H');
@@ -1982,19 +1897,17 @@
                 \draw[name intersections={of=line1 and line2}] (intersection-1) node[below left] {$H$};
                 \coordinate (H) at (intersection-1);
                 \draw (P') -- (H);
-                \tkzMarkRightAngle(P,Pc,A);
-                \tkzMarkRightAngle(C,Pb,B');
-                \tkzMarkRightAngle(C,Hb,B);
-                \tkzMarkAngle[size=.4](B',B,A);
-                \tkzMarkAngle[size=.4](Pb,Pc,B);
-                \tkzMarkAngle[size=.4](B',P,A);
-                \tkzMarkSegment[mark=|](H,Hb);
-                \tkzMarkSegment[mark=|](Hb,H');
-                \tkzMarkSegment[mark=||](P',Pb);
-                \tkzMarkSegment[mark=||](Pb,P);
-                \foreach \point in {(A), (B), (C), (P), (Pb), (Pc), (B'), (H'), (P'), (H)}{
-    \fill \point circle (1.8pt);
-}
+                \tkzMarkRightAngle(P,Pc,A)
+                \tkzMarkRightAngle(C,Pb,B')
+                \tkzMarkRightAngle(C,Hb,B)
+                \tkzMarkAngle[size=.4](B',B,A)
+                \tkzMarkAngle[size=.4](Pb,Pc,B)
+                \tkzMarkAngle[size=.4](B',P,A)
+                \tkzMarkSegment[mark=|](H,Hb)
+                \tkzMarkSegment[mark=|](Hb,H')
+                \tkzMarkSegment[mark=||](P',Pb)
+                \tkzMarkSegment[mark=||](Pb,P)
+                \tkzDrawPoints(A, B, C, P, P, Pb, Pc, B', H', P', H)
             \end{tikzpicture}
         \end{center}
         Пусть $H\,'$ и $P\,'$ -- образы $H$ и $P$ относительно $AC$ соответственно. Поскольку $PB\,'\parallel H\,'B$, $PB\,'BH\,'$ -- равнобокая трапеция. Тогда отрезок, симметричный $PH\,'$ относительно $AC$ должен быть параллелен $BB\,'$, то есть $P\,'H\parallel B\,'B\parallel P_cP_b$. Поскольку $P_b$ -- середина $PP\,'$ и $P_cP_b\parallel P\,'H$, прямая Симсона -- средняя линия $\triangle HPP\,'$, а значит делит $HP$ пополам.
@@ -2008,7 +1921,7 @@
             \begin{tikzpicture}[scale = 1.5]
             \begin{scope}
                 \clip (-4,-2.5) rectangle (2,3);
-                \draw[domain=-4:4, variable=\x, samples=100] plot ({(\x)},{(\x*0.6)^2+0.5});
+                \draw[domain=-4:4, variable=\x, samples=100, dotted, line width=.25mm] plot ({(\x)},{(\x*0.6)^2+0.5});
                 \draw[domain=-4:4, variable=\x, samples=50] plot ({(\x)},{(-3.67*\x-8.78)});
                 \draw[domain=-4:4, variable=\x, samples=50] plot ({(\x)},{(.94*\x-0.12)});
             \end{scope}
@@ -2028,8 +1941,8 @@
             \coordinate (Fa) at ($(B)!(F)!(C)$);
             \draw (Fa) node[below right] {$F_a$};
             \draw (Fb) node[below left] {$F_b$};
-            \draw (F) -- (Fa);
-            \draw (F) -- (Fb);
+            \draw[dashed] (F) -- (Fa);
+            \draw[dashed] (F) -- (Fb);
             \draw[name path = line3] ($(Fb)!1.2!(Fa)$) -- ($(Fa)!1.2!(Fb)$);
             \draw[draw opacity = 0, name path =line1] (B) -- (Hb);
             \draw[draw opacity = 0, name path = line2] (C) -- (Hc);
@@ -2040,17 +1953,15 @@
             \coordinate (O) at (intersection-1);
             \coordinate (Hf) at ($(Fa)!(H)!(Fb)$);
             \coordinate (Ff) at ($(Fa)!(F)!(Fb)$);
-            \draw (H) -- (Hf);
-            \draw (F) -- (Ff);
-            \tkzMarkRightAngle[scale=.8](H,Hf,Fb);
-            \tkzMarkRightAngle[scale=.8](F,Ff,Fa);
-            \tkzMarkRightAngle[scale=.8](F,Fb,A);
-            \tkzMarkRightAngle[scale=.8](F,Fa,K);
-            \tkzMarkSegment[mark=|](H,O);
-            \tkzMarkSegment[mark=|](O,F);
-            \foreach \point in {(F), (A), (B), (C), (Fa), (Fb), (H), (O)}{
-    \fill \point circle (1.2pt);
-}
+            \draw[dashed] (H) -- (Hf);
+            \draw[dashed] (F) -- (Ff);
+            \tkzMarkRightAngle[scale=.8](H,Hf,Fb)
+            \tkzMarkRightAngle[scale=.8](F,Ff,Fa)
+            \tkzMarkRightAngle[scale=.8](F,Fb,A)
+            \tkzMarkRightAngle[scale=.8](F,Fa,K)
+            \tkzMarkSegment[mark=|](H,O)
+            \tkzMarkSegment[mark=|](O,F)
+            \tkzDrawPoints(F, A, B, C, Fa, Fb, H, O)
         \end{tikzpicture}
         \end{center}
         Пусть $F_a$ и $F_b$ -- проекции $F$ на $BC$ и $AC$ соответственно. Тогда по следствию 3.7.1 $F_bF_a$ -- прямая, касающаяся параболы в ее вершине и параллельная директрисе этой параболы. Пусть $O$ -- точка пересечения $FH$ и $F_bF_a$, тогда по следствию 3.13.2 $FO=OH$, при этом $\angle HOF_b=\angle FOF_a$ как вертикальные, в таком случае равны по двум углам и стороне треугольники, образованные $F$, $O$, $H$ и проекциями $F$ и $H$ на $F_bF_a$. Следовательно, расстояние от $F$ до прямой, проходящей через вершину параболы и параллельной ее директрисе, равно расстоянию от этой прямой до $H$, а значит $H$ лежит на директрисе параболы.
@@ -2073,7 +1984,7 @@
 
         Для точек, симметричных относительно окружности $\omega(O;\,R)$, выполняются условия:
         \begin{align*}
-            1.\,\,&\forall X\in \R^2:\,X\neq0\,\,\,\exists!\,Y:\,X,\,Y \text{ -- симметричны относительно } \omega\\
+            1.\,\,&\forall X\in \R^2:\,X\neq0\enspace\exists!\,Y:\,X,\,Y \text{ -- симметричны относительно } \omega\\
             2.\,\,&\text{Если } X \text{ внутри } \omega\text{, то } Y \text{ снаружи и наоборот}\\
             3.\,\,&\text{Нет точки, симметричной } O\\
             4.\,\,&\forall C \in \omega:\,C \text{ симметрична сама себе}
@@ -2105,19 +2016,17 @@
                 \draw (O) -- (A');
                 \draw (A') -- (B');
                 \draw (A) -- (B);
-                \tkzMarkAngle[size=.4](O,B,A);
-                \tkzMarkAngle[size=.4](B',A',O);
-                \tkzMarkAngle[size=.4](O,B',A');
-                \tkzMarkAngle[size=.4](B,A,O);
-                \tkzMarkAngle[size=.3](B,A,O);
-                \tkzMarkAngle[size=.3](O,B',A');
+                \tkzMarkAngle[size=.4](O,B,A)
+                \tkzMarkAngle[size=.4](B',A',O)
+                \tkzMarkAngle[size=.4](O,B',A')
+                \tkzMarkAngle[size=.4](B,A,O)
+                \tkzMarkAngle[size=.3](B,A,O)
+                \tkzMarkAngle[size=.3](O,B',A')
                 \tkzDefCircle[circum](A,A',B)
-            \tkzGetPoint{M} \tkzGetLength{rayon}
-            \draw[dashed] (M) circle(\rayon);
+                \tkzGetPoint{M} \tkzGetLength{rayon}
+                \draw[dashed] (M) circle(\rayon);
+                \tkzDrawPoints(O, B, B', A, A')
                 \draw (O) circle(3);
-        \foreach \point in {(O), (B), (B'), (A), (A')}{
-    \fill \point circle (1.8pt);
-}
         \end{tikzpicture}
         \end{center}
         Пусть $A$ и $\widehat{A}$, $B$ и $\widehat{B}$ -- пары точек, симметричных около окружности $\omega(O;\,R)$. Тогда:
@@ -2152,9 +2061,9 @@
                 \draw[dashed] (O) -- (A) -- (M');
                 \draw (D) -- (M');
                 \draw (M) -- (D');
-                \tkzMarkRightAngle(M',A,O);
-                \tkzMarkRightAngle(D,D',M');
-                \tkzMarkRightAngle(D,M,M');
+                \tkzMarkRightAngle(M',A,O)
+                \tkzMarkRightAngle(D,D',M')
+                \tkzMarkRightAngle(D,M,M')
                 \draw (O) node[above left]{$O$};
                 \draw (A) node[right]{$A$};
                 \draw (B) node[below]{$B$};
@@ -2169,13 +2078,10 @@
             \tkzGetPoint{L} \tkzGetLength{rayon}
             \draw[dotted, line width = 0.2mm] (L) circle(\rayon);
             \draw ($(B)!-0.2!(A)$) node[above left] {$l$};
-            \tkzMarkSegment[mark=|](B,M);
-            \tkzMarkSegment[mark=|](M,A);
+            \tkzMarkSegment[mark=|](B,M)
+            \tkzMarkSegment[mark=|](M,A)
             \draw (135:3) node[above left]{$\omega$};
-
-        \foreach \point in {(O), (B), (M), (A), (M'), (D), (D'), (T)}{
-    \fill \point circle (1.8pt);
-}
+            \tkzDrawPoints(O, B, M, A, M', D, D', T)
         \end{tikzpicture}
         \end{center}
         Пусть $M$ -- основание серединного перпенидкуляра, опущенного из $O$ на $l$, $D$ -- произвольная точка вне окружности, а $\widehat{M}$ и $\widehat{D}$ -- точки, симметричные $M$ и $D$ соответственно относительно $\omega$, $T$ -- точка пересечения $l$ и $\widehat{D}\widehat{M}$. Из построения инверсии, $AM$ -- касательная к $\omega$. Тогда $\angle OA\widehat{M}=90^{\circ}$. По основной лемме $D\widehat{D}M\widehat{M}$ -- вписанный. Тогда $\angle D\widehat{D}\widehat{M}=\angle DM\widehat{M}=90^{\circ}=\angle OA\widehat{M}$. А значит $O\widehat{D}A\widehat{M}$ -- вписанный по признаку.
@@ -2194,7 +2100,7 @@
                 \coordinate (B') at (150:6);
                 \coordinate (C) at (140:4);
                 \coordinate (C') at (140:2.25);
-                \draw (O) circle(3);
+                \draw[dashed] (O) circle(3);
                 \draw (B') -- (O) -- (A');
                 \draw (B') node[left] {$\varphi(B)$};
                 \draw (A') node[above] {$\varphi(A)$};
@@ -2211,9 +2117,7 @@
             \tkzGetPoint{L} \tkzGetLength{rayon}
             \draw (L) circle(\rayon);
             \draw (0:1.5) node[below] {$R$};
-        \foreach \point in {(A), (B), (A'), (B'), (O), (0:3)}{
-    \fill \point circle (2.25pt);
-}
+            \tkzDrawPoints(A, B, A', B', O)
         \end{tikzpicture}
         \end{center}
         Возьмем две произвольные точки $A$ и $B$, лежащие на $\omega_1$ и построим их образы при инверсии $\varphi$: $\varphi(A)$ и $\varphi(B)$ соответственно. По определению инверсии $OA\cdot O\varphi(A)=R^2=OB\cdot O\varphi(B)\Longrightarrow \dfrac{OA}{OB}=\dfrac{O\varphi(A)}{O\varphi(B)}$, а значит $O$ -- центр гомотетии, переводящей $\omega_1$ в $\omega_2$.
@@ -2249,12 +2153,10 @@
                 \draw (Mb) node[below right] {$M_b$};
                 \draw (A0) node[below right] {$A_0$};
                 \draw (B1) node[above] {$B_1$};
-                \tkzMarkRightAngle(B1,Mb,A);
-                \tkzMarkSegment[mark=|](A,C0);
-                \tkzMarkSegment[mark=|](C,A0);
-        \foreach \point in {(A), (B), (C), (B1), (A0), (C0), (Mb)}{
-    \fill \point circle (1.8pt);
-}
+                \tkzMarkRightAngle(B1,Mb,A)
+                \tkzMarkSegment[mark=|](A,C0)
+                \tkzMarkSegment[mark=|](C,A0)
+                \tkzDrawPoints(A, B, C, B1, A0, C0, Mb)
         \end{tikzpicture}
         \end{center}
         Пусть $AC_0=CA_0$, докажем вписанность $BB_1C_0A_0$. Опустим перпендикуляр с основанием $M_b$ из $B_1$ на $AC$, тогда в силу того, что $B_1$ -- середина дуги $ABC$, $B_1M_b$ -- серединный перпендикуляр к $AC$. Тогда $AB_1=B_1C$. Рассмотрим $\triangle AB_1C_0$ и $\triangle CB_1A_0$: $\angle B_1AB=\angle B_1CB$, так как они опираются на одну дугу $B_1B$, при этом $AC_0=CA_0$ по условию и $AB_1=B_1C$. То есть $\triangle AB_1C_0=\triangle CB_1A_0$, а значит равны их внешние углы: $\angle B_1C_0B=\angle B_1A_0B$, тогда $BB_1C_0A_0$ -- вписанный по признаку.\bigskip
@@ -2299,16 +2201,14 @@
                 \coordinate (C0') at (\simm, 0);
                 \draw (C0') node[below] {$\widehat{C_0}$};
                 \draw (A0) -- (I) -- (C0) -- (C0') -- (I);
-                \tkzMarkAngle[size=.4](I,A0,C);
-                \tkzMarkAngle[size=.4](I,C0,B);
-                \tkzMarkAngle[size=.4](C,C0',I);
-                \tkzMarkAngle[size=.4](I,C,A);
-                \tkzMarkAngle[size=.55](La,C,I);
-                \tkzMarkAngle[size=.3](I,C,A);
-                \tkzMarkAngle[size=.45](La,C,I);
-        \foreach \point in {(A), (B), (C), (A0), (La), (Lc), (C0), (I), (C0')}{
-    \fill \point circle (1.8pt);
-}
+                \tkzMarkAngle[size=.4](I,A0,C)
+                \tkzMarkAngle[size=.4](I,C0,B)
+                \tkzMarkAngle[size=.4](C,C0',I)
+                \tkzMarkAngle[size=.4](I,C,A)
+                \tkzMarkAngle[size=.55](La,C,I)
+                \tkzMarkAngle[size=.3](I,C,A)
+                \tkzMarkAngle[size=.45](La,C,I)
+                \tkzDrawPoints(A, B, C, A0, La, Lc, C0, I, C0')
         \end{tikzpicture}
         \end{center}
         Пусть $L_A$ и $L_C$ -- основания биссектрис из точек $A$ и $C$ соответственно. Отметим точку $\widehat{C_0}$, симметричную $C_0$ относительно $AL_A$. Докажем равенство при условии вписанности. В силу вписанности $A_0IC_0B$: $\angle IA_0C=\angle IC_0B$. При этом в силу симметрии $\angle IC_0B=\angle I\widehat{C_0}C$. Также $\angle IC\widehat{C_0}=\angle ICL_A$, так как $CI$ -- биссектриса. Тогда $\triangle IC\widehat{C_0} = \triangle ICA_0$ по двум углам и общей стороне $IC$. То есть $\widehat{C_0}C=A_0C$, а значит $A\widehat{C_0} + \widehat{C_0}C=A\widehat{C_0}+A_0C=AC_0+A_0C=AC$.\bigskip
@@ -2331,11 +2231,11 @@
     \end{axiom}
     \begin{axiom}[Аксиома пересечения плоскостей]
         Если две плоскости имеют общую точку, то они пересекаются по прямой:
-        $$M \in \alpha;\,M \in \beta \Longrightarrow \exists\,\,l:\,\,l\subset \alpha;\,l\subset \beta$$
+        $$M \in \alpha;\,M \in \beta \Longrightarrow \exists\,l:\,l\subset \alpha;\,l\subset \beta$$
     \end{axiom}
     \begin{axiom}[Аксиома расстояния]
         В любой из плоскостей, проходящих через две различные точки расстояние между этими точками одно и то же:
-        $$A \neq B;\,\,\forall\,\alpha:\,\,A,\,B\in\alpha\,\,\rho_\alpha(A;\,\,B)=\text{const}$$
+        $$A \neq B;\,\forall\,\alpha:A,\,B\in\alpha\enspace\rho_\alpha(A;B)=\text{const}$$
     \end{axiom}
     \begin{definition}
         Прямая и плоскость называются пересекающимися, если они имеют одну общую точку.
@@ -2351,7 +2251,7 @@
     
     \begin{lemma}
         Через прямую и точку, не лежащую на ней, проходит плоскость, при том только одна:
-        $$\forall\,A;\,\,\forall\,l:\,\,A\notin l\,\,\exists!\,\,\alpha:\,\,l\subset\alpha;\,\,A\in\alpha$$
+        $$\forall\,A;\,\forall\,l:\,A\notin l\enspace\exists!\,\alpha:\,l\subset\alpha;\,A\in\alpha$$
     \end{lemma}
     
     \begin{proof}
@@ -2373,21 +2273,19 @@
                   \draw[opacity=0.3] (0,-3) grid (8,3);
                   \draw (D) -- (E);
                 \end{scope}
-                \foreach \point in {(A), (B), (C)}{
-        \fill \point circle (1.8pt);
-    }
+                \tkzDrawPoints(A, B, C)
               \end{tikzpicture}
         \end{center}
-        Рассмотрим $B,\,C\in l:\,\,l\subset\alpha\Longrightarrow B,\,C\in\alpha.$ По аксиоме плоскости $\exists!\,\,\alpha:\,\,A,\,B,\,C\in\alpha;\,\,l\subset\alpha.$
+        Рассмотрим $B,\,C\in l:\,l\subset\alpha\Longrightarrow B,\,C\in\alpha.$ По аксиоме плоскости $\exists!\,\alpha:\,A,\,B,\,C\in\alpha;\,l\subset\alpha.$
     \end{proof}
     
     \begin{lemma}\label{Пересекающиеся прямые и плоскость}
         Через две пересекающиеся прямые проходит плоскость, при том только одна:
-        $$a\cap b = C\Longrightarrow\exists!\,\,\alpha:\,\,a,\,b\subset\alpha$$
+        $$a\cap b = C\Longrightarrow\exists!\,\alpha:\,a,\,b\subset\alpha$$
     \end{lemma}
     \begin{lemma}
         Через две параллельные прямые проходит плоскость, при том только одна:
-        $$a\parallel b\Longrightarrow\exists!\,\,\alpha:\,\,a,\,b\subset\alpha$$
+        $$a\parallel b\Longrightarrow\exists!\,\alpha:\,a,\,b\subset\alpha$$
     \end{lemma}
     
     \subsection{Скрещивающиеся прямые}
@@ -2398,7 +2296,7 @@
     
     \begin{theorem}[Признак скрещивающихся]
         Если одна прямая лежит в плоскости, а другая пересекают данную плоскость в точке, не лежащей на первой прямой, данные прямые скрещиваются:
-        $$a\subset\alpha,\,b\cap\alpha=M:\,\,M\notin a\Longrightarrow a\dotdiv b$$
+        $$a\subset\alpha,\,b\cap\alpha=M:\,M\notin a\Longrightarrow a\dotdiv b$$
     \end{theorem}
     \begin{proof}
         \hfill
@@ -2417,22 +2315,20 @@
                     \draw (5,-3) -- (6,3);
                     \draw[opacity=0.2] (0,-3) grid (8,3);
                 \end{scope}
-                \foreach \point in {(M)}{
-        \fill \point circle (1.8pt);
-    }
+                \tkzDrawPoint(M)
               \end{tikzpicture}
         \end{center}
         Пусть $a$ и $b$ не скрещиваются. Тогда $a\parallel b$ или $a\cap b\neq\varnothing:
         $
         \begin{align*}
-            1.\,\,&a\parallel b\Longrightarrow\exists!\,\,\beta:\,\,a,\,b\subset\beta\Longrightarrow M\in\beta,\text{ при этом }a\subset\alpha\text{ (по условию); }\\
+            1.\,\,&a\parallel b\Longrightarrow\exists!\,\beta:\,a,\,b\subset\beta\Longrightarrow M\in\beta,\text{ при этом }a\subset\alpha\text{ (по условию); }\\
             &a\subset\beta\text{ (по предложению)}\Longrightarrow \alpha\cap\beta=a,\,M\in\alpha,\,M\in\beta\Longrightarrow M\in a,\text{ противоречие.}\\
-            2.\,\,&a\cap\beta\neq\varnothing\Longrightarrow\exists\,k:\,\,k\in a,\,k\in b\Longrightarrow\exists\,\beta:\,\,a,\,b\subset\beta\Longrightarrow M\in\beta,\text{ при этом }a\subset\alpha\text{ (по условию); }\\
+            2.\,\,&a\cap\beta\neq\varnothing\Longrightarrow\exists\,k:\,k\in a,\,k\in b\Longrightarrow\exists\,\beta:\,a,\,b\subset\beta\Longrightarrow M\in\beta,\text{ при этом }a\subset\alpha\text{ (по условию); }\\
             &a\subset\beta\text{ (по предложению)}\Longrightarrow \alpha\cap\beta=a,\,M\in\alpha,\,M\in\beta\Longrightarrow M\in a,\text{ противоречие.}
         \end{align*}
     \end{proof}
     \begin{theorem}
-        Пусть $a\parallel b;\,\,a\cap\alpha\neq\varnothing,$ тогда $b\cap\alpha\neq\varnothing$.
+        Пусть $a\parallel b;\,a\cap\alpha\neq\varnothing,$ тогда $b\cap\alpha\neq\varnothing$.
     \end{theorem}
     \begin{proof}
         \hfill
@@ -2459,13 +2355,11 @@
                     \draw ($(2,0)!0.5!(6,1)$) node[above] {$l$};
                     \draw[opacity=0.2] (0,-3) grid (8,3);
                 \end{scope}
-                \foreach \point in {(A), (B)}{
-        \fill \point circle (1.8pt);
-    }
+                \tkzDrawPoints(A, B)
               \end{tikzpicture}
         \end{center}
-        $$a\parallel b\Longrightarrow\exists!\,\,\beta:\,\,a,\,b\subset\beta,\,a\cap\alpha=A\Longrightarrow A\in\beta\Longrightarrow\exists\,l:\,\,l=\alpha\cap\beta$$
-        $$l\cap a=A,\,a\parallel\beta\Longrightarrow l\cap\beta=B:\,\,B\in b,\,B\in l\Longrightarrow b\cap\alpha=B.$$
+        $$a\parallel b\Longrightarrow\exists!\,\beta:\,a,\,b\subset\beta,\,a\cap\alpha=A\Longrightarrow A\in\beta\Longrightarrow\exists\,l:\,l=\alpha\cap\beta$$
+        $$l\cap a=A,\,a\parallel\beta\Longrightarrow l\cap\beta=B:\,B\in b,\,B\in l\Longrightarrow b\cap\alpha=B.$$
     \end{proof}
     
     \subsection{Параллельность прямой и плоскости}
@@ -2504,13 +2398,10 @@
                     \fill[color=white] (0,-3) rectangle (8,0);
                     \draw[opacity=0.2] (0,-3) grid (8,0);
                 \end{scope}
-                \foreach \point in {}{
-        \fill \point circle (1.8pt);
-    }
               \end{tikzpicture}
         \end{center}
         \begin{center}
-            $a\parallel b\Longrightarrow\exists!\,\,\beta:\,\,a,\,b\subset\beta$. Пусть $b\cap\alpha\neq\varnothing$. Но $\alpha\cap\beta=a$. Противоречие.
+            $a\parallel b\Longrightarrow\exists!\,\beta:\,a,\,b\subset\beta$. Пусть $b\cap\alpha\neq\varnothing$. Но $\alpha\cap\beta=a$. Противоречие.
         \end{center}
     \end{proof}
     \begin{theorem}[О линии пересечения плоскостей]
@@ -2542,9 +2433,6 @@
                     \fill[color=white] (0,-3) rectangle (8,0);
                     \draw[opacity=0.2] (0,-3) grid (8,0);
                 \end{scope}
-                \foreach \point in {}{
-        \fill \point circle (1.8pt);
-    }
               \end{tikzpicture}
         \end{center}
         \begin{center}
@@ -2585,9 +2473,6 @@
                     \draw (C1) -- (C2);
                     \draw ($(C1)!0.5!(C2)$) node[above] {$c$};
                 \end{scope}
-                \foreach \point in {}{
-        \fill \point circle (1.8pt);
-    }
               \end{tikzpicture}
         \end{center}
         \begin{center}
@@ -2618,7 +2503,7 @@
     
     \begin{theorem}[Признак параллельности плоскостей]
         Если две пересекающиеся прямые одной плоскости параллельны соответственно двум прямым другой плоскости, то эти плоскости параллельны:
-        $$a,\,b\subset\alpha,\,a\cap b\neq\varnothing;\,\,c,\,d\subset\beta;\,\,a\parallel c,\,b\parallel d\Longrightarrow \alpha\parallel\beta$$
+        $$a,\,b\subset\alpha,\,a\cap b\neq\varnothing;\,c,\,d\subset\beta;\,a\parallel c,\,b\parallel d\Longrightarrow \alpha\parallel\beta$$
     \end{theorem}
     \begin{proof}
         \hfill
@@ -2640,12 +2525,9 @@
                     \draw (1.3,2) node {$d$};
                     \draw (9,-0.5) node {$\beta$};
                 \end{scope}
-                \foreach \point in {}{
-        \fill \point circle (1.8pt);
-    }
               \end{tikzpicture}
         \end{center}
-        Пусть $\alpha\cap\beta\neq\varnothing$. Тогда по теореме о линии пересечения плоскостей $\alpha\cap\beta=k,\,k\parallel a\,\,(c\subset\beta);\,\,\alpha\cap\beta=l,\,l\parallel b\,\,(d\subset\beta).$ Противоречие. 
+        Пусть $\alpha\cap\beta\neq\varnothing$. Тогда по теореме о линии пересечения плоскостей $\alpha\cap\beta=k,\,k\parallel a\,(c\subset\beta);\,\alpha\cap\beta=l,\,l\parallel b\,(d\subset\beta).$ Противоречие. 
     \end{proof}
     
     \begin{theorem}
@@ -2683,13 +2565,10 @@
                     \draw (3,0) node[above] {$b$};
                     \draw (8,-0.5) node {$\beta$};
                 \end{scope}
-                \foreach \point in {}{
-        \fill \point circle (1.8pt);
-    }
               \end{tikzpicture}
         \end{center}
         \begin{center}
-            $\alpha\parallel\beta\Longrightarrow\exists\,c\subset\alpha:\,\,c\parallel b.$ По теореме о крыше $a\parallel c,\,b\parallel c.$
+            $\alpha\parallel\beta\Longrightarrow\exists\,c\subset\alpha:\,c\parallel b.$ По теореме о крыше $a\parallel c,\,b\parallel c.$
         \end{center}
     \end{proof}
 
@@ -2784,9 +2663,7 @@
                         \draw ($(2,0)!0.415!(5,-2)$) node[below left] {$b$};
                         \draw[opacity=0.2] (0,-3) grid (8,3);
                     \end{scope}
-                    \foreach \point in {(A), (B)}{
-            \fill \point circle (1.8pt);
-        }
+                    \tkzDrawPoints(A, B)
                   \end{tikzpicture}
             \end{center}
             Пусть $\vv{v_a}$, $\vv{v_b}$ и $\vv{v_c}$ – направляющие векторы прямых $a$, $b$ и $c$ соответственно, тогда $\forall\,l\in\alpha:\,\vv{v_l}$ – направляющий $\vv{v_l}=x\vv{v_a}+y\vv{v_b}$, так как $a\cap b\neq\varnothing$. Тогда $\vv{v_c}\cdot\vv{v_l}=\vv{v_c}\cdot(x\vv{v_a}+y\vv{v_b})=0\Longrightarrow l\perp c$.
@@ -2826,9 +2703,7 @@
                         \draw (8.5,-0.5) node {$\alpha$};
                     \end{scope}
                     \draw (0,0,4) -- (0,0.33,3.505) -- (-.7,0.33,3.505) -- (-.7,0,4);
-                    \foreach \point in {(A)}{
-            \fill \point circle (1.8pt);
-        }
+                    \tkzDrawPoint(A)
                   \end{tikzpicture}
             \end{center}
             Пусть $a$, $b$ и $l$ – это наклонная, её проекция и прямая, лежащая в плоскости $\alpha$ соответственно, также пусть $a\cap\alpha=A$. По лемме \ref{Пересекающиеся прямые и плоскость} существует плоскость $\beta$, содержащая $a$ и $b$. Тогда $\alpha\cap\beta=b$, причем должна существовать такая $d\subset\beta$, что она проходит через $a$ и $b$ и перпендикулярна $b$, а значит перпендикулярна $\alpha$. Отсюда она также перпендикулярна $l$ по признаку перпендикулярности, откуда $l\perp b$ по определению.
@@ -2858,12 +2733,12 @@
                     \draw[dashed] (O) -- ($(A)!1.215!(O)$);
                     \draw ($(A)!1.215!(O)$) -- ($(A)!1.5!(O)$);
                     \draw ($(O)!-0.66!(L)$) -- ($(O)!1.33!(L)$);
-                    \tkzMarkAngle[size=1.35cm](L,O,A);
-                    \tkzMarkAngle[size=1.25cm](L,O,A);
-                    \tkzMarkAngle[size=1.15cm](L,O,A);
-                    \tkzMarkAngle[size=1.65cm](B,O,L);
-                    \tkzMarkAngle[size=1.55cm](B,O,L);
-                    \tkzMarkAngle[size=0.45cm](B,O,A);
+                    \tkzMarkAngle[size=1.35cm](L,O,A)
+                    \tkzMarkAngle[size=1.25cm](L,O,A)
+                    \tkzMarkAngle[size=1.15cm](L,O,A)
+                    \tkzMarkAngle[size=1.65cm](B,O,L)
+                    \tkzMarkAngle[size=1.55cm](B,O,L)
+                    \tkzMarkAngle[size=0.45cm](B,O,A)
                     \draw (0,0.4,3.2) node {$\alpha$};
                     \draw (-0.9,0.2,3.9) node {$\beta$};
                     \draw (-1,0.2,2.8) node {$\varphi$};
@@ -2878,9 +2753,7 @@
                     \draw ($(A)!.5!(O)$) node[above left] {$a$};
                     \draw ($(O)!.65!(L)$) node[above] {$l$};
                     \draw ($(B)!-0.5!(O)$) node[below] {$b$};
-                    \foreach \point in {(A),(B),(O),(L)}{
-            \fill \point circle (1.8pt);
-        }
+                    \tkzDrawPoints(A, B, O, L)
                   \end{tikzpicture}
             \end{center}
             Пусть $A$ – произвольная точка на прямой $a$, $O$ – точка пересечения прямой $a$ с $\pi$, $L$ – основание перпендикуляра из $A$ на $\pi$, а $B$ – основание перпендикуляра из $L$ на $b$. Без ограничения общности положим $OA=1$, тогда $OL=\cos\alpha$, а $OB=\cos\alpha\cdot\cos\beta$. Пусть $\delta=(ABL)$, тогда $BL\perp b$ по построению, $AL\perp b$, так как $b\subset\pi$, $AL\perp\pi\Longrightarrow b\perp\delta\Longrightarrow b\perp AB$. Отсюда $OB=\cos\varphi=\cos\alpha\cdot\cos\beta$.
@@ -2957,12 +2830,10 @@
                     \draw[dashed] (2,3) -- (3,3);
                     \draw (3,0) -- (3,6);
                 \end{scope}
-                \foreach \point in {(O)}{
-        \fill \point circle (1.8pt);
-    }
+                \tkzDrawPoint(O)
               \end{tikzpicture}
         \end{center}
-        Пусть $l\perp\alpha$, тогда $\forall m\subset\alpha:\,\,l\perp m$. Пусть $\alpha\cap\beta=k$. Пусть также $m\perp k;\,\,m\cap k=O.$ Тогда $\angle(m;\,l)$ – линейный угол одного из двугранных углов между $\alpha$ и $\beta$. $m\perp k;\,l\perp k;\,m\cap l=O\in k$, значит $\angle(m;\,l)=90^\circ$.
+        Пусть $l\perp\alpha$, тогда $\forall m\subset\alpha:\,l\perp m$. Пусть $\alpha\cap\beta=k$. Пусть также $m\perp k;\,m\cap k=O.$ Тогда $\angle(m;\,l)$ – линейный угол одного из двугранных углов между $\alpha$ и $\beta$. $m\perp k;\,l\perp k;\,m\cap l=O\in k$, значит $\angle(m;\,l)=90^\circ$.
 \end{proof}
 
 \begin{theorem}[Площадь ортогональной проекции многоугольника]
@@ -3018,9 +2889,7 @@
             \draw[dashed] (1,0,5) -- (3,2,5);
             \draw (-2,0,5) -- (3,0,5) -- (3,5,5);
             \draw[dashed] (-2,0,5) -- (3,5,5);
-            \foreach \point in {(A), (B), (C), (A1), (B1), (C1), (H), (H1), (K), (N), (M)}{
-    \fill \point circle (1.8pt);
-}
+            \tkzDrawPoints(A, B, C, A1, B1, C1, H, H1, K, N, M)
           \end{tikzpicture}
     \end{center}
     Пусть $\triangle ABC\subset\beta;\,l=\alpha\cap\beta;\,AB\,\|\,l$. Обозначим $H$ основание высоты $CH$ треугольника $ABC$, $M$ – проекция $A$ на $l$, $N$ – проекция $B$ на $l$, а $A',\,B',\,C',\,H'$ – проекции $A,\,B,\,C,\,H$ на $\alpha$ соответственно. Тогда $MABN$ – прямоугольник, значит по теореме о трёх перпендикулярах $MA'\perp l;\,NB'\perp l$, то есть $MA'B'N$ – прямоугольник, а значит $AB=MN=A'B'$. $S_{ABC}=\frac{1}{2}AB\cdot CH;\,S_{A'B'C'}=\frac{1}{2}A'B'\cdot C'H'=\frac{1}{2}AB\cdot C'H'$. Пусть $K$ – проекция $C$ на $l$, тогда $H'\in C'K$. Пусть $\angle CKC'=\theta$, значит $KC'=KC\cdot\cos\theta;\,KH'=KH\cdot\cos\theta\Longrightarrow C'H'=CH\cdot\cos\theta$. То есть $S_{A'B'C'}=\frac{1}{2}AB\cdot C'H'=S_{ABC}\cdot\cos\theta$.\bigskip
@@ -3052,24 +2921,22 @@
             \coordinate (B) at (1,3,0);
             \draw (A) -- (B) -- (C);
             \draw[dashed] (O) -- (B);
-            \tkzMarkRightAngle(A,C,O);
-            \tkzMarkRightAngle(B,C,O);
+            \tkzMarkRightAngle(A,C,O)
+            \tkzMarkRightAngle(B,C,O)
             \draw (O) node[left] {$O$};
             \draw (A) node[below right] {$A$};
             \draw (B) node[above right] {$B$};
             \draw (C) node[above] {$C$};
-            \tkzMarkAngle[size=0.35cm](B,O,C);
+            \tkzMarkAngle[size=0.35cm](B,O,C)
             \draw (-3.15,0.4,0.2) node {$\alpha$};
-            \tkzMarkAngle[size=1.25cm](A,O,B);
-            \tkzMarkAngle[size=1.35cm](A,O,B);
-            \tkzMarkAngle[size=1.45cm](A,O,B);
+            \tkzMarkAngle[size=1.25cm](A,O,B)
+            \tkzMarkAngle[size=1.35cm](A,O,B)
+            \tkzMarkAngle[size=1.45cm](A,O,B)
             \draw (-1.7,0.4,0) node {$\gamma$};
-            \tkzMarkAngle[size=0.9cm](A,O,C);
-            \tkzMarkAngle[size=1cm](A,O,C);
+            \tkzMarkAngle[size=0.9cm](A,O,C)
+            \tkzMarkAngle[size=1cm](A,O,C)
             \draw (-2,0,0.8) node {$\beta$};
-            \foreach \point in {(O), (A), (B), (C)}{
-    \fill \point circle (1.8pt);
-}
+            \tkzDrawPoints(A, B, C, O)
           \end{tikzpicture}
     \end{center}
     Пусть $A$ и $B$ – такие точки на рёбрах угла, что $AC\perp OC$ и $BC\perp OC$. Тогда $\angle BCA$ – линейный угол $\angle C$. Из $\triangle OCA$ и $\triangle OCB$:
@@ -3109,18 +2976,16 @@
             \draw (H) node[below right] {$H$};
             \draw (K) node[above right] {$K$};
             \draw (L) node[below left] {$L$};
-            \tkzMarkRightAngle(H,K,B);
-            \tkzMarkRightAngle(C,K,O);
-            \tkzMarkRightAngle(H,L,A);
-            \tkzMarkRightAngle(C,L,O);
-            \tkzMarkAngle[size=0.35cm](B,O,C);
+            \tkzMarkRightAngle(H,K,B)
+            \tkzMarkRightAngle(C,K,O)
+            \tkzMarkRightAngle(H,L,A)
+            \tkzMarkRightAngle(C,L,O)
+            \tkzMarkAngle[size=0.35cm](B,O,C)
             \draw (0.6,0.4,0.2) node {$\alpha$};
-            \tkzMarkAngle[size=1cm](A,O,C);
-            \tkzMarkAngle[size=1.1cm](A,O,C);
+            \tkzMarkAngle[size=1cm](A,O,C)
+            \tkzMarkAngle[size=1.1cm](A,O,C)
             \draw (1.5,0,0.5) node {$\beta$};
-            \foreach \point in {(O), (A), (B), (C), (H), (K), (L)}{
-    \fill \point circle (1.8pt);
-}
+            \tkzDrawPoints(A, B, C, O, H, K, L)
           \end{tikzpicture}
     \end{center}
     Пусть $H$ – проекция $C$ на $(ABC)$, $K$ – проекция $C$ на $OB$ и $L$ – проекция $C$ на $OA$ соответственно. По теореме о трёх перпендикулярах $HK\perp OB$ и $HL\perp OA$. Тогда из $\triangle OCK$ и $\triangle CKH$:  $CH=OC\cdot\sin\alpha\cdot\sin\angle B$. Аналогично из $\triangle OCL$ и $\triangle CLH$: $CH=OC\cdot\sin\beta\cdot\sin\angle A$. То есть:
@@ -3147,24 +3012,22 @@
             \end{scope}
             \draw (A) -- (B) -- (C) -- cycle;
             \draw (O) -- (C) -- (A) -- cycle;
-            \tkzMarkRightAngle(A,C,B);
-            \tkzMarkRightAngle(A,C,O);
+            \tkzMarkRightAngle(A,C,B)
+            \tkzMarkRightAngle(A,C,O)
             \draw (O) node[above left] {$O$};
             \draw (A) node[above left] {$A$};
             \draw (B) node[above right] {$B$};
             \draw (C) node[below left] {$C$};
-            \tkzMarkAngle[size=0.45cm](A,B,C);
+            \tkzMarkAngle[size=0.45cm](A,B,C)
             \draw (6.7,-2,0.6) node {$\alpha$};
-            \tkzMarkAngle[size=0.55cm](B,O,A);
-            \tkzMarkAngle[size=0.65cm](B,O,A);
+            \tkzMarkAngle[size=0.55cm](B,O,A)
+            \tkzMarkAngle[size=0.65cm](B,O,A)
             \draw (2,0,0.3) node {$\beta$};
-            \tkzMarkAngle[size=1.4cm](C,O,A);
-            \tkzMarkAngle[size=1.5cm](C,O,A);
-            \tkzMarkAngle[size=1.6cm](C,O,A);
+            \tkzMarkAngle[size=1.4cm](C,O,A)
+            \tkzMarkAngle[size=1.5cm](C,O,A)
+            \tkzMarkAngle[size=1.6cm](C,O,A)
             \draw (3.3,-1,0.8) node {$\gamma$};
-            \foreach \point in {(A), (B), (C), (O)}{
-    \fill \point circle (1.8pt);
-}
+            \tkzDrawPoints(A, B, C, O)
             \end{tikzpicture}
     \end{center}
     Пусть $l$ пересекает ребро двугранного угла в точке $O$. Возьмём произвольную точку $A$ на этой прямой. Пусть $C$ – основание перпендикуляра из $A$ на вторую грань двугранного угла, а $B$ – проекция $A$ на ребро двугранного угла. Тогда по теореме о трёх перпендикулярах $CB\perp OB$, а значит $\angle ABC=\alpha$. Тогда:
@@ -3176,9 +3039,9 @@
 \end{theorem}
 \begin{proof}
     Пусть в треугольных пирамидах равны трёхгранные углы при вершинах $D$ и $D_1$. Опустим перпендикуляры $BM$ и $B_1M_1$ на противоположные грани. Тогда $DM$ и $D_1M_1$ -- проекции $BD$ и $B_1D_1$ на эти грани. $\angle\left(DB;\,\left(DAC\right)\right)=\angle\left(D_1B_1;\,\left(D_1A_1C_1\right)\right)$. Тогда:
-    $$V_{DABC}=\frac{1}{3}\cdot \frac{1}{2}\cdot AD\cdot DC\cdot \sin \varphi \cdot MB\text{, где }MB=DB\cdot\sin\alpha,\,\,\varphi=\angle ADC,\,\,\alpha =\angle ADM$$
+    $$V_{DABC}=\frac{1}{3}\cdot \frac{1}{2}\cdot AD\cdot DC\cdot \sin \varphi \cdot MB\text{, где }MB=DB\cdot\sin\alpha,\,\varphi=\angle ADC,\,\alpha =\angle ADM$$
     Отсюда для $DABC$ и аналогично для $D_1A_1B_1C_1$:
-    $$V_{DABC}=\frac{1}{3}\cdot \frac{1}{2}\cdot AD\cdot DC\cdot \sin \varphi \cdot DB\cdot \sin \alpha;\,\,V_{D_1A_1B_1C_1}=\frac{1}{3}\cdot \frac{1}{2}\cdot A_1D_1\cdot D_1C_1\cdot \sin \varphi \cdot D_1B_1\cdot \sin \alpha$$
+    $$V_{DABC}=\frac{1}{3}\cdot \frac{1}{2}\cdot AD\cdot DC\cdot \sin \varphi \cdot DB\cdot \sin \alpha;\,V_{D_1A_1B_1C_1}=\frac{1}{3}\cdot \frac{1}{2}\cdot A_1D_1\cdot D_1C_1\cdot \sin \varphi \cdot D_1B_1\cdot \sin \alpha$$
     Следовательно, 
     $$\frac{V_{DABC}}{V_{D_1A_1B_1C_1}}=\frac{DA\cdot DB \cdot DC}{D_1A_1\cdot D_1B_1 \cdot D_1C_1}$$
 \end{proof}
@@ -3290,7 +3153,7 @@
 	\end{multicols}
 \end{statement}
 \begin{definition}
-	Смешанным произведением векторов $\vv{a}$, $\vv{b}$ и $\vv{c}$ называется число $\vv{a}\cdot\left(\vv{b}\times\vv{c}\right)$.
+	Смешанным произведением векторов $\vv{a}$, $\vv{b}$ и $\vv{c}$ называется $\vv{a}\cdot\left(\vv{b}\times\vv{c}\right)$.
 \end{definition}
 \begin{statement}[Свойства векторного произведения]
 	\hfill
@@ -3397,15 +3260,15 @@
 
 \begin{definition}[Предел функции]
 	\hfill
-	$$A=\lim_{x\to x_0}f(x)\Longleftrightarrow \forall \varepsilon >0\,\, \exists\, \delta >0:\,|x-x_0|<\delta \Longrightarrow |f(x)-A|<\varepsilon$$
+	$$A=\lim_{x\to x_0}f(x)\Longleftrightarrow \forall \varepsilon >0\enspace \exists\, \delta >0:\,|x-x_0|<\delta \Longrightarrow |f(x)-A|<\varepsilon$$
 \end{definition}
 \begin{definition}[Правосторонний предел функции]
 	\hfill
-	$$A=\lim_{x\to x_0+0}f(x)\Longleftrightarrow \forall \varepsilon >0\,\, \exists\, \delta >0:\,\forall x \in (x_0; x_0 + \delta)\Longrightarrow |f(x)-A|<\varepsilon$$
+	$$A=\lim_{x\to x_0+0}f(x)\Longleftrightarrow \forall \varepsilon >0\enspace \exists\, \delta >0:\,\forall x \in (x_0; x_0 + \delta)\Longrightarrow |f(x)-A|<\varepsilon$$
 \end{definition}
 \begin{definition}[Левосторонний предел функции]
 	\hfill
-	$$A=\lim_{x\to x_0-0}f(x)\Longleftrightarrow \forall \varepsilon >0\,\, \exists\, \delta >0:\,\forall x \in (x_0-\delta; x_0)\Longrightarrow |f(x)-A|<\varepsilon$$
+	$$A=\lim_{x\to x_0-0}f(x)\Longleftrightarrow \forall \varepsilon >0\enspace \exists\, \delta >0:\,\forall x \in (x_0-\delta; x_0)\Longrightarrow |f(x)-A|<\varepsilon$$
 \end{definition}
 \begin{definition}
 	Функция $f(x)$ называется непрерывной в точке $x_0$, если:
@@ -3453,7 +3316,7 @@
 \end{theorem}
 \begin{theorem}
   $y=kx+b$ -- асимптота $f(x)$, если существуют и конечны пределы:
-  $$k=\lim_{x\to\pm\infty}\frac{f(x)}{x};\,\,b=\lim_{x\to\pm\infty}\left(f(x)-kx\right)$$
+  $$k=\lim_{x\to\pm\infty}\frac{f(x)}{x};\quad b=\lim_{x\to\pm\infty}\left(f(x)-kx\right)$$
 \end{theorem}
 
 \section{Объёмы}
@@ -3470,7 +3333,7 @@
 \end{theorem}
 \begin{proof}
 	Рассмотрим произвольный выпуклый призматоид $A_1A_2\ldots A_nB_1B_2\ldots B_m$, а также произвольную точку $P$, принадлежащую $C_1C_2\ldots C_k$ -- серединному сечению данного призматоида. Тогда объём призматоида равен сумме объёмов пирамид $PA_1A_2\ldots A_n$ и\\$PB_1B_2\ldots B_m$, а также $k-1$ пирамид с вершиной $P$ и основаниями $A_1B_1B_2,\,A_1B_2A_2,\\A_2B_2B_3,\ldots,\,A_1B_1A_n$:
-	$$V_{PA_1A_2\ldots A_n}=\frac{1}{3}S_{A_1A_2\ldots A_n}\frac{H}{2};\,\,V_{PB_1B_2\ldots B_m}=\frac{1}{3}S_{B_1B_2\ldots B_m}\frac{H}{2}$$
+	$$V_{PA_1A_2\ldots A_n}=\frac{1}{3}S_{A_1A_2\ldots A_n}\frac{H}{2};\quad V_{PB_1B_2\ldots B_m}=\frac{1}{3}S_{B_1B_2\ldots B_m}\frac{H}{2}$$
 	Рассмотрим произвольную боковую пирамиду $PA_1B_1B_2$:
 	\hfill
     \begin{center}
@@ -3488,10 +3351,8 @@
 			\draw[dashed] (C1) -- (P) -- (B1);
 			\draw[dashed] (P) -- (H) node[midway, below left] {$h$};
 			\coordinate (T) at ($(C1)!.5!(C2)$);
-			\tkzMarkRightAngle(T,H,P);
-            \foreach \point in {(A1), (B1), (B2), (C1), (C2), (P), (H)}{
-				\fill \point circle (1.8pt);
-			}
+			\tkzMarkRightAngle(T,H,P)
+            \tkzDrawPoints(A1, B1, B2, C1, C2, P, H)
 		\end{tikzpicture}
     \end{center}
 	$$V_{PA_1B_1B_2}=\frac{1}{3}S_{A_1B_1B_2}h=\frac{4}{3}S_{A_1C_1C_2}h=\frac{4}{3}S_{C_1C_2P}\frac{H}{2}$$

@@ -79,7 +79,7 @@ $$\begin{matrix}
 \subsection{Неравенства с модулем}
 
 \begin{align*}
-    &|f(x)|<a, \,\, a>0 \Longleftrightarrow 
+    &|f(x)|<a, \, a>0 \Longleftrightarrow 
     \begin{cases}
         f(x)>-a\\
         f(x)<a
@@ -191,23 +191,23 @@ $$\begin{matrix}
 \end{definition}
 \begin{definition}
     Множество $m$ называется ограниченным, если:
-    $$\exists\, c:\,\forall x\in M\,\,|x| \leq c$$
+    $$\exists\, c:\,\forall x\in M\enspace |x| \leq c$$
 \end{definition}
 \begin{definition}
     Пусть $M \subset \R,\,M$ ограничено. Тогда наименьшая из верхних граней множества $M$ называется точной верхней гранью (супремумом):
-    $$a=\sup M\Longleftrightarrow \forall x \in M:\, x \leq a,\, \forall \varepsilon>0\,\,\, \exists\, x \in M:\, x>a-\varepsilon$$
+    $$a=\sup M\Longleftrightarrow \forall x \in M:\, x \leq a,\, \forall \varepsilon>0\enspace \exists\, x \in M:\, x>a-\varepsilon$$
 \end{definition}
 \begin{definition}
     Пусть $M \subset \R,\,M$ ограничено. Тогда наибольшая из нижних граней множества $M$ называется точной нижней гранью (инфинумом):
-    $$a=\inf M\Longleftrightarrow \forall x \in M:\, x \geq a,\, \forall \varepsilon>0\,\,\, \exists\, x \in M:\, x<a+\varepsilon$$
+    $$a=\inf M\Longleftrightarrow \forall x \in M:\, x \geq a,\, \forall \varepsilon>0\enspace \exists\, x \in M:\, x<a+\varepsilon$$
 \end{definition}
 \begin{definition}
     Множество $M$ называется открытым, если:
-    $$\forall\,m\in M\,\,\exists\,\varepsilon>0:\,U_\varepsilon(m)\subset M$$
+    $$\forall\,m\in M\enspace\exists\,\varepsilon>0:\,U_\varepsilon(m)\subset M$$
 \end{definition}
 \begin{definition}
     Точка $A$ называется предельной точкой множества $M$, если:
-    $$\forall\,\varepsilon>0\,\,U_\varepsilon(A)\cap M\text{ бесконечно или } \mathring{U}_\varepsilon(A)\cap M\neq \varnothing$$
+    $$\forall\,\varepsilon>0\enspace U_\varepsilon(A)\cap M\text{ бесконечно или } \mathring{U}_\varepsilon(A)\cap M\neq \varnothing$$
 \end{definition}
 \begin{definition}
     Множество называется замкнутым, если оно содержит все свои предельные точки.
@@ -233,11 +233,11 @@ $$\begin{matrix}
 \end{definition}
 \begin{definition}
     Последовательность $a_n$ асимптотически больше $b_n$, если:
-    $$a_n\succ b_n\Longleftrightarrow\exists\, N\in \N:\,\forall\,n>N\,\,a_n\geq b_n$$
+    $$a_n\succ b_n\Longleftrightarrow\exists\, N\in \N:\,\forall\,n>N\enspace a_n\geq b_n$$
 \end{definition}
 \begin{definition}
     Точка $A$ называется частичным пределом последовательности $a_n$, если:
-    $$\forall\,\varepsilon>0\,\,a^{-1}(U_\varepsilon(A))\text{ бесконечно}$$
+    $$\forall\,\varepsilon>0\enspace a^{-1}(U_\varepsilon(A))\text{ бесконечно}$$
 \end{definition}
 \begin{theorem}
     Пусть последовательность $a_n$ ограничена, тогда у неё есть частичный предел.
@@ -256,10 +256,8 @@ $$\begin{matrix}
             \draw (c0) node[below] {$c_0$};
             \draw (c1) node[below] {$c_1$};
             \draw [decoration={brace,mirror,raise=1.2cm},decorate] (a0) -- (b0) node [pos=0.5,anchor=north,yshift=-1.25cm] {$I_0$};
-        \draw [decoration={brace,mirror,raise=0.5cm},decorate] (c0) -- (b0) node [pos=0.5,anchor=north,yshift=-0.55cm] {$I_1$}; 
-            \foreach \point in {(a0), (b0), (c0), (c1)}{
-    \fill \point circle (1.8pt);
-            }
+            \draw [decoration={brace,mirror,raise=0.5cm},decorate] (c0) -- (b0) node [pos=0.5,anchor=north,yshift=-0.55cm] {$I_1$}; 
+            \tkzDrawPoints(a0, b0, c0, c1)
         \end{tikzpicture}
     \end{center}
     Отметим на числовой прямой $a_0=\inf a(\N)$ и $b_0=\sup a(\N)$, а также середину $a_0b_0$, то есть $c_0=\dfrac{a_0+b_0}{2}$. Разделим один из получившихся отрезков (отметим $c_0$ и $b_0$, как $a_1$ и $b_1$ соответственно) пополам, получив $c_1=\dfrac{a_1+b_1}{2}$. Данный процесс можно продолжать, получая следующую конструкцию:
@@ -281,7 +279,7 @@ $$\begin{matrix}
 \end{proof}
 \begin{theorem}
     Пусть $M$ -- множество частичных пределов последовательности $a_n$, тогда:
-    $$\limsup_{n\to\infty}a_n=\sup M;\,\,\liminf_{n\to\infty}a_n=\inf M$$
+    $$\limsup_{n\to\infty}a_n=\sup M;\enspace\liminf_{n\to\infty}a_n=\inf M$$
 \end{theorem}
 \begin{theorem}
     Множество частичных пределов числовой последовательности замкнуто.
@@ -311,7 +309,7 @@ $$\begin{matrix}
 
 \begin{statement}
     Пусть $(a_n)$ -- арифметическая прогрессия, тогда:
-    $$\forall n \in \N,\,n\geq 2 \,\,\,\forall k \in \N,\, k<n:\, a_n=\frac{a_{n+k}+a_{n-k}}{2}$$
+    $$\forall n \in \N,\,n\geq 2 \enspace\forall k \in \N,\, k<n:\, a_n=\frac{a_{n+k}+a_{n-k}}{2}$$
 \end{statement}
 
 \begin{theorem}
@@ -366,7 +364,7 @@ $$\begin{matrix}
 \end{definition}
 \begin{definition}
     Число $A$ называется пределом последовательности $a_n$, если:
-    $$\forall\,\varepsilon>0\,\,\exists\,n_0\in\N:\,\forall\,n>n_0,\,n\in\N\,\,|a_n-A|<\varepsilon$$
+    $$\forall\,\varepsilon>0\enspace\exists\,n_0\in\N:\,\forall\,n>n_0,\,n\in\N\enspace |a_n-A|<\varepsilon$$
 \end{definition}
 \begin{theorem}
     Пусть $\lim\limits_{n\to\infty}a_n=A$; $\lim\limits_{n\to\infty}b_n=B$. Тогда:
@@ -374,8 +372,8 @@ $$\begin{matrix}
 \end{theorem}
 \begin{proof}
     \begin{multline*}
-        \forall\,\varepsilon>0\,\,\exists\,N_1:\,\forall\,n>N_1\,\,|a_n-A|<\frac{\varepsilon}{2};\,\,\exists\,N_2:\,\forall\,n>N_2\,\,|b_n-B|<\frac{\varepsilon}{2}\Longrightarrow\\
-        \Longrightarrow\forall\,n>N=\max(N_1;N_2)\,\,|a_n+b_n-A-B|\leq |a_n-A|+|b_n-B|=\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon
+        \forall\,\varepsilon>0\enspace\exists\,N_1:\,\forall\,n>N_1\enspace |a_n-A|<\frac{\varepsilon}{2};\enspace \exists\,N_2:\,\forall\,n>N_2\enspace |b_n-B|<\frac{\varepsilon}{2}\Longrightarrow\\
+        \Longrightarrow\forall\,n>N=\max(N_1;N_2)\enspace |a_n+b_n-A-B|\leq |a_n-A|+|b_n-B|=\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon
     \end{multline*}
 \end{proof}
 \begin{definition}
@@ -389,7 +387,7 @@ $$\begin{matrix}
     Пусть $a_n$ сходится, $\alpha_n$ -- бесконечно малая. Тогда $b_n=a_n\cdot\alpha_n$ -- бесконечно малая.
 \end{theorem}
 \begin{proof}
-    $$\forall\,\varepsilon>0\,\,\exists\,N:\,\forall\,n>N\,\,|\alpha_n|<\frac{\varepsilon}{c}\Longrightarrow\forall\,n>N\,\,|a_n\cdot\alpha_n|<c\cdot\frac{\varepsilon}{c}=\varepsilon$$
+    $$\forall\,\varepsilon>0\enspace \exists\,N:\,\forall\,n>N\enspace |\alpha_n|<\frac{\varepsilon}{c}\Longrightarrow\forall\,n>N\enspace |a_n\cdot\alpha_n|<c\cdot\frac{\varepsilon}{c}=\varepsilon$$
 \end{proof}
 \begin{theorem}
     Пусть $\lim\limits_{n\to\infty}a_n=A$; $\lim\limits_{n\to\infty}b_n=B$. Тогда:
@@ -410,20 +408,20 @@ $$\begin{matrix}
     \end{align*}
 \end{theorem}
 \begin{proof}
-    Пусть $x_n$ монотонно возрастает. По определению $\forall n:\, x_{n+1}>x_n$. Пусть $x_n$ не ограничена, то есть $\nexists\,m:\,\forall n\,\,\,x_n<m$, тогда $\sup(x_n)=+\infty$, а значит $x_n\to \infty$. Пусть $\exists\,m:\,\forall n \,\,\,x_n\leq m$ и $m=\sup(x_n)$. Тогда $m=\lim\limits_{n\to\infty}x_n$. Доказательство для монотонно убывающей последовательности аналогично.
+    Пусть $x_n$ монотонно возрастает. По определению $\forall n:\, x_{n+1}>x_n$. Пусть $x_n$ не ограничена, то есть $\nexists\,m:\,\forall n\enspace \,x_n<m$, тогда $\sup(x_n)=+\infty$, а значит $x_n\to \infty$. Пусть $\exists\,m:\,\forall n \enspace \,x_n\leq m$ и $m=\sup(x_n)$. Тогда $m=\lim\limits_{n\to\infty}x_n$. Доказательство для монотонно убывающей последовательности аналогично.
 \end{proof}
 \begin{theorem}[Принцип двух милиционеров]
     Пусть даны последовательности: $x_n\leq y_n\leq z_n$; $\lim\limits_{n\to\infty}x_n=\lim\limits_{n\to\infty}z_n=A$, тогда:
     $$\lim_{n\to\infty}x_n=\lim_{n\to\infty}y_n=\lim_{n\to\infty}z_n=A$$
 \end{theorem}
 \begin{proof}
-    $$\forall\,\varepsilon>0\,\,\exists\,N:\,\forall\,n>N\,\,|x_n-A|<\varepsilon;\,\,|z_n-A|<\varepsilon\Longrightarrow|x_n-A|\leq|y_n-A|\leq|z_n-A|<\varepsilon$$
+    $$\forall\,\varepsilon>0\enspace \exists\,N:\,\forall\,n>N\enspace |x_n-A|<\varepsilon;\enspace |z_n-A|<\varepsilon\Longrightarrow|x_n-A|\leq|y_n-A|\leq|z_n-A|<\varepsilon$$
 \end{proof}
 \begin{theorem}
     Пусть $a_n$ монотонно не убывает и ограничена сверху, тогда $a_n$ сходится.
 \end{theorem}
 \begin{proof}
-    В силу ограниченности $a_n$ имеет частичный предел. Пусть $B$ -- частичный предел $a_n$ и $B<\sup a_n=A$. Возьмём $\varepsilon<\frac{a-b}{3}$, тогда $\exists\,n:\,a_n>A-\varepsilon$. Значит, $a_n-B>2\varepsilon$ и $\forall\,m>n\,\,a_m-B\geq a_n-B$, то есть $\lim\limits_{n\to\infty}a_n=\sup a_n$.
+    В силу ограниченности $a_n$ имеет частичный предел. Пусть $B$ -- частичный предел $a_n$ и $B<\sup a_n=A$. Возьмём $\varepsilon<\frac{a-b}{3}$, тогда $\exists\,n:\,a_n>A-\varepsilon$. Значит, $a_n-B>2\varepsilon$ и $\forall\,m>n\enspace a_m-B\geq a_n-B$, то есть $\lim\limits_{n\to\infty}a_n=\sup a_n$.
 \end{proof}
 \begin{lemma}[Неравенство Бернулли]
     $$(1+x)^n\geq 1+xn,\,n\in \N,\,x>0$$
@@ -437,7 +435,7 @@ $$\begin{matrix}
 \end{definition}
 \begin{proof}
     Рассмотрим последовательность $E_n$:
-    $$E_n=\left(\dfrac{n+1}{n}\right)\cdot e_n=\left(1+\dfrac{1}{n}\right)^{n+1}\geq 1+\dfrac{n+1}{n};\,\,\,2<2+\frac{1}{n}\leq3$$
+    $$E_n=\left(\dfrac{n+1}{n}\right)\cdot e_n=\left(1+\dfrac{1}{n}\right)^{n+1}\geq 1+\dfrac{n+1}{n};\enspace \,2<2+\frac{1}{n}\leq3$$
     $$\dfrac{E_{n+1}}{E_n}=\dfrac{\left(1+\dfrac{1}{n+1}\right)^{n+2}}{\left(1+\dfrac{1}{n}\right)^{n+1}}=\dfrac{\left(\dfrac{n+2}{n+1}\right)^{n+2}}{\left(\dfrac{n+1}{n}\right)^{n+1}}=\left(\dfrac{n+2}{n+1}\right)\cdot\left(\dfrac{n^2+2n}{n^2+2n+1}\right)^{n+1}$$
     Рассмотрим последовательность, в которой поменяем местами числитель и знаменатель:
     $$\left(\dfrac{n^2+2n+1}{n^2+2n}\right)^{n+1}=\left(1+\dfrac{1}{n^2+2n}\right)^{n+1}\geq1+\dfrac{n+1}{n^2+2n}=\dfrac{n^3+3n+1}{n^2+2n}$$
@@ -562,8 +560,8 @@ $$\begin{matrix}
     Пара $G(M;\,\times)$, $M$ -- множество, $\times$ -- бинарная операция, называется группой, если выполняются свойства:
     \begin{align*}
         1.\,\,&\forall a,\,b\in M:\,(a\times b)\in M\\
-        2.\,\,&\exists\, e\in M\,\,\,\forall a\in M:\, e\times a=a\\
-        3.\,\,&\forall a\in M\,\,\, \exists\, a^{-1}\in M:\, a\times a^{-1}=a^{-1}\times a=e\\
+        2.\,\,&\exists\, e\in M\enspace\forall a\in M:\, e\times a=a\\
+        3.\,\,&\forall a\in M\enspace \exists\, a^{-1}\in M:\, a\times a^{-1}=a^{-1}\times a=e\\
         4.\,\,&\forall a,\,b,\,c \in M:\,(a\times b)\times c=a\times(b\times c)= (a\times c)\times b
     \end{align*}
 \end{definition}
@@ -617,20 +615,18 @@ $$\begin{matrix}
             \draw (M) node[above left] {$M$};
             \draw (N) node[right] {$N$};
             \coordinate (A) at (0:3);
-            \tkzLabelAngle(A,O,M){$\alpha$};
-            \tkzMarkAngle[size=.4cm](A,O,M);
-            \tkzLabelAngle(A,O,N){$\beta$};
-            \tkzMarkAngle[size=.55cm](A,O,N);
-            \tkzMarkAngle[size=.6cm](A,O,N);
+            \tkzLabelAngle(A,O,M){$\alpha$}
+            \tkzMarkAngle[size=.4cm](A,O,M)
+            \tkzLabelAngle(A,O,N){$\beta$}
+            \tkzMarkAngle[size=.55cm](A,O,N)
+            \tkzMarkAngle[size=.6cm](A,O,N)
             \begin{scope}[rotate=35]
                 \draw[-{Stealth[scale = 1.5]}, dashed] (-4,0) -- (5, 0) node[below right] {$\cos \tilde{x}$};
                 \draw[-{Stealth[scale = 1.5]}, dashed] (0,-4) -- (0,5) node[left] {$\sin \tilde{x}$};
             \end{scope}
             \draw[-{Stealth[scale = 1.5]}] (-4,0) -- (5, 0) node[below] {$\cos x$};
             \draw[-{Stealth[scale = 1.5]}] (0,-4) -- (0,5) node[left] {$\sin x$};
-            \foreach \point in {(O), (M), (N)}{
-    \fill \point circle (1.8pt);
-}
+            \tkzDrawPoints(O, M, N)
         \end{tikzpicture}
     \end{center}
     По теореме Пифагора: 
@@ -902,11 +898,9 @@ $$\begin{matrix}
                 \draw (z) node[above right] {$z$};
                 \draw ($(O)!0.5!(z)$) node[above left] {$r$};
                 \draw (3.5,3) node[above] {$z=r\cdot(\cos\varphi+ i\sin\varphi)$};
-                \tkzLabelAngle(a,O,z){$\varphi$};
-            \tkzMarkAngle[size=.55cm](a,O,z);
-        \foreach \point in {(O), (a), (b), (z)}{
-    \fill \point circle (1.5pt);
-}
+                \tkzLabelAngle(a,O,z){$\varphi$}
+            \tkzMarkAngle[size=.55cm](a,O,z)
+            \tkzDrawPoints(O, a, b, z)
         \end{tikzpicture}
         \end{center}
     \end{definition}
@@ -914,14 +908,16 @@ $$\begin{matrix}
         $$z^n=r^n\cdot(\cos(n\varphi)+i\sin(n\varphi))$$
     \end{theorem}
     \begin{proof}
-        Докажем по индукции. $z=r\cdot(\cos\varphi+ i\sin\varphi)$ верно. Пусть $z^n=r^n\cdot(\cos(n\varphi)+i\sin(n\varphi))$ верно, докажем, что $z^{n+1}=r^{n+1}\cdot(\cos((n+1)\varphi)+i\sin((n+1)\varphi))$ верно.
-        $$z^{n+1}=z^n\cdot z=r^n\cdot(\cos(n\varphi)+i\sin(n\varphi))\cdot r\cdot(\cos\varphi+ i\sin\varphi)=$$
-        $$=r^{n+1}\cdot((\cos(n\varphi)\cdot\cos\varphi-\sin(n\varphi)\cdot\sin\varphi)+i(\cos(n\varphi)\cdot\sin\varphi+\sin(n\varphi)\cdot\cos\varphi))=$$
-        $$=r^{n+1}\cdot(\cos((n+1)\varphi)+i\sin((n+1)\varphi))$$
+        Докажем по индукции. $z=r\cdot(\cos\varphi+ i\sin\varphi)$ верно. Пусть $z^n=r^n\cdot(\cos(n\varphi)+i\sin(n\varphi))$ верно, докажем, что для $n+1$ утверждение верно верно.
+        \begin{multline*}
+            z^{n+1}=z^n\cdot z=r^n\cdot(\cos(n\varphi)+i\sin(n\varphi))\cdot r\cdot(\cos\varphi+ i\sin\varphi)=\\
+            =r^{n+1}\cdot((\cos(n\varphi)\cdot\cos\varphi-\sin(n\varphi)\cdot\sin\varphi)+i(\cos(n\varphi)\cdot\sin\varphi+\sin(n\varphi)\cdot\cos\varphi))=\\
+            =r^{n+1}\cdot(\cos((n+1)\varphi)+i\sin((n+1)\varphi))
+        \end{multline*}
     \end{proof}
     \begin{definition}
         Корнем из комплексного числа называется:
-        $$\sqrt[n]{z}=\sqrt[n]{r}\left(\cos\left(\frac{\varphi}{n}+\frac{2\pi k}{n}\right)+i\sin\left(\frac{\varphi}{n}+\frac{2\pi k}{n}\right)\right),\,\,k\in\{1,\,\,2,\ldots,\,\,n-1\}$$
+        $$\sqrt[n]{z}=\sqrt[n]{r}\left(\cos\left(\frac{\varphi}{n}+\frac{2\pi k}{n}\right)+i\sin\left(\frac{\varphi}{n}+\frac{2\pi k}{n}\right)\right),\,k\in\{1,\,2,\ldots,\,n-1\}$$
     \end{definition}
     \subsection{Матрицы поворота}
     \begin{definition}
@@ -950,7 +946,7 @@ $$\begin{matrix}
 
     \section{Логарифмы}
     \begin{definition}
-        Пусть $a>0;\,\, a\neq 1,\,\,b>0$. Логарифмом $\log_ab$ числа $b$ по основанию $a$ называется такое число $c$, что $a^c=b$. Из этого, а также свойств степеней следует:
+        Пусть $a>0;\, a\neq 1,\,b>0$. Логарифмом $\log_ab$ числа $b$ по основанию $a$ называется такое число $c$, что $a^c=b$. Из этого, а также свойств степеней следует:
         \begin{center}
             \begin{multicols}{3}
                 \[\log_a 1=0\]\\
@@ -988,7 +984,7 @@ $$\begin{matrix}
         $$\log_{a^k}\left(b^k\right)=\log_a b$$
     \end{consequence}
     \begin{statement}
-        $$\log_ab=\frac{\log_cb}{\log_ca},\,\,\log_ca\neq0$$
+        $$\log_ab=\frac{\log_cb}{\log_ca},\,\log_ca\neq0$$
     \end{statement}
     \begin{proof}
         $$\log_ab=\frac{\log_cb}{\log_ca}\Longleftrightarrow\log_ab\cdot\log_ca=\log_cb$$
@@ -1099,7 +1095,7 @@ $$\begin{matrix}
                 \item $a+b=b+a$\\
                 \item $(a+b)+c=a+(b+c)$\\
                 \item $\exists\,\vv{0}\in L:\,a+\vv{0}=a$\\
-                \item $\forall\,a\,\, \exists\,b:\,a+b=\vv{0}$\\
+                \item $\forall\,a\enspace  \exists\,b:\,a+b=\vv{0}$\\
                 \item $\lambda(\mu a)=(\lambda \mu)a$\\
                 \item $(\lambda+\mu)a=\lambda a + \mu a$\\
                 \item $\lambda(a+b)=\lambda a+ \lambda b$\\

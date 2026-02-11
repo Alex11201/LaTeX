@@ -29,7 +29,11 @@
     Задать случайную величину, значит указать все ее реализации и соответственные вероятности.
 
 \begin{definition}
-    Индикатором события $A$ называется случайная величина: $$\I(A)\sim \left(\genfrac{}{}{0pt}{0}{0}{1-\prob(A)}\,\,\, \genfrac{}{}{0pt}{0}{1}{\prob(A)} \right)$$
+    Индикатором события $A$ называется случайная величина:
+    $$\I(A)\sim \begin{pmatrix}
+        0 & 1\\
+        1-\prob(A) & \prob(A)
+    \end{pmatrix}$$
 \end{definition}
 
 \begin{definition}
@@ -81,14 +85,20 @@
 
 \begin{definition}
     Случайная величина $\xi$  распределена по Бернулли, если ее распределение суть индикатор.
-    $$Ber(p)\sim \left(\genfrac{}{}{0pt}{0}{0}{1-p} \,\,\, \genfrac{}{}{0pt}{0}{1}{p} \right)$$
+    $$Ber(p)\sim \begin{pmatrix}
+        0 & 1\\
+        1-p & p
+    \end{pmatrix}$$
 \end{definition}
 
     \subsubsection{Биномиальное распределение}
 
 \begin{definition}
     Случайная величина $\xi$ распределена биномиально, если она моделирует схему испытаний  Бернулли или является суммой бернуллиевых случайных величин.
-    $$B(p,\,n)\sim \left( \genfrac{}{}{0pt}{0}{0}{(1-p)^n} \,\,\, \genfrac{}{}{0pt}{0}{\cdots}{\cdots} \,\,\, \genfrac{}{}{0pt}{0}{k}{C_n^kp^k(1-p)^{n-k}} \,\,\, \genfrac{}{}{0pt}{0}{\cdots}{\cdots} \,\,\, \genfrac{}{}{0pt}{0}{n}{p^n} \right)$$
+    $$B(p,\,n)\sim \begin{pmatrix}
+        0 & \cdots & k & \cdots & n\\
+        (1-p)^n & \cdots & C_n^k(1-p)^{n-k} & \cdots & p^n
+    \end{pmatrix}$$
 \end{definition}
 
 \begin{theorem}
@@ -114,7 +124,10 @@
 
 \begin{proof}
     Пусть $\eta$ -- число успехов в одном испытании Бернулли. Тогда:
-    $$\eta \sim B(p,\,1) \sim \left(\genfrac{}{}{0pt}{0}{0}{q} \,\,\, \genfrac{}{}{0pt}{0}{1}{p}\right)$$
+    $$\eta \sim B(p,\,1) \sim \begin{pmatrix}
+        0 & 1\\
+        q & p
+    \end{pmatrix}$$
     В таком случае $\D(\eta)=\E(\eta^2)-(\E(\eta))^2=p-p^2=pq$. Тогда по теореме 1.4:
     $$\D(\xi)=\sum_{i=1}^{n}\D(\xi_i)=pq \cdot n = npq$$
 \end{proof}
@@ -123,7 +136,10 @@
 
 \begin{definition}
     Случайная величина $\xi$ распределена геометрически, если она моделирует схему испытаний до первого успеха с вероятностью $p$.
-    $$Geom(p) \sim \left( \genfrac{}{}{0pt}{0}{1}{p} \,\,\, \genfrac{}{}{0pt}{0}{2}{qp} \,\,\, \genfrac{}{}{0pt}{0}{\cdots}{\cdots} \,\,\, \,\,\, \genfrac{}{}{0pt}{0}{n}{q^{n-1}p} \,\,\, \genfrac{}{}{0pt}{0}{\cdots}{\cdots}\right)$$
+    $$Geom(p) \sim \begin{pmatrix}
+        1 & 2 & \cdots & n & \cdots\\
+        p & qp & \cdots & q^{n-1}p & \cdots
+    \end{pmatrix}$$
 \end{definition}
 
 \begin{lemma}
@@ -169,11 +185,11 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
 \end{statement}
 
 \begin{proof}
-    \begin{align*}
-    &\xi = \I(A_1)+\I(A_2)+\ldots+\I(A_n),\, \text{где}\, A_i=\{i\text{-ый элемент выборки помечен}\}\\
-    &\I(A_i)\sim \left(\genfrac{}{}{0pt}{0}{0}{1-\frac{K}{N}} \,\,\, \genfrac{}{}{0pt}{0}{1}{\frac{K}{N}} \right)\\
-    &\E(\xi)=\sum_{i=1}^n \E(\I(A_i))=n\cdot \frac{K}{N}
-\end{align*}
+    $$\xi = \I(A_1)+\I(A_2)+\ldots+\I(A_n),\, \text{где}\, A_i=\{i\text{-ый элемент выборки помечен}\}$$
+    $$\I(A_i)\sim \begin{pmatrix}
+        0 & 1\\
+        1-\frac{K}{N} & \frac{K}{N}
+    \end{pmatrix}\quad \E(\xi)=\sum_{i=1}^n \E(\I(A_i))=n\cdot \frac{K}{N}$$
 \end{proof}
 
 \subsubsection{Распределение Паскаля}
@@ -247,7 +263,7 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
 \section{Распределение Пуассона}
 \begin{theorem}[Теорема Пуассона]
     Пусть $n\to\infty$, $p\to 0$, $np\to \lambda$, $\lambda=\text{const}$, тогда если $\xi$ -- количество успехов в серии испытаний Бернулли, то она распределена по Пуассону:
-    $$\xi \sim P(\lambda):\,\,\prob(\xi=k)=\dfrac{\lambda^k}{k!}e^{-\lambda}$$
+    $$\xi \sim P(\lambda):\,\prob(\xi=k)=\dfrac{\lambda^k}{k!}e^{-\lambda}$$
 \end{theorem}
 \begin{proof}
     \begin{align*}
@@ -264,7 +280,7 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
     $$\ln q^n= n\cdot \ln(1-p)\to -np\to-\lambda \Longrightarrow \dfrac{\lambda^k}{k!}q^n = \dfrac{\lambda^k}{k!}e^{-\lambda}$$
 \end{proof}
 \begin{theorem}
-    $$\lim_{n\to\infty}\sum_{i=0}^n\dfrac{x^i}{i!}=e^x,\,\,x\in \R$$
+    $$\lim_{n\to\infty}\sum_{i=0}^n\dfrac{x^i}{i!}=e^x,\,x\in \R$$
 \end{theorem}
 \begin{theorem}
     Пусть $\xi\sim P(\lambda)$. Тогда $\E(\xi)=\D(\xi)=\lambda$.
@@ -292,17 +308,17 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
 
 \begin{definition}
     Последовательность случайных величин $\xi_0,\,\xi_1,\,\ldots\,,\,\xi_n$ называется Цепью Маркова, если 
-    $$\forall n,\,i_0,\,i_1,\,\ldots\,,\,i_n:\,\,\prob(\xi_{n-1}=x_{i_{n-1}},\,\ldots\,,\,\xi_0=x_{i_{0}})$$
+    $$\forall n,\,i_0,\,i_1,\,\ldots\,,\,i_n:\,\prob(\xi_{n-1}=x_{i_{n-1}},\,\ldots\,,\,\xi_0=x_{i_{0}})$$
     верно, что:
     $$\prob(\xi_{n}=x_{i_{n}}\,|\,\xi_{n-1}=x_{i_{n-1}},\,\ldots\,,\,\xi_0=x_{i_{0}})=\prob(\xi_{n}=x_{i_{n}}\,|\,\xi_{n-1}=x_{i_{n-1}})$$
 \end{definition}
 \begin{definition}
     Цепь Маркова называется однородной, если:
-    $$\forall i,\,j:\,\,\prob(\xi_n=x_j\,|\,\xi_{n-1}=x_i)=p_{i,j}\text{ не зависит от }n.$$
+    $$\forall i,\,j:\,\prob(\xi_n=x_j\,|\,\xi_{n-1}=x_i)=p_{i,j}\text{ не зависит от }n.$$
 \end{definition}
 \begin{definition}
     Матрица $A=(a_{i,j})$ называется стохастической, если:
-    $$\forall i,\,j:\,\,a_{i,j}\in [0;\,1],\,\,\sum_{i}(a_{i,j})=1$$
+    $$\forall i,\,j:\,a_{i,j}\in [0;\,1],\enspace\sum_{i}(a_{i,j})=1$$
 \end{definition}
 \begin{definition}
     Матрица $\pi=(p_{i,j})$ называется матрицей переходных вероятностей.
@@ -314,7 +330,7 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
 \subsubsection{Классификация состояний Марковских цепей}
 \begin{definition}
     Состояние $x_j$ достижимо из $x_i$, если:
-    $$\exists\,k:\,\,P^k_{ij}=\prob(\xi_{m+k}=x_j\,|\,\xi_m=x_i)>0$$
+    $$\exists\,k:\,P^k_{ij}=\prob(\xi_{m+k}=x_j\,|\,\xi_m=x_i)>0$$
 \end{definition}
 \begin{definition}
     Состояния называются сообщающимися, если они достижимы друг для друга.
@@ -341,16 +357,16 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
     Возвратное состояние $x_i$ называется возвратным нулевым, если среднее время возвращения в него бесконечно.
 \end{definition}
 \begin{definition}
-    Состояние $x_i$ называется периодическим, если $\NOD\{k:\,\,P^{(k)}_{ii}>0\}=d>1$, где $d$ -- период состояния.
+    Состояние $x_i$ называется периодическим, если $\NOD\{k:\,P^{(k)}_{ii}>0\}=d>1$, где $d$ -- период состояния.
 \end{definition}
 \subsubsection{Эргодичность}
 \begin{definition}
     Марковская цепь называется эргодической, если:
-    $$\forall i,\,j:\,\,\exists\lim_{k\to\infty}P^{(k)}_{ij}=p_{ij}>0,\,\,\sum_{j}p_j=1$$
+    $$\forall i,\,j:\,\exists\lim_{k\to\infty}P^{(k)}_{ij}=p_{ij}>0,\enspace\sum_{j}p_j=1$$
 \end{definition}
 \begin{theorem}[Критерий эргодичности]
     Марковская цепь эргодична, если:
-    $$\exists\,k:\,\,\forall i,\,j:\,\,P^{(k)}_{ij}>0$$
+    $$\exists\,k:\,\forall i,\,j:\,P^{(k)}_{ij}>0$$
 \end{theorem}
 
 \subsection{Процесс Гальтона-Ватсона}
@@ -362,11 +378,11 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
         p_j^{*i},\text{ если }i\geq 1,\,j\geq 0\\
         \delta_{0j},\text{ если }i\geq 0,\,j\geq 0
     \end{cases}$$
-    Если не оговорено иного, $P_0(1)=\prob(Z(0)=1)=1;\,\,P_0(k)=0,\,\,k\neq1$.
+    Если не оговорено иного, $P_0(1)=\prob(Z(0)=1)=1;\,P_0(k)=0,\,k\neq1$.
 \end{definition}
 \begin{example}[Деление клетки 1]\label{Деление клетки 1}
     Рассмотрим популяцию частиц. Пусть после каждой единицы времени частица либо умирает, либо делится на двое. При этом пусть в начале мы имели только одну частицу, то есть $Z(0)=1$. Рассмотрим случайную величину $\xi_i^{(n)}$ – число потомков $i$-й частицы $n$-го поколения:
-    $$Z(n+1)=\xi_1^{(n)}+\xi_2^{(n)}+\ldots+\xi_{Z(n)}^{(n)},\,\,n\geq0$$
+    $$Z(n+1)=\xi_1^{(n)}+\xi_2^{(n)}+\ldots+\xi_{Z(n)}^{(n)},\,n\geq0$$
     Заметим, что можно также фиксировать не число частиц в момент времени $n$, а число частиц первого поколения:
     $$Z(n+1)=Z_1(n)+Z_2(n)+\ldots+Z_{Z(1)}(n)$$
     Таким образом для независимых $\xi_i^{(n)}$ верно:
@@ -443,7 +459,7 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
     \end{multicols}
 \end{definition}
 \begin{definition}
-    Пусть $\xi_i,\,\,i\in\{1,\,\,2,\ldots,\,\,n\}$ – независимые случайные величины, тогда:
+    Пусть $\xi_i,\,i\in\{1,\,2,\ldots,\,n\}$ – независимые случайные величины, тогда:
     $$\varphi_{\xi_1+\xi_2+\ldots+\xi_n}(z)=\varphi_{\xi_1}\cdot\varphi_{\xi_2}\cdot\ldots\cdot\varphi_{\xi_n}=\varphi_n(\varphi_{\xi_1}(z))$$
     При этом $\xi_1$ может быть заменена на любую из $\xi_i$, так как они одинаково распределены.
 \end{definition}
@@ -515,7 +531,7 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
     Квантилем уровня $\alpha$ называется такой $x_\alpha$, что он является решением уравнения $F_\xi(x)=\alpha$.
 \end{definition}
 \begin{definition}\label{выборка}
-    Выборкой объема $n;\,\,n>1$ называется случайный вектор $Z_n=(\xi_1,\ldots,\xi_n)$, где $\xi_i,\,\,i\in\{1,\ldots,n\}$ называются элементами выборки и являются независимыми случайными величинами с одной функцией распределения $F_\xi(x)$. Тогда выборка $Z_n$ соответствует функции распределения $F_\xi(x)$.
+    Выборкой объема $n;\,n>1$ называется случайный вектор $Z_n=(\xi_1,\ldots,\xi_n)$, где $\xi_i,\,i\in\{1,\ldots,n\}$ называются элементами выборки и являются независимыми случайными величинами с одной функцией распределения $F_\xi(x)$. Тогда выборка $Z_n$ соответствует функции распределения $F_\xi(x)$.
 \end{definition}
 \begin{definition}\label{реализация выборки}
     Реализацией выборки называется неслучайный вектор $z_n=(x_1,\ldots,x_n)$, компонентами которого являются реализации соответствующих элементов выборки $\xi_i$, $i\in\{1,\ldots,n\}$.
@@ -531,7 +547,7 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
     $$F_\xi(x)=\frac{1}{\sigma\sqrt{2\pi}}\cdot e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}$$
 \end{definition}
 \begin{theorem}
-    Пусть $\xi\sim\mathcal{N}(\mu;\,\,\sigma)$. Тогда $\E(\xi)=\mu$ и $\D(\xi)=\sigma^2$.
+    Пусть $\xi\sim\mathcal{N}(\mu;\,\sigma)$. Тогда $\E(\xi)=\mu$ и $\D(\xi)=\sigma^2$.
 \end{theorem}
 \begin{definition}
     Случайна величина $\xi$ распределена стандартно нормально, если $\xi\sim\nd(0;\,1)$.
@@ -555,7 +571,7 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
     $$\prob(a<\hat{\xi}<b)=\prob\left(a<\frac{S_n-n\cdot \E(\xi)}{\sigma(\xi)\cdot\sqrt{n}}<b\right)\approx\Phi(b)-\Phi(a)$$
 \end{theorem}
 \begin{theorem}[Муавр-Лаплас]
-    Пусть $\xi\sim B(p;\,n),\,\,n\geq30$, тогда можно сказать, что $\xi\sim\nd(np;\,npq)$, а значит:
+    Пусть $\xi\sim B(p;\,n),\,n\geq30$, тогда можно сказать, что $\xi\sim\nd(np;\,npq)$, а значит:
     $$\prob(a<\xi<b)=\prob\left(\frac{a-np}{\sqrt{npq}}<\frac{\xi-np}{\sqrt{npq}}<\frac{b-np}{\sqrt{npq}}\right)=\Phi\left(\frac{b-np}{\sqrt{npq}}\right)-\Phi\left(\frac{a-np}{\sqrt{npq}}\right)$$
 \end{theorem}
 
@@ -618,12 +634,7 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
     Поскольку частота является несмещённой и состоятельной оценкой вероятности, при проведении $n$ опытов, в $X$ из которых произойдёт нужное нам событие, вероятность можно будет представить, как $\hat{p}=\frac{X}{n}$. При этом в случае выбора с возвращением, $X$ будет иметь биномиальное распределение с параметрами $n$ и $p$, где $n$ – количество проведенных экспериментов, а $p$ – вероятность появления признака. Тогда по центральной предельной теореме:
     $$\frac{X-\E(X)}{\sqrt{\D(X)}}=\frac{X-np}{\sqrt{npq}}\xrightarrow{n\to\infty}\nd(0;\,1)$$
     В таком случае можно считать, что $\hat{p}\sim\nd(0;\,1)$, а значит:
-    \begin{center}
-        \begin{multicols}{2}
-            \[\E(\hat{p})=\E\left(\frac{X}{n}\right)=\frac{np}{n}=p\]\\
-            \[\D(\hat{p})=\D\left(\frac{X}{n}\right)=\frac{npq}{n^2}=\frac{pq}{n}\]
-        \end{multicols}
-    \end{center}
+    $$\E(\hat{p})=\E\left(\frac{X}{n}\right)=\frac{np}{n}=p;\quad\D(\hat{p})=\D\left(\frac{X}{n}\right)=\frac{npq}{n^2}=\frac{pq}{n}$$
     Зная распределение $\hat{p}$, мы можем установить, когда выполняется равенство:
     \begin{multline*}
         \prob(|\hat{p}-p|<\delta)=\prob(p-\delta<\hat{p}<p+\delta)=\Phi\left(\frac{p+\delta-p}{\sqrt{\frac{pq}{n}}}\right) - \Phi\left(\frac{p-\delta-p}{\sqrt{\frac{pq}{n}}}\right)=\\
@@ -679,7 +690,7 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
 
 \begin{statement}[Интервальная оценка в схеме испытаний Бернулли]
     Пусть в схеме испытаний Бернулли $\gamma$ – доверительная вероятность, $I_\gamma$ – доверительный интервал, $k$ – число успехов, $n$ – число реализаций, $\hat{p}=\frac{k}{n}$ – несмещённая оценка, тогда:
-    $$I_\gamma=\left(\hat{p}-z_{1-\frac{\alpha}{2}}\cdot\sqrt{\frac{pq}{n}};\,\,\hat{p}+z_{1-\frac{\alpha}{2}}\cdot\sqrt{\frac{pq}{n}}\right)$$
+    $$I_\gamma=\left(\hat{p}-z_{1-\frac{\alpha}{2}}\cdot\sqrt{\frac{pq}{n}};\,\hat{p}+z_{1-\frac{\alpha}{2}}\cdot\sqrt{\frac{pq}{n}}\right)$$
 \end{statement}
 
 \begin{definition}[Распределение $\chi^2$]
@@ -688,12 +699,12 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
 \end{definition}
 \begin{definition}[Распределение Стьюдента]
     Случайная величина $\xi$ распределена по $t$, если:
-    $$\xi=\dfrac{\xi_0}{\sqrt{\frac{1}{n}\sum\limits_{i=1}^{n}\xi_i^2}},\,\,\xi_i\sim\mathcal{N}(0;1)$$
+    $$\xi=\dfrac{\xi_0}{\sqrt{\frac{1}{n}\sum\limits_{i=1}^{n}\xi_i^2}},\enspace\xi_i\sim\mathcal{N}(0;1)$$
 \end{definition}
 \subsubsection{Интервальная оценка среднего}
 \begin{statement}[Оценка среднего при известной генеральной дисперсии]\label{Оценка среднего с дисперсией}
     Пусть $\overline{x}$ – среднее выборки, $n$ – объём выборки, $\sigma$ – генеральное стандартное отклонение, тогда:
-    $$I_\gamma=\left(\overline{x}-z_{1-\frac{\alpha}{2}}\cdot\frac{\sigma}{\sqrt{n}};\,\,\overline{x}+z_{1-\frac{\alpha}{2}}\cdot\frac{\sigma}{\sqrt{n}}\right)$$
+    $$I_\gamma=\left(\overline{x}-z_{1-\frac{\alpha}{2}}\cdot\frac{\sigma}{\sqrt{n}};\,\overline{x}+z_{1-\frac{\alpha}{2}}\cdot\frac{\sigma}{\sqrt{n}}\right)$$
 \end{statement}
 \begin{statement}[Оценка среднего при $n\geq30$]
     Аналогично утверждению \ref{Оценка среднего с дисперсией}, но вместо $\sigma$ используется $s$:
@@ -702,7 +713,7 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
 \renewcommand{\arraystretch}{1.5}
 \begin{statement}[Оценка среднего при $n<30$]
     Пусть $t_{\frac{\alpha}{2}}(n-1)$ – квантиль распределения Стьюдента с $n-1$ степенью свободы, тогда:
-    $$I_\gamma=\left(\overline{x}-t_{\frac{\alpha}{2}}(n-1)\cdot\frac{s}{\sqrt{n}};\,\,\overline{x}+t_{\frac{\alpha}{2}}(n-1)\cdot\frac{s}{\sqrt{n}}\right)$$
+    $$I_\gamma=\left(\overline{x}-t_{\frac{\alpha}{2}}(n-1)\cdot\frac{s}{\sqrt{n}};\,\overline{x}+t_{\frac{\alpha}{2}}(n-1)\cdot\frac{s}{\sqrt{n}}\right)$$
     При этом статистикой критерия будет:
     $$T(X)=\dfrac{\overline{x}-\mu}{\sigma}\cdot\sqrt{n}\sim t(n-1)$$
     А критическая область будет иметь вид:
@@ -793,15 +804,15 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
 \begin{definition}
     Функцией плотности экспоненциально распределённой случайной величины называется:
     $$f_\tau(t)=\begin{cases}
-        \lambda e^{-\lambda t},\,\,t\geq 0\\
-        0,\,\,t<0
+        \lambda e^{-\lambda t},\,t\geq 0\\
+        0,\,t<0
     \end{cases}$$
 \end{definition}
 \begin{statement}
     Пусть $\tau\sim Exp(\lambda)$. Тогда:
     $$F_\tau(t)=\begin{cases}
-        1-e^{-\lambda t},\,\,t\geq 0\\
-        0,\,\,t<0
+        1-e^{-\lambda t},\,t\geq 0\\
+        0,\,t<0
     \end{cases}$$
 \end{statement}
 \begin{proof}
@@ -812,7 +823,7 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
 \end{proof}
 \begin{statement}
     Пусть $\tau\sim Exp(\lambda)$. Тогда:
-    $$\E(\tau)=\frac{1}{\lambda};\,\,\,\D(\tau)=\frac{1}{\lambda^2}$$
+    $$\E(\tau)=\frac{1}{\lambda};\,\,\D(\tau)=\frac{1}{\lambda^2}$$
 \end{statement}
 \begin{statement}[Независимость от приращений]
     Пусть $\tau\sim Exp(\lambda)$. Тогда:

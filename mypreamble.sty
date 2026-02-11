@@ -1,6 +1,6 @@
 % Создание пакета
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{mypreamble}
+\ProvidesPackage{../mypreamble}
 
 % Текст
 \usepackage[fontsize=12pt]{fontsize}
@@ -44,6 +44,9 @@
 \usetikzlibrary{positioning}
 \usetikzlibrary{3d}
 \usetikzlibrary{perspective}
+
+% Параметры картинок
+\tkzSetUpPoint[size = 3.2]
 
 % Опция для плоскостей в пространстве
 \makeatletter
@@ -110,16 +113,16 @@
 \newcommand{\notequalto}[2]{\underset{\scriptstyle\overset{\mkern4mu\vertneq}{#2}}{#1}}
 
 % Обозначение скрещивающихся прямых
-\providecommand{\dotdiv}{% Don't redefine it if available
-  \mathbin{% We want a binary operation
-    \vphantom{+}% The same height as a plus or minus
-    \text{% Change size in sub/superscripts
-      \mathsurround=0pt % To be on the safe side
-      \ooalign{% Superimpose the two symbols
-        \noalign{\kern-.25ex}% but the dot is raised a bit
-        \hidewidth$\smash{\cdot}$\hidewidth\cr % Dot
-        \noalign{\kern.5ex}% Backup for vertical alignment
-        $-$\cr % Minus
+\providecommand{\dotdiv}{%
+  \mathbin{%
+    \vphantom{+}%
+    \text{%
+      \mathsurround=0pt
+      \ooalign{%
+        \noalign{\kern-.25ex}%
+        \hidewidth$\smash{\cdot}$\hidewidth\cr
+        \noalign{\kern.5ex}%
+        $-$\cr
       }%
     }%
   }%

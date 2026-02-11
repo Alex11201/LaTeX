@@ -14,7 +14,7 @@
 \usepackage[european,siunitx]{circuitikz}
 
 % Химические символы
-\usepackage{mhchem}
+\usepackage[version=4]{mhchem}
 
 % Оглавление
 \title{\textbf{Физика}}\date{}\author{}
@@ -148,44 +148,6 @@
 \begin{definition}
     Насыщенный пар — пар, находящийся в динамическом равновесии со своей жидкостью.
 \end{definition}
-\begin{center}
-    \begin{tikzpicture}
-        \draw[-{Stealth[scale = 1.5]}] (-0.5,0) -- (11,0) node[right] {Время [мин]};
-        \draw[-{Stealth[scale = 1.5]}] (0, -0.5) -- (0,7) node[above] {Температура [$^\circ$C]};
-        \coordinate (O) at (0,0);
-        \coordinate (t0) at (0,1);
-        \coordinate (t1) at (0,4);
-        \coordinate (t2) at (0,6);
-        \draw (O) node[below left] {$O$};
-        \draw (t0) node[left] {$t_0$};
-        \draw (t1) node[left] {$t_1$};
-        \draw (t2) node[left] {$t_2$};
-        \coordinate (A) at (2,4);
-        \coordinate (B) at (4,4);
-        \coordinate (C) at (5,6);
-        \coordinate (D) at (6,4);
-        \coordinate (E) at (8,4);
-        \coordinate (F) at (10,1);
-        \tkzLabelSegment[above left](t0,A){$a$};
-        \tkzLabelSegment[above](A,B){$b$};
-        \tkzLabelSegment[above left](B,C){$c$};
-        \tkzLabelSegment[above right](C,D){$d$};
-        \tkzLabelSegment[above](D,E){$e$};
-        \tkzLabelSegment[above right](E,F){$f$};
-        \node[right, align=left] at (10,4.5) {
-              $a$ -- нагрев\\
-              $b$ -- кипение\\
-              $c$ -- нагрев пара\\
-              $d$ -- охлаждение пара\\
-              $e$ -- конденсация\\
-              $f$ -- охлаждение жидкости
-          };
-        \draw (t0) -- (A) -- (B) -- (C) -- (D) -- (E) -- (F);
-        \foreach \point in {(O), (t0), (t1), (t2), (A), (B), (C), (D), (E), (F)}{
-    \fill \point circle (1.8pt);
-}
-    \end{tikzpicture}
-\end{center}
 
 \subsection{Удельная теплота}
 
@@ -669,16 +631,16 @@
         \draw (A) -- (O);
         \draw (D) -- (O);
         \draw (E) -- (O);
-        \fill (O) circle (1.8pt);
-        \tkzMarkAngle[size=.65cm](B,O,A);
-        \tkzLabelAngle(B,O,A){$\alpha$};
-        \tkzMarkAngle[size=.45cm](E,O,B);
-        \tkzMarkAngle[size=.55cm](E,O,B);
-        \tkzLabelAngle(E,O,B){$\beta$};
-        \tkzMarkAngle[size=.65cm](C,O,D);
-        \tkzMarkAngle[size=.55cm](C,O,D);
-        \tkzMarkAngle[size=.45cm](C,O,D);
-        \tkzLabelAngle(C,O,D){$\gamma$};
+        \tkzDrawPoint(O)
+        \tkzMarkAngle[size=.65cm](B,O,A)
+        \tkzLabelAngle(B,O,A){$\alpha$}
+        \tkzMarkAngle[size=.45cm](E,O,B)
+        \tkzMarkAngle[size=.55cm](E,O,B)
+        \tkzLabelAngle(E,O,B){$\beta$}
+        \tkzMarkAngle[size=.65cm](C,O,D)
+        \tkzMarkAngle[size=.55cm](C,O,D)
+        \tkzMarkAngle[size=.45cm](C,O,D)
+        \tkzLabelAngle(C,O,D){$\gamma$}
         \draw (-4,0) node[above right] {$n_1$};
         \draw (-4,0) node[below right] {$n_2$};
         \node[right, align=left] at (5,0) {
@@ -686,7 +648,7 @@
               $\alpha$ -- угол падения\\
               $\beta$ -- угол отражения\\
               $\gamma$ -- угол преломления\\
-              $n_1<n_2\Longrightarrow\alpha<\gamma;\,\,n_1>n_2\Longrightarrow\alpha>\gamma$
+              $n_1<n_2\Longrightarrow\alpha<\gamma;\enspace n_1>n_2\Longrightarrow\alpha>\gamma$
         };
     \end{tikzpicture}
 \end{center}
@@ -785,7 +747,9 @@
     $$\pm\frac{1}{F}=\pm\frac{1}{f}+\frac{1}{d}$$
     \begin{center}
         \begin{minipage}{12cm}
-            $F$ [м] -- фокусное расстояние (берётся положительное, если линза собирающая и отрицательное, если рассеивающая), $f$ [м] -- расстояние от изображения до линзы (берётся положительное, если изображение действительное и отрицательное, если мнимое), $d$ [м] -- расстояние от предмета до линзы.
+            $F$ [м] -- фокусное расстояние, $f$ [м] -- расстояние от изображения до линзы, $d$ [м] -- расстояние от предмета до линзы.\bigskip
+
+            \textit{Фокусное расстояние берётся положительное, если линза собирающая и отрицательное, если рассеивающая. Расстояние от изображения до линзы берётся положительное, если изображение действительное и отрицательное, если мнимое.}
         \end{minipage}
     \end{center}
 \end{formula}
@@ -1057,7 +1021,7 @@
 \setcounter{subsection}{5}
 \begin{theorem}
     Уравнения фазовых кривых гармонических колебаний:
-    $$\left(\frac{x(t)}{x_{\max}}\right)^2+\left(\frac{v(t)}{v_{\max}}\right)^2=1;\,\,\left(\frac{a(t)}{a_{\max}}\right)^2+\left(\frac{v(t)}{v_{\max}}\right)^2=1$$
+    $$\left(\frac{x(t)}{x_{\max}}\right)^2+\left(\frac{v(t)}{v_{\max}}\right)^2=1;\quad\left(\frac{a(t)}{a_{\max}}\right)^2+\left(\frac{v(t)}{v_{\max}}\right)^2=1$$
 \end{theorem}
 
 \subsection{Механические волны}
@@ -1122,7 +1086,7 @@
 \end{formula}
 \begin{law}
     Абсолютно твёрдое тело находится в равновесии, если векторная сумма сил, действующих на это тело, и алгебраическая сумма всех моментов этих сил, равны нулю:
-    $$\sum_{i=1}^{n}\vv{F_i}=\vv{0};\,\,\sum_{i=1}^{n}M - \sum_{i=1}^m M'=0$$
+    $$\sum_{i=1}^{n}\vv{F_i}=\vv{0};\quad\sum_{i=1}^{n}M - \sum_{i=1}^m M'=0$$
      $M$ [Н $\cdot$ м] -- момент силы, стремящейся повернуть тело по часовой стрелке, $M'$ [Н $\cdot$ м] -- момент силы, стремящейся повернуть тело против часовой стрелки.
 \end{law}
 
@@ -1174,7 +1138,7 @@
 
 \subsection{Строение атома}
 \begin{law}
-    $$m_p\approx m_n\approx 10^{-27}\text{ кг}\approx 1\text{ а. е. м.};\,\,m_e\approx 10^{-30} \text{ кг}$$
+    $$m_p\approx m_n\approx 10^{-27}\text{ кг}\approx 1\text{ а. е. м.};\quad m_e\approx 10^{-30} \text{ кг}$$
     \begin{center}
         \begin{minipage}{12cm}
             $m_p$ -- масса протона, $m_n$ -- масса нейтрона, $m_e$ -- масса электрона.
@@ -1253,7 +1217,7 @@
 \end{formula}
 \begin{proof}
     \begin{multline*}
-        p=\frac{2}{3}n \cdot \overline{E}=\frac{2N}{3V} \cdot \overline{E}\Longrightarrow \frac{pV}{N}=\frac{2}{3}\overline{E}=\const\,\,(\text{при }T=\const)\Longrightarrow
+        p=\frac{2}{3}n \cdot \overline{E}=\frac{2N}{3V} \cdot \overline{E}\Longrightarrow \frac{pV}{N}=\frac{2}{3}\overline{E}=\const\,(\text{при }T=\const)\Longrightarrow
         \frac{pV}{N}=K_\text{Б} \cdot T\Longrightarrow \overline{E}=\frac{3}{2}K_\text{Б}\cdot T
     \end{multline*}
 \end{proof}
@@ -1343,9 +1307,8 @@
             \draw (15.9,1.5) node {$V_1$};
             \draw (14.5,2.3) node {$V_2$};
             \draw (15.7,-0.5) node[below] {Изохора $(V_1>V_2)$};
-            \foreach \point in {(0,0), (6.5,0), (13,0)}{
-        \fill \point circle (1.8pt);
-    }
+            \tkzDefPoints{0/0/O1,6.5/0/O2,13/0/O3}
+            \tkzDrawPoints(O1, O2, O3)
         \end{tikzpicture}
     \end{center}
 \end{consequence}
@@ -1389,7 +1352,7 @@
     $$V=\const\Longrightarrow A_\text{газа}=0\Longrightarrow Q=\Delta U$$
 \end{consequence}
 \begin{consequence}[Изобарный процесс]
-    $$p=\const\Longrightarrow A_\text{газа}=p\Delta V;\,\,\Delta U=\frac{i}{2}\nu R\Delta T\Longrightarrow Q=\frac{i}{2}\nu R\Delta T + p\Delta V=\frac{i+2}{2}\nu R\Delta T=\frac{i+2}{2}p\Delta V$$
+    $$p=\const\Longrightarrow A_\text{газа}=p\Delta V;\enspace\Delta U=\frac{i}{2}\nu R\Delta T\Longrightarrow Q=\frac{i}{2}\nu R\Delta T + p\Delta V=\frac{i+2}{2}\nu R\Delta T=\frac{i+2}{2}p\Delta V$$
 \end{consequence}
 \begin{consequence}[Адиабатный процесс]
     $$Q=0\Longrightarrow A_\text{газа}=-\Delta U$$
@@ -1456,9 +1419,7 @@
                 1-2; 3-4 -- изотермы\\
                 2-3; 4-1 -- адиабаты
             };
-            \foreach \point in {(O), (A), (B), (C), (D)}{
-    \fill \point circle (1.8pt);
-}
+            \tkzDrawPoints(O, A, B, C, D)
         \end{tikzpicture}
     \end{center}
 \end{definition}
