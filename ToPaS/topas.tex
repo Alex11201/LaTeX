@@ -215,20 +215,20 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
 
 \begin{definition}
     Пусть $\xi$ и $\eta$ -- случайные величины, тогда ковариацией называется:
-    $$cov(\xi;\,\eta)=\E((\xi-\E(\xi))(\eta-\E(\eta)))$$
+    $$\cov(\xi;\,\eta)=\E((\xi-\E(\xi))(\eta-\E(\eta)))$$
 \end{definition}
 \begin{theorem}
-    Для $cov(\xi;\,\eta)$ выполняются свойства:
+    Для $\cov(\xi;\,\eta)$ выполняются свойства:
     \begin{align*}
-        1.\,\,&cov(\xi;\,\xi)\geq0\\
-        2.\,\,&cov(\xi;\,\eta)=cov(\eta;\,\xi)\\
-        3.\,\,&cov(\lambda \xi;\,\eta)=\lambda\cdot cov(\xi;\,\eta)\\
-        4.\,\,&cov(\xi_1+\xi_2;\,\eta)=cov(\xi_1;\,\eta)+cov(\xi_2;\,\eta)\\
-        5.\,\,&cov(\xi;\,\eta)\leq \D(\xi)\cdot\D(\eta)
+        1.\,\,&\cov(\xi;\,\xi)\geq0\\
+        2.\,\,&\cov(\xi;\,\eta)=\cov(\eta;\,\xi)\\
+        3.\,\,&\cov(\lambda \xi;\,\eta)=\lambda\cdot \cov(\xi;\,\eta)\\
+        4.\,\,&\cov(\xi_1+\xi_2;\,\eta)=\cov(\xi_1;\,\eta)+\cov(\xi_2;\,\eta)\\
+        5.\,\,&\cov(\xi;\,\eta)\leq \D(\xi)\cdot\D(\eta)
     \end{align*}
 \end{theorem}
 \begin{theorem}
-    $$cov(\xi;\,\eta)=\E(\xi\cdot\eta)-\E(\xi)\cdot\E(\eta)$$
+    $$\cov(\xi;\,\eta)=\E(\xi\cdot\eta)-\E(\xi)\cdot\E(\eta)$$
 \end{theorem}
 \begin{proof}
     \begin{align*}
@@ -239,13 +239,13 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
     \end{align*}
 \end{proof}
 \begin{theorem}
-    $$\D(\xi+\eta)=\D(\xi)+\D(\eta)+2\cdot cov(\xi;\,\eta)$$
+    $$\D(\xi+\eta)=\D(\xi)+\D(\eta)+2\cdot \cov(\xi;\,\eta)$$
 \end{theorem}
 \section{Корреляция}
 
 \begin{definition}
-    Пусть $\xi$ и $\eta$ -- случайные величины: $\D(\xi)\neq0,\,\D(\eta)\neq0,\,cov(\xi;\,\eta)$ определена корректно. Тогда коэффициентом корреляции $\xi$ и $\eta$ называется:
-    $$corr(\xi;\,\eta)=r_{\xi\eta}=\frac{cov(\xi;\,\eta)}{\sigma(\xi)\cdot\sigma(\eta)}$$
+    Пусть $\xi$ и $\eta$ -- случайные величины: $\D(\xi)\neq0,\,\D(\eta)\neq0,\,\cov(\xi;\,\eta)$ определена корректно. Тогда коэффициентом корреляции $\xi$ и $\eta$ называется:
+    $$corr(\xi;\,\eta)=r_{\xi\eta}=\frac{\cov(\xi;\,\eta)}{\sigma(\xi)\cdot\sigma(\eta)}$$
     Свойства:
     \begin{align*}
         1.\,\,&|r_{\xi\eta}|\leq 1\\
@@ -832,6 +832,53 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
 \begin{proof}
     \begin{multline*}
         \prob(\tau>t_1+t_2,\,|\,\tau>t_1)=\frac{\prob(\tau>t_1+t_2)}{\prob(\tau>t_1)}=\\=\frac{1-\prob(\tau\leq t_1+t_2)}{1-\prob(\tau\leq t_1)}=\frac{1-(1-e^{-\lambda(t_1+t_2)})}{1-(1-e^{-\lambda t_1})}=\frac{e^{-\lambda(t_1+t_2)}}{e^{-\lambda t_1}}=\\=e^{-\lambda t_2}=1-(1-e^{-\lambda t_2})=\prob(\tau>t_2)
+    \end{multline*}
+\end{proof}
+
+\subsection{Линейная регрессия}
+
+\begin{definition}
+    Линейная регрессия -- модель зависимости переменных в виде прямой линии.
+\end{definition}
+\begin{definition}
+    Функция потерь -- мера, оценивающая ошибку модели.
+\end{definition}
+\begin{definition}
+    Метод наименьших квадратов -- линейная регрессия, функцией потерь которой является сумма квадратов отклонений регрессанта от модели:
+    $$L(a;b)=\sum_{i=1}^n(y_i-f(x_i))^2,\enspace f(x)=a+bx+\varepsilon(x)$$
+    Вычислим и приравняем к нулю частные производные при ошибке $\varepsilon(x)=0$:
+    $$\begin{dcases}
+        \dfrac{\delta L}{\delta a}=-2\sum_{i=1}^{n}(y_i-a-bx_i)=0\\
+        \dfrac{\delta L}{\delta b}=-2\sum_{i=1}^{n}x_i(y_i-a-bx_i)=0
+    \end{dcases}\Longleftrightarrow\begin{dcases}
+        \sum_{i=1}^{n}y_i=na+b\sum_{i=1}^{n}x_i\\
+        \sum_{i=1}^{n}x_iy_i=a\sum_{i=1}^{n}x_i+b\sum_{i=1}^{n}x_i^2
+    \end{dcases}\Longleftrightarrow\begin{dcases}
+        \overline{y}=a+b\overline{x}\\
+        \overline{xy}=a\overline{x}+b\overline{x^2}
+    \end{dcases}$$
+    Домножив первое уравнение на $\overline{x}$ и вычев из него второе, получаем:
+    $$\overline{x}\cdot\overline{y}-\overline{xy}=b((\overline{x})^2-\overline{x^2})\Longrightarrow b=\frac{\overline{xy}-\overline{x}\cdot\overline{y}}{(\overline{x})^2-\overline{x^2}}=\frac{\cov(x;y)}{\D(x)}$$
+\end{definition}
+\begin{theorem}[Неравенство Маркова]
+    $$\prob(\xi\geq\varepsilon)\leq\frac{\E(\xi)}{\varepsilon}$$
+\end{theorem}
+\begin{theorem}[Неравенство Чебышёва]
+    $$\prob(|\xi-\E(\xi)|\geq\varepsilon)\leq\frac{\D(\xi)}{\varepsilon^2}$$
+\end{theorem}
+\begin{proof}
+    $$\prob(|\xi-\E(\xi)|\geq\varepsilon)=\prob((\xi-\E(\xi))^2\geq\varepsilon^2)\leq\frac{\E((\xi-\E(\xi))^2)}{\varepsilon^2}=\frac{\D(\xi)}{\varepsilon^2}$$
+\end{proof}
+\begin{theorem}[Закон больших чисел в форме Чебышёва]
+    Пусть $\xi_i$ -- независимые случайные величины и $\exists\,c\in\R:\,\D(\xi_i)\leq c$, тогда:
+    $$\forall\,\varepsilon>0\, \lim_{n\to\infty}\prob\left(\left|\frac{1}{n}\sum_{i=1}^{n}(\xi_i-\E(\xi_i))\right|<\varepsilon\right)=1$$
+\end{theorem}
+\begin{proof}
+    $$\D\left(\frac{1}{n}\sum_{i=1}^{n}\xi_i\right)=\frac{1}{n^2}\sum_{i=1}^{n}\D(\xi_i)=\frac{\D(\xi)}{n}\leq\frac{c}{n}$$
+    Из неравенства Чебышёва:
+    \begin{multline*}
+        \prob\left(\left|\frac{1}{n}\sum_{i=1}^{n}\xi_i-\E(\xi)\right|\leq\varepsilon\right)\geq1-\frac{1}{\varepsilon^2}\D\left(\frac{1}{n}\sum_{i=1}^{n}\xi_i\right)\geq1-\frac{c}{n\varepsilon^2}\Longrightarrow\\
+        \Longrightarrow\lim_{n\to\infty}\prob\left(\left|\frac{1}{n}\sum_{i=1}^{n}(\xi_i-\E(\xi_i))\right|<\varepsilon\right)\geq\lim_{n\to\infty}\left(1-\frac{c}{n\varepsilon^2}\right)=1
     \end{multline*}
 \end{proof}
 \end{document}

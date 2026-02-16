@@ -113,7 +113,7 @@
     Теплопроводность — передача внутренней энергии от одной части тела к другой или от одного тела к другому при контакте.
 \end{definition}
 
-\begin{formula}
+\begin{formula}[Количество теплоты, необходимое для нагрева тела]
     $$Q=c m \Delta t$$
     \begin{center}
         \begin{minipage}{12cm}
@@ -154,7 +154,7 @@
 \begin{definition}
     Удельная теплота -- скалярная физическая величина, обозначающая количество теплоты, требуемое для смены агрегатного состояния единицы массы.
 \end{definition}
-\begin{formula}
+\begin{formula}[Количество теплоты, необходимое для сгорания тела]
     $$Q=q m$$
     \begin{center}
         \begin{minipage}{12cm}
@@ -162,7 +162,7 @@
         \end{minipage}
     \end{center}
 \end{formula}
-\begin{formula}
+\begin{formula}[Количество теплоты, необходимое для испарения тела]
     $$Q=L m$$
     \begin{center}
         \begin{minipage}{12cm}
@@ -170,7 +170,7 @@
         \end{minipage}
     \end{center}
 \end{formula}
-\begin{formula}
+\begin{formula}[Количество теплоты, необходимое для плавления тела]
     $$Q=\lambda m$$
     \begin{center}
         \begin{minipage}{12cm}
@@ -188,14 +188,14 @@
     $$\sum_{i=1}^{n}q_i=\const$$
 \end{law}
 \begin{law}[Закон Кулона]
-    $$\vv{F}=k \frac{|q_1|\cdot|q_2|}{\varepsilon\cdot r^2}$$
+    $$F=k \frac{|q_1|\cdot|q_2|}{\varepsilon\cdot r^2}$$
     \begin{center}
         \begin{minipage}{15cm}
-            $\vv{F}$ [Н] -- сила взаимодействия зарядов, $k$ -- постоянная Кулона $\left(\approx 9\cdot 10^9\,\frac{\text{Н}\cdot\text{м}^2}{\text{Кл}^2}\right)$, $q_1$ и $q_2$ [Кл] -- точечные заряды тел, $r$ [м] -- расстояние между зарядами, $\varepsilon$ -- относительная диэлектрическая проницаемость среды (равна 1 для воздуха).
+            $F$ [Н] -- сила взаимодействия зарядов, $k$ -- постоянная Кулона $\left(\approx 9\cdot 10^9\,\frac{\text{Н}\cdot\text{м}^2}{\text{Кл}^2}\right)$, $q_1$ и $q_2$ [Кл] -- точечные заряды тел, $r$ [м] -- расстояние между зарядами, $\varepsilon$ -- относительная диэлектрическая проницаемость среды (равна 1 для воздуха).
         \end{minipage}
     \end{center}
 \end{law}
-\begin{formula}
+\begin{formula}[Постоянная Кулона]
     $$k=\frac{1}{4\pi\varepsilon_0}$$
     \begin{center}
         \begin{minipage}{13cm}
@@ -209,7 +209,7 @@
 \begin{definition}
     Напряженность -- отношение силы, с которой поле воздействует на точечный заряд к величине этого заряда.
 \end{definition}
-\begin{formula}
+\begin{formula}[Напряжённость поля]
     $$\vv{E}=\frac{\vv{F}}{q}$$
     \begin{center}
         \begin{minipage}{12cm}
@@ -240,18 +240,42 @@
 \begin{law}
     Электрическое поле потенциально, то есть: его работа по замкнутому контуру равна нулю, работа не зависит от траектории, можно ввести потенциал и потенциальную энергию.
 \end{law}
-\begin{formula}
-    $$\varphi=\frac{W_p}{q}$$
+\begin{definition}
+    $$\varphi=\frac{W}{q}$$
     \begin{center}
         \begin{minipage}{12cm}
             $\varphi$ [Дж/Кл] – потенциал, $W_p$ [Дж] -- потенциальная энергия заряда, $q$ [Кл] -- величина заряда.
         \end{minipage}
     \end{center}
-\end{formula}
+\end{definition}
 \begin{definition}
     Разность потенциалов электрического поля (между точками 1 и 2) -- отношение работы электрического поля по перемещению пробного заряда из точки 1 в точку 2 к величине этого заряда.
     $$U_{12}=\varphi_1-\varphi_2=\frac{A_{12}}{q}$$
 \end{definition}
+\begin{formula}[Потенциал точечного заряда]
+    $$\varphi=\frac{kq}{r}$$
+    \begin{center}
+        \begin{minipage}{12cm}
+            $\varphi$ [Дж/Кл] – потенциал точечного заряда,  $k$ $\left[\frac{\text{Н}\cdot\text{м}^2}{\text{Кл}^2}\right]$ – постоянная Кулона, $q$ [Кл] -- величина заряда, $r$ [м] -- расстояние до заряда.
+        \end{minipage}
+    \end{center}
+\end{formula}
+\begin{formula}[Энергия взаимодействия точечных зарядов]
+    $$W=k\frac{q_1q_2}{r}$$
+    \begin{center}
+        \begin{minipage}{12cm}
+            $W$ [Дж] – энергия взаимодействия зарядов,  $k$ $\left[\frac{\text{Н}\cdot\text{м}^2}{\text{Кл}^2}\right]$ – постоянная Кулона, $q_i$ [Кл] -- величина заряда, $r$ [м] -- расстояние между зарядами.
+        \end{minipage}
+    \end{center}
+\end{formula}
+\begin{formula}[Энергия заряженной сферы]
+    $$W=\frac{kQ^2}{2R}=\frac{1}{2}Q\varphi$$
+    \begin{center}
+        \begin{minipage}{12cm}
+            $W$ [Дж] – энергия сферы, $k$ $\left[\frac{\text{Н}\cdot\text{м}^2}{\text{Кл}^2}\right]$ – постоянная Кулона, $Q$ [Кл] -- заряд сферы, $R$ [м] -- радиус сферы, $\varphi$ [Дж/Кл] – потенциал сферы.
+        \end{minipage}
+    \end{center}
+\end{formula}
 
 \subsection{Электрический ток}
 
@@ -280,7 +304,7 @@
 \begin{definition}
     Диэлектрики -- вещества, в которых все носители заряда связаны в нейтральных молекулах. При помещении во внешнее электрическое поле диэлектрики поляризуются, что приводит к ослаблению поля внутри них.
 \end{definition}
-\begin{formula}
+\begin{formula}[Сопротивление проводника]
     $$R=\frac{\rho l}{S}$$
     \begin{center}
         \begin{minipage}{12cm}
@@ -291,7 +315,7 @@
 \begin{definition}
     Электродвижущая сила -- скалярная величина, характеризующая работу сторонних сил (неэлектрического происхождения) по перемещению единичного положительного заряда внутри источника тока.
 \end{definition}
-\begin{formula}
+\begin{formula}[Электродвижущая сила]
     $$\varepsilon=\frac{A_\text{ст}}{q}$$
     \begin{center}
         \begin{minipage}{12cm}
@@ -307,7 +331,7 @@
         \end{minipage}
     \end{center}
 \end{law}
-\begin{formula}
+\begin{formula}[Напряжение на неидеальном источнике]
     $$U=\varepsilon-Ir$$
     \begin{center}
         \begin{minipage}{12cm}
@@ -355,7 +379,7 @@
 \end{tikzpicture}
 \end{center}
 \singlespacing
-\begin{formula}
+\begin{formula}[Работа тока]
         $$A=IU\Delta t=U\Delta q$$
     \begin{center}
         \begin{minipage}{12cm}
@@ -363,7 +387,7 @@
         \end{minipage}
     \end{center}
 \end{formula}
-\begin{formula}
+\begin{formula}[Мощность тока]
     $$P=\frac{A}{\Delta t}=UI$$
     \begin{center}
         \begin{minipage}{12cm}
@@ -397,7 +421,7 @@
 \begin{definition}
     Сила Ампера -- сила, с которой магнитное поле воздействует на проводник с током.
 \end{definition}
-\begin{formula}
+\begin{formula}[Сила Ампера]
     $$F_\text{А}=I B l\cdot \sin \alpha$$
     \begin{center}
         \begin{minipage}{12cm}
@@ -408,7 +432,7 @@
 \begin{definition}
     Сила Лоренца -- сила, с которой магнитное поле действует на движущуюся заряженную частицу.
 \end{definition}
-\begin{formula}
+\begin{formula}[Сила Лоренца]
     $$F_\text{Л}=q v B \cdot \sin \alpha$$
     \begin{center}
         \begin{minipage}{12cm}
@@ -447,7 +471,7 @@
     $$\Phi=|\vv{B}\cdot \vv{S}|=B S\cdot |\cos\alpha|$$
     $\Phi$ [Вб] -- магнитный поток, $B$ [Тл] -- магнитная индукция, $S$ [м$^2$] -- площадь, $\alpha$ -- угол между $\vv{B}$ и $\vv{S}$ (вектор площади).
 \end{definition}
-\begin{formula}
+\begin{formula}[Магнитный поток катушки]
     $$\Phi=N B S\cdot |\cos\alpha|$$
     \begin{center}
         \begin{minipage}{12cm}
@@ -483,15 +507,15 @@
 \begin{definition}
     Электроемкость -- физическая величина, характеризующая способность проводников накапливать заряд.
 \end{definition}
-\begin{formula}
+\begin{definition}
     $$C=\frac{q}{U}$$
     \begin{center}
         \begin{minipage}{12cm}
             $C$ [Ф] -- электроемкость, $q$ [Кл] -- заряд пластины конденсатора, $U$ [В] – напряжение.
         \end{minipage}
     \end{center}
-\end{formula}
-\begin{formula}
+\end{definition}
+\begin{formula}[Электроёмкость плоского конденсатора]
     $$C=\frac{\varepsilon\varepsilon_0 S}{d}$$
     \begin{center}
         \begin{minipage}{12cm}
@@ -499,7 +523,7 @@
         \end{minipage}
     \end{center}
 \end{formula}
-\begin{formula}
+\begin{formula}[Энергия конденсатора]
     $$W=\dfrac{q U}{2}=\dfrac{C U^2}{2}=\dfrac{q^2}{2C}$$
     \begin{center}
         \begin{minipage}{12cm}
@@ -541,7 +565,7 @@
     $$L=\frac{\Phi}{I}$$
     $L$ [Гн] -- индуктивность катушки, $\Phi$ [Вб] -- магнитный поток, $I$ [А] -- сила тока.
 \end{definition}
-\begin{formula}
+\begin{formula}[Напряжение катушки]
     $$U_L=L\cdot\frac{\Delta I}{\Delta t}$$
     \begin{center}
         \begin{minipage}{12cm}
@@ -557,19 +581,11 @@
         \item При протекании тока в катушке запасается энергия магнитного поля.
     \end{itemize}
 \end{statement}
-\begin{formula}
+\begin{formula}[Энергия катушки]
     $$W_L=\frac{LI^2}{2}$$
     \begin{center}
         \begin{minipage}{12cm}
             $W_L$ [Дж] -- энергия катушки, $L$ [Гн] -- индуктивность катушки, $I$ [А] -- сила тока.
-        \end{minipage}
-    \end{center}
-\end{formula}
-\begin{formula}
-    $$W=W_C+W_L$$
-    \begin{center}
-        \begin{minipage}{12cm}
-            $W$ [Дж] -- энергия в электрической цепи, $W_C$ [Дж] -- энергия в конденсаторе, $W_L$ [Дж] -- энергия в катушке индуктивности.
         \end{minipage}
     \end{center}
 \end{formula}
@@ -579,7 +595,15 @@
 \begin{definition}
     Открытый колебательный контур -- это колебательный контур (катушка и конденсатор), в котором одна или обе его части (пластины конденсатора или витки катушки) вынесены в окружающее пространство, что позволяет ему излучать или принимать электромагнитные волны.
 \end{definition}
-\begin{formula}
+\begin{formula}[Полная энергия в колебательном контуре]
+    $$W=W_C+W_L$$
+    \begin{center}
+        \begin{minipage}{12cm}
+            $W$ [Дж] -- энергия в колебательном контуре, $W_C$ [Дж] -- энергия в конденсаторе, $W_L$ [Дж] -- энергия в катушке индуктивности.
+        \end{minipage}
+    \end{center}
+\end{formula}
+\begin{formula}[Период электромагнитных колебаний]
     $$T=2\pi\sqrt{LC}$$
     \begin{center}
         \begin{minipage}{12cm}
@@ -670,15 +694,6 @@
 \begin{definition}
     Критический угол -- угол отражения, при котором происходит полное внутренее отражение.
 \end{definition}
-\begin{formula}
-    $$n=\left\lfloor\frac{360^\circ-\alpha}{\alpha}\right\rfloor$$
-    \begin{center}
-        \begin{minipage}{12cm}
-            \centering
-            $n$ -- количество отражений, $\alpha$ – угол падения.
-        \end{minipage}
-    \end{center}
-\end{formula}
 
 \subsection{Линзы}
 
@@ -753,7 +768,7 @@
         \end{minipage}
     \end{center}
 \end{formula}
-\begin{formula}
+\begin{formula}[Поперечное увеличение линзы]
     $$\Gamma=\frac{f}{d}$$
     \begin{center}
         \begin{minipage}{12cm}
@@ -866,7 +881,7 @@
 \begin{definition}
     Радиус кривизны траектории - радиус окружности, по которой тело двигается в определенный промежуток времени при криволинейном движении.
 \end{definition}
-\begin{formula}
+\begin{formula}[Радиус кривизны траектории]
     $$R_\text{крив.}=\dfrac{v^2}{a_n}$$
     \begin{center}
         \begin{minipage}{12cm}
@@ -877,7 +892,7 @@
 \begin{definition}
     Тангенциальное ускорение -- ускорение, направленное по касательной к траектории движения.
 \end{definition}
-\begin{formula}
+\begin{formula}[Полное ускорение при движении по окружности]
     $$\vv{a}=\vv{a_\tau} + \vv{a_n}$$
     \begin{center}
         \begin{minipage}{12cm}
@@ -885,7 +900,7 @@
         \end{minipage}
     \end{center}
 \end{formula}
-\begin{formula}
+\begin{formula}[Полное ускорение при движении по окружности]
     $$a=\sqrt{a_\tau^2+a_n^2}$$
     \begin{center}
         \begin{minipage}{12cm}
@@ -917,7 +932,7 @@
 \begin{definition}
     Импульс материальной точки – векторная физическая величина, являющаяся мерой механического движения тела.
 \end{definition}
-\begin{formula}
+\begin{formula}[Импульс материальной точки]
     $$\vv{p}=m\vv{v}$$
     \begin{center}
         \begin{minipage}{12cm}
@@ -1054,7 +1069,7 @@
 \begin{definition}
     Скорость распространения волны -- скорость передачи энергии волной.
 \end{definition}
-\begin{formula}
+\begin{formula}[Длина волны]
     $$\lambda=v\cdot T=\frac{v}{\nu}$$
     \begin{center}
         \begin{minipage}{12cm}
@@ -1075,7 +1090,7 @@
 \begin{definition}
     Момент силы -- векторная физическая величина, характеризующая действие силы на механический объект, которое может вызвать его вращательное движение.
 \end{definition}
-\begin{formula}
+\begin{formula}[Момент силы]
     $$\vv{M}=l\cdot\vv{F}$$
     \begin{center}
         \begin{minipage}{12cm}
@@ -1127,7 +1142,7 @@
 
     \textit{Численно молярная масса равна молекулярной.}
 \end{definition}
-\begin{formula}
+\begin{formula}[Молярная масса вещества]
     $$M=m_0\cdot N_A$$
     \begin{center}
         \begin{minipage}{12cm}
@@ -1206,12 +1221,12 @@
     макроскопические параметры -- характеристики макроскопической системы.\bigskip
 
     \textit{Например, для газа в сосуде: давление, температура, объём.}
-\end{definition}
+\end{definition}[Средняя кинетическая энергия теплового движения молекул]
 \begin{formula}
     $$\overline{E}=\frac{3}{2}K_\text{Б}\cdot T$$
     \begin{center}
         \begin{minipage}{12cm}
-            $\overline{E}$ [Дж] -- средняя кинетическая энергия поступательного движения, $K_\text{Б}$ -- постоянная Больцмана $\left(\approx \num{1.38}\cdot 10^{-23}\text{ Дж/К}\right)$, $T$ [К] -- температура.
+            $\overline{E}$ [Дж] -- средняя кинетическая энергия, $K_\text{Б}$ -- постоянная Больцмана $\left(\approx \num{1.38}\cdot 10^{-23}\text{ Дж/К}\right)$, $T$ [К] -- температура.
         \end{minipage}
     \end{center}
 \end{formula}
@@ -1231,7 +1246,7 @@
 
     \textit{Теплообмен идёт до установления одинаковой температуры у термодинамических систем.}
 \end{definition}
-\begin{formula}
+\begin{formula}[Средняя квадратичная скорость молекул]
     $$v_{\text{ср. кв.}}=\sqrt{\frac{3K_\text{Б}\cdot T}{m_0}}$$
     \begin{center}
         \begin{minipage}{12cm}
@@ -1324,7 +1339,7 @@
 \begin{definition}
     Число степеней свободы -- минимальное необходимой число осей для полного описания движения частицы.
 \end{definition}
-\begin{formula}
+\begin{formula}[Внутренняя энергия ИГ]
     $$U=\frac{i}{2} \nu RT$$
     \begin{center}
         \begin{minipage}{12cm}
@@ -1372,7 +1387,7 @@
         \end{minipage}
     \end{center}
 \end{formula}
-\begin{formula}
+\begin{formula}[КПД тепловой машины]
     $$\eta=1-\frac{Q_\text{х}}{Q_\text{н}}$$
     \begin{center}
         \begin{minipage}{12cm}
