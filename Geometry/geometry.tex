@@ -1967,813 +1967,919 @@
         Пусть $F_a$ и $F_b$ -- проекции $F$ на $BC$ и $AC$ соответственно. Тогда по следствию 3.7.1 $F_bF_a$ -- прямая, касающаяся параболы в ее вершине и параллельная директрисе этой параболы. Пусть $O$ -- точка пересечения $FH$ и $F_bF_a$, тогда по следствию 3.13.2 $FO=OH$, при этом $\angle HOF_b=\angle FOF_a$ как вертикальные, в таком случае равны по двум углам и стороне треугольники, образованные $F$, $O$, $H$ и проекциями $F$ и $H$ на $F_bF_a$. Следовательно, расстояние от $F$ до прямой, проходящей через вершину параболы и параллельной ее директрисе, равно расстоянию от этой прямой до $H$, а значит $H$ лежит на директрисе параболы.
     \end{proof}
 
-    \section{Гомотетия}
+\section{Полезные факты}
 
-    \begin{definition}
-        Гомотетия с центром $O$ и коэффициентом $k$ суть преобразование плоскости, при котором $\forall A \in \R^2: H_O^k(A)=A\,':\,\vv{OA}\cdot k = \vv{OA\,'},\,\vv{OA} \upuparrows \vv{OA\,'}$.
-    \end{definition}
+\begin{lemma}
+    Пусть $C_0$ и $A_0$ -- произвольные точки на сторонах $AB$ и $BC$ треугольника $ABC$, $B_1$ -- середина дуги $ABC$, описанной около $\triangle ABC$ окружности, тогда $BB_1C_0A_0$ является вписанным тогда и только тогда, когда $AC_0=CA_0$. 
+\end{lemma}
+\begin{proof}
+    \hfill
+    \begin{center}
+        \begin{tikzpicture}[scale=0.8]
+            \coordinate (A) at (-140:4);
+            \coordinate (B) at (55:4);
+            \coordinate (C) at (-40:4);
+            \coordinate (B1) at (90:4);
+            \coordinate (A0) at ($(B)!0.3!(C)$);
+            \tkzDefCircle[circum](A0,B1,B)
+        \tkzGetPoint{K} \tkzGetLength{rayon}
+        \draw[name path = line1] (K) circle(\rayon);
+            \draw (B) -- (C) -- (A) -- cycle;
+            \draw[name path = line2] (A) -- ($(A)!0.9!(B)$);
+            \draw[name intersections={of=line1 and line2}] (intersection-1) node[below] {$C_0$};
+            \coordinate (C0) at (intersection-1);
+            \draw (0,0) circle(4);
+            \draw[dotted, line width = 0.2mm] (B1) -- (C0) -- (A0) -- (B1) -- (B);
+            \draw[dashed] (A) -- (B1) -- (C);
+            \draw[dashed] (B1) -- (-90:4);
+            \coordinate (Mb) at ($(A)!0.5!(C)$);
+            \draw (A) node[below left] {$A$};
+            \draw (B) node[above right] {$B$};
+            \draw (C) node[below right] {$C$};
+            \draw (Mb) node[below right] {$M_b$};
+            \draw (A0) node[below right] {$A_0$};
+            \draw (B1) node[above] {$B_1$};
+            \tkzMarkRightAngle(B1,Mb,A)
+            \tkzMarkSegment[mark=|](A,C0)
+            \tkzMarkSegment[mark=|](C,A0)
+            \tkzDrawPoints(A, B, C, B1, A0, C0, Mb)
+    \end{tikzpicture}
+    \end{center}
+    Пусть $AC_0=CA_0$, докажем вписанность $BB_1C_0A_0$. Опустим перпендикуляр с основанием $M_b$ из $B_1$ на $AC$, тогда в силу того, что $B_1$ -- середина дуги $ABC$, $B_1M_b$ -- серединный перпендикуляр к $AC$. Тогда $AB_1=B_1C$. Рассмотрим $\triangle AB_1C_0$ и $\triangle CB_1A_0$: $\angle B_1AB=\angle B_1CB$, так как они опираются на одну дугу $B_1B$, при этом $AC_0=CA_0$ по условию и $AB_1=B_1C$. То есть $\triangle AB_1C_0=\triangle CB_1A_0$, а значит равны их внешние углы: $\angle B_1C_0B=\angle B_1A_0B$, тогда $BB_1C_0A_0$ -- вписанный по признаку.\bigskip
 
-    \setcounter{subsection}{0}
-    \begin{definition}
-        Композиция гомотетий $H_O^k$ и $H_P^l$ при $k,\,l\neq 1$ -- это параллельный перенос при $k\cdot l=1$ или $H_Q^{kl}:\,Q \in OP,\, \vv{OQ}\cdot (k-1)=\vv{QP}\cdot \left(1-\dfrac{1}{l}\right)$.
-    \end{definition}
+    Докажем, что $AC_0=CA_0$ при условии вписанности $BB_1C_0A_0$. Аналогично первому доказательству, $\angle B_1AB=\angle B_1CB$ и в силу вписанности $\angle B_1C_0B=\angle B_1A_0B$, при этом $AB_1=B_1C$, а значит $\triangle AB_1C_0=\triangle CB_1A_0$ по двум углам и стороне, то есть $AC_0=CA_0$.
+\end{proof}
+\begin{lemma}
+    Пусть $A_0$ и $C_0$ -- произвольные точки на $BC$ и $AB$ треугольника $ABC$ соответственно. Инцентр $\triangle ABC$ лежит на окружности, описанной около $\triangle A_0BC_0$ тогда и только тогда, когда $AC_0+CA_0=AC$.
+\end{lemma}
+\begin{proof}
+    \hfill
+    \begin{center}
+        \begin{tikzpicture}[scale=0.9]
+            \coordinate (A) at (0,0);
+            \coordinate (B) at (5.5,6);
+            \coordinate (C) at (8,0);
+            \coordinate (A0) at ($(B)!0.35!(C)$);
+            \tkzDefLine[bisector](B,A,C)\tkzGetPoint{a}
+            \path[name path = line1] ($(A)!0.2!(a)$) -- ($(A)!1.2!(a)$);
+            \draw[name path = line2] (A) -- (B) -- (C) -- cycle;
+            \draw[name intersections={of=line1 and line2}] (intersection-1) node[right] {$L_A$};
+            \coordinate (La) at (intersection-1);
+            \tkzDefLine[bisector](A,C,B)\tkzGetPoint{c}
+            \path[name path = line3] ($(C)!0.2!(c)$) -- ($(C)!1.5!(c)$);
+            \draw[name intersections={of=line3 and line2}] (intersection-1) node[above left] {$L_C$};
+            \coordinate (Lc) at (intersection-1);
+            \draw[name path = line4, dashed] (A) -- (La);
+            \draw[name path = line5, dashed] (C) -- (Lc);
+            \draw[name intersections={of=line4 and line5}] (intersection-1) node[below] {$I$};
+            \coordinate (I) at (intersection-1);
+            \tkzDefCircle[circum](A0,I,B)
+            \tkzGetPoint{O} \tkzGetLength{rayon}
+            \draw[name path = line6] (O) circle(\rayon);
+            \path[name path = line7] (A) -- ($(A)!0.9!(B)$);
+            \draw[name intersections={of=line6 and line7}] (intersection-1) node[left] {$C_0$};
+            \coordinate (C0) at (intersection-1);
+            \draw (A) node[below left] {$A$};
+            \draw (B) node[above right] {$B$};
+            \draw (C) node[below right] {$C$};
+            \draw (A0) node[right] {$A_0$};
+            \tkzCalcLength(A,C0)\tkzGetLength{simm}
+            \coordinate (C0') at (\simm, 0);
+            \draw (C0') node[below] {$\widehat{C_0}$};
+            \draw (A0) -- (I) -- (C0) -- (C0') -- (I);
+            \tkzMarkAngle[size=.4](I,A0,C)
+            \tkzMarkAngle[size=.4](I,C0,B)
+            \tkzMarkAngle[size=.4](C,C0',I)
+            \tkzMarkAngle[size=.4](I,C,A)
+            \tkzMarkAngle[size=.55](La,C,I)
+            \tkzMarkAngle[size=.3](I,C,A)
+            \tkzMarkAngle[size=.45](La,C,I)
+            \tkzDrawPoints(A, B, C, A0, La, Lc, C0, I, C0')
+    \end{tikzpicture}
+    \end{center}
+    Пусть $L_A$ и $L_C$ -- основания биссектрис из точек $A$ и $C$ соответственно. Отметим точку $\widehat{C_0}$, симметричную $C_0$ относительно $AL_A$. Докажем равенство при условии вписанности. В силу вписанности $A_0IC_0B$: $\angle IA_0C=\angle IC_0B$. При этом в силу симметрии $\angle IC_0B=\angle I\widehat{C_0}C$. Также $\angle IC\widehat{C_0}=\angle ICL_A$, так как $CI$ -- биссектриса. Тогда $\triangle IC\widehat{C_0} = \triangle ICA_0$ по двум углам и общей стороне $IC$. То есть $\widehat{C_0}C=A_0C$, а значит $A\widehat{C_0} + \widehat{C_0}C=A\widehat{C_0}+A_0C=AC_0+A_0C=AC$.\bigskip
 
-    \section{Инверсия}
-    \begin{definition}
-        Точки $A$ и $B$ называются симметричными относительно окружности\\ $\omega(O;\,R)$, если $OA\cdot OB=R^2$ и $A$ лежит на луче $OB$.\bigskip
+    Докажем вписанность при условии равенства. В силу симметрии $\angle IC_0B=\angle I\widehat{C_0}C$. $AC=AC_0+A_0C=A\widehat{C_0}+A_0C\Longrightarrow A_0C=C\widehat{C_0}$. Тогда $\triangle IC\widehat{C_0} = \triangle ICA_0$ по двум сторонам и углу, а значит $\angle I\widehat{C_0}C=\angle IA_0C$, то есть $\angle IA_0C=\angle IC_0B$, следовательно, $A_0IC_0B$ -- вписанный.
+\end{proof}
 
-        Для точек, симметричных относительно окружности $\omega(O;\,R)$, выполняются условия:
-        \begin{align*}
-            1.\,\,&\forall X\in \R^2:\,X\neq0\enspace\exists!\,Y:\,X,\,Y \text{ -- симметричны относительно } \omega\\
-            2.\,\,&\text{Если } X \text{ внутри } \omega\text{, то } Y \text{ снаружи и наоборот}\\
-            3.\,\,&\text{Нет точки, симметричной } O\\
-            4.\,\,&\forall C \in \omega:\,C \text{ симметрична сама себе}
-        \end{align*}
-    \end{definition}
+\subsection{Гомотетия}
 
-    \begin{definition}
-        Пусть на плоскости дана окружность $\omega(O;\,R)$. Отображение $\varphi:\,\R^2/\{0\}\longrightarrow \R^2/\{0\}$, при котором точки переходят в симметричные им относительно $\omega$, называется инверсией.
-    \end{definition}
-    \begin{lemma}[Основная лемма]
-        Любые две пары точек, симметричных относительно одной окружности, лежат на одной окружности.
-    \end{lemma}
-    \begin{proof}
-        \hfill
-        \begin{center}
-            \begin{tikzpicture}
-                \coordinate (O) at (0,0);
-                \coordinate (B) at (30:2);
-                \coordinate (B') at (30:4.5);
-                \coordinate (A) at (-20:1.8);
-                \coordinate (A') at (-20:5);
-                \draw (O) node[above left]{$O$};
-                \draw (A) node[below left]{$A$};
-                \draw (A') node[below right]{$\widehat{A}$};
-                \draw (B) node[above left]{$B$};
-                \draw (B') node[above right]{$\widehat{B}$};
-                \draw (135:3) node[above left]{$\omega$};
-                \draw (O) -- (B');
-                \draw (O) -- (A');
-                \draw (A') -- (B');
-                \draw (A) -- (B);
-                \tkzMarkAngle[size=.4](O,B,A)
-                \tkzMarkAngle[size=.4](B',A',O)
-                \tkzMarkAngle[size=.4](O,B',A')
-                \tkzMarkAngle[size=.4](B,A,O)
-                \tkzMarkAngle[size=.3](B,A,O)
-                \tkzMarkAngle[size=.3](O,B',A')
-                \tkzDefCircle[circum](A,A',B)
-                \tkzGetPoint{M} \tkzGetLength{rayon}
-                \draw[dashed] (M) circle(\rayon);
-                \tkzDrawPoints(O, B, B', A, A')
-                \draw (O) circle(3);
-        \end{tikzpicture}
-        \end{center}
-        Пусть $A$ и $\widehat{A}$, $B$ и $\widehat{B}$ -- пары точек, симметричных около окружности $\omega(O;\,R)$. Тогда:
-        $$OA\cdot O\widehat{A}=R^2=OB\cdot O\widehat{B}\Longleftrightarrow \frac{OA}{OB}=\frac{O\widehat{B}}{O\widehat{A}}$$
-        Следовательно, по двум сторонам, а также по общему углу $\triangle AOB \sim \triangle \widehat{B}O\widehat{A}$. Отсюда $\angle ABO=\angle O\widehat{A}\widehat{B}$ и $\angle OAB=\angle O\widehat{B}\widehat{A}$, а значит $\widehat{A}AB\widehat{B}$ -- вписанный, так как сумма его противоположных углов равна $180^{\circ}$.
-    \end{proof}
+\begin{definition}
+    Гомотетия с центром $O$ и коэффициентом $k$ суть преобразование плоскости, при котором $\forall A \in \R^2: H_O^k(A)=A\,':\,\vv{OA}\cdot k = \vv{OA\,'},\,\vv{OA} \upuparrows \vv{OA\,'}$.
+\end{definition}
 
-    \begin{theorem}
-        Прямая, не проходящая через центр инверсии, переходит в окружность, проходящую через центр инверсии.
-    \end{theorem}
-    \begin{proof}
-        \hfill
-        \begin{center}
-            \begin{tikzpicture}
-                \coordinate (O) at (0,0);
-                \coordinate (A) at (15:3);
-                \coordinate (B) at (-80:3);
-                \coordinate (M) at ($(A)!0.5!(B)$);
-                \draw (O) circle(3);
-                \tkzCalcLength(O,M)\tkzGetLength{OM}
-                \coordinate (M') at (-32.5:{9/\OM});
-                \coordinate (D) at ($(B)!1.25!(A)$);
-                \tkzCalcLength(O,D)\tkzGetLength{OD}
-                \def\length{9/(\OD*\OD)}
-                \coordinate (D') at ($(O)!\length!(D)$);
-                \draw (O) -- (D);
-                \draw (O) -- ($(O)!1.3!(M')$);
-                \draw[name path = line1] (M') -- (D');
-                \draw[name path = line2] ($(A)!-0.5!(B)$) -- ($(A)!1.3!(B)$);
-                \draw[name intersections={of=line1 and line2}] (intersection-1) node[left] {$T$};
-                \coordinate (T) at (intersection-1);
-                \draw[dashed] (O) -- (A) -- (M');
-                \draw (D) -- (M');
-                \draw (M) -- (D');
-                \tkzMarkRightAngle(M',A,O)
-                \tkzMarkRightAngle(D,D',M')
-                \tkzMarkRightAngle(D,M,M')
-                \draw (O) node[above left]{$O$};
-                \draw (A) node[right]{$A$};
-                \draw (B) node[below]{$B$};
-                \draw (M) node[left]{$M$};
-                \draw (D) node[above left]{$D$};
-                \draw (M') node[below left]{$\widehat{M}$};
-                \draw (D') node[above left]{$\widehat{D}$};
-                \tkzDefCircle[circum](M,D',D)
-            \tkzGetPoint{K} \tkzGetLength{rayon}
-            \draw[dotted, line width = 0.2mm] (K) circle(\rayon);
-            \tkzDefCircle[circum](A,O,B)
-            \tkzGetPoint{L} \tkzGetLength{rayon}
-            \draw[dotted, line width = 0.2mm] (L) circle(\rayon);
-            \draw ($(B)!-0.2!(A)$) node[above left] {$l$};
-            \tkzMarkSegment[mark=|](B,M)
-            \tkzMarkSegment[mark=|](M,A)
+\setcounter{subsection}{0}
+\begin{definition}
+    Композиция гомотетий $H_O^k$ и $H_P^l$ при $k,\,l\neq 1$ -- это параллельный перенос при $k\cdot l=1$ или $H_Q^{kl}:\,Q \in OP,\, \vv{OQ}\cdot (k-1)=\vv{QP}\cdot \left(1-\dfrac{1}{l}\right)$.
+\end{definition}
+
+\subsection{Инверсия}
+
+\begin{definition}
+    Точки $A$ и $B$ называются симметричными относительно окружности\\ $\omega(O;\,R)$, если $OA\cdot OB=R^2$ и $A$ лежит на луче $OB$.\bigskip
+
+    Для точек, симметричных относительно окружности $\omega(O;\,R)$, выполняются условия:
+    \begin{align*}
+        1.\,\,&\forall X\in \R^2:\,X\neq0\enspace\exists!\,Y:\,X,\,Y \text{ -- симметричны относительно } \omega\\
+        2.\,\,&\text{Если } X \text{ внутри } \omega\text{, то } Y \text{ снаружи и наоборот}\\
+        3.\,\,&\text{Нет точки, симметричной } O\\
+        4.\,\,&\forall C \in \omega:\,C \text{ симметрична сама себе}
+    \end{align*}
+\end{definition}
+
+\begin{definition}
+    Пусть на плоскости дана окружность $\omega(O;\,R)$. Отображение $\varphi:\,\R^2/\{0\}\longrightarrow \R^2/\{0\}$, при котором точки переходят в симметричные им относительно $\omega$, называется инверсией.
+\end{definition}
+\begin{lemma}[Основная лемма]
+    Любые две пары точек, симметричных относительно одной окружности, лежат на одной окружности.
+\end{lemma}
+\begin{proof}
+    \hfill
+    \begin{center}
+        \begin{tikzpicture}[scale=.8]
+            \coordinate (O) at (0,0);
+            \coordinate (B) at (30:2);
+            \coordinate (B') at (30:4.5);
+            \coordinate (A) at (-20:1.8);
+            \coordinate (A') at (-20:5);
+            \draw (O) node[above left]{$O$};
+            \draw (A) node[below left]{$A$};
+            \draw (A') node[below right]{$\widehat{A}$};
+            \draw (B) node[above left]{$B$};
+            \draw (B') node[above right]{$\widehat{B}$};
             \draw (135:3) node[above left]{$\omega$};
-            \tkzDrawPoints(O, B, M, A, M', D, D', T)
+            \draw (O) -- (B');
+            \draw (O) -- (A');
+            \draw (A') -- (B');
+            \draw (A) -- (B);
+            \tkzMarkAngle[size=.4](O,B,A)
+            \tkzMarkAngle[size=.4](B',A',O)
+            \tkzMarkAngle[size=.4](O,B',A')
+            \tkzMarkAngle[size=.4](B,A,O)
+            \tkzMarkAngle[size=.3](B,A,O)
+            \tkzMarkAngle[size=.3](O,B',A')
+            \tkzDefCircle[circum](A,A',B)
+            \tkzGetPoint{M} \tkzGetLength{rayon}
+            \draw[dashed] (M) circle(\rayon);
+            \tkzDrawPoints(O, B, B', A, A')
+            \draw (O) circle(3);
+    \end{tikzpicture}
+    \end{center}
+    Пусть $A$ и $\widehat{A}$, $B$ и $\widehat{B}$ -- пары точек, симметричных около окружности $\omega(O;\,R)$. Тогда:
+    $$OA\cdot O\widehat{A}=R^2=OB\cdot O\widehat{B}\Longleftrightarrow \frac{OA}{OB}=\frac{O\widehat{B}}{O\widehat{A}}$$
+    Следовательно, по двум сторонам, а также по общему углу $\triangle AOB \sim \triangle \widehat{B}O\widehat{A}$. Отсюда $\angle ABO=\angle O\widehat{A}\widehat{B}$ и $\angle OAB=\angle O\widehat{B}\widehat{A}$, а значит $\widehat{A}AB\widehat{B}$ -- вписанный, так как сумма его противоположных углов равна $180^{\circ}$.
+\end{proof}
+
+\begin{theorem}
+    Прямая, не проходящая через центр инверсии, переходит в окружность, проходящую через центр инверсии.
+\end{theorem}
+\begin{proof}
+    \hfill
+    \begin{center}
+        \begin{tikzpicture}
+            \coordinate (O) at (0,0);
+            \coordinate (A) at (15:3);
+            \coordinate (B) at (-80:3);
+            \coordinate (M) at ($(A)!0.5!(B)$);
+            \draw (O) circle(3);
+            \tkzCalcLength(O,M)\tkzGetLength{OM}
+            \coordinate (M') at (-32.5:{9/\OM});
+            \coordinate (D) at ($(B)!1.25!(A)$);
+            \tkzCalcLength(O,D)\tkzGetLength{OD}
+            \def\length{9/(\OD*\OD)}
+            \coordinate (D') at ($(O)!\length!(D)$);
+            \draw (O) -- (D);
+            \draw (O) -- ($(O)!1.3!(M')$);
+            \draw[name path = line1] (M') -- (D');
+            \draw[name path = line2] ($(A)!-0.5!(B)$) -- ($(A)!1.3!(B)$);
+            \draw[name intersections={of=line1 and line2}] (intersection-1) node[left] {$T$};
+            \coordinate (T) at (intersection-1);
+            \draw[dashed] (O) -- (A) -- (M');
+            \draw (D) -- (M');
+            \draw (M) -- (D');
+            \tkzMarkRightAngle(M',A,O)
+            \tkzMarkRightAngle(D,D',M')
+            \tkzMarkRightAngle(D,M,M')
+            \draw (O) node[above left]{$O$};
+            \draw (A) node[right]{$A$};
+            \draw (B) node[below]{$B$};
+            \draw (M) node[left]{$M$};
+            \draw (D) node[above left]{$D$};
+            \draw (M') node[below left]{$\widehat{M}$};
+            \draw (D') node[above left]{$\widehat{D}$};
+            \tkzDefCircle[circum](M,D',D)
+        \tkzGetPoint{K} \tkzGetLength{rayon}
+        \draw[dotted, line width = 0.2mm] (K) circle(\rayon);
+        \tkzDefCircle[circum](A,O,B)
+        \tkzGetPoint{L} \tkzGetLength{rayon}
+        \draw[dotted, line width = 0.2mm] (L) circle(\rayon);
+        \draw ($(B)!-0.2!(A)$) node[above left] {$l$};
+        \tkzMarkSegment[mark=|](B,M)
+        \tkzMarkSegment[mark=|](M,A)
+        \draw (135:3) node[above left]{$\omega$};
+        \tkzDrawPoints(O, B, M, A, M', D, D', T)
+    \end{tikzpicture}
+    \end{center}
+    Пусть $M$ -- основание серединного перпенидкуляра, опущенного из $O$ на $l$, $D$ -- произвольная точка вне окружности, а $\widehat{M}$ и $\widehat{D}$ -- точки, симметричные $M$ и $D$ соответственно относительно $\omega$, $T$ -- точка пересечения $l$ и $\widehat{D}\widehat{M}$. Из построения инверсии, $AM$ -- касательная к $\omega$. Тогда $\angle OA\widehat{M}=90^{\circ}$. По основной лемме $D\widehat{D}M\widehat{M}$ -- вписанный. Тогда $\angle D\widehat{D}\widehat{M}=\angle DM\widehat{M}=90^{\circ}=\angle OA\widehat{M}$. А значит $O\widehat{D}A\widehat{M}$ -- вписанный по признаку.
+\end{proof}
+\begin{theorem}
+    Если при инверсии $\varphi$ верно: $\varphi(\omega_1)=\omega_2$, где $\omega_i$ -- это  окружность, то центр данной инверсии суть центр гомотетии, переводящей $\omega_1$ в $\omega_2$.
+\end{theorem}
+\begin{proof}
+    \hfill
+    \begin{center}
+        \begin{tikzpicture}[scale=0.8]
+            \coordinate (O) at (0,0);
+            \coordinate (A) at (125:1.5);
+            \coordinate (B) at (150:1.5);
+            \coordinate (A') at (125:6);
+            \coordinate (B') at (150:6);
+            \coordinate (C) at (140:4);
+            \coordinate (C') at (140:2.25);
+            \draw[dashed] (O) circle(3);
+            \draw (B') -- (O) -- (A');
+            \draw (B') node[left] {$\varphi(B)$};
+            \draw (A') node[above] {$\varphi(A)$};
+            \draw (A) node[right] {$A$};
+            \draw (B) node[below] {$B$};
+            \draw (O) node[above right] {$O$};
+            \draw (137.5:6.2) node[above left] {$\omega_2$};
+            \draw (137.5:4) node[above left] {$\omega_1$};
+            \draw (O) -- (0:3);
+            \tkzDefCircle[circum](A,B,C)
+        \tkzGetPoint{K} \tkzGetLength{rayon}
+        \draw (K) circle(\rayon);
+        \tkzDefCircle[circum](A',B',C')
+        \tkzGetPoint{L} \tkzGetLength{rayon}
+        \draw (L) circle(\rayon);
+        \draw (0:1.5) node[below] {$R$};
+        \tkzDrawPoints(A, B, A', B', O)
+    \end{tikzpicture}
+    \end{center}
+    Возьмем две произвольные точки $A$ и $B$, лежащие на $\omega_1$ и построим их образы при инверсии $\varphi$: $\varphi(A)$ и $\varphi(B)$ соответственно. По определению инверсии $OA\cdot O\varphi(A)=R^2=OB\cdot O\varphi(B)\Longrightarrow \dfrac{OA}{OB}=\dfrac{O\varphi(A)}{O\varphi(B)}$, а значит $O$ -- центр гомотетии, переводящей $\omega_1$ в $\omega_2$.
+\end{proof}
+
+\subsection{Проективная геометрия}
+
+\begin{definition}
+    Проективной плоскостью называется множество, элементы которого -- точки и прямые, причём для них выполнены аксиомы:
+    \begin{enumerate}
+        \item Для любых двух точек существует прямая, проходящая через них.
+        \item Любые две различные прямые пересекаются по одной точке.
+        \item Существуют четыре точки, никакие три из которых не лежат на одной прямой.
+        \item (Принцип двойственности) При замене в утверждениях проективной геометрии точек на прямые и наоборот, они останутся верными.
+    \end{enumerate}
+\end{definition}
+\begin{definition}
+    Двойным отношением точек $A,\,B,\,C,\,D$, лежащих на одной прямой, называется число:
+    $$(A,B;C,D)=\frac{\vv{AC}}{\vv{CB}}:\frac{\vv{AD}}{\vv{DB}}$$
+\end{definition}
+\begin{definition}
+    Гармонической четвёркой называется четыре точки, двойной отношение которых равно $-1$.
+\end{definition}
+\begin{definition}
+    Двойным отношением прямых $a,\,b,\,c,\,d$, пересекающихся в одной точке, называется число:
+    $$(a,b;c,d)=\frac{\sin\angle(\vv{a};\vv{c})}{\sin\angle(\vv{c};\vv{b})}:\frac{\sin\angle(\vv{a};\vv{d})}{\sin\angle(\vv{d};\vv{b})}$$
+\end{definition}
+\begin{statement}
+    Пусть прямые $a,\,b,\,c,\,d$, пересекающиеся в точке $O$, пересекают прямую $l$ в точках $A,\,B,\,C,\,D$ соответственно, тогда:
+    $$(a,b;c,d)=(A,B;C,D)$$
+\end{statement}
+\begin{proof}
+    \hfill
+    \begin{center}
+        \begin{tikzpicture}
+            \tkzDefPoints{0/0/A,1.5/0/B,4/0/C,6/0/D,3.5/4/O}
+            \draw ($(A)!-.2!(O)$) -- ($(A)!1.2!(O)$);
+            \draw ($(B)!-.2!(O)$) -- ($(B)!1.2!(O)$);
+            \draw ($(C)!-.2!(O)$) -- ($(C)!1.2!(O)$);
+            \draw ($(D)!-.2!(O)$) -- ($(D)!1.2!(O)$);
+            \draw ($(A)!-.2!(D)$) -- ($(A)!1.2!(D)$);
+            \tkzLabelSegment[above left](A,O){$a$}
+            \tkzLabelSegment[below right](B,O){$b$}
+            \tkzLabelSegment[below left](C,O){$c$}
+            \tkzLabelSegment[above right](D,O){$d$}
+            \tkzLabelPoint[left](O){$O$}
+            \tkzLabelPoint[above left](A){$A$}
+            \tkzLabelPoint[above left](B){$B$}
+            \tkzLabelPoint[above right](C){$C$}
+            \tkzLabelPoint[above right](D){$D$}
+            \tkzDrawPoints(A,B,C,D,O)
         \end{tikzpicture}
-        \end{center}
-        Пусть $M$ -- основание серединного перпенидкуляра, опущенного из $O$ на $l$, $D$ -- произвольная точка вне окружности, а $\widehat{M}$ и $\widehat{D}$ -- точки, симметричные $M$ и $D$ соответственно относительно $\omega$, $T$ -- точка пересечения $l$ и $\widehat{D}\widehat{M}$. Из построения инверсии, $AM$ -- касательная к $\omega$. Тогда $\angle OA\widehat{M}=90^{\circ}$. По основной лемме $D\widehat{D}M\widehat{M}$ -- вписанный. Тогда $\angle D\widehat{D}\widehat{M}=\angle DM\widehat{M}=90^{\circ}=\angle OA\widehat{M}$. А значит $O\widehat{D}A\widehat{M}$ -- вписанный по признаку.
-    \end{proof}
-    \begin{theorem}
-        Если при инверсии $\varphi$ верно: $\varphi(\omega_1)=\omega_2$, где $\omega_i$ -- это  окружность, то центр данной инверсии суть центр гомотетии, переводящей $\omega_1$ в $\omega_2$.
-    \end{theorem}
-    \begin{proof}
-        \hfill
-        \begin{center}
-            \begin{tikzpicture}[scale=0.8]
-                \coordinate (O) at (0,0);
-                \coordinate (A) at (125:1.5);
-                \coordinate (B) at (150:1.5);
-                \coordinate (A') at (125:6);
-                \coordinate (B') at (150:6);
-                \coordinate (C) at (140:4);
-                \coordinate (C') at (140:2.25);
-                \draw[dashed] (O) circle(3);
-                \draw (B') -- (O) -- (A');
-                \draw (B') node[left] {$\varphi(B)$};
-                \draw (A') node[above] {$\varphi(A)$};
-                \draw (A) node[right] {$A$};
-                \draw (B) node[below] {$B$};
-                \draw (O) node[above right] {$O$};
-                \draw (137.5:6.2) node[above left] {$\omega_2$};
-                \draw (137.5:4) node[above left] {$\omega_1$};
-                \draw (O) -- (0:3);
-                \tkzDefCircle[circum](A,B,C)
-            \tkzGetPoint{K} \tkzGetLength{rayon}
-            \draw (K) circle(\rayon);
-            \tkzDefCircle[circum](A',B',C')
-            \tkzGetPoint{L} \tkzGetLength{rayon}
-            \draw (L) circle(\rayon);
-            \draw (0:1.5) node[below] {$R$};
-            \tkzDrawPoints(A, B, A', B', O)
+    \end{center}
+    \begin{multline*}
+        |(A,B;C,D)|=\left|\frac{\vv{AC}}{\vv{CB}}:\frac{\vv{AD}}{\vv{DB}}\right|=\frac{S_{AOC}}{S_{COB}}:\frac{S_{AOD}}{S_{DOB}}=\\=\frac{OC\cdot OA\cdot \sin\angle(\vv{a};\vv{c})}{OC\cdot OB\cdot \sin\angle(\vv{b};\vv{c})}:\frac{OA\cdot OD\cdot \sin\angle(\vv{a};\vv{d})}{OD\cdot OB\cdot \sin\angle(\vv{b};\vv{d})}=(a,b;c,d)
+    \end{multline*}
+\end{proof}
+\begin{lemma}[Свойство двойных отношений]
+    Двойные отношения сохраняются при центральной проекции:
+    \begin{multicols}{2}
+        \begin{itemize}[itemsep=.1pt]
+            \item Прямой на прямую.
+            \item Прямой на окружность из точки на этой окружности.
+            \item Окружности на прямую из точки на этой окружности.
+            \item Окружности на окружность из точки их пересечения.
+        \end{itemize}
+    \end{multicols}
+\end{lemma}
+\begin{theorem}[Паппа]
+    Пусть на двух прямых взяты точки $A$, $B$, $C$ и $A_1$, $B_1$, $C_1$ соответственно. Пусть прямые $AB_1$, $CA_1$ и $BC_1$ пересекаются с прямыми $A_1B$, $C_1A$ и $B_1C$ в точках $D$, $E$ и $F$ соответственно. Тогда $D$, $E$ и $F$ лежат на одной прямой.
+\end{theorem}
+\begin{proof}
+    \hfill
+    \begin{center}
+        \begin{tikzpicture}
+            \tkzDefPoints{0/0/X,7/0/C1,5/4/C}
+            \tkzDefPointWith[linear,K=.3](X,C1) \tkzGetPoint{A1}
+            \tkzDefPointWith[linear,K=.7](X,C1) \tkzGetPoint{B1}
+            \tkzDefPointWith[linear,K=.45](X,C) \tkzGetPoint{A}
+            \tkzDefPointWith[linear,K=.75](X,C) \tkzGetPoint{B}
+            \tkzInterLL(A,B1)(A1,B) \tkzGetPoint{D}
+            \tkzInterLL(C,B1)(C1,B) \tkzGetPoint{F}
+            \tkzInterLL(A,C1)(A1,C) \tkzGetPoint{E}
+            \tkzInterLL(A1,B)(C,B1) \tkzGetPoint{Y}
+            \tkzInterLL(A1,C)(A,B1) \tkzGetPoint{Z}
+            \draw[dotted, line width=.2mm] (A1) -- (Y) -- (B1) -- (A) -- (C1) -- (B);
+            \draw[dotted, line width=.2mm] (A1) -- (C);
+            \tkzDrawSegment[add=0 and .15](X,C)
+            \tkzDrawSegment[add=0 and .1](X,C1)
+            \tkzDrawSegment[add=.5 and .5](D,F)
+            \tkzLabelPoints[above left](A,B)
+            \tkzLabelPoint[left](X){$X$}
+            \tkzLabelPoint[above](Y){$Y$}
+            \tkzLabelPoint[below](Z){$Z$}
+            \tkzLabelPoint[above](E){$E$}
+            \tkzLabelPoint[above left=-.1](D){$D$}
+            \tkzLabelPoint[above left=-.1](C){$C$}
+            \tkzLabelPoint[above right](F){$F$}
+            \tkzLabelPoint[below](A1){$A_1$}
+            \tkzLabelPoint[below](B1){$B_1$}
+            \tkzLabelPoint[below](C1){$C_1$}
+            \tkzDrawPoints(A,B,C,D,E,F,A1,B1,C1,X,Y,Z)
         \end{tikzpicture}
-        \end{center}
-        Возьмем две произвольные точки $A$ и $B$, лежащие на $\omega_1$ и построим их образы при инверсии $\varphi$: $\varphi(A)$ и $\varphi(B)$ соответственно. По определению инверсии $OA\cdot O\varphi(A)=R^2=OB\cdot O\varphi(B)\Longrightarrow \dfrac{OA}{OB}=\dfrac{O\varphi(A)}{O\varphi(B)}$, а значит $O$ -- центр гомотетии, переводящей $\omega_1$ в $\omega_2$.
-    \end{proof}
-    \section{Полезные факты}
-    \begin{lemma}
-        Пусть $C_0$ и $A_0$ -- произвольные точки на сторонах $AB$ и $BC$ треугольника $ABC$, $B_1$ -- середина дуги $ABC$, описанной около $\triangle ABC$ окружности, тогда $BB_1C_0A_0$ является вписанным тогда и только тогда, когда $AC_0=CA_0$. 
-    \end{lemma}
-    \begin{proof}
-        \hfill
-        \begin{center}
-            \begin{tikzpicture}[scale=0.8]
-                \coordinate (A) at (-140:4);
-                \coordinate (B) at (55:4);
-                \coordinate (C) at (-40:4);
-                \coordinate (B1) at (90:4);
-                \coordinate (A0) at ($(B)!0.3!(C)$);
-                \tkzDefCircle[circum](A0,B1,B)
-            \tkzGetPoint{K} \tkzGetLength{rayon}
-            \draw[name path = line1] (K) circle(\rayon);
-                \draw (B) -- (C) -- (A) -- cycle;
-                \draw[name path = line2] (A) -- ($(A)!0.9!(B)$);
-                \draw[name intersections={of=line1 and line2}] (intersection-1) node[below] {$C_0$};
-                \coordinate (C0) at (intersection-1);
-                \draw (0,0) circle(4);
-                \draw[dotted, line width = 0.2mm] (B1) -- (C0) -- (A0) -- (B1) -- (B);
-                \draw[dashed] (A) -- (B1) -- (C);
-                \draw[dashed] (B1) -- (-90:4);
-                \coordinate (Mb) at ($(A)!0.5!(C)$);
-                \draw (A) node[below left] {$A$};
+    \end{center}
+    Пусть $\hat{E}=DF\cap AC_1$, $X=AB\cap A_1B_1$, $Y=A_1B\cap B_1C$, $Z=A_1C\cap AB_1$. Рассотрим центральные проекции: из $A$ прямой $A_1C$ на $A_1C_1$: $(A_1,Z;E,C)=(A_1,B_1;C_1,X)$; из $B$ прямой $A_1B$ на $B_1C$: $(A_1,B_1;C_1,X)=(Y,B_1;F,C)$; из $D$ прямой $B_1Y$ на $A_1C$: $(Y,B_1;F,C)=(A_1,Z;\hat{E},C)$, то есть $(A_1,Z;E,C)=(A_1,Z;\hat{E},C)\Longrightarrow\hat{E}\equiv E$, а значит $D$, $E$ и $F$ коллинеарны.
+\end{proof}
+
+\section{Стереометрия}
+
+\subsection{Введение}
+
+\begin{axiom}
+    В $\R^3$ существуют плоскости, причем для любой из них выполняются аксиомы планиметрии.
+\end{axiom}
+\begin{axiom}[Аксиома плоскости]
+    Через любые три неколлинеарные точки пространства проходит плоскость, при чем только одна.
+\end{axiom}
+\begin{axiom}
+    Прямая, проходящая через две точки плоскости полностью лежит в данной плоскости.
+\end{axiom}
+\begin{axiom}[Аксиома пересечения плоскостей]
+    Если две плоскости имеют общую точку, то они пересекаются по прямой:
+    $$M \in \alpha;\,M \in \beta \Longrightarrow \exists\,l:\,l\subset \alpha;\,l\subset \beta$$
+\end{axiom}
+\begin{axiom}[Аксиома расстояния]
+    В любой из плоскостей, проходящих через две различные точки расстояние между этими точками одно и то же:
+    $$A \neq B;\,\forall\,\alpha:A,\,B\in\alpha\enspace\rho_\alpha(A;B)=\text{const}$$
+\end{axiom}
+\begin{definition}
+    Прямая и плоскость называются пересекающимися, если они имеют одну общую точку.
+\end{definition}
+\begin{definition}
+    Две плоскости называются пересекающимися, если они имеют одну общую прямую.
+\end{definition}
+\begin{definition}
+    Прямые, лежащие в одной плоскости и не имеющие общих точек называются параллельными.
+\end{definition}
+
+\subsection{Следствия из аксиом}
+
+\begin{lemma}
+    Через прямую и точку, не лежащую на ней, проходит плоскость, при том только одна:
+    $$\forall\,A;\,\forall\,l:\,A\notin l\enspace\exists!\,\alpha:\,l\subset\alpha;\,A\in\alpha$$
+\end{lemma}
+
+\begin{proof}
+    \hfill
+    \begin{center}
+        \begin{tikzpicture}[z={(0:10mm)},x={(50:5mm)}]
+            \begin{scope}[canvas is zy plane at x=0,fill=blue]
+            \end{scope}
+            \begin{scope}[canvas is zx plane at y=0,fill=red]
+                \coordinate (A) at (7,-1);
+                \coordinate (D) at (0,-2);
+                \coordinate (E) at (6,3);
+                \coordinate (B) at ($(D)!0.25!(E)$);
+                \coordinate (C) at ($(D)!0.75!(E)$);
+                \draw ($(D)!0.5!(E)$) node[above] {$l$};
+                \draw (A) node[above] {$A$};
+                \draw (B) node[above] {$B$};
+                \draw (C) node[above] {$C$};
+                \draw[opacity=0.3] (0,-3) grid (8,3);
+                \draw (D) -- (E);
+            \end{scope}
+            \tkzDrawPoints(A, B, C)
+            \end{tikzpicture}
+    \end{center}
+    Рассмотрим $B,\,C\in l:\,l\subset\alpha\Longrightarrow B,\,C\in\alpha.$ По аксиоме плоскости $\exists!\,\alpha:\,A,\,B,\,C\in\alpha;\,l\subset\alpha.$
+\end{proof}
+
+\begin{lemma}\label{Пересекающиеся прямые и плоскость}
+    Через две пересекающиеся прямые проходит плоскость, при том только одна:
+    $$a\cap b = C\Longrightarrow\exists!\,\alpha:\,a,\,b\subset\alpha$$
+\end{lemma}
+\begin{lemma}
+    Через две параллельные прямые проходит плоскость, при том только одна:
+    $$a\parallel b\Longrightarrow\exists!\,\alpha:\,a,\,b\subset\alpha$$
+\end{lemma}
+
+\subsection{Скрещивающиеся прямые}
+
+\begin{definition}
+    Две прямые называются скрещивающимися, если у них нет общих точек и они не параллельны.
+\end{definition}
+
+\begin{theorem}[Признак скрещивающихся]
+    Если одна прямая лежит в плоскости, а другая пересекают данную плоскость в точке, не лежащей на первой прямой, данные прямые скрещиваются:
+    $$a\subset\alpha,\,b\cap\alpha=M:\,M\notin a\Longrightarrow a\dotdiv b$$
+\end{theorem}
+\begin{proof}
+    \hfill
+    \begin{center}
+        \begin{tikzpicture}[z={(0:10mm)},x={(40:5mm)}]
+            \begin{scope}[canvas is zy plane at x=0,fill=blue]
+                \coordinate (M) at (3,0);
+                \draw (M) node[above right] {$M$};
+                \draw ($(0,1.5)!0.5!(3,0)$) node[above] {$b$};
+                \draw (0,1.5) -- (3,0);
+                \draw[dashed] (0,1.5) -- ($(0,1.5)!1.65!(3,0)$);
+                \draw ($(0,1.5)!1.65!(3,0)$) -- ($(0,1.5)!2!(3,0)$);
+            \end{scope}
+            \begin{scope}[canvas is zx plane at y=0,fill=red]
+                \draw ($(5,-3)!0.5!(6,3)$) node[above left] {$a$};
+                \draw (5,-3) -- (6,3);
+                \draw[opacity=0.2] (0,-3) grid (8,3);
+            \end{scope}
+            \tkzDrawPoint(M)
+            \end{tikzpicture}
+    \end{center}
+    Пусть $a$ и $b$ не скрещиваются. Тогда $a\parallel b$ или $a\cap b\neq\varnothing:
+    $
+    \begin{align*}
+        1.\,\,&a\parallel b\Longrightarrow\exists!\,\beta:\,a,\,b\subset\beta\Longrightarrow M\in\beta,\text{ при этом }a\subset\alpha\text{ (по условию); }\\
+        &a\subset\beta\text{ (по предложению)}\Longrightarrow \alpha\cap\beta=a,\,M\in\alpha,\,M\in\beta\Longrightarrow M\in a,\text{ противоречие.}\\
+        2.\,\,&a\cap\beta\neq\varnothing\Longrightarrow\exists\,k:\,k\in a,\,k\in b\Longrightarrow\exists\,\beta:\,a,\,b\subset\beta\Longrightarrow M\in\beta,\text{ при этом }a\subset\alpha\text{ (по условию); }\\
+        &a\subset\beta\text{ (по предложению)}\Longrightarrow \alpha\cap\beta=a,\,M\in\alpha,\,M\in\beta\Longrightarrow M\in a,\text{ противоречие.}
+    \end{align*}
+\end{proof}
+\begin{theorem}
+    Пусть $a\parallel b;\,a\cap\alpha\neq\varnothing,$ тогда $b\cap\alpha\neq\varnothing$.
+\end{theorem}
+\begin{proof}
+    \hfill
+    \begin{center}
+        \begin{tikzpicture}[z={(0:10mm)},x={(40:5mm)}]
+            \begin{scope}[canvas is zy plane at x=0,fill=blue]
+                \coordinate (A) at (2,0);
+                \draw (A) node[above right] {$A$};
+                \draw (-1,1.5) -- (A);
+                \draw ($(-1,1.5)!0.35!(A)$) node[above right] {$a$};
+                \draw[dashed] (-1,1.5) -- ($(-1,1.5)!1.65!(A)$);
+                \draw ($(-1,1.5)!1.65!(A)$) -- ($(-1,1.5)!2!(A)$);
+            \end{scope}
+            \begin{scope}[canvas is zy plane at x=1,fill=blue]
+                \coordinate (B) at (6,0);
                 \draw (B) node[above right] {$B$};
-                \draw (C) node[below right] {$C$};
-                \draw (Mb) node[below right] {$M_b$};
-                \draw (A0) node[below right] {$A_0$};
-                \draw (B1) node[above] {$B_1$};
-                \tkzMarkRightAngle(B1,Mb,A)
-                \tkzMarkSegment[mark=|](A,C0)
-                \tkzMarkSegment[mark=|](C,A0)
-                \tkzDrawPoints(A, B, C, B1, A0, C0, Mb)
-        \end{tikzpicture}
-        \end{center}
-        Пусть $AC_0=CA_0$, докажем вписанность $BB_1C_0A_0$. Опустим перпендикуляр с основанием $M_b$ из $B_1$ на $AC$, тогда в силу того, что $B_1$ -- середина дуги $ABC$, $B_1M_b$ -- серединный перпендикуляр к $AC$. Тогда $AB_1=B_1C$. Рассмотрим $\triangle AB_1C_0$ и $\triangle CB_1A_0$: $\angle B_1AB=\angle B_1CB$, так как они опираются на одну дугу $B_1B$, при этом $AC_0=CA_0$ по условию и $AB_1=B_1C$. То есть $\triangle AB_1C_0=\triangle CB_1A_0$, а значит равны их внешние углы: $\angle B_1C_0B=\angle B_1A_0B$, тогда $BB_1C_0A_0$ -- вписанный по признаку.\bigskip
+                \draw (3,1.5) -- (B);
+                \draw ($(3,1.5)!0.35!(B)$) node[above right] {$b$};
+                \draw[dashed] (3,1.5) -- ($(3,1.5)!1.65!(B)$);
+                \draw ($(3,1.5)!1.4!(B)$) -- ($(3,1.5)!2!(B)$);
+            \end{scope}
+            \begin{scope}[canvas is zx plane at y=0,fill=red]
+                \draw ($(2,0)!-.5!(6,1)$) -- ($(2,0)!1.5!(6,1)$);
+                \draw ($(2,0)!0.5!(6,1)$) node[above] {$l$};
+                \draw[opacity=0.2] (0,-3) grid (8,3);
+            \end{scope}
+            \tkzDrawPoints(A, B)
+            \end{tikzpicture}
+    \end{center}
+    $$a\parallel b\Longrightarrow\exists!\,\beta:\,a,\,b\subset\beta,\,a\cap\alpha=A\Longrightarrow A\in\beta\Longrightarrow\exists\,l:\,l=\alpha\cap\beta$$
+    $$l\cap a=A,\,a\parallel\beta\Longrightarrow l\cap\beta=B:\,B\in b,\,B\in l\Longrightarrow b\cap\alpha=B.$$
+\end{proof}
 
-        Докажем, что $AC_0=CA_0$ при условии вписанности $BB_1C_0A_0$. Аналогично первому доказательству, $\angle B_1AB=\angle B_1CB$ и в силу вписанности $\angle B_1C_0B=\angle B_1A_0B$, при этом $AB_1=B_1C$, а значит $\triangle AB_1C_0=\triangle CB_1A_0$ по двум углам и стороне, то есть $AC_0=CA_0$.
-    \end{proof}
-    \begin{lemma}
-        Пусть $A_0$ и $C_0$ -- произвольные точки на $BC$ и $AB$ треугольника $ABC$ соответственно. Инцентр $\triangle ABC$ лежит на окружности, описанной около $\triangle A_0BC_0$ тогда и только тогда, когда $AC_0+CA_0=AC$.
-    \end{lemma}
-    \begin{proof}
-        \hfill
-        \begin{center}
-            \begin{tikzpicture}[scale=0.9]
-                \coordinate (A) at (0,0);
-                \coordinate (B) at (5.5,6);
-                \coordinate (C) at (8,0);
-                \coordinate (A0) at ($(B)!0.35!(C)$);
-                \tkzDefLine[bisector](B,A,C)\tkzGetPoint{a}
-                \path[name path = line1] ($(A)!0.2!(a)$) -- ($(A)!1.2!(a)$);
-                \draw[name path = line2] (A) -- (B) -- (C) -- cycle;
-                \draw[name intersections={of=line1 and line2}] (intersection-1) node[right] {$L_A$};
-                \coordinate (La) at (intersection-1);
-                \tkzDefLine[bisector](A,C,B)\tkzGetPoint{c}
-                \path[name path = line3] ($(C)!0.2!(c)$) -- ($(C)!1.5!(c)$);
-                \draw[name intersections={of=line3 and line2}] (intersection-1) node[above left] {$L_C$};
-                \coordinate (Lc) at (intersection-1);
-                \draw[name path = line4, dashed] (A) -- (La);
-                \draw[name path = line5, dashed] (C) -- (Lc);
-                \draw[name intersections={of=line4 and line5}] (intersection-1) node[below] {$I$};
-                \coordinate (I) at (intersection-1);
-                \tkzDefCircle[circum](A0,I,B)
-                \tkzGetPoint{O} \tkzGetLength{rayon}
-                \draw[name path = line6] (O) circle(\rayon);
-                \path[name path = line7] (A) -- ($(A)!0.9!(B)$);
-                \draw[name intersections={of=line6 and line7}] (intersection-1) node[left] {$C_0$};
-                \coordinate (C0) at (intersection-1);
-                \draw (A) node[below left] {$A$};
-                \draw (B) node[above right] {$B$};
-                \draw (C) node[below right] {$C$};
-                \draw (A0) node[right] {$A_0$};
-                \tkzCalcLength(A,C0)\tkzGetLength{simm}
-                \coordinate (C0') at (\simm, 0);
-                \draw (C0') node[below] {$\widehat{C_0}$};
-                \draw (A0) -- (I) -- (C0) -- (C0') -- (I);
-                \tkzMarkAngle[size=.4](I,A0,C)
-                \tkzMarkAngle[size=.4](I,C0,B)
-                \tkzMarkAngle[size=.4](C,C0',I)
-                \tkzMarkAngle[size=.4](I,C,A)
-                \tkzMarkAngle[size=.55](La,C,I)
-                \tkzMarkAngle[size=.3](I,C,A)
-                \tkzMarkAngle[size=.45](La,C,I)
-                \tkzDrawPoints(A, B, C, A0, La, Lc, C0, I, C0')
-        \end{tikzpicture}
-        \end{center}
-        Пусть $L_A$ и $L_C$ -- основания биссектрис из точек $A$ и $C$ соответственно. Отметим точку $\widehat{C_0}$, симметричную $C_0$ относительно $AL_A$. Докажем равенство при условии вписанности. В силу вписанности $A_0IC_0B$: $\angle IA_0C=\angle IC_0B$. При этом в силу симметрии $\angle IC_0B=\angle I\widehat{C_0}C$. Также $\angle IC\widehat{C_0}=\angle ICL_A$, так как $CI$ -- биссектриса. Тогда $\triangle IC\widehat{C_0} = \triangle ICA_0$ по двум углам и общей стороне $IC$. То есть $\widehat{C_0}C=A_0C$, а значит $A\widehat{C_0} + \widehat{C_0}C=A\widehat{C_0}+A_0C=AC_0+A_0C=AC$.\bigskip
+\subsection{Параллельность прямой и плоскости}
 
-        Докажем вписанность при условии равенства. В силу симметрии $\angle IC_0B=\angle I\widehat{C_0}C$. $AC=AC_0+A_0C=A\widehat{C_0}+A_0C\Longrightarrow A_0C=C\widehat{C_0}$. Тогда $\triangle IC\widehat{C_0} = \triangle ICA_0$ по двум сторонам и углу, а значит $\angle I\widehat{C_0}C=\angle IA_0C$, то есть $\angle IA_0C=\angle IC_0B$, следовательно, $A_0IC_0B$ -- вписанный.
-    \end{proof}
+\begin{definition}
+    Прямая и плоскость называются параллельными, если они не имеют общих точек.
+\end{definition}
 
-    \section{Стереометрия}
+\begin{theorem}[Признак параллельности прямой и плоскости]
+    Если прямая, не лежащая в плоскости, параллельна какой-либо прямой, лежащей в этой плоскости, то эти прямая и плоскость параллельны:
+    $$a\subset\alpha,\,b \not\subset \alpha,\,a\parallel b\Longrightarrow \alpha\parallel b$$
+\end{theorem}
 
-    \subsection{Введение}
-    
-    \begin{axiom}
-        В $\R^3$ существуют плоскости, причем для любой из них выполняются аксиомы планиметрии.
-    \end{axiom}
-    \begin{axiom}[Аксиома плоскости]
-        Через любые три неколлинеарные точки пространства проходит плоскость, при чем только одна.
-    \end{axiom}
-    \begin{axiom}
-        Прямая, проходящая через две точки плоскости полностью лежит в данной плоскости.
-    \end{axiom}
-    \begin{axiom}[Аксиома пересечения плоскостей]
-        Если две плоскости имеют общую точку, то они пересекаются по прямой:
-        $$M \in \alpha;\,M \in \beta \Longrightarrow \exists\,l:\,l\subset \alpha;\,l\subset \beta$$
-    \end{axiom}
-    \begin{axiom}[Аксиома расстояния]
-        В любой из плоскостей, проходящих через две различные точки расстояние между этими точками одно и то же:
-        $$A \neq B;\,\forall\,\alpha:A,\,B\in\alpha\enspace\rho_\alpha(A;B)=\text{const}$$
-    \end{axiom}
-    \begin{definition}
-        Прямая и плоскость называются пересекающимися, если они имеют одну общую точку.
-    \end{definition}
-    \begin{definition}
-        Две плоскости называются пересекающимися, если они имеют одну общую прямую.
-    \end{definition}
-    \begin{definition}
-        Прямые, лежащие в одной плоскости и не имеющие общих точек называются параллельными.
-    \end{definition}
-    
-    \subsection{Следствия из аксиом}
-    
-    \begin{lemma}
-        Через прямую и точку, не лежащую на ней, проходит плоскость, при том только одна:
-        $$\forall\,A;\,\forall\,l:\,A\notin l\enspace\exists!\,\alpha:\,l\subset\alpha;\,A\in\alpha$$
-    \end{lemma}
-    
-    \begin{proof}
-        \hfill
-        \begin{center}
-            \begin{tikzpicture}[z={(0:10mm)},x={(50:5mm)}]
-                \begin{scope}[canvas is zy plane at x=0,fill=blue]
-                \end{scope}
-                \begin{scope}[canvas is zx plane at y=0,fill=red]
-                    \coordinate (A) at (7,-1);
-                    \coordinate (D) at (0,-2);
-                    \coordinate (E) at (6,3);
-                    \coordinate (B) at ($(D)!0.25!(E)$);
-                    \coordinate (C) at ($(D)!0.75!(E)$);
-                    \draw ($(D)!0.5!(E)$) node[above] {$l$};
-                    \draw (A) node[above] {$A$};
-                    \draw (B) node[above] {$B$};
-                    \draw (C) node[above] {$C$};
-                  \draw[opacity=0.3] (0,-3) grid (8,3);
-                  \draw (D) -- (E);
-                \end{scope}
-                \tkzDrawPoints(A, B, C)
-              \end{tikzpicture}
-        \end{center}
-        Рассмотрим $B,\,C\in l:\,l\subset\alpha\Longrightarrow B,\,C\in\alpha.$ По аксиоме плоскости $\exists!\,\alpha:\,A,\,B,\,C\in\alpha;\,l\subset\alpha.$
-    \end{proof}
-    
-    \begin{lemma}\label{Пересекающиеся прямые и плоскость}
-        Через две пересекающиеся прямые проходит плоскость, при том только одна:
-        $$a\cap b = C\Longrightarrow\exists!\,\alpha:\,a,\,b\subset\alpha$$
-    \end{lemma}
-    \begin{lemma}
-        Через две параллельные прямые проходит плоскость, при том только одна:
-        $$a\parallel b\Longrightarrow\exists!\,\alpha:\,a,\,b\subset\alpha$$
-    \end{lemma}
-    
-    \subsection{Скрещивающиеся прямые}
-    
-    \begin{definition}
-        Две прямые называются скрещивающимися, если у них нет общих точек и они не параллельны.
-    \end{definition}
-    
-    \begin{theorem}[Признак скрещивающихся]
-        Если одна прямая лежит в плоскости, а другая пересекают данную плоскость в точке, не лежащей на первой прямой, данные прямые скрещиваются:
-        $$a\subset\alpha,\,b\cap\alpha=M:\,M\notin a\Longrightarrow a\dotdiv b$$
-    \end{theorem}
-    \begin{proof}
-        \hfill
+\begin{proof}
+    \hfill
+    \begin{center}
+        \begin{tikzpicture}[z={(0:10mm)},x={(25:5mm)},y={(60:7mm)}]
+            \begin{scope}[canvas is zx plane at y=0]
+                \draw[opacity=0.2] (0,-3) grid (8,3);
+                \draw (-0.5,-1.5) node[left] {$\alpha$};
+            \end{scope}
+            \begin{scope}[canvas is zy plane at x=0]
+                \fill[color=white] (0,0) rectangle (8,4);
+                \draw[opacity=0.2] (0,-2) grid (8,4);
+                \coordinate (A1) at (0,0);
+                \coordinate (A2) at (8,0);
+                \coordinate (B1) at (0,3);
+                \coordinate (B2) at (8,3);
+                \draw (A1) -- (A2);
+                \draw (B1) -- (B2);
+                \draw ($(A1)!0.5!(A2)$) node[above] {$a$};
+                \draw ($(B1)!0.5!(B2)$) node[above] {$b$};
+                \draw (-0.25,2) node[left] {$\beta$};
+            \end{scope}
+            \begin{scope}[canvas is zx plane at y=0]
+                \fill[color=white] (0,-3) rectangle (8,0);
+                \draw[opacity=0.2] (0,-3) grid (8,0);
+            \end{scope}
+            \end{tikzpicture}
+    \end{center}
+    \begin{center}
+        $a\parallel b\Longrightarrow\exists!\,\beta:\,a,\,b\subset\beta$. Пусть $b\cap\alpha\neq\varnothing$. Но $\alpha\cap\beta=a$. Противоречие.
+    \end{center}
+\end{proof}
+\begin{theorem}[О линии пересечения плоскостей]
+    Если плоскость проходит через прямую, параллельную другой плоскости, и пересекает эту плоскость, то линия пересечения плоскостей параллельна данной прямой:
+    $$a\parallel \alpha,\,a\subset\beta,\,\alpha\cap\beta=b\Longrightarrow a\parallel b$$
+\end{theorem}
+\begin{proof}
+    \hfill
+    \begin{center}
+        \begin{tikzpicture}[z={(0:10mm)},x={(25:5mm)},y={(60:7mm)}]
+            \begin{scope}[canvas is zx plane at y=0]
+                \draw[opacity=0.2] (0,-3) grid (8,3);
+                \draw (-0.5,-1.5) node[left] {$\alpha$};
+            \end{scope}
+            \begin{scope}[canvas is zy plane at x=0]
+                \fill[color=white] (0,0) rectangle (8,4);
+                \draw[opacity=0.2] (0,-2) grid (8,4);
+                \coordinate (A1) at (0,0);
+                \coordinate (A2) at (8,0);
+                \coordinate (B1) at (0,3);
+                \coordinate (B2) at (8,3);
+                \draw (A1) -- (A2);
+                \draw (B1) -- (B2);
+                \draw ($(A1)!0.5!(A2)$) node[above] {$b$};
+                \draw ($(B1)!0.5!(B2)$) node[above] {$a$};
+                \draw (-0.25,2) node[left] {$\beta$};
+            \end{scope}
+            \begin{scope}[canvas is zx plane at y=0]
+                \fill[color=white] (0,-3) rectangle (8,0);
+                \draw[opacity=0.2] (0,-3) grid (8,0);
+            \end{scope}
+            \end{tikzpicture}
+    \end{center}
+    \begin{center}
+        $a\parallel\alpha\Longrightarrow a\cap b=\varnothing.$ Пусть $a\dotdiv b$, тогда $a\cap\alpha\neq\varnothing$, но $a\parallel \alpha$. Противоречие.
+    \end{center}
+\end{proof}
+
+\begin{theorem}[О крыше]
+    Если через каждую из двух параллельных прямых проведена плоскость, причём эти плоскости пересекаются, то линия их пересечения параллельна каждой из данных прямых:
+    $$a\parallel b,\,a\subset \alpha,\,b\subset \beta,\,\alpha\cap\beta=c\Longrightarrow a\parallel c,\, b\parallel c$$
+\end{theorem}
+\begin{proof}
+    \hfill
+    \begin{center}
+        \begin{tikzpicture}[z={(0:10mm)},x={(120:5mm)},y={(45:7mm)}]
+            \begin{scope}[canvas is zx plane at y=0]
+                \draw[opacity=0.2] (0,-3) grid (8,4);
+                \coordinate (B1) at (0,-2);
+                \coordinate (B2) at (8,-2);
+                \draw (B1) -- (B2);
+                \draw ($(B1)!0.77!(B2)$) node[above] {$b$};
+                \draw (8.3,0) node[right] {$\beta$};
+            \end{scope}
+            \begin{scope}[canvas is zy plane at x=3]
+                \fill[color=white] (0,0) rectangle (8,-6);
+                \draw[opacity=0.2] (0,1) grid (8,-6);
+                \coordinate (A1) at (0,-5);
+                \coordinate (A2) at (8,-5);
+                \draw (A1) -- (A2);
+                \draw ($(A1)!0.5!(A2)$) node[above] {$a$};
+                \draw (-0.3,-2) node[left] {$\alpha$};
+            \end{scope}
+            \begin{scope}[canvas is zx plane at y=0]
+                \fill[color=white] (0,3) rectangle (8,4);
+                \draw[opacity=0.2] (0,3) grid (8,4);
+                \coordinate (C1) at (0,3);
+                \coordinate (C2) at (8,3);
+                \draw (C1) -- (C2);
+                \draw ($(C1)!0.5!(C2)$) node[above] {$c$};
+            \end{scope}
+            \end{tikzpicture}
+    \end{center}
+    \begin{center}
+        $a\parallel b,\,b\not\subset \alpha\Longrightarrow b\parallel \alpha\Longrightarrow b\parallel c\text{ (по теореме о линии пересечения плоскостей). Аналогично }c\parallel a.$
+    \end{center}
+\end{proof}
+\setcounter{subsection}{8}
+
+\begin{consequence}
+    Параллельность прямых в пространстве транзитивна.
+\end{consequence}
+\begin{consequence}
+    Если прямая параллельна каждой из двух пересекающихся плоскостей,
+то она параллельна их линии пересечения.
+\end{consequence}
+\begin{definition}
+    Углом между скрещивающимися прямыми называется угол между пересекающимися прямыми, параллельными данным и лежащим в одной плоскости.
+\end{definition}
+
+\setcounter{subsection}{4}
+\setcounter{consequence}{0}
+
+\subsection{Параллельность плоскостей}
+
+\begin{definition}
+    Две плоскости называются параллельными, если они не имеют общих точек.
+\end{definition}
+
+\begin{theorem}[Признак параллельности плоскостей]
+    Если две пересекающиеся прямые одной плоскости параллельны соответственно двум прямым другой плоскости, то эти плоскости параллельны:
+    $$a,\,b\subset\alpha,\,a\cap b\neq\varnothing;\,c,\,d\subset\beta;\,a\parallel c,\,b\parallel d\Longrightarrow \alpha\parallel\beta$$
+\end{theorem}
+\begin{proof}
+    \hfill
+    \begin{center}
+        \begin{tikzpicture}[z={(0:10mm)},x={(30:5mm)}]
+            \begin{scope}[canvas is zx plane at y=2]
+                \draw[opacity=0.2] (0,-3) grid (8,3);
+                \draw (1,-3) -- (6,3);
+                \draw (0,2) -- (8,-3);
+                \draw (2,-0.8) node[left] {$a$};
+                \draw (1.3,2) node {$b$};
+                \draw (9,-0.5) node {$\alpha$};
+            \end{scope}
+            \begin{scope}[canvas is zx plane at y=0]
+                \draw[opacity=0.2] (0,-3) grid (8,3);
+                \draw (1,-3) -- (6,3);
+                \draw (0,2) -- (8,-3);
+                \draw (2,-0.8) node[left] {$c$};
+                \draw (1.3,2) node {$d$};
+                \draw (9,-0.5) node {$\beta$};
+            \end{scope}
+            \end{tikzpicture}
+    \end{center}
+    Пусть $\alpha\cap\beta\neq\varnothing$. Тогда по теореме о линии пересечения плоскостей $\alpha\cap\beta=k,\,k\parallel a\,(c\subset\beta);\,\alpha\cap\beta=l,\,l\parallel b\,(d\subset\beta).$ Противоречие. 
+\end{proof}
+
+\begin{theorem}
+    Линии пересечения двух параллельных плоскостей третьей плоскостью параллельны:
+    $$\alpha\parallel\beta,\,\gamma\cap\alpha=a,\,\gamma\cap\beta=b\Longrightarrow a\parallel b$$
+\end{theorem}
+\begin{proof}
+    \hfill
+    \begin{center}
+        \begin{tikzpicture}[z={(0:10mm)},x={(30:5mm)}]
+            \begin{scope}[canvas is zx plane at y=2]
+                \draw[opacity=0.2] (0,-3) grid (7,3);
+            \end{scope}
+            \begin{scope}[canvas is zx plane at y=0]
+                \draw[opacity=0.2] (0,-3) grid (7,3);
+            \end{scope}
+            \begin{scope}[canvas is plane={O(0,0,3)x(1,0,3)y(0,1,3.5)}]
+                \fill[color=white] (-3,-1) rectangle (3,3);
+                \draw[opacity=0.2] (-3,-1) grid (3,3);
+            \end{scope}
+            \begin{scope}[canvas is zx plane at y=2]
+                \fill[color=white] (4,-3) rectangle (7,3);
+                \draw[opacity=0.2] (4,-3) grid (7,3);
+                \draw (4,-3) -- (4,3);
+                \draw (4,0) node[above] {$a$};
+                \draw (1,-3) -- (1,3);
+                \draw (1,0) node[above] {$c$};
+                \draw (8,-0.5) node {$\alpha$};
+                \draw (4.5,3.3) node[above] {$\gamma$};
+            \end{scope}
+            \begin{scope}[canvas is zx plane at y=0]
+                \fill[color=white] (3,-3) rectangle (7,3);
+                \draw[opacity=0.2] (3,-3) grid (7,3);
+                \draw (3,-3) -- (3,3);
+                \draw (3,0) node[above] {$b$};
+                \draw (8,-0.5) node {$\beta$};
+            \end{scope}
+            \end{tikzpicture}
+    \end{center}
+    \begin{center}
+        $\alpha\parallel\beta\Longrightarrow\exists\,c\subset\alpha:\,c\parallel b.$ По теореме о крыше $a\parallel c,\,b\parallel c.$
+    \end{center}
+\end{proof}
+
+\subsection{Сечения}
+
+\begin{definition}
+    Если пересечение плоскости и многогранника есть многоугольник, то он называется сечением этого многогранника этой плоскостью.
+\end{definition}
+\begin{definition}
+    Следом называется прямая, по которой плоскость сечения пересекает плоскость любой из граней многогранника.
+\end{definition}
+\begin{definition}
+    Пирамида – это многогранник, одна из граней которого – произвольный многоугольник, а остальные грани – треугольники с общей вершиной.
+\end{definition}
+\begin{definition}
+    Пирамида называется правильной, если в её основании лежит правильный многоугольник, а все боковые грани – равнобедренные треугольники с общей вершиной.
+\end{definition}
+\begin{definition}
+    Высота боковой грани правильной пирамиды, проведённая из её вершины, называется апофемой этой пирамиды.
+\end{definition}
+\begin{definition}
+    Треугольная пирамида называется тетраэдром.
+\end{definition}
+\begin{definition}
+    Тетраэдр называется правильным, если все его рёбра равны.
+\end{definition}
+\begin{definition}
+    Усечённой пирамидой называется часть пирамиды, заключённая между плоскостью основания и плоскостью, параллельной плоскости основания и пересекающей все боковые рёбра пирамиды.
+\end{definition}
+\begin{definition}
+    Призма – это многогранник, две грани которого – равные многоугольники, лежащие в параллельных плоскостях, а все рёбра, не лежащие в этих плоскостях, параллельны между собой. Два равных многоугольника, лежащие в параллельных плоскостях, называются основаниями призмы. Остальные грани призмы называются её боковыми гранями, а их объединение \textendash\, боковой поверхностью призмы. Рёбра, не лежащие в основании призмы, называются её боковыми рёбрами. Если в основаниях призмы лежат $n$-угольники, то призма называется $n$-угольной.
+\end{definition}
+\begin{definition}
+    Призма, основания которой являются параллелограммами, называется параллелепипедом.
+\end{definition}
+\begin{definition}
+    Если все грани параллелепипеда являются прямоугольниками, то параллелепипед называется прямоугольным.
+\end{definition}
+\begin{definition}
+    Если все грани параллелепипеда – квадраты, то он называется кубом.
+\end{definition}
+
+
+\subsection{Векторы в пространстве}
+
+\begin{definition}
+    Векторы $\vv{v}$ и $\vv{u}$ называются коллинеарными, если $\exists\,\lambda:\,\vv{v}=\lambda\cdot\vv{u}$.
+\end{definition}
+\begin{theorem}[Признак копланарности векторов]
+    Векторы $\vv{a}$, $\vv{b}$ и $\vv{c}$ называются копланарными, если $\exists\,\alpha,\,\beta:\,\vv{c}=\alpha\cdot\vv{a}+\beta\cdot\vv{b}$.
+\end{theorem}
+\begin{definition}
+    Набор $\vv{a_1},\,\vv{a_2},\ldots,\,\vv{a_n}$ векторов линейно независим, если уравнение $\lambda_1\vv{a_1}+\lambda_2\vv{a_2}+\ldots+\lambda_n\vv{a_n}=0$ имеет только тривиальное решение, то есть $\lambda_1=\lambda_2=\ldots=\lambda_n=0$.
+\end{definition}
+\begin{definition}
+    Базисом в $\R^n$ называется набор из $n$ линейно независимых векторов.
+\end{definition}
+\begin{definition}
+    Коэффициенты $\alpha$, $\beta$ и $\gamma$ в разложении $\vv{v}=\alpha\cdot\vv{a}+\beta\cdot\vv{b}+\gamma\cdot\vv{c}$ называют координатами вектора $\vv{v}$ в базисе $\{\vv{a};\,\vv{b},\,\vv{c}\}$.
+\end{definition}
+\begin{theorem}
+    Точка $M$ принадлежит плоскости $(ABC)$ тогда и только тогда, когда:
+    $$\forall\,O\notin(ABC):\,\vv{OM}=x\cdot\vv{OA}+y\cdot\vv{OB}+z\cdot\vv{OC}\Longleftrightarrow x+y+z=1$$
+\end{theorem}
+
+\subsection{Перпендикулярность в пространстве}
+
+\begin{definition}
+    Прямая перпендикулярна плоскости, если она перпендикулярна любой прямой, лежащей в этой плоскости.
+\end{definition}
+\begin{theorem}[Признак перпендикулярности прямой и плоскости]
+    Прямая перпендикулярна плоскости, если она перпендикулярна двум пересекающимся прямым, лежащим в этой плоскости.
+\end{theorem}
+\begin{proof}
+    \hfill
         \begin{center}
             \begin{tikzpicture}[z={(0:10mm)},x={(40:5mm)}]
                 \begin{scope}[canvas is zy plane at x=0,fill=blue]
-                    \coordinate (M) at (3,0);
-                    \draw (M) node[above right] {$M$};
-                    \draw ($(0,1.5)!0.5!(3,0)$) node[above] {$b$};
-                    \draw (0,1.5) -- (3,0);
-                    \draw[dashed] (0,1.5) -- ($(0,1.5)!1.65!(3,0)$);
-                    \draw ($(0,1.5)!1.65!(3,0)$) -- ($(0,1.5)!2!(3,0)$);
+                    \coordinate (A) at (6,0);
+                    \draw (6, 2) -- (A);
+                    \draw[dashed] (A) -- (6, -0.97);
+                    \draw (6, -0.97) -- (6, -1.5);
+                    \draw (6,0.7) node[right] {$c$};
                 \end{scope}
                 \begin{scope}[canvas is zx plane at y=0,fill=red]
-                    \draw ($(5,-3)!0.5!(6,3)$) node[above left] {$a$};
-                    \draw (5,-3) -- (6,3);
-                    \draw[opacity=0.2] (0,-3) grid (8,3);
-                \end{scope}
-                \tkzDrawPoint(M)
-              \end{tikzpicture}
-        \end{center}
-        Пусть $a$ и $b$ не скрещиваются. Тогда $a\parallel b$ или $a\cap b\neq\varnothing:
-        $
-        \begin{align*}
-            1.\,\,&a\parallel b\Longrightarrow\exists!\,\beta:\,a,\,b\subset\beta\Longrightarrow M\in\beta,\text{ при этом }a\subset\alpha\text{ (по условию); }\\
-            &a\subset\beta\text{ (по предложению)}\Longrightarrow \alpha\cap\beta=a,\,M\in\alpha,\,M\in\beta\Longrightarrow M\in a,\text{ противоречие.}\\
-            2.\,\,&a\cap\beta\neq\varnothing\Longrightarrow\exists\,k:\,k\in a,\,k\in b\Longrightarrow\exists\,\beta:\,a,\,b\subset\beta\Longrightarrow M\in\beta,\text{ при этом }a\subset\alpha\text{ (по условию); }\\
-            &a\subset\beta\text{ (по предложению)}\Longrightarrow \alpha\cap\beta=a,\,M\in\alpha,\,M\in\beta\Longrightarrow M\in a,\text{ противоречие.}
-        \end{align*}
-    \end{proof}
-    \begin{theorem}
-        Пусть $a\parallel b;\,a\cap\alpha\neq\varnothing,$ тогда $b\cap\alpha\neq\varnothing$.
-    \end{theorem}
-    \begin{proof}
-        \hfill
-        \begin{center}
-            \begin{tikzpicture}[z={(0:10mm)},x={(40:5mm)}]
-                \begin{scope}[canvas is zy plane at x=0,fill=blue]
-                    \coordinate (A) at (2,0);
-                    \draw (A) node[above right] {$A$};
-                    \draw (-1,1.5) -- (A);
-                    \draw ($(-1,1.5)!0.35!(A)$) node[above right] {$a$};
-                    \draw[dashed] (-1,1.5) -- ($(-1,1.5)!1.65!(A)$);
-                    \draw ($(-1,1.5)!1.65!(A)$) -- ($(-1,1.5)!2!(A)$);
-                \end{scope}
-                \begin{scope}[canvas is zy plane at x=1,fill=blue]
-                    \coordinate (B) at (6,0);
-                    \draw (B) node[above right] {$B$};
-                    \draw (3,1.5) -- (B);
-                    \draw ($(3,1.5)!0.35!(B)$) node[above right] {$b$};
-                    \draw[dashed] (3,1.5) -- ($(3,1.5)!1.65!(B)$);
-                    \draw ($(3,1.5)!1.4!(B)$) -- ($(3,1.5)!2!(B)$);
-                \end{scope}
-                \begin{scope}[canvas is zx plane at y=0,fill=red]
-                    \draw ($(2,0)!-.5!(6,1)$) -- ($(2,0)!1.5!(6,1)$);
-                    \draw ($(2,0)!0.5!(6,1)$) node[above] {$l$};
+                    \coordinate (B) at (2, 0);
+                    \draw[-{Stealth[scale = 1.5]}] (2,0) -- (4, 2);
+                    \draw[-{Stealth[scale = 1.5]}] (2,0) -- (5, -2);
+                    \draw[dashed] ($(2,0)!-1!(4,2)$) -- ($(2,0)!1.5!(4,2)$);
+                    \draw[dashed] ($(2,0)!-0.67!(5,-2)$) -- ($(2,0)!1.5!(5,-2)$);
+                    \draw ($(2,0)!0.25!(4,2)$) node[above] {$a$};
+                    \draw ($(2,0)!0.415!(5,-2)$) node[below left] {$b$};
                     \draw[opacity=0.2] (0,-3) grid (8,3);
                 \end{scope}
                 \tkzDrawPoints(A, B)
-              \end{tikzpicture}
+                \end{tikzpicture}
         \end{center}
-        $$a\parallel b\Longrightarrow\exists!\,\beta:\,a,\,b\subset\beta,\,a\cap\alpha=A\Longrightarrow A\in\beta\Longrightarrow\exists\,l:\,l=\alpha\cap\beta$$
-        $$l\cap a=A,\,a\parallel\beta\Longrightarrow l\cap\beta=B:\,B\in b,\,B\in l\Longrightarrow b\cap\alpha=B.$$
-    \end{proof}
-    
-    \subsection{Параллельность прямой и плоскости}
-    
-    \begin{definition}
-        Прямая и плоскость называются параллельными, если они не имеют общих точек.
-    \end{definition}
-    
-    \begin{theorem}[Признак параллельности прямой и плоскости]
-        Если прямая, не лежащая в плоскости, параллельна какой-либо прямой, лежащей в этой плоскости, то эти прямая и плоскость параллельны:
-        $$a\subset\alpha,\,b \not\subset \alpha,\,a\parallel b\Longrightarrow \alpha\parallel b$$
-    \end{theorem}
-    
-    \begin{proof}
-        \hfill
+        Пусть $\vv{v_a}$, $\vv{v_b}$ и $\vv{v_c}$ – направляющие векторы прямых $a$, $b$ и $c$ соответственно, тогда $\forall\,l\in\alpha:\,\vv{v_l}$ – направляющий $\vv{v_l}=x\vv{v_a}+y\vv{v_b}$, так как $a\cap b\neq\varnothing$. Тогда $\vv{v_c}\cdot\vv{v_l}=\vv{v_c}\cdot(x\vv{v_a}+y\vv{v_b})=0\Longrightarrow l\perp c$.
+\end{proof}
+\begin{theorem}
+    Если одна из двух параллельных прямых перпендикулярна некоторой плоскости, то и вторая перпендикулярна этой плоскости.
+\end{theorem}
+\begin{theorem}
+    Если две плоскости перпендикулярны одной и той же прямой, то они параллельны.
+\end{theorem}
+\begin{definition}
+    Параллельное проектирование, при котором направление проектирования перпендикулярно плоскости проектирования, называют ортогональным проектированием.
+\end{definition}
+\begin{theorem}[О трёх перпендикулярах]
+    Прямая, лежащая в плоскости, перпендикулярна наклонной тогда и только тогда, когда перпендикулярна проекции этой наклонной на эту плоскость.
+\end{theorem}
+\begin{proof}
+    \hfill
         \begin{center}
-            \begin{tikzpicture}[z={(0:10mm)},x={(25:5mm)},y={(60:7mm)}]
-                \begin{scope}[canvas is zx plane at y=0]
+            \begin{tikzpicture}[z={(0:10mm)},x={(40:5mm)}]
+                \begin{scope}[canvas is zy plane at x=0,fill=blue]
+                    \coordinate (A) at (4,0);
+                    \coordinate (B) at (1,2);
+                    \draw (B) -- (A);
+                    \draw[dashed] (B) -- ($(B)!1.48!(A)$);
+                    \draw ($(B)!1.48!(A)$) -- ($(B)!1.9!(A)$);
+                    \draw ($(B)!0.5!(A)$) node[above right] {$a$};
+                \end{scope}
+                \begin{scope}[canvas is zx plane at y=0,fill=red]
+                    \draw (0,0) -- (8,0);
+                    \draw (4,3) -- (4,-3);
+                    \draw (2,0) node[above] {$b$};
+                    \draw (4.3,2) node[right] {$l$};
+                    \draw (4,0) node[above] {$A$};
+                    \draw (4.5,0) -- (4.5,-.7) -- (4,-.7);
                     \draw[opacity=0.2] (0,-3) grid (8,3);
-                    \draw (-0.5,-1.5) node[left] {$\alpha$};
+                    \draw (8.5,-0.5) node {$\alpha$};
                 \end{scope}
-                \begin{scope}[canvas is zy plane at x=0]
-                    \fill[color=white] (0,0) rectangle (8,4);
-                    \draw[opacity=0.2] (0,-2) grid (8,4);
-                    \coordinate (A1) at (0,0);
-                    \coordinate (A2) at (8,0);
-                    \coordinate (B1) at (0,3);
-                    \coordinate (B2) at (8,3);
-                    \draw (A1) -- (A2);
-                    \draw (B1) -- (B2);
-                    \draw ($(A1)!0.5!(A2)$) node[above] {$a$};
-                    \draw ($(B1)!0.5!(B2)$) node[above] {$b$};
-                    \draw (-0.25,2) node[left] {$\beta$};
-                \end{scope}
-                \begin{scope}[canvas is zx plane at y=0]
-                    \fill[color=white] (0,-3) rectangle (8,0);
-                    \draw[opacity=0.2] (0,-3) grid (8,0);
-                \end{scope}
-              \end{tikzpicture}
+                \draw (0,0,4) -- (0,0.33,3.505) -- (-.7,0.33,3.505) -- (-.7,0,4);
+                \tkzDrawPoint(A)
+                \end{tikzpicture}
         \end{center}
+        Пусть $a$, $b$ и $l$ – это наклонная, её проекция и прямая, лежащая в плоскости $\alpha$ соответственно, также пусть $a\cap\alpha=A$. По лемме \ref{Пересекающиеся прямые и плоскость} существует плоскость $\beta$, содержащая $a$ и $b$. Тогда $\alpha\cap\beta=b$, причем должна существовать такая $d\subset\beta$, что она проходит через $a$ и $b$ и перпендикулярна $b$, а значит перпендикулярна $\alpha$. Отсюда она также перпендикулярна $l$ по признаку перпендикулярности, откуда $l\perp b$ по определению.
+\end{proof}
+\begin{definition}
+    Углом между наклонной и плоскостью называется угол между наклонной и её проекцией на данную плоскость. 
+\end{definition}
+\begin{theorem}
+    Угол между наклонной к плоскости и её проекцией на эту плоскость есть наименьший из углов между наклонной и каждой прямой, лежащей в этой плоскости.
+\end{theorem}
+\begin{theorem}
+    Пусть прямая $a$ образует с плоскостью $\pi$ угол $\alpha$. Прямая $b\subset\pi$ образует с прямой $a$ угол $\varphi$, а с её проекцией на плоскость $\pi$ – угол $\beta$. Тогда $\cos\varphi=\cos\alpha\cdot\cos\beta$.
+\end{theorem}
+\begin{proof}
+    \hfill
         \begin{center}
-            $a\parallel b\Longrightarrow\exists!\,\beta:\,a,\,b\subset\beta$. Пусть $b\cap\alpha\neq\varnothing$. Но $\alpha\cap\beta=a$. Противоречие.
-        \end{center}
-    \end{proof}
-    \begin{theorem}[О линии пересечения плоскостей]
-        Если плоскость проходит через прямую, параллельную другой плоскости, и пересекает эту плоскость, то линия пересечения плоскостей параллельна данной прямой:
-        $$a\parallel \alpha,\,a\subset\beta,\,\alpha\cap\beta=b\Longrightarrow a\parallel b$$
-    \end{theorem}
-    \begin{proof}
-        \hfill
-        \begin{center}
-            \begin{tikzpicture}[z={(0:10mm)},x={(25:5mm)},y={(60:7mm)}]
-                \begin{scope}[canvas is zx plane at y=0]
+            \begin{tikzpicture}[z={(0:10mm)},x={(40:5mm)}]
+                \begin{scope}[canvas is zx plane at y=0,fill=red]
                     \draw[opacity=0.2] (0,-3) grid (8,3);
-                    \draw (-0.5,-1.5) node[left] {$\alpha$};
+                    \draw (8.5,-0.5) node {$\pi$};
                 \end{scope}
-                \begin{scope}[canvas is zy plane at x=0]
-                    \fill[color=white] (0,0) rectangle (8,4);
-                    \draw[opacity=0.2] (0,-2) grid (8,4);
-                    \coordinate (A1) at (0,0);
-                    \coordinate (A2) at (8,0);
-                    \coordinate (B1) at (0,3);
-                    \coordinate (B2) at (8,3);
-                    \draw (A1) -- (A2);
-                    \draw (B1) -- (B2);
-                    \draw ($(A1)!0.5!(A2)$) node[above] {$b$};
-                    \draw ($(B1)!0.5!(B2)$) node[above] {$a$};
-                    \draw (-0.25,2) node[left] {$\beta$};
-                \end{scope}
-                \begin{scope}[canvas is zx plane at y=0]
-                    \fill[color=white] (0,-3) rectangle (8,0);
-                    \draw[opacity=0.2] (0,-3) grid (8,0);
-                \end{scope}
-              \end{tikzpicture}
+                \coordinate (O) at (-1,0,2);
+                \coordinate (A) at (2,2,5);
+                \coordinate (L) at (2,0,5);
+                \coordinate (B) at (-1,0,5);
+                \draw ($(A)!-0.1!(O)$) -- (O);
+                \draw[dashed] (O) -- ($(A)!1.215!(O)$);
+                \draw ($(A)!1.215!(O)$) -- ($(A)!1.5!(O)$);
+                \draw ($(O)!-0.66!(L)$) -- ($(O)!1.33!(L)$);
+                \tkzMarkAngle[size=1.35cm](L,O,A)
+                \tkzMarkAngle[size=1.25cm](L,O,A)
+                \tkzMarkAngle[size=1.15cm](L,O,A)
+                \tkzMarkAngle[size=1.65cm](B,O,L)
+                \tkzMarkAngle[size=1.55cm](B,O,L)
+                \tkzMarkAngle[size=0.45cm](B,O,A)
+                \draw (0,0.4,3.2) node {$\alpha$};
+                \draw (-0.9,0.2,3.9) node {$\beta$};
+                \draw (-1,0.2,2.8) node {$\varphi$};
+                \draw (-1,0,0) -- (-1,0,8);
+                \draw (A) -- (L) -- (B);
+                \draw (B) ++(0.5,0,0) -- ++(0,0,0.5) -- ++(-0.5,0,0);
+                \draw (L) ++(0,0.3,0) -- ++(-0.21,0,-0.21) -- ++(0,-0.3,0);
+                \draw (A) node[above left] {$A$};
+                \draw (O) node[above] {$O$};
+                \draw (B) node[below] {$B$};
+                \draw (L) node[below right] {$L$};
+                \draw ($(A)!.5!(O)$) node[above left] {$a$};
+                \draw ($(O)!.65!(L)$) node[above] {$l$};
+                \draw ($(B)!-0.5!(O)$) node[below] {$b$};
+                \tkzDrawPoints(A, B, O, L)
+                \end{tikzpicture}
         \end{center}
-        \begin{center}
-            $a\parallel\alpha\Longrightarrow a\cap b=\varnothing.$ Пусть $a\dotdiv b$, тогда $a\cap\alpha\neq\varnothing$, но $a\parallel \alpha$. Противоречие.
-        \end{center}
-    \end{proof}
-    
-    \begin{theorem}[О крыше]
-        Если через каждую из двух параллельных прямых проведена плоскость, причём эти плоскости пересекаются, то линия их пересечения параллельна каждой из данных прямых:
-        $$a\parallel b,\,a\subset \alpha,\,b\subset \beta,\,\alpha\cap\beta=c\Longrightarrow a\parallel c,\, b\parallel c$$
-    \end{theorem}
-    \begin{proof}
-        \hfill
-        \begin{center}
-            \begin{tikzpicture}[z={(0:10mm)},x={(120:5mm)},y={(45:7mm)}]
-                \begin{scope}[canvas is zx plane at y=0]
-                    \draw[opacity=0.2] (0,-3) grid (8,4);
-                    \coordinate (B1) at (0,-2);
-                    \coordinate (B2) at (8,-2);
-                    \draw (B1) -- (B2);
-                    \draw ($(B1)!0.77!(B2)$) node[above] {$b$};
-                    \draw (8.3,0) node[right] {$\beta$};
-                \end{scope}
-                \begin{scope}[canvas is zy plane at x=3]
-                    \fill[color=white] (0,0) rectangle (8,-6);
-                    \draw[opacity=0.2] (0,1) grid (8,-6);
-                    \coordinate (A1) at (0,-5);
-                    \coordinate (A2) at (8,-5);
-                    \draw (A1) -- (A2);
-                    \draw ($(A1)!0.5!(A2)$) node[above] {$a$};
-                    \draw (-0.3,-2) node[left] {$\alpha$};
-                \end{scope}
-                \begin{scope}[canvas is zx plane at y=0]
-                    \fill[color=white] (0,3) rectangle (8,4);
-                    \draw[opacity=0.2] (0,3) grid (8,4);
-                    \coordinate (C1) at (0,3);
-                    \coordinate (C2) at (8,3);
-                    \draw (C1) -- (C2);
-                    \draw ($(C1)!0.5!(C2)$) node[above] {$c$};
-                \end{scope}
-              \end{tikzpicture}
-        \end{center}
-        \begin{center}
-            $a\parallel b,\,b\not\subset \alpha\Longrightarrow b\parallel \alpha\Longrightarrow b\parallel c\text{ (по теореме о линии пересечения плоскостей). Аналогично }c\parallel a.$
-        \end{center}
-    \end{proof}
-    \setcounter{subsection}{8}
-    
-    \begin{consequence}
-        Параллельность прямых в пространстве транзитивна.
-    \end{consequence}
-    \begin{consequence}
-        Если прямая параллельна каждой из двух пересекающихся плоскостей,
-    то она параллельна их линии пересечения.
-    \end{consequence}
-    \begin{definition}
-        Углом между скрещивающимися прямыми называется угол между пересекающимися прямыми, параллельными данным и лежащим в одной плоскости.
-    \end{definition}
+        Пусть $A$ – произвольная точка на прямой $a$, $O$ – точка пересечения прямой $a$ с $\pi$, $L$ – основание перпендикуляра из $A$ на $\pi$, а $B$ – основание перпендикуляра из $L$ на $b$. Без ограничения общности положим $OA=1$, тогда $OL=\cos\alpha$, а $OB=\cos\alpha\cdot\cos\beta$. Пусть $\delta=(ABL)$, тогда $BL\perp b$ по построению, $AL\perp b$, так как $b\subset\pi$, $AL\perp\pi\Longrightarrow b\perp\delta\Longrightarrow b\perp AB$. Отсюда $OB=\cos\varphi=\cos\alpha\cdot\cos\beta$.
+\end{proof}
+\begin{definition}
+    Если среди всех расстояний между точками, одна из которых принадлежит фигуре $\Phi_1$, а другая – фигуре $\Phi_2$, существует наименьшее, то его называют между фигурами $\Phi_1$ и $\Phi_2$.
+\end{definition}
+\begin{theorem}
+    Расстоянием от точки до плоскости является расстояние от данной точки до её проекции на данную плоскость.
+\end{theorem}
+\begin{definition}
+    Общим перпендикуляром двух скрещивающихся прямых называется отрезок, концы которого лежат на данных прямых, перпендикулярный к ним.
+\end{definition}
+\begin{theorem}
+    Общий перпендикуляр двух скрещивающихся прямых существует и единственен.
+\end{theorem}
+\begin{theorem}
+    Расстояние между двумя скрещивающимися прямыми равно расстоянию от точки пересечения одной из этих прямых с перпендикулярной ей плоскостью до проекции другой прямой на эту плоскость.
+\end{theorem}
 
-    \setcounter{subsection}{4}
-    \setcounter{consequence}{0}
-    
-    \subsection{Параллельность плоскостей}
-    
-    \begin{definition}
-        Две плоскости называются параллельными, если они не имеют общих точек.
-    \end{definition}
-    
-    \begin{theorem}[Признак параллельности плоскостей]
-        Если две пересекающиеся прямые одной плоскости параллельны соответственно двум прямым другой плоскости, то эти плоскости параллельны:
-        $$a,\,b\subset\alpha,\,a\cap b\neq\varnothing;\,c,\,d\subset\beta;\,a\parallel c,\,b\parallel d\Longrightarrow \alpha\parallel\beta$$
-    \end{theorem}
-    \begin{proof}
-        \hfill
-        \begin{center}
-            \begin{tikzpicture}[z={(0:10mm)},x={(30:5mm)}]
-                \begin{scope}[canvas is zx plane at y=2]
-                    \draw[opacity=0.2] (0,-3) grid (8,3);
-                    \draw (1,-3) -- (6,3);
-                    \draw (0,2) -- (8,-3);
-                    \draw (2,-0.8) node[left] {$a$};
-                    \draw (1.3,2) node {$b$};
-                    \draw (9,-0.5) node {$\alpha$};
-                \end{scope}
-                \begin{scope}[canvas is zx plane at y=0]
-                    \draw[opacity=0.2] (0,-3) grid (8,3);
-                    \draw (1,-3) -- (6,3);
-                    \draw (0,2) -- (8,-3);
-                    \draw (2,-0.8) node[left] {$c$};
-                    \draw (1.3,2) node {$d$};
-                    \draw (9,-0.5) node {$\beta$};
-                \end{scope}
-              \end{tikzpicture}
-        \end{center}
-        Пусть $\alpha\cap\beta\neq\varnothing$. Тогда по теореме о линии пересечения плоскостей $\alpha\cap\beta=k,\,k\parallel a\,(c\subset\beta);\,\alpha\cap\beta=l,\,l\parallel b\,(d\subset\beta).$ Противоречие. 
-    \end{proof}
-    
-    \begin{theorem}
-        Линии пересечения двух параллельных плоскостей третьей плоскостью параллельны:
-        $$\alpha\parallel\beta,\,\gamma\cap\alpha=a,\,\gamma\cap\beta=b\Longrightarrow a\parallel b$$
-    \end{theorem}
-    \begin{proof}
-        \hfill
-        \begin{center}
-            \begin{tikzpicture}[z={(0:10mm)},x={(30:5mm)}]
-                \begin{scope}[canvas is zx plane at y=2]
-                    \draw[opacity=0.2] (0,-3) grid (7,3);
-                \end{scope}
-                \begin{scope}[canvas is zx plane at y=0]
-                    \draw[opacity=0.2] (0,-3) grid (7,3);
-                \end{scope}
-                \begin{scope}[canvas is plane={O(0,0,3)x(1,0,3)y(0,1,3.5)}]
-                    \fill[color=white] (-3,-1) rectangle (3,3);
-                    \draw[opacity=0.2] (-3,-1) grid (3,3);
-                \end{scope}
-                \begin{scope}[canvas is zx plane at y=2]
-                    \fill[color=white] (4,-3) rectangle (7,3);
-                    \draw[opacity=0.2] (4,-3) grid (7,3);
-                    \draw (4,-3) -- (4,3);
-                    \draw (4,0) node[above] {$a$};
-                    \draw (1,-3) -- (1,3);
-                    \draw (1,0) node[above] {$c$};
-                    \draw (8,-0.5) node {$\alpha$};
-                    \draw (4.5,3.3) node[above] {$\gamma$};
-                \end{scope}
-                \begin{scope}[canvas is zx plane at y=0]
-                    \fill[color=white] (3,-3) rectangle (7,3);
-                    \draw[opacity=0.2] (3,-3) grid (7,3);
-                    \draw (3,-3) -- (3,3);
-                    \draw (3,0) node[above] {$b$};
-                    \draw (8,-0.5) node {$\beta$};
-                \end{scope}
-              \end{tikzpicture}
-        \end{center}
-        \begin{center}
-            $\alpha\parallel\beta\Longrightarrow\exists\,c\subset\alpha:\,c\parallel b.$ По теореме о крыше $a\parallel c,\,b\parallel c.$
-        \end{center}
-    \end{proof}
-
-    \subsection{Сечения}
-
-    \begin{definition}
-        Если пересечение плоскости и многогранника есть многоугольник, то он называется сечением этого многогранника этой плоскостью.
-    \end{definition}
-    \begin{definition}
-        Следом называется прямая, по которой плоскость сечения пересекает плоскость любой из граней многогранника.
-    \end{definition}
-    \begin{definition}
-        Пирамида – это многогранник, одна из граней которого – произвольный многоугольник, а остальные грани – треугольники с общей вершиной.
-    \end{definition}
-    \begin{definition}
-        Пирамида называется правильной, если в её основании лежит правильный многоугольник, а все боковые грани – равнобедренные треугольники с общей вершиной.
-    \end{definition}
-    \begin{definition}
-        Высота боковой грани правильной пирамиды, проведённая из её вершины, называется апофемой этой пирамиды.
-    \end{definition}
-    \begin{definition}
-        Треугольная пирамида называется тетраэдром.
-    \end{definition}
-    \begin{definition}
-        Тетраэдр называется правильным, если все его рёбра равны.
-    \end{definition}
-    \begin{definition}
-        Усечённой пирамидой называется часть пирамиды, заключённая между плоскостью основания и плоскостью, параллельной плоскости основания и пересекающей все боковые рёбра пирамиды.
-    \end{definition}
-    \begin{definition}
-        Призма – это многогранник, две грани которого – равные многоугольники, лежащие в параллельных плоскостях, а все рёбра, не лежащие в этих плоскостях, параллельны между собой. Два равных многоугольника, лежащие в параллельных плоскостях, называются основаниями призмы. Остальные грани призмы называются её боковыми гранями, а их объединение \textendash\, боковой поверхностью призмы. Рёбра, не лежащие в основании призмы, называются её боковыми рёбрами. Если в основаниях призмы лежат $n$-угольники, то призма называется $n$-угольной.
-    \end{definition}
-    \begin{definition}
-        Призма, основания которой являются параллелограммами, называется параллелепипедом.
-    \end{definition}
-    \begin{definition}
-        Если все грани параллелепипеда являются прямоугольниками, то параллелепипед называется прямоугольным.
-    \end{definition}
-    \begin{definition}
-        Если все грани параллелепипеда – квадраты, то он называется кубом.
-    \end{definition}
-    
-    
-    \subsection{Векторы в пространстве}
-    
-    \begin{definition}
-        Векторы $\vv{v}$ и $\vv{u}$ называются коллинеарными, если $\exists\,\lambda:\,\vv{v}=\lambda\cdot\vv{u}$.
-    \end{definition}
-    \begin{theorem}[Признак копланарности векторов]
-        Векторы $\vv{a}$, $\vv{b}$ и $\vv{c}$ называются копланарными, если $\exists\,\alpha,\,\beta:\,\vv{c}=\alpha\cdot\vv{a}+\beta\cdot\vv{b}$.
-    \end{theorem}
-    \begin{definition}
-        Набор $\vv{a_1},\,\vv{a_2},\ldots,\,\vv{a_n}$ векторов линейно независим, если уравнение $\lambda_1\vv{a_1}+\lambda_2\vv{a_2}+\ldots+\lambda_n\vv{a_n}=0$ имеет только тривиальное решение, то есть $\lambda_1=\lambda_2=\ldots=\lambda_n=0$.
-    \end{definition}
-    \begin{definition}
-        Базисом в $\R^n$ называется набор из $n$ линейно независимых векторов.
-    \end{definition}
-    \begin{definition}
-        Коэффициенты $\alpha$, $\beta$ и $\gamma$ в разложении $\vv{v}=\alpha\cdot\vv{a}+\beta\cdot\vv{b}+\gamma\cdot\vv{c}$ называют координатами вектора $\vv{v}$ в базисе $\{\vv{a};\,\vv{b},\,\vv{c}\}$.
-    \end{definition}
-    \begin{theorem}
-        Точка $M$ принадлежит плоскости $(ABC)$ тогда и только тогда, когда:
-        $$\forall\,O\notin(ABC):\,\vv{OM}=x\cdot\vv{OA}+y\cdot\vv{OB}+z\cdot\vv{OC}\Longleftrightarrow x+y+z=1$$
-    \end{theorem}
-    
-    \subsection{Перпендикулярность в пространстве}
-    
-    \begin{definition}
-        Прямая перпендикулярна плоскости, если она перпендикулярна любой прямой, лежащей в этой плоскости.
-    \end{definition}
-    \begin{theorem}[Признак перпендикулярности прямой и плоскости]
-        Прямая перпендикулярна плоскости, если она перпендикулярна двум пересекающимся прямым, лежащим в этой плоскости.
-    \end{theorem}
-    \begin{proof}
-        \hfill
-            \begin{center}
-                \begin{tikzpicture}[z={(0:10mm)},x={(40:5mm)}]
-                    \begin{scope}[canvas is zy plane at x=0,fill=blue]
-                        \coordinate (A) at (6,0);
-                        \draw (6, 2) -- (A);
-                        \draw[dashed] (A) -- (6, -0.97);
-                        \draw (6, -0.97) -- (6, -1.5);
-                        \draw (6,0.7) node[right] {$c$};
-                    \end{scope}
-                    \begin{scope}[canvas is zx plane at y=0,fill=red]
-                        \coordinate (B) at (2, 0);
-                        \draw[-{Stealth[scale = 1.5]}] (2,0) -- (4, 2);
-                        \draw[-{Stealth[scale = 1.5]}] (2,0) -- (5, -2);
-                        \draw[dashed] ($(2,0)!-1!(4,2)$) -- ($(2,0)!1.5!(4,2)$);
-                        \draw[dashed] ($(2,0)!-0.67!(5,-2)$) -- ($(2,0)!1.5!(5,-2)$);
-                        \draw ($(2,0)!0.25!(4,2)$) node[above] {$a$};
-                        \draw ($(2,0)!0.415!(5,-2)$) node[below left] {$b$};
-                        \draw[opacity=0.2] (0,-3) grid (8,3);
-                    \end{scope}
-                    \tkzDrawPoints(A, B)
-                  \end{tikzpicture}
-            \end{center}
-            Пусть $\vv{v_a}$, $\vv{v_b}$ и $\vv{v_c}$ – направляющие векторы прямых $a$, $b$ и $c$ соответственно, тогда $\forall\,l\in\alpha:\,\vv{v_l}$ – направляющий $\vv{v_l}=x\vv{v_a}+y\vv{v_b}$, так как $a\cap b\neq\varnothing$. Тогда $\vv{v_c}\cdot\vv{v_l}=\vv{v_c}\cdot(x\vv{v_a}+y\vv{v_b})=0\Longrightarrow l\perp c$.
-    \end{proof}
-    \begin{theorem}
-        Если одна из двух параллельных прямых перпендикулярна некоторой плоскости, то и вторая перпендикулярна этой плоскости.
-    \end{theorem}
-    \begin{theorem}
-        Если две плоскости перпендикулярны одной и той же прямой, то они параллельны.
-    \end{theorem}
-    \begin{definition}
-        Параллельное проектирование, при котором направление проектирования перпендикулярно плоскости проектирования, называют ортогональным проектированием.
-    \end{definition}
-    \begin{theorem}[О трёх перпендикулярах]
-        Прямая, лежащая в плоскости, перпендикулярна наклонной тогда и только тогда, когда перпендикулярна проекции этой наклонной на эту плоскость.
-    \end{theorem}
-    \begin{proof}
-        \hfill
-            \begin{center}
-                \begin{tikzpicture}[z={(0:10mm)},x={(40:5mm)}]
-                    \begin{scope}[canvas is zy plane at x=0,fill=blue]
-                        \coordinate (A) at (4,0);
-                        \coordinate (B) at (1,2);
-                        \draw (B) -- (A);
-                        \draw[dashed] (B) -- ($(B)!1.48!(A)$);
-                        \draw ($(B)!1.48!(A)$) -- ($(B)!1.9!(A)$);
-                        \draw ($(B)!0.5!(A)$) node[above right] {$a$};
-                    \end{scope}
-                    \begin{scope}[canvas is zx plane at y=0,fill=red]
-                        \draw (0,0) -- (8,0);
-                        \draw (4,3) -- (4,-3);
-                        \draw (2,0) node[above] {$b$};
-                        \draw (4.3,2) node[right] {$l$};
-                        \draw (4,0) node[above] {$A$};
-                        \draw (4.5,0) -- (4.5,-.7) -- (4,-.7);
-                        \draw[opacity=0.2] (0,-3) grid (8,3);
-                        \draw (8.5,-0.5) node {$\alpha$};
-                    \end{scope}
-                    \draw (0,0,4) -- (0,0.33,3.505) -- (-.7,0.33,3.505) -- (-.7,0,4);
-                    \tkzDrawPoint(A)
-                  \end{tikzpicture}
-            \end{center}
-            Пусть $a$, $b$ и $l$ – это наклонная, её проекция и прямая, лежащая в плоскости $\alpha$ соответственно, также пусть $a\cap\alpha=A$. По лемме \ref{Пересекающиеся прямые и плоскость} существует плоскость $\beta$, содержащая $a$ и $b$. Тогда $\alpha\cap\beta=b$, причем должна существовать такая $d\subset\beta$, что она проходит через $a$ и $b$ и перпендикулярна $b$, а значит перпендикулярна $\alpha$. Отсюда она также перпендикулярна $l$ по признаку перпендикулярности, откуда $l\perp b$ по определению.
-    \end{proof}
-    \begin{definition}
-        Углом между наклонной и плоскостью называется угол между наклонной и её проекцией на данную плоскость. 
-    \end{definition}
-    \begin{theorem}
-        Угол между наклонной к плоскости и её проекцией на эту плоскость есть наименьший из углов между наклонной и каждой прямой, лежащей в этой плоскости.
-    \end{theorem}
-    \begin{theorem}
-        Пусть прямая $a$ образует с плоскостью $\pi$ угол $\alpha$. Прямая $b\subset\pi$ образует с прямой $a$ угол $\varphi$, а с её проекцией на плоскость $\pi$ – угол $\beta$. Тогда $\cos\varphi=\cos\alpha\cdot\cos\beta$.
-    \end{theorem}
-    \begin{proof}
-        \hfill
-            \begin{center}
-                \begin{tikzpicture}[z={(0:10mm)},x={(40:5mm)}]
-                    \begin{scope}[canvas is zx plane at y=0,fill=red]
-                        \draw[opacity=0.2] (0,-3) grid (8,3);
-                        \draw (8.5,-0.5) node {$\pi$};
-                    \end{scope}
-                    \coordinate (O) at (-1,0,2);
-                    \coordinate (A) at (2,2,5);
-                    \coordinate (L) at (2,0,5);
-                    \coordinate (B) at (-1,0,5);
-                    \draw ($(A)!-0.1!(O)$) -- (O);
-                    \draw[dashed] (O) -- ($(A)!1.215!(O)$);
-                    \draw ($(A)!1.215!(O)$) -- ($(A)!1.5!(O)$);
-                    \draw ($(O)!-0.66!(L)$) -- ($(O)!1.33!(L)$);
-                    \tkzMarkAngle[size=1.35cm](L,O,A)
-                    \tkzMarkAngle[size=1.25cm](L,O,A)
-                    \tkzMarkAngle[size=1.15cm](L,O,A)
-                    \tkzMarkAngle[size=1.65cm](B,O,L)
-                    \tkzMarkAngle[size=1.55cm](B,O,L)
-                    \tkzMarkAngle[size=0.45cm](B,O,A)
-                    \draw (0,0.4,3.2) node {$\alpha$};
-                    \draw (-0.9,0.2,3.9) node {$\beta$};
-                    \draw (-1,0.2,2.8) node {$\varphi$};
-                    \draw (-1,0,0) -- (-1,0,8);
-                    \draw (A) -- (L) -- (B);
-                    \draw (B) ++(0.5,0,0) -- ++(0,0,0.5) -- ++(-0.5,0,0);
-                    \draw (L) ++(0,0.3,0) -- ++(-0.21,0,-0.21) -- ++(0,-0.3,0);
-                    \draw (A) node[above left] {$A$};
-                    \draw (O) node[above] {$O$};
-                    \draw (B) node[below] {$B$};
-                    \draw (L) node[below right] {$L$};
-                    \draw ($(A)!.5!(O)$) node[above left] {$a$};
-                    \draw ($(O)!.65!(L)$) node[above] {$l$};
-                    \draw ($(B)!-0.5!(O)$) node[below] {$b$};
-                    \tkzDrawPoints(A, B, O, L)
-                  \end{tikzpicture}
-            \end{center}
-            Пусть $A$ – произвольная точка на прямой $a$, $O$ – точка пересечения прямой $a$ с $\pi$, $L$ – основание перпендикуляра из $A$ на $\pi$, а $B$ – основание перпендикуляра из $L$ на $b$. Без ограничения общности положим $OA=1$, тогда $OL=\cos\alpha$, а $OB=\cos\alpha\cdot\cos\beta$. Пусть $\delta=(ABL)$, тогда $BL\perp b$ по построению, $AL\perp b$, так как $b\subset\pi$, $AL\perp\pi\Longrightarrow b\perp\delta\Longrightarrow b\perp AB$. Отсюда $OB=\cos\varphi=\cos\alpha\cdot\cos\beta$.
-    \end{proof}
-    \begin{definition}
-        Если среди всех расстояний между точками, одна из которых принадлежит фигуре $\Phi_1$, а другая – фигуре $\Phi_2$, существует наименьшее, то его называют между фигурами $\Phi_1$ и $\Phi_2$.
-    \end{definition}
-    \begin{theorem}
-        Расстоянием от точки до плоскости является расстояние от данной точки до её проекции на данную плоскость.
-    \end{theorem}
-    \begin{definition}
-        Общим перпендикуляром двух скрещивающихся прямых называется отрезок, концы которого лежат на данных прямых, перпендикулярный к ним.
-    \end{definition}
-    \begin{theorem}
-        Общий перпендикуляр двух скрещивающихся прямых существует и единственен.
-    \end{theorem}
-    \begin{theorem}
-        Расстояние между двумя скрещивающимися прямыми равно расстоянию от точки пересечения одной из этих прямых с перпендикулярной ей плоскостью до проекции другой прямой на эту плоскость.
-    \end{theorem}
-    \subsection{Двугранные углы}
+\subsection{Двугранные углы}
 
 \begin{definition}
     Две полуплоскости с общей ограничивающей их прямой разбивают пространство на два двугранных угла. Полуплоскости называются гранями этого угла, а их общая прямая – его ребром.
