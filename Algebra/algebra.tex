@@ -20,7 +20,79 @@
 \label{toc}
 \newpage
 
-\section{Решение уравнений и неравенств.}
+\section{Многочлены}
+
+\begin{definition}
+    Многочленом от переменной $x$ над $K$ называется выражение вида: $f(x)=a_nx^n+a_{n-1}x^{n-1}+\ldots+a_1x+a_0,\, a_k\in K\text{ -- коэффициент многочлена},\, a_n\neq0$.
+\end{definition}
+
+\begin{definition}
+    Наибольшее $k$ такое, что $a_k\neq0$, называется степенью многочлена $f$:
+    \begin{align*}
+        &k = \deg\,f\\
+        &a_0\text{ -- свободный член}\\
+        &a_nx^n\text{ -- старший член}\\
+        &a_n\text{ -- старший коэффициент}
+    \end{align*}
+\end{definition}
+
+\begin{definition}
+    Два многочлена называются равными, если их коэффициенты при соответственных степенях $x$ равны.
+\end{definition}
+
+\begin{definition}
+    \begin{align*}
+        &f(x)=a_nx^n+a_{n-1}x^{n-1}+\ldots+a_1x+a_0\\
+        &g(x)=b_nx^n+b_{n-1}x^{n-1}+\ldots+b_1x+b_0
+    \end{align*}
+    Суммой многочленов $f(x)$ и $g(x)$ называется: $$n(x)=(a_n+b_n)x^n+(a_{n-1}+b_{n-1})x^{n-1}+\ldots+(a_1+b_1)x+(a_0+b_0)$$ Произведением многочленов $f(x)$ и $g(x)$ называется: $$S(x)=d_{2n}x^{2n}+d_{2n-1}x^{2n-1}+\ldots+d_1x+d_0\text{, где } d_k=a_0b_k+a_1b_{k-1}+\ldots+a_{k-1}b_1+a_kb_0=\sum_{i=0}^ka_ib_{k-i}$$
+\end{definition}
+
+\begin{statement}
+    Пусть $\deg\,f(x)\neq0,\,\deg\,g(x)\neq0$, тогда:
+    \begin{align*}
+        &1.\,\,\deg(f(x)+g(x))\leq \max {\{\deg\,f,\,\deg\,g\}}\\
+        &2.\,\,f(x)\cdot g(x) \neq0\\
+        &3.\,\,\deg(f(x)\cdot g(x))=\deg\,f(x)+\deg\,g(x)
+    \end{align*}
+\end{statement}
+\begin{proof}
+    \begin{align*}
+    1.\,\,&\text{Пусть }\deg\,f=\deg\,g=n\\
+    &f(x)+g(x)=(a_n+b_n)x^n+(a_{n-1}+b_{n-1})x^{n-1}+\ldots+(a_1+b_1)x+(a_0+b_0)\\
+    &\text{Если }k>n \text{, то } a_k=0,\,b_k=0\text{, то есть }(a_k+b_k)=0\\\\
+    &\text{Пусть }\deg\,f=n,\,\deg\,g=m,\,m<n\\
+    &\text{Если }k>n\text{, то }a_k+b_k=0\text{, так как }b_{m+1}=b_{m+2}=\ldots=b_{n-1}=b_n=0\\
+    &\text{Тогда }a_n+b_n=a_n\neq0\\\\
+    2.\,\,&f(x)\cdot g(x)=\notequalto{a_nb_mx^{n+m}}{0}+\underbrace{\ldots\ldots}_{\text{степень}<n}
+    \end{align*}
+\end{proof}
+
+\begin{definition}
+    Многочлен $f(x)$ делится на многочлен $g(x)$, если существует такой многочлен $h(x)$, что $h(x)\cdot g(x)=f(x)$.
+\end{definition}
+\begin{statement}
+    Всякий многочлен $f(x)\neq0$ делится на самого себя.
+\end{statement}
+\begin{statement}
+    Если $f(x)$ делится на $g(x)$, а $g(x)$ делится на $f(x)$, то $f(x)=c\cdot g(x),\,c\in K$.
+\end{statement}
+\begin{definition}
+    Число $x_0$ является корнем $f(x)$, если $f(x_0)=0$.
+\end{definition}
+\begin{theorem}[Теорема Безу]
+    Остаток от деления многочлена $P(x)$ на двучлен $(x-a)$ равен $P(a)$.
+\end{theorem}
+\begin{proof}
+    \begin{align*}
+    &P(x)=(x-a)\cdot q(x)+r\\
+    &P(a)=0\cdot p(x)+r=r
+\end{align*}
+\end{proof}
+\setcounter{subsection}{4}
+\begin{consequence}
+    Число $a$ является корнем многочлена $P(x)$ тогда и только тогда, когда $P(x)$ делится на $(x-a)$.
+\end{consequence}
 
 \subsection{Иррациональные уравнения}
 
@@ -96,80 +168,6 @@ $$\begin{matrix}
     &|f(x)|+|g(x)|>|f(x)+g(x)| \Longleftrightarrow f(x)\cdot g(x) < 0\\
     &|f(x)|+|g(x)|\leq|f(x)+g(x)| \Longleftrightarrow f(x)\cdot g(x) \geq 0
 \end{align*}
-
-\section{Многочлены}
-
-\begin{definition}
-    Многочленом от переменной $x$ над $K$ называется выражение вида: $f(x)=a_nx^n+a_{n-1}x^{n-1}+\ldots+a_1x+a_0,\, a_k\in K\text{ -- коэффициент многочлена},\, a_n\neq0$.
-\end{definition}
-
-\begin{definition}
-    Наибольшее $k$ такое, что $a_k\neq0$, называется степенью многочлена $f$:
-    \begin{align*}
-        &k = \deg\,f\\
-        &a_0\text{ -- свободный член}\\
-        &a_nx^n\text{ -- старший член}\\
-        &a_n\text{ -- старший коэффициент}
-    \end{align*}
-\end{definition}
-
-\begin{definition}
-    Два многочлена называются равными, если их коэффициенты при соответственных степенях $x$ равны.
-\end{definition}
-
-\begin{definition}
-    \begin{align*}
-        &f(x)=a_nx^n+a_{n-1}x^{n-1}+\ldots+a_1x+a_0\\
-        &g(x)=b_nx^n+b_{n-1}x^{n-1}+\ldots+b_1x+b_0
-    \end{align*}
-    Суммой многочленов $f(x)$ и $g(x)$ называется: $$n(x)=(a_n+b_n)x^n+(a_{n-1}+b_{n-1})x^{n-1}+\ldots+(a_1+b_1)x+(a_0+b_0)$$ Произведением многочленов $f(x)$ и $g(x)$ называется: $$S(x)=d_{2n}x^{2n}+d_{2n-1}x^{2n-1}+\ldots+d_1x+d_0\text{, где } d_k=a_0b_k+a_1b_{k-1}+\ldots+a_{k-1}b_1+a_kb_0=\sum_{i=0}^ka_ib_{k-i}$$
-\end{definition}
-
-\begin{statement}
-    Пусть $\deg\,f(x)\neq0,\,\deg\,g(x)\neq0$, тогда:
-    \begin{align*}
-        &1.\,\,\deg(f(x)+g(x))\leq \max {\{\deg\,f,\,\deg\,g\}}\\
-        &2.\,\,f(x)\cdot g(x) \neq0\\
-        &3.\,\,\deg(f(x)\cdot g(x))=\deg\,f(x)+\deg\,g(x)
-    \end{align*}
-\end{statement}
-\begin{proof}
-    \begin{align*}
-    1.\,\,&\text{Пусть }\deg\,f=\deg\,g=n\\
-    &f(x)+g(x)=(a_n+b_n)x^n+(a_{n-1}+b_{n-1})x^{n-1}+\ldots+(a_1+b_1)x+(a_0+b_0)\\
-    &\text{Если }k>n \text{, то } a_k=0,\,b_k=0\text{, то есть }(a_k+b_k)=0\\\\
-    &\text{Пусть }\deg\,f=n,\,\deg\,g=m,\,m<n\\
-    &\text{Если }k>n\text{, то }a_k+b_k=0\text{, так как }b_{m+1}=b_{m+2}=\ldots=b_{n-1}=b_n=0\\
-    &\text{Тогда }a_n+b_n=a_n\neq0\\\\
-    2.\,\,&f(x)\cdot g(x)=\notequalto{a_nb_mx^{n+m}}{0}+\underbrace{\ldots\ldots}_{\text{степень}<n}
-    \end{align*}
-\end{proof}
-
-\begin{definition}
-    Многочлен $f(x)$ делится на многочлен $g(x)$, если существует такой многочлен $h(x)$, что $h(x)\cdot g(x)=f(x)$.
-\end{definition}
-\begin{statement}
-    Всякий многочлен $f(x)\neq0$ делится на самого себя.
-\end{statement}
-\begin{statement}
-    Если $f(x)$ делится на $g(x)$, а $g(x)$ делится на $f(x)$, то $f(x)=c\cdot g(x),\,c\in K$.
-\end{statement}
-\begin{definition}
-    Число $x_0$ является корнем $f(x)$, если $f(x_0)=0$.
-\end{definition}
-\begin{theorem}[Теорема Безу]
-    Остаток от деления многочлена $P(x)$ на двучлен $(x-a)$ равен $P(a)$.
-\end{theorem}
-\begin{proof}
-    \begin{align*}
-    &P(x)=(x-a)\cdot q(x)+r\\
-    &P(a)=0\cdot p(x)+r=r
-\end{align*}
-\end{proof}
-\setcounter{subsection}{4}
-\begin{consequence}
-    Число $a$ является корнем многочлена $P(x)$ тогда и только тогда, когда $P(x)$ делится на $(x-a)$.
-\end{consequence}
 
 \section{Множества}
 
@@ -444,6 +442,38 @@ $$\begin{matrix}
     Таким образом, $E_{n+1}>E_n$, а значит $E_n$ монотонно возрастает, при этом она ограничена, а значит по теореме Вейерштрасса имеет предел, то есть $e_n$ также имеет предел.
 \end{proof}
 
+\section{Математический анализ}
+
+\subsection{Эквивалентность и группы}
+
+\begin{definition}
+    Пусть $M$ -- множество, тогда множество $R \subset \{(a,\,b)\,|\,a,\,b\in M\}$ упорядоченных пар элементов $M$ называется бинарным отношением на $M$. 
+\end{definition}
+
+\begin{definition}
+    Бинарное отношение называется отношением эквивалентности, если оно удовлетворяет свойствам:
+    \begin{align*}
+        1.\,\,&\text{Рефлексивность } a\sim a\\
+        2.\,\,&\text{Симметричность } a\sim b \Longleftrightarrow b\sim a\\
+        3.\,\,&\text{Транзитивность } a\sim b,\, b\sim c \Longleftrightarrow a\sim c
+    \end{align*}
+\end{definition}
+\begin{theorem}[Малая теорема Ферма]
+    $\forall n\in \N,\, p\in \prob:\, n^{p-1}\equiv_p 1$
+\end{theorem}
+\begin{definition}
+    Бинарной операцией $\times$ на множестве $M$ называется отображение из множества упорядоченных пар $M^2=\{(a,\,b)\,|\,a,\,b\in M\}$ в множество $M$.
+\end{definition}
+\begin{definition}
+    Пара $G(M;\,\times)$, $M$ -- множество, $\times$ -- бинарная операция, называется группой, если выполняются свойства:
+    \begin{align*}
+        1.\,\,&\forall a,\,b\in M:\,(a\times b)\in M\\
+        2.\,\,&\exists\, e\in M\enspace\forall a\in M:\, e\times a=a\\
+        3.\,\,&\forall a\in M\enspace \exists\, a^{-1}\in M:\, a\times a^{-1}=a^{-1}\times a=e\\
+        4.\,\,&\forall a,\,b,\,c \in M:\,(a\times b)\times c=a\times(b\times c)= (a\times c)\times b
+    \end{align*}
+\end{definition}
+
 \subsection{Пределы функций}
 
 \begin{definition}[Предел функции по Коши]
@@ -536,35 +566,72 @@ $$\begin{matrix}
     Значит, из непрерывности функции $f(k)=\sup\limits_{\left[a;b\right]}f(x)$.
 \end{proof}
 
-\section{Эквивалентность и группы}
+\subsection{Производные}
 
 \begin{definition}
-    Пусть $M$ -- множество, тогда множество $R \subset \{(a,\,b)\,|\,a,\,b\in M\}$ упорядоченных пар элементов $M$ называется бинарным отношением на $M$. 
+    Пусть $f(x)$ определена в окрестности точки $x_0$, тогда она называется дифференцируемой в точке $x_0$, если:
+    $$f(x)=f(x_0)+c(x-x_0)+(x-x_0)\alpha_{x_0}(x)$$
+    Где $\alpha_{x_0}(x)$ -- бесконечно малая в $x_0$ функция, число $c$ -- производная $f(x)$ в точке $x_0$.
 \end{definition}
-
+\begin{statement}
+    Если $f(x)$ дифференцируема в точке $x_0$, то она непрерывна в этой точке.
+\end{statement}
+\begin{proof}
+    $$\lim_{x\to x_0}f(x)=\lim_{x\to x_0}\left(f(x_0)+c(x-x_0)+(x-x_0)\alpha_{x_0}(x)\right)=f(x_0)$$
+\end{proof}
+\begin{statement}
+    $$c=\lim_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}$$
+\end{statement}
+\begin{proof}
+    \begin{multline*}
+        c(x-x_0)=f(x)-f(x_0)-(x-x_0)\alpha_{x_0}(x)\Longrightarrow\\ \Longrightarrow \lim_{x\to x_0} c=\lim_{x\to x_0}\left(\frac{f(x)-f(x_0)}{x-x_0}-\alpha_{x_0}(x)\right)\Longrightarrow c=\lim_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}
+    \end{multline*}
+\end{proof}
 \begin{definition}
-    Бинарное отношение называется отношением эквивалентности, если оно удовлетворяет свойствам:
-    \begin{align*}
-        1.\,\,&\text{Рефлексивность } a\sim a\\
-        2.\,\,&\text{Симметричность } a\sim b \Longleftrightarrow b\sim a\\
-        3.\,\,&\text{Транзитивность } a\sim b,\, b\sim c \Longleftrightarrow a\sim c
-    \end{align*}
+    Пусть $f(x)$ дифференцируема во всех точках множества $M$. Прозводной функцией $f(x)$ называется функция $f'(x)$, такая что её значение в каждой точке $M$ является производной $f(x)$ в данной точке.
 \end{definition}
-\begin{theorem}[Малая теорема Ферма]
-    $\forall n\in \N,\, p\in \prob:\, n^{p-1}\equiv_p 1$
-\end{theorem}
-\begin{definition}
-    Бинарной операцией $\times$ на множестве $M$ называется отображение из множества упорядоченных пар $M^2=\{(a,\,b)\,|\,a,\,b\in M\}$ в множество $M$.
-\end{definition}
-\begin{definition}
-    Пара $G(M;\,\times)$, $M$ -- множество, $\times$ -- бинарная операция, называется группой, если выполняются свойства:
-    \begin{align*}
-        1.\,\,&\forall a,\,b\in M:\,(a\times b)\in M\\
-        2.\,\,&\exists\, e\in M\enspace\forall a\in M:\, e\times a=a\\
-        3.\,\,&\forall a\in M\enspace \exists\, a^{-1}\in M:\, a\times a^{-1}=a^{-1}\times a=e\\
-        4.\,\,&\forall a,\,b,\,c \in M:\,(a\times b)\times c=a\times(b\times c)= (a\times c)\times b
-    \end{align*}
-\end{definition}
+\begin{statement}
+    Пусть $f(x)=x^n,\,n\in\N$, тогда $f'(x)=nx^{n-1}$.
+\end{statement}
+\begin{proof}
+    $$\lim_{x\to x_0}\frac{x^n-x_0^n}{x-x_0}=\lim_{x\to x_0}(x^{n-1}+x^{n-2}x_0+\ldots+xx_0^{n-2}+x_0^{n-1})=nx_0^{n-1}$$
+\end{proof}
+\begin{statement}
+    Пусть $f(x)=x^{-n},\,n\in\N$, тогда $f'(x)=-nx^{-n-1}$.
+\end{statement}
+\begin{proof}
+    $$\lim_{x\to x_0}\frac{\frac{1}{x^n}-\frac{1}{x_0^n}}{x-x_0}=\lim_{x\to x_0}\frac{x_0^n-x^n}{x^nx_0^n(x-x_0)}=\frac{-nx_0^{n-1}}{x_0^{2n}}=-nx_0^{-n-1}$$
+\end{proof}
+\begin{statement}
+    Пусть $f(x)=\sin x$, тогда $f'(x)=\cos x$.
+\end{statement}
+\begin{proof}
+    $$\lim_{x\to x_0}\frac{\sin x-\sin x_0}{x-x_0}=\lim_{x\to x_0}\frac{2\cos\frac{x+x_0}{2}\sin\frac{x-x_0}{2}}{x-x_0}=\lim_{x\to x_0}\left(\cos\tfrac{x+x_0}{2}\cdot\frac{\sin\frac{x-x_0}{2}}{\frac{x-x_0}{2}}\right)=\cos x_0$$
+\end{proof}
+\begin{statement}
+    Пусть $f(x)=\cos x$, тогда $f'(x)=-\sin x$.
+\end{statement}
+\begin{proof}
+    $$\lim_{x\to x_0}\frac{\cos x-\cos x_0}{x-x_0}=\lim_{x\to x_0}\frac{-2\sin\frac{x+x_0}{2}\sin\frac{x-x_0}{2}}{x-x_0}=\lim_{x\to x_0}\left(-\sin\tfrac{x+x_0}{2}\cdot\frac{\sin\frac{x-x_0}{2}}{\frac{x-x_0}{2}}\right)=-\sin x_0$$
+\end{proof}
+\begin{statement}
+    Пусть $f(x)=\tg x$, тогда $f'(x)=\dfrac{1}{\cos^2x}$.
+\end{statement}
+\begin{proof}
+    $$\lim_{x\to x_0}\frac{\tg x-\tg x_0}{x-x_0}=\lim_{x\to x_0}\frac{\sin(x-x_0)}{\cos x\cos x_0 (x-x_0)}=\frac{1}{\cos^2x}$$
+\end{proof}
+\begin{statement}
+    Пусть $f(x)=\ctg x$, тогда $f'(x)=-\dfrac{1}{\sin^2x}$.
+\end{statement}
+\begin{proof}
+    $$\lim_{x\to x_0}\frac{\ctg x-\ctg x_0}{x-x_0}=\lim_{x\to x_0}\frac{-\sin(x-x_0)}{\sin x\sin x_0 (x-x_0)}=-\frac{1}{\sin^2x}$$
+\end{proof}
+\begin{statement}
+    Пусть $f(x)=\sqrt{x}$, тогда $f'(x)=\dfrac{1}{2\sqrt{x}}$.
+\end{statement}
+\begin{proof}
+    $$\lim_{x\to x_0}\frac{\sqrt{x}-\sqrt{x_0}}{x-x_0}=\lim_{x\to x_0}\frac{1}{\sqrt{x}+\sqrt{x_0}}=\frac{1}{2\sqrt{x}}$$
+\end{proof}
 
 \section{Тригонометрия}
 
