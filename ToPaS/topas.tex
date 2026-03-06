@@ -881,4 +881,18 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
         \Longrightarrow\lim_{n\to\infty}\prob\left(\left|\frac{1}{n}\sum_{i=1}^{n}(\xi_i-\E(\xi_i))\right|<\varepsilon\right)\geq\lim_{n\to\infty}\left(1-\frac{c}{n\varepsilon^2}\right)=1
     \end{multline*}
 \end{proof}
+\begin{definition}
+    Пусть $f(x)$ определена на $(a;b)$, рассмотрим прямую, проходящую через точки $A$ и $B$ с абсиссами $a$ и $b$ соответственно: 
+    $$l(x)=\frac{f(a)-f(b)}{a-b}(x-a)+f(a)$$
+    Функция $f(x)$ называется выпуклой вверх на $(a;b)$, если $\forall c\in(a;b)\enspace l(c)\leq f(c)$.
+\end{definition}
+\begin{theorem}[Неравенство Йенцена]
+    Пусть $f(x)$ -- выпуклая вниз функция, $\xi$ -- случайная величина, тогда:
+    $$f(\E(\xi))\leq \E(f(\xi))$$
+\end{theorem}
+\begin{proof}
+    $$\forall x_0\in D(f)\enspace \exists\,a:\,f(x)\geq f(x_0)+a(x-x_0)$$
+    Рассмотрим $x_0=\E(\xi)$, тогда:
+    $$f(\xi)\geq f(\E(\xi))+a(\xi-\E(\xi))\Longrightarrow \E(f(\xi))\geq \E(f(\E(\xi)))+a\E(\xi-\E(\xi))=f(\E(\xi))$$
+\end{proof}
 \end{document}

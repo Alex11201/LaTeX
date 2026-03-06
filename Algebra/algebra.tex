@@ -571,7 +571,7 @@ $$\begin{matrix}
 \begin{definition}
     Пусть $f(x)$ определена в окрестности точки $x_0$, тогда она называется дифференцируемой в точке $x_0$, если:
     $$f(x)=f(x_0)+c(x-x_0)+(x-x_0)\alpha_{x_0}(x)$$
-    Где $\alpha_{x_0}(x)$ -- бесконечно малая в $x_0$ функция, число $c$ -- производная $f(x)$ в точке $x_0$.
+    Где $\alpha_{x_0}(x)$ -- бесконечно малая в $x_0$ функция. Число $c$ -- называется производной, а $c(x-x_0)$ -- дифференциалом $f(x)$ в точке $x_0$.
 \end{definition}
 \begin{statement}
     Если $f(x)$ дифференцируема в точке $x_0$, то она непрерывна в этой точке.
@@ -580,16 +580,24 @@ $$\begin{matrix}
     $$\lim_{x\to x_0}f(x)=\lim_{x\to x_0}\left(f(x_0)+c(x-x_0)+(x-x_0)\alpha_{x_0}(x)\right)=f(x_0)$$
 \end{proof}
 \begin{statement}
+    Функция $f(x)$ дифференцируема в точке $x_0$ тогда и только тогда, когда:
     $$c=\lim_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}$$
 \end{statement}
 \begin{proof}
+    Пусть $f(x)$ дифференцируема в точке $x_0$, тогда:
     \begin{multline*}
         c(x-x_0)=f(x)-f(x_0)-(x-x_0)\alpha_{x_0}(x)\Longrightarrow\\ \Longrightarrow \lim_{x\to x_0} c=\lim_{x\to x_0}\left(\frac{f(x)-f(x_0)}{x-x_0}-\alpha_{x_0}(x)\right)\Longrightarrow c=\lim_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}
     \end{multline*}
+    Пусть существует $c$ из условия, тогда:
+    $$\frac{f(x)-f(x_0)}{x-x_0}=c+\alpha_{x_0}(x)\Longrightarrow f(x)=f(x_0)+c(x-x_0)+(x-x_0)\alpha_{x_0}(x)$$
 \end{proof}
 \begin{definition}
-    Пусть $f(x)$ дифференцируема во всех точках множества $M$. Прозводной функцией $f(x)$ называется функция $f'(x)$, такая что её значение в каждой точке $M$ является производной $f(x)$ в данной точке.
+    Пусть $f(x)$ дифференцируема во всех точках множества $M$. Прозводной $f'(x)$ называется такая функция, что её значение равно производной $f(x)$ в каждой точке.
 \end{definition}
+\begin{theorem}
+    Пусть $y=f(x)$ и $x=g(y)$ -- обратные функции, тогда:
+    $$g'(y)=\frac{1}{f'(x)}$$
+\end{theorem}
 \begin{statement}
     Пусть $f(x)=x^n,\,n\in\N$, тогда $f'(x)=nx^{n-1}$.
 \end{statement}
@@ -618,19 +626,62 @@ $$\begin{matrix}
     Пусть $f(x)=\tg x$, тогда $f'(x)=\dfrac{1}{\cos^2x}$.
 \end{statement}
 \begin{proof}
-    $$\lim_{x\to x_0}\frac{\tg x-\tg x_0}{x-x_0}=\lim_{x\to x_0}\frac{\sin(x-x_0)}{\cos x\cos x_0 (x-x_0)}=\frac{1}{\cos^2x}$$
+    $$\lim_{x\to x_0}\frac{\tg x-\tg x_0}{x-x_0}=\lim_{x\to x_0}\frac{\sin(x-x_0)}{\cos x\cos x_0 (x-x_0)}=\frac{1}{\cos^2x_0}$$
 \end{proof}
 \begin{statement}
     Пусть $f(x)=\ctg x$, тогда $f'(x)=-\dfrac{1}{\sin^2x}$.
 \end{statement}
 \begin{proof}
-    $$\lim_{x\to x_0}\frac{\ctg x-\ctg x_0}{x-x_0}=\lim_{x\to x_0}\frac{-\sin(x-x_0)}{\sin x\sin x_0 (x-x_0)}=-\frac{1}{\sin^2x}$$
+    $$\lim_{x\to x_0}\frac{\ctg x-\ctg x_0}{x-x_0}=\lim_{x\to x_0}\frac{-\sin(x-x_0)}{\sin x\sin x_0 (x-x_0)}=-\frac{1}{\sin^2x_0}$$
 \end{proof}
 \begin{statement}
     Пусть $f(x)=\sqrt{x}$, тогда $f'(x)=\dfrac{1}{2\sqrt{x}}$.
 \end{statement}
 \begin{proof}
-    $$\lim_{x\to x_0}\frac{\sqrt{x}-\sqrt{x_0}}{x-x_0}=\lim_{x\to x_0}\frac{1}{\sqrt{x}+\sqrt{x_0}}=\frac{1}{2\sqrt{x}}$$
+    $$\lim_{x\to x_0}\frac{\sqrt{x}-\sqrt{x_0}}{x-x_0}=\lim_{x\to x_0}\frac{1}{\sqrt{x}+\sqrt{x_0}}=\frac{1}{2\sqrt{x_0}}$$
+\end{proof}
+\begin{statement}
+    Пусть $f(x)=e^x$, тогда $f'(x)=e^x$.
+\end{statement}
+\begin{proof}
+    Используем определение числа $e$:
+    $$e=\lim_{x\to\infty}\left(1+\frac{1}{x}\right)^x=\lim_{x\to0}\left(1+x\right)^\frac{1}{x}$$
+    $$\lim_{x\to x_0}\frac{e^x-e^{x_0}}{x-x_0}=\lim_{\Delta x\to0}\frac{e^{x_0+\Delta x}-e^{x_0}}{\Delta x}=e^{x_0}\lim_{\Delta x\to0}\frac{e^{\Delta x} - 1}{\Delta x}=e^{x_0}\lim_{\Delta x\to0}\frac{\left((1+\Delta x)^{\frac{1}{\Delta x}}\right)^{\Delta x}-1}{\Delta x}=e^{x_0}$$
+\end{proof}
+\begin{statement}
+    Пусть $f(x)=\ln x$, тогда $f'(x)=\dfrac{1}{x}$.
+\end{statement}
+\begin{proof}
+    Пусть $y=\ln x$, $x=e^y$, тогда:
+    $$\frac{d\ln x}{dx}=\frac{1}{\dfrac{de^y}{dy}}=\frac{1}{e^y}=\frac{1}{e^{\ln x}}=\frac{1}{x}$$
+\end{proof}
+\begin{statement}
+    Пусть $f(x)=\arcsin x$, тогда $f'(x)=\dfrac{1}{\sqrt{1-x^2}}$.
+\end{statement}
+\begin{proof}
+    Пусть $y=\arcsin x$, $x=\sin y$, тогда:
+    $$\frac{d\arcsin x}{dx}=\frac{1}{\dfrac{d\sin y}{dy}}=\frac{1}{\cos y}=\frac{1}{\cos(\arcsin x)}=\frac{1}{\sqrt{1-x^2}}$$
+\end{proof}
+\begin{statement}
+    Пусть $f(x)=\arccos x$, тогда $f'(x)=-\dfrac{1}{\sqrt{1-x^2}}$.
+\end{statement}
+\begin{proof}
+    Пусть $y=\arccos x$, $x=\cos y$, тогда:
+    $$\frac{d\arccos x}{dx}=\frac{1}{\dfrac{d\cos y}{dy}}=-\frac{1}{\sin y}=-\frac{1}{\sin(\arccos x)}=-\frac{1}{\sqrt{1-x^2}}$$
+\end{proof}
+\begin{statement}
+    Пусть $f(x)=\arctg x$, тогда $f'(x)=\dfrac{1}{1+x^2}$.
+\end{statement}
+\begin{proof}
+    Пусть $y=\arctg x$, $x=\tg y$, тогда:
+    $$\frac{d\arctg x}{dx}=\frac{1}{\dfrac{d\tg y}{dy}}=\cos^2y=\cos^2(\arctg x)=\frac{1}{1+x^2}$$
+\end{proof}
+\begin{statement}
+    Пусть $f(x)=\arcctg x$, тогда $f'(x)=-\dfrac{1}{1+x^2}$.
+\end{statement}
+\begin{proof}
+    Пусть $y=\arcctg x$, $x=\ctg y$, тогда:
+    $$\frac{d\arcctg x}{dx}=\frac{1}{\dfrac{d\ctg y}{dy}}=-\sin^2y=-\sin^2(\arcctg x)=-\frac{1}{1+x^2}$$
 \end{proof}
 
 \section{Тригонометрия}
