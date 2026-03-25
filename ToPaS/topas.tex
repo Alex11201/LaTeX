@@ -402,6 +402,55 @@ $$\prob(\xi=k)=\frac{C_K^k\cdot C_{N-K}^{n-k}}{C_N^n}$$
     $$=\sum_{k=1}^{\infty}\sum_{n=k}^{\infty}\E(\xi_k;\,\tau=n)=\sum_{k=1}^{\infty}\E(\xi_k;\,\tau\geq k)=\sum_{k=i}^{\infty}\E(\xi_k)\cdot\E(\tau\geq k)=\E(\xi)\cdot\E(\tau)$$
 \end{proof}
 
+\subsection{Случайные блуждания}
+
+\begin{definition}
+    Целочисленной решёткой $\Z^n$ называется множество точек, называемых узлами решётки, пространства $\R^n$, у которых все координаты целые.
+\end{definition}
+\begin{definition}
+    Случайным блужданием называется однородная цепь Маркова с фазовым пространством $X=\Z^n$.
+\end{definition}
+\begin{definition}
+    Случайное блуждание называется пространственно-однородным, если вероятность перехода зависит тольлько от расстояния между точками:
+    $$\prob_n(x;y)=p_{x-y};\,x,y\in\Z^n$$
+\end{definition}
+\begin{definition}
+    Траекторией $\mathcal{L}(m_0;m_n)$, состоящей из $n$ звеньев и ведущей из точки $m_0$ в $m_n$ называется набор точек вида $(t;\xi_t)$, где $t$ -- момент времени, $\xi_t$ -- координата положения частицы в момент времени $t$.
+\end{definition}
+\begin{theorem}[Формула Стирлинга]
+    $$\text{При }n\to\infty\enspace n!\sim \sqrt{2\pi n}\left(\frac{n}{e}\right)^n$$
+\end{theorem}
+\begin{theorem}
+    Одномерное случайное блуждание $S_n$, в котором $\prob(\xi_k=1)=p$, $\prob(\xi_k=-1)=1-p$ возвратно тогда и только тогда, когда $p=\num{0.5}$.
+\end{theorem}
+\begin{proof}
+    В силу однородности блуждания из возвратности из нуля следуюет возвратность из любого состояния. При этом очевидно, что для возвратности необходимо сделать чётное количество шагов. Тогда если $q_n(x;y)$ -- вероятность дойти из $x$ в $y$ за $n$ шагов, критерием возвратности является:
+    $$\sum_{n=1}^\infty q_{2n}(0;0)=+\infty$$
+    Тогда, используя формулу Стирлинга:
+    $$q_{2n}(0;0)=C_{2n}^np^n(1-p)^n\sim \frac{\sqrt{4\pi n}\left(\dfrac{2n}{e}\right)^{2n}}{2\pi n\left(\dfrac{n}{e}\right)^{2n}}p^n(1-p)^n=\frac{4^n}{\sqrt{\pi n}}p^n(1-p)^n<(4p(p-1))^n$$
+    То есть при $p\neq\num{0.5}$ оценка меньше единицы, а при $p=\num{0.5}$:
+    $$C_{2n}^np^n(1-p)^n\sim \frac{1}{\sqrt{\pi n}}>\frac{1}{2n}$$
+    Следовательно, при $p=\num{0.5}$ сумма расходится, так как каждое слагаемое мажорирует члены гармонического ряда, а значит выполняется критерий возвратности.
+\end{proof}
+\begin{theorem}
+    Симметричное одномерное случайное блуждание $S_n$, в котором $\prob(\xi_k=a)=\prob(\xi_k=-a)$ возвратно.
+\end{theorem}
+\begin{proof}
+    Заметим, что $\E(S_n)=\E(\xi_k)=0$. Рассмотрим характеристическую функцию случайной величины:
+    $$\varphi(t)=\E(e^{i\xi t})=\sum_{-\infty}^{\infty}\prob(\xi=n)e^{int}=\sum_{n=0}^{\infty}\prob(\xi=n)\cos(nt)$$
+    По свойству характеристической фукнции:
+    $$\varphi_{S_n}(t)=\varphi^n(t)\Longrightarrow \prob(S_n=0)=\frac{1}{2\pi}\int_{-\pi}^{\pi}\varphi^n(t)dt=\frac{1}{\pi}\int_{0}^{\pi}\varphi^n(t)dt$$
+    В силу абсолютной сходимости ряда можем переставить интеграл и сумму, то есть для $x\in(0;1)$:
+    $$\sum_{n=0}^{\infty}\prob(S_n=0)x^n=\frac{1}{\pi}\sum_{n=0}^{\infty}\int_{0}^{\pi}\varphi^n(t)x^ndt=\frac{1}{\pi}\int_{0}^{\pi}\sum_{n=0}^{\infty}\varphi^n(t)x^ndt=\frac{1}{\pi}\int_{0}^{\pi}\frac{dt}{1-\varphi(t)x}$$
+    Поскольку в малой окрестности нуля $\varphi(t)$ близко к единице:
+    $$\varphi(t)=1+\varphi'(0)t+o(t)=1+o(t)\geq 1-ct,\, c>0$$
+    Тогда можно оценить полученный интеграл:
+    $$\frac{1}{\pi}\int_{0}^{\pi}\frac{dt}{1-\varphi(t)x}\geq \frac{1}{\pi}\int_{0}^{\pi}\frac{dt}{1-x+cxt}=\frac{1}{\pi}\left(\frac{\ln(1-x+cx\pi)}{x}-\frac{\ln(1-x)}{x}\right)\xrightarrow{x\to1}+\infty$$
+    То есть данный ряд расходится, а значит расходится интересующий нас ряд:
+    $$\sum_{n=0}^{\infty}\prob(S_n=0)\geq\sum_{n=0}^{\infty}\prob(S_n=0)x^n\to+\infty$$
+    Тогда по критерию возвратности данное случайное блуждание возвратно.
+\end{proof}
+
 \section{Производящие функции}
 
 \begin{definition}

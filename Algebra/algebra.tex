@@ -594,6 +594,33 @@ $$\begin{matrix}
 \begin{definition}
     Пусть $f(x)$ дифференцируема во всех точках множества $M$. Прозводной $f'(x)$ называется такая функция, что её значение равно производной $f(x)$ в каждой точке.
 \end{definition}
+\begin{theorem}[Ферма]
+    Пусть $f(x)$ дифференцируема в точке $x_0$ и $x_0$ является её точкой экстремума, тогда $f'(x_0)=0$.
+\end{theorem}
+\begin{proof}
+    Пусть $x_0$ -- точка максимума, тогда рассмотрим знаки производной в окрестности $x_0$:
+    $$f'(x_0)=\lim_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0};\enspace \forall\,x\in(x_0;x_0+\delta)\enspace f'(x_0)<0;\enspace \forall\,x\in(x_0-\delta;x_0)\enspace f'(x_0)>0$$
+    Отсюда $f'(x_0)=0$. Доказательство для точки минимума аналогично.
+\end{proof}
+\begin{theorem}[Ролля]
+    Пусть $f(x)$ определена и непрерывна на $\left[a;b\right]$ и дифференцируема на $(a;b)$, а также $f(a)=f(b)$. Тогда:
+    $$\exists\,c\in(a;b):\,f'(c)=0$$
+\end{theorem}
+\begin{proof}
+    При $f(x)=\const$ на $\left[a;b\right]$ очевидно. Иначе:
+    $$\exists\,c\in(a;b):\,f(c)=\sup\limits_{\left[a;b\right]}f(x)\text{ или }f(c)=\inf\limits_{\left[a;b\right]}f(x)$$
+    То есть $c$ -- точка максимума или минимума, а значит $f'(c)=0$ по теореме Ферма.
+\end{proof}
+\begin{theorem}[Лагранжа]
+    Пусть $f(x)$ определена и непрерывна на $\left[a;b\right]$ и дифференцируема на $(a;b)$, тогда:
+    $$\exists\,c\in(a;b):\,f'(c)=\frac{f(b)-f(a)}{b-a}$$
+\end{theorem}
+\begin{proof}
+    Если $f(a)=f(b)$, то по теореме Ролля. Рассмотрим функцию:
+    $$g(x)=f(x)-\frac{f(b)-f(a)}{b-a}(x-a)$$
+    Тогда $g(a)=g(b)=f(a)$, отсуда по теореме Ролля:
+    $$\exists\,c\in(a;b):\,g'(c)=f'(c)-\frac{f(b)-f(a)}{b-a}=0$$
+\end{proof}
 \begin{theorem}
     Пусть $y=f(x)$ и $x=g(y)$ -- обратные функции, тогда:
     $$g'(y)=\frac{1}{f'(x)}$$
@@ -649,11 +676,23 @@ $$\begin{matrix}
     $$\lim_{x\to x_0}\frac{e^x-e^{x_0}}{x-x_0}=\lim_{\Delta x\to0}\frac{e^{x_0+\Delta x}-e^{x_0}}{\Delta x}=e^{x_0}\lim_{\Delta x\to0}\frac{e^{\Delta x} - 1}{\Delta x}=e^{x_0}\lim_{\Delta x\to0}\frac{\left((1+\Delta x)^{\frac{1}{\Delta x}}\right)^{\Delta x}-1}{\Delta x}=e^{x_0}$$
 \end{proof}
 \begin{statement}
+    Пусть $f(x)=a^x$, тогда $f'(x)=a^x\ln a$.
+\end{statement}
+\begin{proof}
+    $$\frac{da^x}{dx}=\frac{de^{x\ln a}}{dx}=a^x\ln a$$
+\end{proof}
+\begin{statement}
     Пусть $f(x)=\ln x$, тогда $f'(x)=\dfrac{1}{x}$.
 \end{statement}
 \begin{proof}
     Пусть $y=\ln x$, $x=e^y$, тогда:
     $$\frac{d\ln x}{dx}=\frac{1}{\dfrac{de^y}{dy}}=\frac{1}{e^y}=\frac{1}{e^{\ln x}}=\frac{1}{x}$$
+\end{proof}
+\begin{statement}
+    Пусть $f(x)=\log_a x$, тогда $f'(x)=\dfrac{1}{x\ln a}$.
+\end{statement}
+\begin{proof}
+    $$\frac{d\log_a x}{dx}=\frac{d}{dx}\frac{\ln x}{\ln a}=\frac{1}{x\ln a}$$
 \end{proof}
 \begin{statement}
     Пусть $f(x)=\arcsin x$, тогда $f'(x)=\dfrac{1}{\sqrt{1-x^2}}$.
